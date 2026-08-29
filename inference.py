@@ -29,9 +29,23 @@ models/threeclass_best.pt: epoch 18, val_acc 0.9675. Test accuracy
 0.9736 (0.9707 single-pass), per-class test F1: ischemic 94.98%,
 hemorrhagic 99.63%. The prior Phase G checkpoint is kept at
 models/threeclass_best_phase_g_backup.pt for rollback.
+
+Each prediction also includes a Grad-CAM [Selvaraju et al., 2017]
+heatmap -- a red-tinted overlay showing which regions of the image most
+influenced the predicted class -- as a base64-encoded PNG. Computed on
+the identity (untransformed) view only, for the class TTA actually
+predicted: the other 3 TTA views are flipped/rotated, and inverse-
+transforming a heatmap back to align with the original image is
+complexity this visualization doesn't need. A single uploaded image has
+no prev/next or DWI/ADC context (see above), so there is exactly one
+image to overlay the heatmap onto -- no ambiguity about which channel/
+slice to show, unlike the multi-slice training pipeline.
 """
+import base64
+import io
 from pathlib import Path
 
+import numpy as np
 import torch
 import torch.nn as nn
 from PIL import Image
@@ -88,6 +102,54 @@ class ThreeClassPipeline:
         self.epoch = ckpt.get("epoch")
         self.val_acc = ckpt.get("val_acc")
 
+        # Grad-CAM hooks on the final conv block (layer4), the standard
+        # target for ResNet -- captures this instance's activations/
+        # gradients each time it fires. Safe as plain instance attributes
+        # (not thread-local) because this pipeline is a process-wide
+        # singleton served by a single worker (see app.py/server_app.py).
+        self._gradcam_activations = None
+        self._gradcam_gradients = None
+        self.model.layer4.register_forward_hook(self._save_activations)
+        self.model.layer4.register_full_backward_hook(self._save_gradients)
+
+    def _save_activations(self, module, inputs, output):
+        self._gradcam_activations = output
+
+    def _save_gradients(self, module, grad_input, grad_output):
+        self._gradcam_gradients = grad_output[0]
+
+    def _grad_cam_overlay(self, identity_view: Image.Image, class_idx: int) -> Image.Image:
+        """Forward+backward pass on the single identity view only (see
+        module docstring), producing a red-tinted heatmap overlay for the
+        given class. Runs under its own enable_grad() since predict()
+        otherwise executes fully under no_grad()."""
+        x = _to_tensor(identity_view).unsqueeze(0).to(DEVICE)
+        with torch.enable_grad():
+            x.requires_grad_(True)
+            self.model.zero_grad(set_to_none=True)
+            logits = self.model(x)
+            logits[0, class_idx].backward()
+
+        activations = self._gradcam_activations[0]  # (C, H, W)
+        gradients = self._gradcam_gradients[0]  # (C, H, W)
+        weights = gradients.mean(dim=(1, 2))  # (C,)
+        cam = torch.relu((weights[:, None, None] * activations).sum(dim=0))  # (H, W)
+        cam = cam / (cam.max() + 1e-8)
+
+        cam_img = Image.fromarray((cam.detach().cpu().numpy() * 255).astype(np.uint8))
+        cam_img = cam_img.resize(TARGET_SIZE, Image.BILINEAR)
+        return self._overlay_heatmap(identity_view, cam_img)
+
+    @staticmethod
+    def _overlay_heatmap(base_image: Image.Image, cam_img: Image.Image) -> Image.Image:
+        base_arr = np.asarray(base_image.convert("RGB"), dtype=np.float32)
+        cam_arr = np.asarray(cam_img, dtype=np.float32) / 255.0  # (H, W) in [0, 1]
+        red = np.zeros_like(base_arr)
+        red[..., 0] = 255.0
+        alpha = (cam_arr * 0.6)[..., None]
+        blended = base_arr * (1 - alpha) + red * alpha
+        return Image.fromarray(blended.astype(np.uint8))
+
     @torch.no_grad()
     def predict(self, image: Image.Image) -> dict:
         merged = _build_merged_image(image)
@@ -102,12 +164,24 @@ class ThreeClassPipeline:
         idx_to_label = {v: k for k, v in LABEL_TO_IDX.items()}
         prediction = idx_to_label[probs.argmax().item()]
 
-        return {
+        result = {
             "prediction": prediction,
             "prob_normal": prob_normal,
             "prob_ischemic": prob_ischemic,
             "prob_hemorrhagic": prob_hemorrhagic,
         }
+
+        # Best-effort: a heatmap failure should never take down a
+        # prediction that otherwise succeeded.
+        try:
+            overlay = self._grad_cam_overlay(views[0], LABEL_TO_IDX[prediction])
+            buf = io.BytesIO()
+            overlay.save(buf, format="PNG")
+            result["heatmap_png_base64"] = base64.b64encode(buf.getvalue()).decode("ascii")
+        except Exception:
+            pass
+
+        return result
 
 
 _pipeline: ThreeClassPipeline | None = None
