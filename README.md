@@ -13,11 +13,14 @@ it just works, cold start aside.
 
 The checkpoint is downloaded from Kaggle at **container startup**
 (`start.sh`), not baked in at build time — this trades a few extra
-seconds on each cold start for not depending on how a given platform
-does or doesn't expose dashboard environment variables to the Docker
-build stage specifically (a detail that varies by platform and can
-change over time). Runtime environment variables, by contrast, are
-universally supported everywhere, so this is the more robust choice.
+seconds on each cold start for one less moving part to depend on.
+(Note: an earlier version of this deployment failed with a `403
+Forbidden - Permission 'datasets.get' was denied` error that looked
+like a build-arg problem but wasn't — Render *was* correctly passing
+`KAGGLE_USERNAME`/`KAGGLE_KEY` into the build. The real cause was the
+pinned `kaggle==1.6.17` package predating Kaggle's newer `KGAT_`-prefixed
+API token format; `requirements.txt` now pins `kaggle==2.2.4`, which
+handles it correctly.)
 
 ## One-time setup
 
