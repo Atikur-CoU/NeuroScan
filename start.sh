@@ -1,31 +1,52 @@
 #!/bin/sh
-# Downloads the model checkpoint at container startup (not build time) --
-# runtime environment variables work identically on every host, unlike
-# Docker build-time ARGs, whose availability depends on platform-specific
-# behavior that isn't worth depending on. Costs a few extra seconds on
-# each cold start; the free tier already cold-starts on idle wake, so
-# this doesn't introduce a new class of delay, just extends the existing one.
+# Downloads the model checkpoint from a GitHub Release asset on this same
+# repo, at container startup -- not baked in at build time, so runtime
+# environment variables (universally supported everywhere) are all this
+# needs, no build-arg plumbing required.
+#
+# Uses a GitHub Release instead of Kaggle: the exact same credentials
+# that work perfectly when tested directly against Kaggle's API return a
+# 403 specifically from Render's network (most likely Kaggle blocking or
+# restricting requests from cloud-hosting IP ranges for its newer-style
+# API tokens) -- and we already know Render can reach GitHub reliably,
+# since that's how it pulls this very repo to build from.
 set -e
 
-if [ -z "$KAGGLE_USERNAME" ] || [ -z "$KAGGLE_KEY" ]; then
-    echo "FATAL: KAGGLE_USERNAME and KAGGLE_KEY must be set." >&2
+if [ -z "$GITHUB_TOKEN" ]; then
+    echo "FATAL: GITHUB_TOKEN must be set." >&2
     exit 1
 fi
 
-# Diagnostic only -- lengths and first/last char, never the full value.
-# Expected: username length 6 (atik68), key length 37 (KGAT_ + 32 hex chars).
-echo "KAGGLE_USERNAME: length=${#KAGGLE_USERNAME} first=${KAGGLE_USERNAME%"${KAGGLE_USERNAME#?}"} last=${KAGGLE_USERNAME#"${KAGGLE_USERNAME%?}"}"
-echo "KAGGLE_KEY: length=${#KAGGLE_KEY} first=${KAGGLE_KEY%"${KAGGLE_KEY#?}"} last=${KAGGLE_KEY#"${KAGGLE_KEY%?}"}"
-
-mkdir -p /root/.kaggle
-printf '{"username":"%s","key":"%s"}' "$KAGGLE_USERNAME" "$KAGGLE_KEY" > /root/.kaggle/kaggle.json
-chmod 600 /root/.kaggle/kaggle.json
+REPO="Atikur-CoU/NeuroScan"
+RELEASE_TAG="checkpoint-v1"
+ASSET_NAME="best.pt"
 
 mkdir -p /app/models
 if [ ! -f /app/models/threeclass_best.pt ]; then
-    echo "Downloading checkpoint from Kaggle..."
-    kaggle datasets download -d atik68/neuroscan-phase-o-checkpoints-final -f best.pt -p /app/models --force --unzip
-    mv /app/models/best.pt /app/models/threeclass_best.pt
+    echo "Looking up release asset..."
+    ASSET_URL=$(curl -s \
+        -H "Authorization: Bearer $GITHUB_TOKEN" \
+        -H "Accept: application/vnd.github+json" \
+        "https://api.github.com/repos/$REPO/releases/tags/$RELEASE_TAG" \
+        | python3 -c "
+import sys, json
+data = json.load(sys.stdin)
+matches = [a['url'] for a in data.get('assets', []) if a['name'] == '$ASSET_NAME']
+if not matches:
+    print('ASSET_NOT_FOUND', file=sys.stderr)
+    sys.exit(1)
+print(matches[0])
+")
+
+    echo "Downloading checkpoint from GitHub Release..."
+    curl -sL \
+        -H "Authorization: Bearer $GITHUB_TOKEN" \
+        -H "Accept: application/octet-stream" \
+        -o /app/models/threeclass_best.pt \
+        "$ASSET_URL"
+
+    SIZE=$(wc -c < /app/models/threeclass_best.pt)
+    echo "Downloaded $SIZE bytes."
 fi
 
 echo "Starting server..."
