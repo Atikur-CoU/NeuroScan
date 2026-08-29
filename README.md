@@ -11,6 +11,14 @@ of no traffic and takes ~30-60s to wake on the next request. There is no
 manual-restart routine like the notebook needed, though — once deployed,
 it just works, cold start aside.
 
+The checkpoint is downloaded from Kaggle at **container startup**
+(`start.sh`), not baked in at build time — this trades a few extra
+seconds on each cold start for not depending on how a given platform
+does or doesn't expose dashboard environment variables to the Docker
+build stage specifically (a detail that varies by platform and can
+change over time). Runtime environment variables, by contrast, are
+universally supported everywhere, so this is the more robust choice.
+
 ## One-time setup
 
 ### 1. Get this folder into a Git repo
@@ -45,9 +53,7 @@ git push -u origin main
    - `NEUROSCAN_API_KEY` — generate one yourself (e.g. run `python -c "import secrets; print(secrets.token_urlsafe(24))"` locally) and paste the value. This is what the PHP site's Settings page will need too.
    - `KAGGLE_USERNAME` — your Kaggle username.
    - `KAGGLE_KEY` — your Kaggle API key (from `kaggle.json`, the `key` field — generate one at kaggle.com/settings if you don't have it handy).
-6. Click **Create Web Service** and let it build (first build takes several minutes — it's installing PyTorch and downloading the checkpoint).
-
-**If the build fails specifically at the Kaggle download step** (can't find `KAGGLE_USERNAME`/`KAGGLE_KEY`): Render's exact mechanism for exposing dashboard environment variables as Docker build arguments can change over time and I can't verify it live. Check Render's current docs for "Docker build secrets" / "build-time environment variables" for your account's version of the dashboard, and let me know what you find — I'll adjust the Dockerfile to match (e.g. switching to a Docker BuildKit secret mount instead of a plain `ARG`).
+6. Click **Create Web Service** and let it build (the build itself is quick — it only installs Python packages; the checkpoint downloads on first startup instead, so the very first request after deploy will take a bit longer than usual).
 
 ### 3. Point the site at it
 
@@ -65,10 +71,10 @@ curl https://<your-service>.onrender.com/api/health \
 ```
 
 Expect `{"status":"ok","checkpoint":{"epoch":18,"val_acc":0.9675...}}` —
-if `epoch` is anything else, the wrong checkpoint got baked in; check
-that the Kaggle dataset reference in the `Dockerfile` (`RUN kaggle
-datasets download -d atik68/neuroscan-phase-o-checkpoints-final ...`)
-still points at the right one.
+if `epoch` is anything else, the wrong checkpoint got downloaded; check
+that the Kaggle dataset reference in `start.sh` (`kaggle datasets
+download -d atik68/neuroscan-phase-o-checkpoints-final ...`) still
+points at the right one.
 
 The first request after any idle period will be slow (cold start) —
 that's expected on the free tier, not a bug.
