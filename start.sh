@@ -12,6 +12,11 @@ if [ -z "$KAGGLE_USERNAME" ] || [ -z "$KAGGLE_KEY" ]; then
     exit 1
 fi
 
+# Diagnostic only -- lengths and first/last char, never the full value.
+# Expected: username length 6 (atik68), key length 37 (KGAT_ + 32 hex chars).
+echo "KAGGLE_USERNAME: length=${#KAGGLE_USERNAME} first=${KAGGLE_USERNAME%"${KAGGLE_USERNAME#?}"} last=${KAGGLE_USERNAME#"${KAGGLE_USERNAME%?}"}"
+echo "KAGGLE_KEY: length=${#KAGGLE_KEY} first=${KAGGLE_KEY%"${KAGGLE_KEY#?}"} last=${KAGGLE_KEY#"${KAGGLE_KEY%?}"}"
+
 mkdir -p /root/.kaggle
 printf '{"username":"%s","key":"%s"}' "$KAGGLE_USERNAME" "$KAGGLE_KEY" > /root/.kaggle/kaggle.json
 chmod 600 /root/.kaggle/kaggle.json
