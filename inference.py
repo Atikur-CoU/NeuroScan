@@ -31,8 +31,9 @@ hemorrhagic 99.63%. The prior Phase G checkpoint is kept at
 models/threeclass_best_phase_g_backup.pt for rollback.
 
 Each prediction also includes a Grad-CAM [Selvaraju et al., 2017]
-heatmap -- a red-tinted overlay showing which regions of the image most
-influenced the predicted class -- as a base64-encoded PNG. Computed on
+heatmap -- a jet-colormap overlay (blue->cyan->green->yellow->red, low
+to high influence) showing which regions of the image most influenced
+the predicted class -- as a base64-encoded PNG. Computed on
 the identity (untransformed) view only, for the class TTA actually
 predicted: the other 3 TTA views are flipped/rotated, and inverse-
 transforming a heatmap back to align with the original image is
@@ -141,13 +142,23 @@ class ThreeClassPipeline:
         return self._overlay_heatmap(identity_view, cam_img)
 
     @staticmethod
+    def _jet_colormap(x: np.ndarray) -> np.ndarray:
+        """Blue->cyan->green->yellow->red, matching the classic 'jet'
+        colormap used in the reference report's Grad-CAM figures. Piecewise
+        -linear approximation in pure numpy -- avoids adding matplotlib as a
+        dependency just for one colormap lookup table."""
+        r = np.clip(1.5 - np.abs(4 * x - 3), 0, 1)
+        g = np.clip(1.5 - np.abs(4 * x - 2), 0, 1)
+        b = np.clip(1.5 - np.abs(4 * x - 1), 0, 1)
+        return np.stack([r, g, b], axis=-1) * 255.0
+
+    @staticmethod
     def _overlay_heatmap(base_image: Image.Image, cam_img: Image.Image) -> Image.Image:
         base_arr = np.asarray(base_image.convert("RGB"), dtype=np.float32)
         cam_arr = np.asarray(cam_img, dtype=np.float32) / 255.0  # (H, W) in [0, 1]
-        red = np.zeros_like(base_arr)
-        red[..., 0] = 255.0
+        jet_arr = ThreeClassPipeline._jet_colormap(cam_arr)
         alpha = (cam_arr * 0.6)[..., None]
-        blended = base_arr * (1 - alpha) + red * alpha
+        blended = base_arr * (1 - alpha) + jet_arr * alpha
         return Image.fromarray(blended.astype(np.uint8))
 
     @torch.no_grad()
