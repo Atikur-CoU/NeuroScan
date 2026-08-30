@@ -121,7 +121,7 @@ class ThreeClassPipeline:
     def _save_gradients(self, module, grad_input, grad_output):
         self._gradcam_gradients = grad_output[0]
 
-    def _grad_cam_overlay(self, identity_view: Image.Image, class_idx: int, color) -> Image.Image:
+    def _grad_cam_overlay(self, identity_view: Image.Image, class_idx: int, color, draw_boundary: bool) -> Image.Image:
         """Forward+backward pass on the single identity view only (see
         module docstring), producing a heatmap overlay tinted by risk tier
         (see _risk_tier_color) for the given class. Runs under its own
@@ -152,31 +152,58 @@ class ThreeClassPipeline:
 
         cam_img = Image.fromarray((cam * 255).astype(np.uint8))
         cam_img = cam_img.resize(TARGET_SIZE, Image.BICUBIC)
-        return self._overlay_heatmap(identity_view, cam_img, color)
+        return self._overlay_heatmap(identity_view, cam_img, color, draw_boundary)
 
     @staticmethod
     def _risk_tier_color(prediction: str, prob_normal: float, prob_ischemic: float, prob_hemorrhagic: float):
-        """Same confidence tiers as webapp_php/includes/risk_tier.php, so the
-        heatmap tint always agrees with the risk badge shown next to it --
-        Grad-CAM highlights whatever region drove the *predicted* class, so
-        without this a confident "normal" call would still get painted red
-        just because red is the top of some fixed color scale, which reads
-        as "bleeding" to anyone glancing at it. ischemic and hemorrhagic
-        share tiers here, matching the reference report's binary stroke/
-        normal framing and the PHP badge's existing behavior."""
-        confidence = {"normal": prob_normal, "ischemic": prob_ischemic, "hemorrhagic": prob_hemorrhagic}.get(prediction, 0.0)
-        if prediction in ("ischemic", "hemorrhagic"):
-            if confidence >= 0.90:
+        """Same confidence tiers as webapp_php/includes/risk_tier.php (keep
+        these two in sync by hand -- there is no shared runtime between
+        Python and PHP here) so the heatmap tint always agrees with the
+        risk badge shown next to it. See GRAD_CAM_HEATMAP.md (project
+        root) for the full research and sourcing behind the asymmetric
+        thresholds below: hemorrhagic is never demoted to "uncertain" and
+        only needs 55% confidence to reach "high risk", because a missed
+        or under-triaged bleed is a categorically worse failure than an
+        under-triaged ischemic call (which is re-screened by the same CT
+        before any time-critical treatment) -- matching how real
+        FDA-cleared hemorrhage-detection AI (Aidoc, Viz ICH, Rapid ICH) is
+        deliberately tuned for high sensitivity over specificity."""
+        if prediction == "hemorrhagic":
+            if prob_hemorrhagic >= 0.55:
                 return (192, 57, 43)  # high risk -- matches risk_tier.php '#c0392b'
-            if confidence >= 0.70:
-                return (230, 126, 34)  # moderate risk -- '#e67e22'
+            return (230, 126, 34)  # moderate risk -- '#e67e22' (never "uncertain")
+        if prediction == "ischemic":
+            if prob_ischemic >= 0.90:
+                return (192, 57, 43)  # high risk
+            if prob_ischemic >= 0.70:
+                return (230, 126, 34)  # moderate risk
             return (127, 140, 141)  # uncertain -- '#7f8c8d'
-        if prediction == "normal" and confidence >= 0.80:
+        if prediction == "normal" and prob_normal >= 0.80:
             return (41, 128, 185)  # normal -- '#2980b9'
         return (127, 140, 141)  # uncertain -- '#7f8c8d'
 
     @staticmethod
-    def _overlay_heatmap(base_image: Image.Image, cam_img: Image.Image, color) -> Image.Image:
+    def _boundary_mask(mask: np.ndarray, thickness: int = 2) -> np.ndarray:
+        """1-pixel-wide boundary of a boolean mask (mask minus its
+        4-neighbor erosion), thickened by `thickness - 1` dilation passes.
+        Pure numpy -- no opencv/scikit-image dependency for one outline."""
+        eroded = mask.copy()
+        eroded[1:, :] &= mask[:-1, :]
+        eroded[:-1, :] &= mask[1:, :]
+        eroded[:, 1:] &= mask[:, :-1]
+        eroded[:, :-1] &= mask[:, 1:]
+        boundary = mask & ~eroded
+        for _ in range(thickness - 1):
+            dilated = boundary.copy()
+            dilated[1:, :] |= boundary[:-1, :]
+            dilated[:-1, :] |= boundary[1:, :]
+            dilated[:, 1:] |= boundary[:, :-1]
+            dilated[:, :-1] |= boundary[:, 1:]
+            boundary = dilated
+        return boundary
+
+    @staticmethod
+    def _overlay_heatmap(base_image: Image.Image, cam_img: Image.Image, color, draw_boundary: bool) -> Image.Image:
         base_arr = np.asarray(base_image.convert("RGB"), dtype=np.float32)
         cam_arr = np.asarray(cam_img, dtype=np.float32) / 255.0  # (H, W) in [0, 1]
         tint = np.asarray(color, dtype=np.float32)
@@ -184,6 +211,17 @@ class ThreeClassPipeline:
         # alpha can go stronger here without washing the whole slice in tint.
         alpha = (cam_arr * 0.75)[..., None]
         blended = base_arr * (1 - alpha) + tint * alpha
+
+        if draw_boundary:
+            # A soft alpha glow doesn't show a viewer exactly where the
+            # highlighted region starts/stops. For ischemic/hemorrhagic
+            # (not normal -- there's no "lesion" to outline there), draw a
+            # solid boundary line around the thresholded region so its
+            # extent is unambiguous, not just implied by a gradient.
+            mask = cam_arr > 0.05
+            boundary = ThreeClassPipeline._boundary_mask(mask, thickness=2)
+            blended[boundary] = tint
+
         return Image.fromarray(blended.astype(np.uint8))
 
     @torch.no_grad()
@@ -211,7 +249,8 @@ class ThreeClassPipeline:
         # prediction that otherwise succeeded.
         try:
             color = self._risk_tier_color(prediction, prob_normal, prob_ischemic, prob_hemorrhagic)
-            overlay = self._grad_cam_overlay(views[0], LABEL_TO_IDX[prediction], color)
+            draw_boundary = prediction in ("ischemic", "hemorrhagic")
+            overlay = self._grad_cam_overlay(views[0], LABEL_TO_IDX[prediction], color, draw_boundary)
             buf = io.BytesIO()
             overlay.save(buf, format="PNG")
             result["heatmap_png_base64"] = base64.b64encode(buf.getvalue()).decode("ascii")
