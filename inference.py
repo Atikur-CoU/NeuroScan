@@ -135,10 +135,20 @@ class ThreeClassPipeline:
         gradients = self._gradcam_gradients[0]  # (C, H, W)
         weights = gradients.mean(dim=(1, 2))  # (C,)
         cam = torch.relu((weights[:, None, None] * activations).sum(dim=0))  # (H, W)
-        cam = cam / (cam.max() + 1e-8)
+        cam = (cam / (cam.max() + 1e-8)).detach().cpu().numpy()
 
-        cam_img = Image.fromarray((cam.detach().cpu().numpy() * 255).astype(np.uint8))
-        cam_img = cam_img.resize(TARGET_SIZE, Image.BILINEAR)
+        # layer4 is only 7x7 for a 224x224 input, and a plain max-normalize
+        # leaves most of that grid at some visibly-nonzero shade -- which
+        # reads as "half the brain is highlighted" once upsampled. Spotlight
+        # only the region that's actually driving the prediction: suppress
+        # everything below this image's own 70th-percentile activation and
+        # rescale what's left back to [0, 1], so only the peak few cells
+        # (the actual bleed/lesion, ideally) show any color at all.
+        threshold = np.percentile(cam, 70)
+        cam = np.clip((cam - threshold) / (1 - threshold + 1e-8), 0, 1)
+
+        cam_img = Image.fromarray((cam * 255).astype(np.uint8))
+        cam_img = cam_img.resize(TARGET_SIZE, Image.BICUBIC)
         return self._overlay_heatmap(identity_view, cam_img)
 
     @staticmethod
@@ -157,7 +167,9 @@ class ThreeClassPipeline:
         base_arr = np.asarray(base_image.convert("RGB"), dtype=np.float32)
         cam_arr = np.asarray(cam_img, dtype=np.float32) / 255.0  # (H, W) in [0, 1]
         jet_arr = ThreeClassPipeline._jet_colormap(cam_arr)
-        alpha = (cam_arr * 0.6)[..., None]
+        # Thresholding upstream already zeroes the non-highlighted region, so
+        # alpha can go stronger here without washing the whole slice in tint.
+        alpha = (cam_arr * 0.75)[..., None]
         blended = base_arr * (1 - alpha) + jet_arr * alpha
         return Image.fromarray(blended.astype(np.uint8))
 
