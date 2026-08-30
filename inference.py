@@ -31,9 +31,11 @@ hemorrhagic 99.63%. The prior Phase G checkpoint is kept at
 models/threeclass_best_phase_g_backup.pt for rollback.
 
 Each prediction also includes a Grad-CAM [Selvaraju et al., 2017]
-heatmap -- a jet-colormap overlay (blue->cyan->green->yellow->red, low
-to high influence) showing which regions of the image most influenced
-the predicted class -- as a base64-encoded PNG. Computed on
+heatmap -- a percentile-thresholded overlay, tinted by the same
+confidence-tier color as the risk badge (red/orange for a confident/
+less-confident stroke call, blue for a confident normal call, gray when
+uncertain -- see _risk_tier_color), showing which regions of the image
+most influenced the predicted class, as a base64-encoded PNG. Computed on
 the identity (untransformed) view only, for the class TTA actually
 predicted: the other 3 TTA views are flipped/rotated, and inverse-
 transforming a heatmap back to align with the original image is
@@ -119,11 +121,12 @@ class ThreeClassPipeline:
     def _save_gradients(self, module, grad_input, grad_output):
         self._gradcam_gradients = grad_output[0]
 
-    def _grad_cam_overlay(self, identity_view: Image.Image, class_idx: int) -> Image.Image:
+    def _grad_cam_overlay(self, identity_view: Image.Image, class_idx: int, color) -> Image.Image:
         """Forward+backward pass on the single identity view only (see
-        module docstring), producing a red-tinted heatmap overlay for the
-        given class. Runs under its own enable_grad() since predict()
-        otherwise executes fully under no_grad()."""
+        module docstring), producing a heatmap overlay tinted by risk tier
+        (see _risk_tier_color) for the given class. Runs under its own
+        enable_grad() since predict() otherwise executes fully under
+        no_grad()."""
         x = _to_tensor(identity_view).unsqueeze(0).to(DEVICE)
         with torch.enable_grad():
             x.requires_grad_(True)
@@ -149,28 +152,38 @@ class ThreeClassPipeline:
 
         cam_img = Image.fromarray((cam * 255).astype(np.uint8))
         cam_img = cam_img.resize(TARGET_SIZE, Image.BICUBIC)
-        return self._overlay_heatmap(identity_view, cam_img)
+        return self._overlay_heatmap(identity_view, cam_img, color)
 
     @staticmethod
-    def _jet_colormap(x: np.ndarray) -> np.ndarray:
-        """Blue->cyan->green->yellow->red, matching the classic 'jet'
-        colormap used in the reference report's Grad-CAM figures. Piecewise
-        -linear approximation in pure numpy -- avoids adding matplotlib as a
-        dependency just for one colormap lookup table."""
-        r = np.clip(1.5 - np.abs(4 * x - 3), 0, 1)
-        g = np.clip(1.5 - np.abs(4 * x - 2), 0, 1)
-        b = np.clip(1.5 - np.abs(4 * x - 1), 0, 1)
-        return np.stack([r, g, b], axis=-1) * 255.0
+    def _risk_tier_color(prediction: str, prob_normal: float, prob_ischemic: float, prob_hemorrhagic: float):
+        """Same confidence tiers as webapp_php/includes/risk_tier.php, so the
+        heatmap tint always agrees with the risk badge shown next to it --
+        Grad-CAM highlights whatever region drove the *predicted* class, so
+        without this a confident "normal" call would still get painted red
+        just because red is the top of some fixed color scale, which reads
+        as "bleeding" to anyone glancing at it. ischemic and hemorrhagic
+        share tiers here, matching the reference report's binary stroke/
+        normal framing and the PHP badge's existing behavior."""
+        confidence = {"normal": prob_normal, "ischemic": prob_ischemic, "hemorrhagic": prob_hemorrhagic}.get(prediction, 0.0)
+        if prediction in ("ischemic", "hemorrhagic"):
+            if confidence >= 0.90:
+                return (192, 57, 43)  # high risk -- matches risk_tier.php '#c0392b'
+            if confidence >= 0.70:
+                return (230, 126, 34)  # moderate risk -- '#e67e22'
+            return (127, 140, 141)  # uncertain -- '#7f8c8d'
+        if prediction == "normal" and confidence >= 0.80:
+            return (41, 128, 185)  # normal -- '#2980b9'
+        return (127, 140, 141)  # uncertain -- '#7f8c8d'
 
     @staticmethod
-    def _overlay_heatmap(base_image: Image.Image, cam_img: Image.Image) -> Image.Image:
+    def _overlay_heatmap(base_image: Image.Image, cam_img: Image.Image, color) -> Image.Image:
         base_arr = np.asarray(base_image.convert("RGB"), dtype=np.float32)
         cam_arr = np.asarray(cam_img, dtype=np.float32) / 255.0  # (H, W) in [0, 1]
-        jet_arr = ThreeClassPipeline._jet_colormap(cam_arr)
+        tint = np.asarray(color, dtype=np.float32)
         # Thresholding upstream already zeroes the non-highlighted region, so
         # alpha can go stronger here without washing the whole slice in tint.
         alpha = (cam_arr * 0.75)[..., None]
-        blended = base_arr * (1 - alpha) + jet_arr * alpha
+        blended = base_arr * (1 - alpha) + tint * alpha
         return Image.fromarray(blended.astype(np.uint8))
 
     @torch.no_grad()
@@ -197,7 +210,8 @@ class ThreeClassPipeline:
         # Best-effort: a heatmap failure should never take down a
         # prediction that otherwise succeeded.
         try:
-            overlay = self._grad_cam_overlay(views[0], LABEL_TO_IDX[prediction])
+            color = self._risk_tier_color(prediction, prob_normal, prob_ischemic, prob_hemorrhagic)
+            overlay = self._grad_cam_overlay(views[0], LABEL_TO_IDX[prediction], color)
             buf = io.BytesIO()
             overlay.save(buf, format="PNG")
             result["heatmap_png_base64"] = base64.b64encode(buf.getvalue()).decode("ascii")
