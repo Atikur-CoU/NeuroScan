@@ -218,7 +218,15 @@ class ThreeClassPipeline:
             # (not normal -- there's no "lesion" to outline there), draw a
             # solid boundary line around the thresholded region so its
             # extent is unambiguous, not just implied by a gradient.
-            mask = cam_arr > 0.05
+            #
+            # 0.6, not the alpha glow's own near-zero floor: the glow is
+            # allowed to show a soft "influence halo" around the lesion,
+            # but the boundary line claims a specific extent, so it must
+            # track only the strongly-activated core -- a low cutoff here
+            # traced the edge of the whole diffuse tail (bicubic-smoothed
+            # from a coarse 7x7 grid) instead of the actual hot region,
+            # which read as "half the brain" rather than the lesion itself.
+            mask = cam_arr > 0.6
             boundary = ThreeClassPipeline._boundary_mask(mask, thickness=2)
             blended[boundary] = tint
 
