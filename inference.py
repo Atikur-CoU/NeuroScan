@@ -73,6 +73,25 @@ def _build_merged_image(image: Image.Image) -> Image.Image:
     return Image.merge("RGB", (self_img, self_img, self_img))
 
 
+def _looks_like_grayscale_scan(image: Image.Image, max_mean_channel_diff: float = 8.0) -> bool:
+    """Out-of-distribution guard, not a real "is this a brain scan"
+    classifier: this pipeline was trained exclusively on grayscale CT/MRI
+    slices (see _build_merged_image -- every upload is collapsed to L then
+    replicated across channels), so a real scan, even saved as RGB/PNG,
+    has near-identical R/G/B per pixel. An ordinary photo (a flower, a
+    person, a screenshot) won't. The 3-class softmax has no notion of
+    "none of the above" -- it will confidently force any input into one
+    of normal/ischemic/hemorrhagic regardless of how unrelated the image
+    is, so this catches the most common real-world failure mode (the
+    wrong file gets uploaded) before that confident-but-meaningless
+    result reaches a risk badge or audio alert. It will NOT catch every
+    out-of-distribution input (e.g. an unrelated grayscale photo)."""
+    rgb = np.asarray(image.convert("RGB"), dtype=np.float32)
+    r, g, b = rgb[..., 0], rgb[..., 1], rgb[..., 2]
+    channel_diff = (np.abs(r - g) + np.abs(g - b) + np.abs(r - b)) / 3.0
+    return bool(channel_diff.mean() <= max_mean_channel_diff)
+
+
 def _tta_views(img: Image.Image):
     yield img
     yield transforms.functional.hflip(img)
@@ -246,11 +265,22 @@ class ThreeClassPipeline:
         idx_to_label = {v: k for k, v in LABEL_TO_IDX.items()}
         prediction = idx_to_label[probs.argmax().item()]
 
+        # See _looks_like_grayscale_scan: catches the most common
+        # real-world failure mode (wrong file uploaded) before a
+        # meaningless-but-confident result reaches a risk badge or audio
+        # alert. Best-effort: never let this check itself take down an
+        # otherwise-successful prediction.
+        try:
+            likely_not_a_scan = not _looks_like_grayscale_scan(image)
+        except Exception:
+            likely_not_a_scan = False
+
         result = {
             "prediction": prediction,
             "prob_normal": prob_normal,
             "prob_ischemic": prob_ischemic,
             "prob_hemorrhagic": prob_hemorrhagic,
+            "likely_not_a_scan": likely_not_a_scan,
         }
 
         # Best-effort: a heatmap failure should never take down a
