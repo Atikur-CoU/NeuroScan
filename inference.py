@@ -73,23 +73,43 @@ def _build_merged_image(image: Image.Image) -> Image.Image:
     return Image.merge("RGB", (self_img, self_img, self_img))
 
 
-def _looks_like_grayscale_scan(image: Image.Image, max_mean_channel_diff: float = 8.0) -> bool:
+def _looks_like_grayscale_scan(
+    image: Image.Image, max_mean_channel_diff: float = 8.0, min_midtone_fraction: float = 0.30
+) -> bool:
     """Out-of-distribution guard, not a real "is this a brain scan"
     classifier: this pipeline was trained exclusively on grayscale CT/MRI
     slices (see _build_merged_image -- every upload is collapsed to L then
-    replicated across channels), so a real scan, even saved as RGB/PNG,
-    has near-identical R/G/B per pixel. An ordinary photo (a flower, a
-    person, a screenshot) won't. The 3-class softmax has no notion of
+    replicated across channels). The 3-class softmax has no notion of
     "none of the above" -- it will confidently force any input into one
     of normal/ischemic/hemorrhagic regardless of how unrelated the image
-    is, so this catches the most common real-world failure mode (the
+    is, so this catches the most common real-world failure modes (the
     wrong file gets uploaded) before that confident-but-meaningless
-    result reaches a risk badge or audio alert. It will NOT catch every
-    out-of-distribution input (e.g. an unrelated grayscale photo)."""
+    result reaches a risk badge or audio alert. Two independent checks,
+    both must pass:
+
+    1. Grayscale-ish: a real scan, even saved as RGB/PNG, has near-
+       identical R/G/B per pixel. An ordinary color photo (a flower, a
+       person) won't.
+    2. Has substantial midtone content: a CT/MRI slice is mostly brain
+       tissue filling the frame -- a continuous spread of mid-gray
+       values, empirically ~55-60% of pixels on real scans. A page of
+       text, a diagram, or a screenshot is technically "grayscale" (near
+       -identical R/G/B) but is overwhelmingly flat white background
+       with thin black content -- empirically ~13% midtone on a tested
+       circuit-diagram upload -- so check (1) alone doesn't catch it.
+
+    This still will NOT catch every out-of-distribution input (e.g. an
+    unrelated photo that happens to be both grayscale and midtone-heavy,
+    like an X-ray of something else)."""
     rgb = np.asarray(image.convert("RGB"), dtype=np.float32)
     r, g, b = rgb[..., 0], rgb[..., 1], rgb[..., 2]
     channel_diff = (np.abs(r - g) + np.abs(g - b) + np.abs(r - b)) / 3.0
-    return bool(channel_diff.mean() <= max_mean_channel_diff)
+    if channel_diff.mean() > max_mean_channel_diff:
+        return False
+
+    gray = np.asarray(image.convert("L"), dtype=np.float32)
+    midtone_fraction = ((gray > 40) & (gray < 220)).mean()
+    return bool(midtone_fraction >= min_midtone_fraction)
 
 
 def _tta_views(img: Image.Image):
