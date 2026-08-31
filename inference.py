@@ -183,23 +183,35 @@ class ThreeClassPipeline:
         return (127, 140, 141)  # uncertain -- '#7f8c8d'
 
     @staticmethod
+    def _dilate(mask: np.ndarray, passes: int = 1) -> np.ndarray:
+        for _ in range(passes):
+            d = mask.copy()
+            d[1:, :] |= mask[:-1, :]
+            d[:-1, :] |= mask[1:, :]
+            d[:, 1:] |= mask[:, :-1]
+            d[:, :-1] |= mask[:, 1:]
+            mask = d
+        return mask
+
+    @staticmethod
+    def _erode(mask: np.ndarray, passes: int = 1) -> np.ndarray:
+        for _ in range(passes):
+            e = mask.copy()
+            e[1:, :] &= mask[:-1, :]
+            e[:-1, :] &= mask[1:, :]
+            e[:, 1:] &= mask[:, :-1]
+            e[:, :-1] &= mask[:, 1:]
+            mask = e
+        return mask
+
+    @staticmethod
     def _boundary_mask(mask: np.ndarray, thickness: int = 2) -> np.ndarray:
-        """1-pixel-wide boundary of a boolean mask (mask minus its
-        4-neighbor erosion), thickened by `thickness - 1` dilation passes.
-        Pure numpy -- no opencv/scikit-image dependency for one outline."""
-        eroded = mask.copy()
-        eroded[1:, :] &= mask[:-1, :]
-        eroded[:-1, :] &= mask[1:, :]
-        eroded[:, 1:] &= mask[:, :-1]
-        eroded[:, :-1] &= mask[:, 1:]
-        boundary = mask & ~eroded
-        for _ in range(thickness - 1):
-            dilated = boundary.copy()
-            dilated[1:, :] |= boundary[:-1, :]
-            dilated[:-1, :] |= boundary[1:, :]
-            dilated[:, 1:] |= boundary[:, :-1]
-            dilated[:, :-1] |= boundary[:, 1:]
-            boundary = dilated
+        """1-pixel-wide boundary of a boolean mask (mask minus its own
+        erosion), thickened by `thickness - 1` dilation passes. Pure numpy
+        -- no opencv/scikit-image dependency for one outline."""
+        boundary = mask & ~ThreeClassPipeline._erode(mask)
+        if thickness > 1:
+            boundary = ThreeClassPipeline._dilate(boundary, thickness - 1)
         return boundary
 
     @staticmethod
@@ -211,9 +223,17 @@ class ThreeClassPipeline:
         cell on the skull or background purely because it's spatially
         adjacent to the real lesion, and bone/background can never
         themselves be part of a hemorrhage or infarct. This is intentionally
-        a rough intensity heuristic, not a real segmentation."""
+        a rough intensity heuristic, not a real segmentation.
+
+        Morphologically closed (dilate then erode) before use: the raw
+        intensity threshold leaves small noisy holes/notches right at the
+        bone-tissue partial-volume boundary, and clipping the hot region
+        against a jagged mask like that fragments the boundary line into
+        disconnected segments exactly where it meets the skull, instead of
+        one clean continuous outline."""
         gray = np.asarray(base_image.convert("L"), dtype=np.float32)
-        return (gray > 20) & (gray < 210)
+        mask = (gray > 20) & (gray < 210)
+        return ThreeClassPipeline._erode(ThreeClassPipeline._dilate(mask, 3), 3)
 
     @staticmethod
     def _overlay_heatmap(base_image: Image.Image, cam_img: Image.Image, color, draw_boundary: bool) -> Image.Image:
