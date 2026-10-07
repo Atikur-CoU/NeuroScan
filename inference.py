@@ -15,9 +15,11 @@ same at every position and has an exact expression; the kernel checks it against
 Input pathway -- the one the offline evaluation used, chosen per request from what was uploaded:
   * CT, current slice + previous + next  -> channels (previous, current, next)       ["ct_adjacent_slices", evaluated]
   * MRI, DWI + ADC of the same slice      -> channels (DWI, ADC, DWI)                 ["mri_dwi_adc", evaluated]
-  * anything else (one image only)        -> channels (image, image, image)          ["single_image", NOT evaluated
-    as a deployment pathway; reviewer experiment C2 measures how much it loses]. The response says which pathway ran
-    and carries a warning when it is not the evaluated one.
+  * CT, one slice only                    -> channels (slice, slice, slice)          ["single_image", NOT the evaluated
+    pathway; the response carries a warning]. Reviewer experiment C2 (held-out CT test): hemorrhage recall unchanged
+    (92.0%), ischemic recall 91.0% -> 68.8%, ischemic AUROC 0.972 -> 0.955.
+  * MRI without ADC                       -> refused (400). C2: DWI alone or ADC alone, replicated, detected almost no
+    ischemia (recall 0-3%, AUROC 0.32-0.51 on ISLES and SOOP); the model needs both sequences.
 Every image is converted to 8-bit grayscale and resized to 224 x 224, exactly as in training.
 
 Decision rule: 4-view test-time augmentation (identity, horizontal flip, +8 deg, -8 deg rotation), softmax averaged
@@ -85,8 +87,10 @@ def build_input(modality: str, main: Image.Image, prev: Image.Image | None = Non
     else:
         if prev is not None or nxt is not None:
             raise InputError("Previous/next slices apply to CT only; for MRI upload DWI and ADC.")
-        if adc is not None:
-            return Image.merge("RGB", (cur, _gray(adc), cur)), PATHWAY_MRI, cur
+        if adc is None:
+            raise InputError("MRI needs both images of the same slice: the DWI image and its ADC map. With one "
+                             "sequence alone the model does not detect ischemia.")
+        return Image.merge("RGB", (cur, _gray(adc), cur)), PATHWAY_MRI, cur
     return Image.merge("RGB", (cur, cur, cur)), PATHWAY_SINGLE, cur
 
 
@@ -227,8 +231,8 @@ class ThreeClassPipeline:
 
         warnings = []
         if pathway == PATHWAY_SINGLE:
-            warnings.append("Single image only: this is not the evaluated input pathway. For CT upload the previous "
-                            "and next slices; for MRI upload the matching ADC image.")
+            warnings.append("Single CT slice only: this is not the evaluated input pathway and misses more ischemic "
+                            "strokes. Upload the previous and next slices as well.")
         if modality == "MRI":
             warnings.append("MRI: hemorrhage was not represented in training or evaluation; MRI results concern "
                             "normal versus ischemic only.")

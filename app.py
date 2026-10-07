@@ -12,7 +12,7 @@ around the clock: anyone with the URL could otherwise call your model.
 
 v2 (final model): /api/predict takes `modality` (CT or MRI; default CT for older clients) and, besides `file`
 (the current CT slice, or the MRI DWI image), optional `prev_file` + `next_file` (CT adjacent slices) or `adc_file`
-(MRI). With them the evaluated input pathway runs; with `file` alone the single-image fallback runs and the
+(MRI, required: MRI without ADC is refused with 400). CT with `file` alone runs the single-image fallback and the
 response says so (see inference.py).
 The expected key is read from the NEUROSCAN_API_KEY environment variable
 (set in the Render dashboard) rather than hardcoded, matching the
