@@ -94,22 +94,35 @@ def build_input(modality: str, main: Image.Image, prev: Image.Image | None = Non
     return Image.merge("RGB", (cur, cur, cur)), PATHWAY_SINGLE, cur
 
 
-def _looks_like_grayscale_scan(
-    image: Image.Image, max_mean_channel_diff: float = 8.0, min_midtone_fraction: float = 0.30
-) -> bool:
+def _looks_like_grayscale_scan(image: Image.Image) -> bool:
     """Input-file check, not an anatomical or diagnostic-quality check: the model was trained only on grayscale
-    CT/MRI slices and has no "none of the above" output, so this flags the commonest wrong-file uploads (colour
-    photos; mostly-white documents or diagrams) before a meaningless result reaches an alert. Both must hold:
-    near-identical R/G/B per pixel, and >= 30% midtone pixels. It will not catch every unrelated image (e.g. a
-    grayscale, midtone-heavy X-ray of something else)."""
+    CT/MRI slices and has no "none of the above" output, so this flags wrong-file uploads before a meaningless result
+    reaches an alert. All must hold:
+      1. near-grey: mean |R-G|, |G-B|, |R-B| <= 8 (colour photographs fail);
+      2. dark surroundings: >= 50% of the outer border ring (6% of each side) is dark (<= 30), as around a head on a
+         CT or MRI slice (documents, diagrams, screenshots and most photographs fail);
+      3. non-black area (pixels > 10) between 0.5% and 70% of the image: an empty black slice fails, and so do
+         photographs that fill the frame.
+    The earlier rule ("near-grey and >= 30% of all pixels mid-tone") flagged 78% of genuine held-out scans, because
+    the black background around the head counted against it, and accepted 80% of grayscale photographs. Evaluated in
+    kernel neuroscan-q-input-check-eval (thresholds set on validation images): genuine non-blank held-out scans from
+    all 7 sources flagged 0.26% (n = 3,520; CT slices, DWI and ADC), completely black slices flagged by design, and
+    0 of 208 non-scan images accepted (photographs, documents, diagrams, screenshots; this set also informed the 70%
+    limit). It cannot tell a brain scan from another dark-background medical image, and a scan cropped so that the
+    head fills the frame is flagged."""
     rgb = np.asarray(image.convert("RGB"), dtype=np.float32)
     r, g, b = rgb[..., 0], rgb[..., 1], rgb[..., 2]
-    channel_diff = (np.abs(r - g) + np.abs(g - b) + np.abs(r - b)) / 3.0
-    if channel_diff.mean() > max_mean_channel_diff:
+    if ((np.abs(r - g) + np.abs(g - b) + np.abs(r - b)) / 3.0).mean() > 8.0:
         return False
     gray = np.asarray(image.convert("L"), dtype=np.float32)
-    midtone_fraction = ((gray > 40) & (gray < 220)).mean()
-    return bool(midtone_fraction >= min_midtone_fraction)
+    h, w = gray.shape
+    bh, bw = max(1, int(0.06 * h)), max(1, int(0.06 * w))
+    ring = np.ones((h, w), dtype=bool)
+    ring[bh:h - bh, bw:w - bw] = False
+    if (gray[ring] <= 30).mean() < 0.50:
+        return False
+    non_black = (gray > 10).mean()
+    return bool(0.005 <= non_black <= 0.70)
 
 
 def _tta_views(img: Image.Image):
