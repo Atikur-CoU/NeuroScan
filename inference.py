@@ -1,231 +1,178 @@
 """
-NeuroScan web demo -- shared inference logic.
+NeuroScan web demo -- shared inference logic (v2: the evaluated final model and its input pathway).
 
-Single ResNet18 model, three classes (normal / ischemic / hemorrhagic),
-one softmax over all three at once. Replaces the earlier chained
-binary(Phase D) -> subtype(Phase F) design and the subtype-only
-confidence-threshold heuristic, both retired after real-world testing
-showed they could produce confident, contradictory answers on the same
-image -- each ran its own separate softmax over only its own classes, so
-"normal" and "hemorrhagic" were never actually competing against each
-other for the same probability mass. See PROCESS.md Sec 20 and
-QA_LOG.md Sec 17 for the full failure analysis.
+Model: the paper's final model, R30A s123 -- ConvNeXt-Tiny, one softmax over normal / ischemic / hemorrhagic --
+served with ONNX Runtime (models/neuroscan_r30a_s123.onnx; SHA-256 checked at start-up). PyTorch is not needed at
+run time: it alone took about 300 MB, and the PyTorch server peaked at 671 MB on Linux, above the 512 MB hosting tier;
+with ONNX Runtime the peak is about 300 MB and a request takes about 0.85 s on one CPU thread (kernel
+neuroscan-q-onnx-load-memory).
+The ONNX graph was exported from the PyTorch weights and checked against them (kaggle kernel
+neuroscan-q-onnx-export-check): it returns the logits and, for each class, the Grad-CAM map of ConvNeXt stage 4.
+The Grad-CAM channel weights are computed inside the graph in closed form -- the head after stage 4 is global average
+pooling, LayerNorm and one linear layer, so the gradient of a logit with respect to the stage-4 activations is the
+same at every position and has an exact expression; the kernel checks it against autograd.
 
-Checkpoint: Phase O (PROCESS.md Sec 33), fine-tuned from Phase N with
-ISLES2022 ischemic slices paired as (DWI, ADC, DWI) -- matching how
-DWI/ADC are read together in real radiology practice -- while every
-other row still uses the (prev, self, next) multi-slice merge. A single
-uploaded image has no known prev/next slice or DWI/ADC pairing, so this
-pipeline always takes the graceful-degrade path used at training time
-for slices without neighbor context: channels = (self, self, self).
+Input pathway -- the one the offline evaluation used, chosen per request from what was uploaded:
+  * CT, current slice + previous + next  -> channels (previous, current, next)       ["ct_adjacent_slices", evaluated]
+  * MRI, DWI + ADC of the same slice      -> channels (DWI, ADC, DWI)                 ["mri_dwi_adc", evaluated]
+  * anything else (one image only)        -> channels (image, image, image)          ["single_image", NOT evaluated
+    as a deployment pathway; reviewer experiment C2 measures how much it loses]. The response says which pathway ran
+    and carries a warning when it is not the evaluated one.
+Every image is converted to 8-bit grayscale and resized to 224 x 224, exactly as in training.
 
-Inference also runs 4-view test-time augmentation (identity, horizontal
-flip, +8 deg rotation, -8 deg rotation) on the merged image and averages
-the softmax across views -- the same tta_views() pattern proven in
-kaggle_kernels/phase_o_tta_eval/eval.py. Per PROCESS.md Sec 33.9, TTA on
-top of Phase O was the best configuration found in the project.
+Decision rule: 4-view test-time augmentation (identity, horizontal flip, +8 deg, -8 deg rotation), softmax averaged
+over views, prediction = argmax (plain). This is the rule under which the paper evaluates the alert tiers (post-hoc
+analysis B4): it alerts on more hemorrhage slices than the paper's class-weighted rule (92.0% vs 89.0% on the pooled
+held-out test), at the cost of more false alerts, which is the safer trade-off for a triage aid. The displayed
+probabilities are these same TTA-averaged softmax values (uncalibrated), as in B4.
 
-models/threeclass_best.pt: epoch 18, val_acc 0.9675. Test accuracy
-0.9736 (0.9707 single-pass), per-class test F1: ischemic 94.98%,
-hemorrhagic 99.63%. The prior Phase G checkpoint is kept at
-models/threeclass_best_phase_g_backup.pt for rollback.
+MRI and hemorrhage: no hemorrhagic MRI source was available for training or evaluation, so an MRI request carries a
+warning that hemorrhage on MRI is outside the evaluated scope.
 
-Each prediction also includes a Grad-CAM [Selvaraju et al., 2017]
-heatmap -- a percentile-thresholded overlay, tinted by the same
-confidence-tier color as the risk badge (red/orange for a confident/
-less-confident stroke call, blue for a confident normal call, gray when
-uncertain -- see _risk_tier_color), showing which regions of the image
-most influenced the predicted class, as a base64-encoded PNG. Computed on
-the identity (untransformed) view only, for the class TTA actually
-predicted: the other 3 TTA views are flipped/rotated, and inverse-
-transforming a heatmap back to align with the original image is
-complexity this visualization doesn't need. A single uploaded image has
-no prev/next or DWI/ADC context (see above), so there is exactly one
-image to overlay the heatmap onto -- no ambiguity about which channel/
-slice to show, unlike the multi-slice training pipeline.
+Grad-CAM [Selvaraju et al., 2017]: identity view only, for the predicted class, overlaid on the current CT slice or
+the DWI image; suppress below the image's 70th-percentile activation, rescale, bicubic upsample; outline at > 0.6 for
+ischemic / hemorrhagic. Reviewer experiment C3 evaluates this display rule against lesion masks. It shows where the
+model's evidence is concentrated, not a lesion boundary.
 """
 import base64
+import hashlib
 import io
 from pathlib import Path
 
 import numpy as np
-import torch
-import torch.nn as nn
+import onnxruntime as ort
 from PIL import Image
-from torchvision import models, transforms
 
 MODELS_DIR = Path(__file__).parent / "models"
+MODEL_FILE = MODELS_DIR / "neuroscan_r30a_s123.onnx"
+EXPECTED_SHA256 = "4937ab381ee3e7c29d5ab18ea761a8c19ddffb6488210fb6030511a8041502eb"
+MODEL_VERSION = "r30a_s123_convnext_tiny_onnx"
 
 TARGET_SIZE = (224, 224)
 VALID_LABELS = ("normal", "ischemic", "hemorrhagic")
 LABEL_TO_IDX = {"normal": 0, "ischemic": 1, "hemorrhagic": 2}
+MODALITIES = ("CT", "MRI")
 
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+PATHWAY_CT = "ct_adjacent_slices"
+PATHWAY_MRI = "mri_dwi_adc"
+PATHWAY_SINGLE = "single_image"
 
-NORMALIZE = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)[:, None, None]
+STD = np.array([0.229, 0.224, 0.225], dtype=np.float32)[:, None, None]
 
 
-def _build_merged_image(image: Image.Image) -> Image.Image:
-    """Single-image degrade-gracefully path: no known prev/next slice or
-    DWI/ADC pairing, so channels = (self, self, self) -- matching the
-    has_context=False branch used at training/eval time."""
-    self_img = image.convert("L").resize(TARGET_SIZE)
-    return Image.merge("RGB", (self_img, self_img, self_img))
+class InputError(ValueError):
+    """The uploaded combination of images cannot be processed (shown to the user as a 400)."""
+
+
+def _gray(image: Image.Image) -> Image.Image:
+    return image.convert("L").resize(TARGET_SIZE)
+
+
+def build_input(modality: str, main: Image.Image, prev: Image.Image | None = None, nxt: Image.Image | None = None,
+                adc: Image.Image | None = None):
+    """Returns (merged RGB image, pathway name, base image for the overlay)."""
+    if modality not in MODALITIES:
+        raise InputError("modality must be CT or MRI.")
+    cur = _gray(main)
+    if modality == "CT":
+        if adc is not None:
+            raise InputError("An ADC image applies to MRI only.")
+        if (prev is None) != (nxt is None):
+            raise InputError("For CT context, upload both the previous and the next slice (or neither).")
+        if prev is not None:
+            return Image.merge("RGB", (_gray(prev), cur, _gray(nxt))), PATHWAY_CT, cur
+    else:
+        if prev is not None or nxt is not None:
+            raise InputError("Previous/next slices apply to CT only; for MRI upload DWI and ADC.")
+        if adc is not None:
+            return Image.merge("RGB", (cur, _gray(adc), cur)), PATHWAY_MRI, cur
+    return Image.merge("RGB", (cur, cur, cur)), PATHWAY_SINGLE, cur
 
 
 def _looks_like_grayscale_scan(
     image: Image.Image, max_mean_channel_diff: float = 8.0, min_midtone_fraction: float = 0.30
 ) -> bool:
-    """Out-of-distribution guard, not a real "is this a brain scan"
-    classifier: this pipeline was trained exclusively on grayscale CT/MRI
-    slices (see _build_merged_image -- every upload is collapsed to L then
-    replicated across channels). The 3-class softmax has no notion of
-    "none of the above" -- it will confidently force any input into one
-    of normal/ischemic/hemorrhagic regardless of how unrelated the image
-    is, so this catches the most common real-world failure modes (the
-    wrong file gets uploaded) before that confident-but-meaningless
-    result reaches a risk badge or audio alert. Two independent checks,
-    both must pass:
-
-    1. Grayscale-ish: a real scan, even saved as RGB/PNG, has near-
-       identical R/G/B per pixel. An ordinary color photo (a flower, a
-       person) won't.
-    2. Has substantial midtone content: a CT/MRI slice is mostly brain
-       tissue filling the frame -- a continuous spread of mid-gray
-       values, empirically ~55-60% of pixels on real scans. A page of
-       text, a diagram, or a screenshot is technically "grayscale" (near
-       -identical R/G/B) but is overwhelmingly flat white background
-       with thin black content -- empirically ~13% midtone on a tested
-       circuit-diagram upload -- so check (1) alone doesn't catch it.
-
-    This still will NOT catch every out-of-distribution input (e.g. an
-    unrelated photo that happens to be both grayscale and midtone-heavy,
-    like an X-ray of something else)."""
+    """Input-file check, not an anatomical or diagnostic-quality check: the model was trained only on grayscale
+    CT/MRI slices and has no "none of the above" output, so this flags the commonest wrong-file uploads (colour
+    photos; mostly-white documents or diagrams) before a meaningless result reaches an alert. Both must hold:
+    near-identical R/G/B per pixel, and >= 30% midtone pixels. It will not catch every unrelated image (e.g. a
+    grayscale, midtone-heavy X-ray of something else)."""
     rgb = np.asarray(image.convert("RGB"), dtype=np.float32)
     r, g, b = rgb[..., 0], rgb[..., 1], rgb[..., 2]
     channel_diff = (np.abs(r - g) + np.abs(g - b) + np.abs(r - b)) / 3.0
     if channel_diff.mean() > max_mean_channel_diff:
         return False
-
     gray = np.asarray(image.convert("L"), dtype=np.float32)
     midtone_fraction = ((gray > 40) & (gray < 220)).mean()
     return bool(midtone_fraction >= min_midtone_fraction)
 
 
 def _tta_views(img: Image.Image):
+    """Identical to torchvision's PIL path: hflip = FLIP_LEFT_RIGHT; rotate(angle, fill=0) = PIL rotate with
+    nearest-neighbour resampling, no expansion, black fill."""
     yield img
-    yield transforms.functional.hflip(img)
-    yield transforms.functional.rotate(img, 8, fill=0)
-    yield transforms.functional.rotate(img, -8, fill=0)
+    yield img.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+    yield img.rotate(8, resample=Image.Resampling.NEAREST, expand=False, fillcolor=(0, 0, 0))
+    yield img.rotate(-8, resample=Image.Resampling.NEAREST, expand=False, fillcolor=(0, 0, 0))
 
 
-def _to_tensor(img: Image.Image) -> torch.Tensor:
-    return NORMALIZE(transforms.functional.to_tensor(img))
+def _to_array(img: Image.Image) -> np.ndarray:
+    """torchvision to_tensor + ImageNet normalize, as float32 CHW."""
+    a = np.asarray(img, dtype=np.float32).transpose(2, 0, 1) / 255.0
+    return (a - MEAN) / STD
 
 
-def _build_resnet18(num_classes: int) -> nn.Module:
-    model = models.resnet18(weights=None)
-    model.fc = nn.Linear(model.fc.in_features, num_classes)
-    return model
+def _softmax(z: np.ndarray) -> np.ndarray:
+    e = np.exp(z - z.max(axis=1, keepdims=True))
+    return e / e.sum(axis=1, keepdims=True)
+
+
+def _sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
 
 
 class ThreeClassPipeline:
-    """Loads the single 3-class checkpoint once; call .predict(pil_image)
-    per request. One softmax over normal/ischemic/hemorrhagic -- the
-    three classes always compete for the same probability mass, so
-    there's exactly one coherent answer per image, not two independently
-    -trained models that can disagree."""
+    """Loads the final model once; call .predict(...) per request."""
 
     def __init__(self):
-        self.model = _build_resnet18(len(VALID_LABELS)).to(DEVICE)
-        ckpt = torch.load(MODELS_DIR / "threeclass_best.pt", map_location=DEVICE)
-        self.model.load_state_dict(ckpt["model_state"])
-        self.model.eval()
-        self.epoch = ckpt.get("epoch")
-        self.val_acc = ckpt.get("val_acc")
-
-        # Grad-CAM hooks on the final conv block (layer4), the standard
-        # target for ResNet -- captures this instance's activations/
-        # gradients each time it fires. Safe as plain instance attributes
-        # (not thread-local) because this pipeline is a process-wide
-        # singleton served by a single worker (see app.py/server_app.py).
-        self._gradcam_activations = None
-        self._gradcam_gradients = None
-        self.model.layer4.register_forward_hook(self._save_activations)
-        self.model.layer4.register_full_backward_hook(self._save_gradients)
-
-    def _save_activations(self, module, inputs, output):
-        self._gradcam_activations = output
-
-    def _save_gradients(self, module, grad_input, grad_output):
-        self._gradcam_gradients = grad_output[0]
-
-    def _grad_cam_overlay(self, identity_view: Image.Image, class_idx: int, color, draw_boundary: bool) -> Image.Image:
-        """Forward+backward pass on the single identity view only (see
-        module docstring), producing a heatmap overlay tinted by risk tier
-        (see _risk_tier_color) for the given class. Runs under its own
-        enable_grad() since predict() otherwise executes fully under
-        no_grad()."""
-        x = _to_tensor(identity_view).unsqueeze(0).to(DEVICE)
-        with torch.enable_grad():
-            x.requires_grad_(True)
-            self.model.zero_grad(set_to_none=True)
-            logits = self.model(x)
-            logits[0, class_idx].backward()
-
-        activations = self._gradcam_activations[0]  # (C, H, W)
-        gradients = self._gradcam_gradients[0]  # (C, H, W)
-        weights = gradients.mean(dim=(1, 2))  # (C,)
-        cam = torch.relu((weights[:, None, None] * activations).sum(dim=0))  # (H, W)
-        cam = (cam / (cam.max() + 1e-8)).detach().cpu().numpy()
-
-        # layer4 is only 7x7 for a 224x224 input, and a plain max-normalize
-        # leaves most of that grid at some visibly-nonzero shade -- which
-        # reads as "half the brain is highlighted" once upsampled. Spotlight
-        # only the region that's actually driving the prediction: suppress
-        # everything below this image's own 70th-percentile activation and
-        # rescale what's left back to [0, 1], so only the peak few cells
-        # (the actual bleed/lesion, ideally) show any color at all.
-        threshold = np.percentile(cam, 70)
-        cam = np.clip((cam - threshold) / (1 - threshold + 1e-8), 0, 1)
-
-        cam_img = Image.fromarray((cam * 255).astype(np.uint8))
-        cam_img = cam_img.resize(TARGET_SIZE, Image.BICUBIC)
-        return self._overlay_heatmap(identity_view, cam_img, color, draw_boundary)
+        digest = _sha256(MODEL_FILE)
+        if digest != EXPECTED_SHA256:
+            raise RuntimeError(f"Model file checksum mismatch ({digest[:12]}...); refusing to serve.")
+        opts = ort.SessionOptions()
+        opts.intra_op_num_threads = 1
+        opts.inter_op_num_threads = 1
+        opts.enable_cpu_mem_arena = False  # lower resident memory between requests on the 512 MB tier
+        self.session = ort.InferenceSession(str(MODEL_FILE), sess_options=opts, providers=["CPUExecutionProvider"])
+        meta = self.session.get_modelmeta().custom_metadata_map
+        self.epoch = int(meta["epoch"]) if "epoch" in meta else None
+        self.val_acc = float(meta["val_acc"]) if "val_acc" in meta else None
+        self.weights_sha256 = digest
 
     @staticmethod
     def _risk_tier_color(prediction: str, prob_normal: float, prob_ischemic: float, prob_hemorrhagic: float):
-        """Same confidence tiers as webapp_php/includes/risk_tier.php (keep
-        these two in sync by hand -- there is no shared runtime between
-        Python and PHP here) so the heatmap tint always agrees with the
-        risk badge shown next to it. See GRAD_CAM_HEATMAP.md (project
-        root) for the full research and sourcing behind the asymmetric
-        thresholds below: hemorrhagic is never demoted to "uncertain" and
-        only needs 55% confidence to reach "high risk", because a missed
-        or under-triaged bleed is a categorically worse failure than an
-        under-triaged ischemic call (which is re-screened by the same CT
-        before any time-critical treatment) -- matching how real
-        FDA-cleared hemorrhage-detection AI (Aidoc, Viz ICH, Rapid ICH) is
-        deliberately tuned for high sensitivity over specificity."""
+        """Same confidence tiers as webapp_php/includes/risk_tier.php (kept in sync by hand), so the heatmap tint
+        always agrees with the badge."""
         if prediction == "hemorrhagic":
             if prob_hemorrhagic >= 0.55:
-                return (192, 57, 43)  # high risk -- matches risk_tier.php '#c0392b'
-            return (230, 126, 34)  # moderate risk -- '#e67e22' (never "uncertain")
+                return (192, 57, 43)
+            return (230, 126, 34)
         if prediction == "ischemic":
             if prob_ischemic >= 0.90:
-                return (192, 57, 43)  # high risk
+                return (192, 57, 43)
             if prob_ischemic >= 0.70:
-                return (230, 126, 34)  # moderate risk
-            return (127, 140, 141)  # uncertain -- '#7f8c8d'
+                return (230, 126, 34)
+            return (127, 140, 141)
         if prediction == "normal" and prob_normal >= 0.80:
-            return (41, 128, 185)  # normal -- '#2980b9'
-        return (127, 140, 141)  # uncertain -- '#7f8c8d'
+            return (41, 128, 185)
+        return (127, 140, 141)
 
     @staticmethod
     def _boundary_mask(mask: np.ndarray, thickness: int = 2) -> np.ndarray:
-        """1-pixel-wide boundary of a boolean mask (mask minus its
-        4-neighbor erosion), thickened by `thickness - 1` dilation passes.
-        Pure numpy -- no opencv/scikit-image dependency for one outline."""
         eroded = mask.copy()
         eroded[1:, :] &= mask[:-1, :]
         eroded[:-1, :] &= mask[1:, :]
@@ -242,79 +189,71 @@ class ThreeClassPipeline:
         return boundary
 
     @staticmethod
+    def _display_cam(cam7: np.ndarray) -> Image.Image:
+        """Prototype display rule on the 7 x 7 Grad-CAM (already ReLU'd): max-normalise, suppress below the 70th
+        percentile, rescale, bicubic upsample to 224."""
+        cam = cam7 / (cam7.max() + 1e-8)
+        threshold = np.percentile(cam, 70)
+        cam = np.clip((cam - threshold) / (1 - threshold + 1e-8), 0, 1)
+        return Image.fromarray((cam * 255).astype(np.uint8)).resize(TARGET_SIZE, Image.BICUBIC)
+
+    @staticmethod
     def _overlay_heatmap(base_image: Image.Image, cam_img: Image.Image, color, draw_boundary: bool) -> Image.Image:
         base_arr = np.asarray(base_image.convert("RGB"), dtype=np.float32)
-        cam_arr = np.asarray(cam_img, dtype=np.float32) / 255.0  # (H, W) in [0, 1]
+        cam_arr = np.asarray(cam_img, dtype=np.float32) / 255.0
         tint = np.asarray(color, dtype=np.float32)
-        # Thresholding upstream already zeroes the non-highlighted region, so
-        # alpha can go stronger here without washing the whole slice in tint.
         alpha = (cam_arr * 0.75)[..., None]
         blended = base_arr * (1 - alpha) + tint * alpha
-
         if draw_boundary:
-            # A soft alpha glow doesn't show a viewer exactly where the
-            # highlighted region starts/stops. For ischemic/hemorrhagic
-            # (not normal -- there's no "lesion" to outline there), draw a
-            # solid boundary line around the thresholded region so its
-            # extent is unambiguous, not just implied by a gradient.
-            #
-            # 0.6, not the alpha glow's own near-zero floor: the glow is
-            # allowed to show a soft "influence halo" around the lesion,
-            # but the boundary line claims a specific extent, so it must
-            # track only the strongly-activated core -- a low cutoff here
-            # traced the edge of the whole diffuse tail (bicubic-smoothed
-            # from a coarse 7x7 grid) instead of the actual hot region,
-            # which read as "half the brain" rather than the lesion itself.
-            mask = cam_arr > 0.6
-            boundary = ThreeClassPipeline._boundary_mask(mask, thickness=2)
+            boundary = ThreeClassPipeline._boundary_mask(cam_arr > 0.6, thickness=2)
             blended[boundary] = tint
-
         return Image.fromarray(blended.astype(np.uint8))
 
-    @torch.no_grad()
-    def predict(self, image: Image.Image) -> dict:
-        merged = _build_merged_image(image)
-        views = list(_tta_views(merged))
-        x = torch.stack([_to_tensor(v) for v in views]).to(DEVICE)
+    def predict(self, modality: str, image: Image.Image, prev: Image.Image | None = None,
+                nxt: Image.Image | None = None, adc: Image.Image | None = None) -> dict:
+        merged, pathway, base = build_input(modality, image, prev, nxt, adc)
+        x = np.stack([_to_array(v) for v in _tta_views(merged)])
+        logits, cams = self.session.run(["logits", "gradcam"], {"image": x})
+        probs = _softmax(logits.astype(np.float64)).mean(axis=0)
+        idx = int(np.argmax(probs))
+        prediction = VALID_LABELS[idx]
+        prob_normal, prob_ischemic, prob_hemorrhagic = (float(v) for v in probs)
 
-        probs = torch.softmax(self.model(x), dim=1).mean(dim=0)
-        prob_normal = probs[LABEL_TO_IDX["normal"]].item()
-        prob_ischemic = probs[LABEL_TO_IDX["ischemic"]].item()
-        prob_hemorrhagic = probs[LABEL_TO_IDX["hemorrhagic"]].item()
-
-        idx_to_label = {v: k for k, v in LABEL_TO_IDX.items()}
-        prediction = idx_to_label[probs.argmax().item()]
-
-        # See _looks_like_grayscale_scan: catches the most common
-        # real-world failure mode (wrong file uploaded) before a
-        # meaningless-but-confident result reaches a risk badge or audio
-        # alert. Best-effort: never let this check itself take down an
-        # otherwise-successful prediction.
+        uploads = [u for u in (image, prev, nxt, adc) if u is not None]
         try:
-            likely_not_a_scan = not _looks_like_grayscale_scan(image)
+            likely_not_a_scan = not all(_looks_like_grayscale_scan(u) for u in uploads)
         except Exception:
             likely_not_a_scan = False
 
+        warnings = []
+        if pathway == PATHWAY_SINGLE:
+            warnings.append("Single image only: this is not the evaluated input pathway. For CT upload the previous "
+                            "and next slices; for MRI upload the matching ADC image.")
+        if modality == "MRI":
+            warnings.append("MRI: hemorrhage was not represented in training or evaluation; MRI results concern "
+                            "normal versus ischemic only.")
         result = {
             "prediction": prediction,
             "prob_normal": prob_normal,
             "prob_ischemic": prob_ischemic,
             "prob_hemorrhagic": prob_hemorrhagic,
+            "modality": modality,
+            "pathway": pathway,
+            "evaluated_pathway": pathway != PATHWAY_SINGLE,
+            "model_version": MODEL_VERSION,
             "likely_not_a_scan": likely_not_a_scan,
+            "warnings": warnings,
+            "decision_note": None,
         }
-
-        # Best-effort: a heatmap failure should never take down a
-        # prediction that otherwise succeeded.
         try:
             color = self._risk_tier_color(prediction, prob_normal, prob_ischemic, prob_hemorrhagic)
-            draw_boundary = prediction in ("ischemic", "hemorrhagic")
-            overlay = self._grad_cam_overlay(views[0], LABEL_TO_IDX[prediction], color, draw_boundary)
+            overlay = self._overlay_heatmap(base, self._display_cam(cams[0, idx]), color,
+                                            prediction in ("ischemic", "hemorrhagic"))
             buf = io.BytesIO()
             overlay.save(buf, format="PNG")
             result["heatmap_png_base64"] = base64.b64encode(buf.getvalue()).decode("ascii")
         except Exception:
             pass
-
         return result
 
 

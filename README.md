@@ -1,10 +1,18 @@
 # NeuroScan inference server (Render)
 
 Always-on replacement for the Kaggle/Colab + ngrok notebook setup
-(`kaggle_kernels/phase_o_inference_server/`). Same model, same
-`inference.py` (byte-identical to `webapp/inference.py`), same
-`/api/predict` + `/api/health` contract the PHP site and Android app
-already expect — only the hosting mechanism changes.
+(`kaggle_kernels/phase_o_inference_server/`).
+
+**v2 (2026-10):** serves the paper's final model (R30A s123, ConvNeXt-Tiny)
+as ONNX with ONNX Runtime — no PyTorch at run time (peak ~300 MB, ~0.85 s
+per request on the free tier's one CPU). `/api/predict` accepts
+`modality` (CT/MRI) plus optional `prev_file` + `next_file` (CT adjacent
+slices) or `adc_file` (MRI); with them the evaluated input pathway runs,
+with one image the single-image fallback runs and the response says so.
+Older clients that send only `file` keep working. Decision rule: 4-view
+TTA, plain argmax (the rule the paper evaluates the alert tiers under).
+See the docstring of `inference.py`. `webapp/inference.py` is the old
+ResNet18 version and is no longer kept in sync.
 
 **Trade-off of the free tier**: the service spins down after 15 minutes
 of no traffic and takes ~30-60s to wake on the next request. There is no
@@ -61,12 +69,14 @@ git push -u origin main
 
 On github.com, go to the repo → **Releases** (right sidebar) → **Create a new release**:
 
-1. **Tag**: `checkpoint-v1` (must match exactly — `start.sh` looks for this tag).
-2. Title: anything (e.g. "Phase O checkpoint").
-3. Drag `models/threeclass_best.pt` (or wherever your local copy of the
-   134 MB `best.pt` file is) into the asset upload area — rename it to
-   `best.pt` if it isn't already, since `start.sh` matches on that exact
-   filename.
+1. **Tag**: `checkpoint-v2-convnext` (must match exactly — `start.sh` looks for this tag).
+   The old `checkpoint-v1` release (Phase O ResNet18 `best.pt`) can stay
+   for rollback together with the previous commit.
+2. Title: anything (e.g. "Final model R30A s123 (ONNX)").
+3. Upload `neuroscan_r30a_s123.onnx` (111 MB; produced by the Kaggle kernel
+   `neuroscan-q-onnx-export-check`, SHA-256 `4937ab38…1502eb`, which
+   `inference.py` verifies at start-up) with exactly that filename, since
+   `start.sh` matches on it.
 4. **Publish release.** The repo stays private; this asset is only
    downloadable with a valid token (next step), not by a public URL.
 

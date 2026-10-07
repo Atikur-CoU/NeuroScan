@@ -9,6 +9,11 @@ and, indirectly, the Android app.
 
 Adds an X-API-Key check since this service is reachable at a public URL
 around the clock: anyone with the URL could otherwise call your model.
+
+v2 (final model): /api/predict takes `modality` (CT or MRI; default CT for older clients) and, besides `file`
+(the current CT slice, or the MRI DWI image), optional `prev_file` + `next_file` (CT adjacent slices) or `adc_file`
+(MRI). With them the evaluated input pathway runs; with `file` alone the single-image fallback runs and the
+response says so (see inference.py).
 The expected key is read from the NEUROSCAN_API_KEY environment variable
 (set in the Render dashboard) rather than hardcoded, matching the
 project's standing rule of never committing real secrets to any repo.
@@ -16,10 +21,10 @@ project's standing rule of never committing real secrets to any repo.
 import io
 import os
 
-from fastapi import FastAPI, File, Header, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, Header, HTTPException, UploadFile
 from PIL import Image, UnidentifiedImageError
 
-from inference import get_pipeline
+from inference import InputError, get_pipeline
 
 MAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 MB
 API_KEY = os.environ.get("NEUROSCAN_API_KEY", "")
@@ -48,28 +53,47 @@ def health(x_api_key: str = Header(default="")):
     pipeline = get_pipeline()
     return {
         "status": "ok",
-        "checkpoint": {"epoch": pipeline.epoch, "val_acc": pipeline.val_acc},
+        "checkpoint": {"epoch": pipeline.epoch, "val_acc": pipeline.val_acc, "model_version": "r30a_s123_convnext_tiny_onnx",
+                       "weights_sha256": pipeline.weights_sha256},
     }
 
 
-@app.post("/api/predict")
-async def predict(file: UploadFile = File(...), x_api_key: str = Header(default="")):
-    _check_api_key(x_api_key)
-
-    if file.content_type is None or not file.content_type.startswith("image/"):
-        raise HTTPException(status_code=400, detail="Uploaded file must be an image.")
-
-    raw = await file.read()
+async def _read_image(upload: UploadFile | None, what: str) -> Image.Image | None:
+    if upload is None:
+        return None
+    if upload.content_type is None or not upload.content_type.startswith("image/"):
+        raise HTTPException(status_code=400, detail=f"{what} must be an image.")
+    raw = await upload.read()
     if len(raw) > MAX_UPLOAD_BYTES:
-        raise HTTPException(status_code=400, detail="Image too large (10 MB limit).")
-
+        raise HTTPException(status_code=400, detail=f"{what} is too large (10 MB limit).")
     try:
         image = Image.open(io.BytesIO(raw))
         image.load()
     except UnidentifiedImageError:
-        raise HTTPException(status_code=400, detail="Could not read this file as an image.")
+        raise HTTPException(status_code=400, detail=f"Could not read {what.lower()} as an image.")
+    return image
+
+
+@app.post("/api/predict")
+async def predict(
+    file: UploadFile = File(...),
+    prev_file: UploadFile | None = File(default=None),
+    next_file: UploadFile | None = File(default=None),
+    adc_file: UploadFile | None = File(default=None),
+    modality: str = Form(default="CT"),
+    x_api_key: str = Header(default=""),
+):
+    _check_api_key(x_api_key)
+    modality = modality.strip().upper()
+    image = await _read_image(file, "The image")
+    prev = await _read_image(prev_file, "The previous slice")
+    nxt = await _read_image(next_file, "The next slice")
+    adc = await _read_image(adc_file, "The ADC image")
 
     pipeline = get_pipeline()
-    result = pipeline.predict(image)
+    try:
+        result = pipeline.predict(modality, image, prev, nxt, adc)
+    except InputError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     result["filename"] = file.filename
     return result
