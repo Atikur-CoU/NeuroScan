@@ -33,6 +33,7 @@ sources (Table 1 of the paper). File paths inside the manifests refer to those s
 | Single-image pathway and Grad-CAM | `code/analysis/single_image_and_gradcam/c2c3.py`; CPAISD re-run in `gradcam_cpaisd_identity/` |
 | Alert tiers | `code/analysis/alert_tiers/tiers.py` → `outputs/alert_tiers/deployed_tiers.json` |
 | Input-file check | `code/analysis/input_file_check/input_check.py` → `outputs/input_file_check/input_check_eval.json` |
+| Decision rules by modality (Table 7), CPAISD seed difference by patient, pooled test without Kaggle CT (Table 5) | `code/analysis/decision_rules/rules.py` → `outputs/decision_rules/decision_rules_and_seed.json`, `cpaisd_seed_by_patient.csv` |
 
 The four prediction fingerprints quoted in Supplementary Section S3 can be checked against `SHA256SUMS.txt`
 (for example `8ac2d98c…6fcb` for the final model's internal-test probabilities).
