@@ -249,6 +249,12 @@ class ThreeClassPipeline:
         if modality == "MRI":
             warnings.append("MRI: hemorrhage was not represented in training or evaluation; MRI results concern "
                             "normal versus ischemic only.")
+        # Hemorrhage on MRI is outside the evaluated scope (no hemorrhagic MRI source): the prediction is returned
+        # unchanged but marked as not validated; the platform shows it as a "not validated" tier with no alert.
+        unsupported = modality == "MRI" and prediction == "hemorrhagic"
+        if unsupported:
+            warnings.append("Hemorrhagic prediction on MRI: not a validated finding, because the model was trained and "
+                            "evaluated on hemorrhage on CT only.")
         result = {
             "prediction": prediction,
             "prob_normal": prob_normal,
@@ -260,10 +266,11 @@ class ThreeClassPipeline:
             "model_version": MODEL_VERSION,
             "likely_not_a_scan": likely_not_a_scan,
             "warnings": warnings,
-            "decision_note": None,
+            "decision_note": "not_validated: hemorrhage on MRI" if unsupported else None,
         }
         try:
-            color = self._risk_tier_color(prediction, prob_normal, prob_ischemic, prob_hemorrhagic)
+            color = ((127, 140, 141) if unsupported
+                     else self._risk_tier_color(prediction, prob_normal, prob_ischemic, prob_hemorrhagic))
             overlay = self._overlay_heatmap(base, self._display_cam(cams[0, idx]), color,
                                             prediction in ("ischemic", "hemorrhagic"))
             buf = io.BytesIO()
