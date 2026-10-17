@@ -1,0 +1,2 @@
+# Store research materials byte-for-byte so the SHA-256 fingerprints in research/SHA256SUMS.txt (and in the paper) hold.
+research/** -text
