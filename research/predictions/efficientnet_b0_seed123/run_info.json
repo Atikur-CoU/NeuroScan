@@ -1,0 +1,15 @@
+{
+  "kernel": "atik68/neuroscan-q-effb0-r24-office",
+  "kernel_dir": "C:\\NeuroScan\\kaggle_kernels\\phase_q_effb0_r24_office",
+  "run_dir": "C:\\kaggle\\runs\\phase_q_effb0_r24_office\\20261001-183509",
+  "workers": 6,
+  "num_workers_patched": true,
+  "started": "2026-10-01T18:35:09.268190",
+  "torch": "2.6.0+cu124",
+  "cuda": "12.4",
+  "gpu": "NVIDIA GeForce RTX 4060 Ti",
+  "vram_GB": 17.2,
+  "finished": "2026-10-01T20:16:41.468366",
+  "minutes": 101.5,
+  "exit_code": 0
+}

@@ -16,7 +16,7 @@ Input pathway -- the one the offline evaluation used, chosen per request from wh
   * CT, current slice + previous + next  -> channels (previous, current, next)       ["ct_adjacent_slices", evaluated]
   * MRI, DWI + ADC of the same slice      -> channels (DWI, ADC, DWI)                 ["mri_dwi_adc", evaluated]
   * CT, one slice only                    -> channels (slice, slice, slice)          ["single_image", NOT the evaluated
-    pathway; the response carries a warning]. Reviewer experiment C2 (held-out CT test): hemorrhage recall unchanged
+    pathway; the response carries a warning]. Post-hoc experiment C2 (held-out CT test): hemorrhage recall unchanged
     (92.0%), ischemic recall 91.0% -> 68.8%, ischemic AUROC 0.972 -> 0.955.
   * MRI without ADC                       -> refused (400). C2: DWI alone or ADC alone, replicated, detected almost no
     ischemia (recall 0-3%, AUROC 0.32-0.51 on ISLES and SOOP); the model needs both sequences.
@@ -33,7 +33,7 @@ warning that hemorrhage on MRI is outside the evaluated scope.
 
 Grad-CAM [Selvaraju et al., 2017]: identity view only, for the predicted class, overlaid on the current CT slice or
 the DWI image; suppress below the image's 70th-percentile activation, rescale, bicubic upsample; outline at > 0.6 for
-ischemic / hemorrhagic. Reviewer experiment C3 evaluates this display rule against lesion masks. It shows where the
+ischemic / hemorrhagic. Post-hoc experiment C3 evaluates this display rule against lesion masks. It shows where the
 model's evidence is concentrated, not a lesion boundary.
 """
 import base64

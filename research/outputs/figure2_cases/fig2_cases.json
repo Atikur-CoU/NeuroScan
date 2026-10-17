@@ -1,0 +1,35 @@
+{
+  "ct_context": {
+    "dataset": "AISD",
+    "label": "ischemic",
+    "source_key": "AISD/image/0539001/019.png",
+    "has_context": true,
+    "size": [
+      224,
+      224
+    ],
+    "channels_identical": false
+  },
+  "mri_pair": {
+    "dataset": "SOOP_dwi_adc",
+    "label": "ischemic",
+    "source_key": "sub-1583/ses-1/dwi/slice0016",
+    "has_context": false,
+    "size": [
+      224,
+      224
+    ],
+    "channels_identical": false
+  },
+  "ct_single": {
+    "dataset": "RSNA_ICH",
+    "label": "hemorrhagic",
+    "source_key": "rsna_stage1_png_128/stage_1_train_images/ID_35bf9ca97.png",
+    "has_context": false,
+    "size": [
+      224,
+      224
+    ],
+    "channels_identical": true
+  }
+}

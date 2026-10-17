@@ -1,0 +1,92 @@
+{
+  "scope": "AISD training patients only (Phase 2 new_train); no val2, no test",
+  "patients_training": 238,
+  "patients_selected": 150,
+  "archives": {
+    "dicom-0": {
+      "gb": 1.73,
+      "members": 10535,
+      "kept_files": 4090,
+      "patients_in_archive": 217,
+      "first_members": [
+        "dicom-0/0091667/DWI/000027.dcm",
+        "dicom-0/0091667/DWI/000021.dcm",
+        "dicom-0/0091667/DWI/000032.dcm",
+        "dicom-0/0091667/DWI/000020.dcm",
+        "dicom-0/0091667/DWI/000026.dcm",
+        "dicom-0/0091667/DWI/000034.dcm",
+        "dicom-0/0091667/DWI/000022.dcm",
+        "dicom-0/0091667/DWI/000019.dcm"
+      ],
+      "subfolders_kept": {
+        "DWI": 1514,
+        "CT": 2576
+      },
+      "seconds": 58
+    },
+    "dicom-1": {
+      "gb": 0.37,
+      "members": 2570,
+      "kept_files": 973,
+      "patients_in_archive": 68,
+      "first_members": [
+        "dicom-1/0073048/DWI/000027.dcm",
+        "dicom-1/0073048/DWI/000021.dcm",
+        "dicom-1/0073048/DWI/000032.dcm",
+        "dicom-1/0073048/DWI/000020.dcm",
+        "dicom-1/0073048/DWI/000026.dcm",
+        "dicom-1/0073048/DWI/000034.dcm",
+        "dicom-1/0073048/DWI/000022.dcm",
+        "dicom-1/0073048/DWI/000019.dcm"
+      ],
+      "subfolders_kept": {
+        "DWI": 470,
+        "CT": 503
+      },
+      "seconds": 13
+    },
+    "dicom-2": {
+      "error": "download failed"
+    },
+    "dicom-3": {
+      "error": "not a tar archive (invalid header); first bytes b'PK\\x03\\x04\\x14\\x00\\x00\\x00'",
+      "gb": 0.036
+    }
+  },
+  "dicom_files_by_folder_modality": {
+    "('CT', 'CT')": 3079,
+    "('DWI', 'MR')": 1984
+  },
+  "seconds_per_patient_read_render": 1.17,
+  "errors": {
+    "no DICOM": 41
+  },
+  "alignment": {
+    "patients_aligned": 109,
+    "r_median_all_slices": {
+      "median": 0.9999610958523746,
+      "p5": 0.9999395408000417
+    },
+    "patients_min_slice_r_below_0.95": 0,
+    "order": {
+      "z_asc": 109
+    },
+    "orientation": {
+      "none": 109
+    },
+    "n_series": {
+      "1.0": 109
+    },
+    "rows_cols": {
+      "512x512": 109
+    },
+    "png_shape": {
+      "512x512": 109
+    },
+    "slice_thickness": {
+      "3.0": 35,
+      "8.0": 26,
+      "9.0": 25,
+      "5.0": 23
+    },
+    "rescale": {

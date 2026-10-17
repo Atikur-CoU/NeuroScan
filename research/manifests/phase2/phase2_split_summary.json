@@ -1,0 +1,37 @@
+{
+  "rule": "12% of training patients per dataset, rng 2026; old val moved into training",
+  "val2_rows": 10360,
+  "val2_patients": 1414,
+  "val2_by_dataset_label": {
+    "AISD|ischemic": 308,
+    "AISD|normal": 300,
+    "CPAISD_v2|ischemic": 179,
+    "CPAISD_v2|normal": 521,
+    "ISLES2022_dwi_adc|ischemic": 418,
+    "ISLES2022_dwi_adc|normal": 721,
+    "Kaggle_CT|hemorrhagic": 85,
+    "Kaggle_CT|ischemic": 87,
+    "Kaggle_CT|normal": 398,
+    "RSNA_ICH|hemorrhagic": 1644,
+    "RSNA_ICH|normal": 1652,
+    "SICH_CT|hemorrhagic": 58,
+    "SICH_CT|normal": 230,
+    "SOOP_dwi_adc|ischemic": 1064,
+    "SOOP_dwi_adc|normal": 2695
+  },
+  "new_train_rows": 88481,
+  "old_train_rows": 85872,
+  "old_val_rows_moved_to_train": 12969,
+  "new_train_by_label": {
+    "normal": 55768,
+    "ischemic": 18157,
+    "hemorrhagic": 14556
+  },
+  "patient_overlap_checks": {
+    "train_vs_val_old": 0,
+    "train_vs_test": 0,
+    "val_old_vs_test": 0
+  },
+  "rsna_map_rows": 32000,
+  "rsna_map_missing": 0
+}

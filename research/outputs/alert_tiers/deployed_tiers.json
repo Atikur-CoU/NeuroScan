@@ -1,0 +1,456 @@
+{
+  "AB_pooled": {
+    "B4_reproduction_plain_argmax_raw": {
+      "n": 8930,
+      "tier_by_true_class": {
+        "normal": {
+          "normal|uncertain": 1126,
+          "normal|normal": 3965,
+          "ischemic|high": 152,
+          "ischemic|moderate": 150,
+          "ischemic|uncertain": 160,
+          "hemorrhagic|high": 213,
+          "hemorrhagic|moderate": 22
+        },
+        "ischemic": {
+          "normal|uncertain": 112,
+          "normal|normal": 100,
+          "ischemic|high": 1167,
+          "ischemic|moderate": 182,
+          "ischemic|uncertain": 110,
+          "hemorrhagic|moderate": 2
+        },
+        "hemorrhagic": {
+          "normal|uncertain": 52,
+          "normal|normal": 64,
+          "ischemic|high": 1,
+          "ischemic|moderate": 1,
+          "hemorrhagic|high": 1337,
+          "hemorrhagic|moderate": 14
+        }
+      },
+      "ischemic_alert_any": 0.8063359234907352,
+      "ischemic_alert_high": 0.6975493126120741,
+      "ischemic_predicted_normal": 212,
+      "ischemic_predicted_normal_confident": 100,
+      "hemorrhagic_alert_any": 0.9196732471068755,
+      "hemorrhagic_alert_high": 0.910142954390742,
+      "hemorrhagic_predicted_normal": 116,
+      "hemorrhagic_predicted_normal_confident": 64,
+      "normal_false_alert_any": 0.0927781617138908,
+      "normal_false_alert_high": 0.06306150656530753,
+      "alerts_total": 3241,
+      "alert_ppv": 0.8330762110459735,
+      "uncertain_share": 0.17469204927211646,
+      "accuracy": 0.8847704367301232
+    },
+    "v2_locked_rule_calibrated_display": {
+      "n": 8930,
+      "tier_by_true_class": {
+        "normal": {
+          "normal|uncertain": 1425,
+          "normal|normal": 3839,
+          "ischemic|high": 97,
+          "ischemic|moderate": 153,
+          "ischemic|uncertain": 94,
+          "hemorrhagic|high": 178,
+          "hemorrhagic|moderate": 2
+        },
+        "ischemic": {
+          "normal|uncertain": 168,
+          "normal|normal": 111,
+          "ischemic|high": 1062,
+          "ischemic|moderate": 252,
+          "ischemic|uncertain": 79,
+          "hemorrhagic|moderate": 1
+        },
+        "hemorrhagic": {
+          "normal|uncertain": 121,
+          "normal|normal": 38,
+          "ischemic|high": 1,
+          "ischemic|moderate": 1,
+          "hemorrhagic|high": 1308
+        }
+      },
+      "ischemic_alert_any": 0.785415421398685,
+      "ischemic_alert_high": 0.6347878063359235,
+      "ischemic_predicted_normal": 279,
+      "ischemic_predicted_normal_confident": 111,
+      "hemorrhagic_alert_any": 0.8904016337644656,
+      "hemorrhagic_alert_high": 0.8904016337644656,
+      "hemorrhagic_predicted_normal": 159,
+      "hemorrhagic_predicted_normal_confident": 38,
+      "normal_false_alert_any": 0.07429163787145819,
+      "normal_false_alert_high": 0.04751209398756047,
+      "alerts_total": 3055,
+      "alert_ppv": 0.858265139116203,
+      "uncertain_share": 0.21131019036954088,
+      "accuracy": 0.8919372900335947
+    },
+    "v2_predicted_class_not_largest_displayed_prob": 283
+  },
+  "A": {
+    "B4_reproduction_plain_argmax_raw": {
+      "n": 7406,
+      "tier_by_true_class": {
+        "normal": {
+          "normal|uncertain": 995,
+          "normal|normal": 3091,
+          "ischemic|high": 50,
+          "ischemic|moderate": 81,
+          "ischemic|uncertain": 111,
+          "hemorrhagic|high": 213,
+          "hemorrhagic|moderate": 22
+        },
+        "ischemic": {
+          "normal|uncertain": 95,
+          "normal|normal": 75,
+          "ischemic|high": 1001,
+          "ischemic|moderate": 126,
+          "ischemic|uncertain": 75,
+          "hemorrhagic|moderate": 2
+        },
+        "hemorrhagic": {
+          "normal|uncertain": 52,
+          "normal|normal": 64,
+          "ischemic|high": 1,
+          "ischemic|moderate": 1,
+          "hemorrhagic|high": 1337,
+          "hemorrhagic|moderate": 14
+        }
+      },
+      "ischemic_alert_any": 0.8202328966521106,
+      "ischemic_alert_high": 0.7285298398835517,
+      "ischemic_predicted_normal": 170,
+      "ischemic_predicted_normal_confident": 75,
+      "hemorrhagic_alert_any": 0.9196732471068755,
+      "hemorrhagic_alert_high": 0.910142954390742,
+      "hemorrhagic_predicted_normal": 116,
+      "hemorrhagic_predicted_normal_confident": 64,
+      "normal_false_alert_any": 0.08021038790269559,
+      "normal_false_alert_high": 0.057637519175980714,
+      "alerts_total": 2848,
+      "alert_ppv": 0.8700842696629213,
+      "uncertain_share": 0.1793140696732379,
+      "accuracy": 0.8964353227113151
+    },
+    "v2_locked_rule_calibrated_display": {
+      "n": 7406,
+      "tier_by_true_class": {
+        "normal": {
+          "normal|uncertain": 1204,
+          "normal|normal": 3020,
+          "ischemic|high": 23,
+          "ischemic|moderate": 83,
+          "ischemic|uncertain": 53,
+          "hemorrhagic|high": 178,
+          "hemorrhagic|moderate": 2
+        },
+        "ischemic": {
+          "normal|uncertain": 126,
+          "normal|normal": 89,
+          "ischemic|high": 933,
+          "ischemic|moderate": 182,
+          "ischemic|uncertain": 43,
+          "hemorrhagic|moderate": 1
+        },
+        "hemorrhagic": {
+          "normal|uncertain": 121,
+          "normal|normal": 38,
+          "ischemic|high": 1,
+          "ischemic|moderate": 1,
+          "hemorrhagic|high": 1308
+        }
+      },
+      "ischemic_alert_any": 0.8114992721979621,
+      "ischemic_alert_high": 0.6790393013100436,
+      "ischemic_predicted_normal": 215,
+      "ischemic_predicted_normal_confident": 89,
+      "hemorrhagic_alert_any": 0.8904016337644656,
+      "hemorrhagic_alert_high": 0.8904016337644656,
+      "hemorrhagic_predicted_normal": 159,
+      "hemorrhagic_predicted_normal_confident": 38,
+      "normal_false_alert_any": 0.06267806267806268,
+      "normal_false_alert_high": 0.0440499671268902,
+      "alerts_total": 2712,
+      "alert_ppv": 0.8934365781710915,
+      "uncertain_share": 0.20888468809073724,
+      "accuracy": 0.9033216311099109
+    },
+    "v2_predicted_class_not_largest_displayed_prob": 226
+  },
+  "B_cpaisd": {
+    "B4_reproduction_plain_argmax_raw": {
+      "n": 1524,
+      "tier_by_true_class": {
+        "normal": {
+          "normal|uncertain": 131,
+          "normal|normal": 874,
+          "ischemic|high": 102,
+          "ischemic|moderate": 69,
+          "ischemic|uncertain": 49
+        },
+        "ischemic": {
+          "normal|uncertain": 17,
+          "normal|normal": 25,
+          "ischemic|high": 166,
+          "ischemic|moderate": 56,
+          "ischemic|uncertain": 35
+        }
+      },
+      "ischemic_alert_any": 0.7424749163879598,
+      "ischemic_alert_high": 0.5551839464882943,
+      "ischemic_predicted_normal": 42,
+      "ischemic_predicted_normal_confident": 25,
+      "normal_false_alert_any": 0.13959183673469389,
+      "normal_false_alert_high": 0.08326530612244898,
+      "alerts_total": 393,
+      "alert_ppv": 0.5648854961832062,
+      "uncertain_share": 0.15223097112860892,
+      "accuracy": 0.8280839895013123
+    },
+    "v2_locked_rule_calibrated_display": {
+      "n": 1524,
+      "tier_by_true_class": {
+        "normal": {
+          "normal|uncertain": 221,
+          "normal|normal": 819,
+          "ischemic|high": 74,
+          "ischemic|moderate": 70,
+          "ischemic|uncertain": 41
+        },
+        "ischemic": {
+          "normal|uncertain": 42,
+          "normal|normal": 22,
+          "ischemic|high": 129,
+          "ischemic|moderate": 70,
+          "ischemic|uncertain": 36
+        }
+      },
+      "ischemic_alert_any": 0.6655518394648829,
+      "ischemic_alert_high": 0.431438127090301,
+      "ischemic_predicted_normal": 64,
+      "ischemic_predicted_normal_confident": 22,
+      "normal_false_alert_any": 0.11755102040816326,
+      "normal_false_alert_high": 0.060408163265306125,
+      "alerts_total": 343,
+      "alert_ppv": 0.5801749271137027,
+      "uncertain_share": 0.2230971128608924,
+      "accuracy": 0.8366141732283464
+    },
+    "v2_predicted_class_not_largest_displayed_prob": 57
+  },
+  "C_soop": {
+    "B4_reproduction_plain_argmax_raw": {
+      "n": 1672,
+      "tier_by_true_class": {
+        "normal": {
+          "normal|uncertain": 239,
+          "normal|normal": 889,
+          "ischemic|high": 19,
+          "ischemic|moderate": 22,
+          "ischemic|uncertain": 31
+        },
+        "ischemic": {
+          "normal|uncertain": 30,
+          "normal|normal": 36,
+          "ischemic|high": 352,
+          "ischemic|moderate": 30,
+          "ischemic|uncertain": 24
+        }
+      },
+      "ischemic_alert_any": 0.809322033898305,
+      "ischemic_alert_high": 0.7457627118644068,
+      "ischemic_predicted_normal": 66,
+      "ischemic_predicted_normal_confident": 36,
+      "normal_false_alert_any": 0.034166666666666665,
+      "normal_false_alert_high": 0.015833333333333335,
+      "alerts_total": 423,
+      "alert_ppv": 0.9030732860520094,
+      "uncertain_share": 0.1937799043062201,
+      "accuracy": 0.9174641148325359
+    },
+    "v2_locked_rule_calibrated_display": {
+      "n": 1672,
+      "tier_by_true_class": {
+        "normal": {
+          "normal|uncertain": 165,
+          "normal|normal": 986,
+          "ischemic|high": 22,
+          "ischemic|moderate": 21,
+          "ischemic|uncertain": 6
+        },
+        "ischemic": {
+          "normal|uncertain": 41,
+          "normal|normal": 45,
+          "ischemic|high": 364,
+          "ischemic|moderate": 21,
+          "ischemic|uncertain": 1
+        }
+      },
+      "ischemic_alert_any": 0.815677966101695,
+      "ischemic_alert_high": 0.7711864406779662,
+      "ischemic_predicted_normal": 86,
+      "ischemic_predicted_normal_confident": 45,
+      "normal_false_alert_any": 0.035833333333333335,
+      "normal_false_alert_high": 0.018333333333333333,
+      "alerts_total": 428,
+      "alert_ppv": 0.8995327102803738,
+      "uncertain_share": 0.12739234449760767,
+      "accuracy": 0.9192583732057417
+    },
+    "v2_predicted_class_not_largest_displayed_prob": 43
+  },
+  "AB_CT_only": {
+    "B4_reproduction_plain_argmax_raw": {
+      "n": 6627,
+      "tier_by_true_class": {
+        "normal": {
+          "normal|uncertain": 523,
+          "normal|normal": 2968,
+          "ischemic|high": 146,
+          "ischemic|moderate": 140,
+          "ischemic|uncertain": 109,
+          "hemorrhagic|high": 213,
+          "hemorrhagic|moderate": 21
+        },
+        "ischemic": {
+          "normal|uncertain": 41,
+          "normal|normal": 50,
+          "ischemic|high": 757,
+          "ischemic|moderate": 125,
+          "ischemic|uncertain": 63,
+          "hemorrhagic|moderate": 2
+        },
+        "hemorrhagic": {
+          "normal|uncertain": 52,
+          "normal|normal": 64,
+          "ischemic|high": 1,
+          "ischemic|moderate": 1,
+          "hemorrhagic|high": 1337,
+          "hemorrhagic|moderate": 14
+        }
+      },
+      "ischemic_alert_any": 0.8497109826589595,
+      "ischemic_alert_high": 0.7292870905587668,
+      "ischemic_predicted_normal": 91,
+      "ischemic_predicted_normal_confident": 50,
+      "hemorrhagic_alert_any": 0.9196732471068755,
+      "hemorrhagic_alert_high": 0.910142954390742,
+      "hemorrhagic_predicted_normal": 116,
+      "hemorrhagic_predicted_normal_confident": 64,
+      "normal_false_alert_any": 0.1262135922330097,
+      "normal_false_alert_high": 0.0871359223300971,
+      "alerts_total": 2757,
+      "alert_ppv": 0.8099383387740298,
+      "uncertain_share": 0.11890749962275539,
+      "accuracy": 0.87324581258488
+    },
+    "v2_locked_rule_calibrated_display": {
+      "n": 6627,
+      "tier_by_true_class": {
+        "normal": {
+          "normal|uncertain": 939,
+          "normal|normal": 2682,
+          "ischemic|high": 88,
+          "ischemic|moderate": 140,
+          "ischemic|uncertain": 91,
+          "hemorrhagic|high": 178,
+          "hemorrhagic|moderate": 2
+        },
+        "ischemic": {
+          "normal|uncertain": 88,
+          "normal|normal": 40,
+          "ischemic|high": 628,
+          "ischemic|moderate": 208,
+          "ischemic|uncertain": 73,
+          "hemorrhagic|moderate": 1
+        },
+        "hemorrhagic": {
+          "normal|uncertain": 121,
+          "normal|normal": 38,
+          "ischemic|high": 1,
+          "ischemic|moderate": 1,
+          "hemorrhagic|high": 1308
+        }
+      },
+      "ischemic_alert_any": 0.8053949903660886,
+      "ischemic_alert_high": 0.605009633911368,
+      "ischemic_predicted_normal": 128,
+      "ischemic_predicted_normal_confident": 40,
+      "hemorrhagic_alert_any": 0.8904016337644656,
+      "hemorrhagic_alert_high": 0.8904016337644656,
+      "hemorrhagic_predicted_normal": 159,
+      "hemorrhagic_predicted_normal_confident": 38,
+      "normal_false_alert_any": 0.09902912621359224,
+      "normal_false_alert_high": 0.0645631067961165,
+      "alerts_total": 2555,
+      "alert_ppv": 0.8391389432485323,
+      "uncertain_share": 0.19797796891504452,
+      "accuracy": 0.8809416025350838
+    },
+    "v2_predicted_class_not_largest_displayed_prob": 210
+  },
+  "AB_MRI_only": {
+    "B4_reproduction_plain_argmax_raw": {
+      "n": 2303,
+      "tier_by_true_class": {
+        "normal": {
+          "normal|uncertain": 603,
+          "normal|normal": 997,
+          "ischemic|high": 6,
+          "ischemic|moderate": 10,
+          "ischemic|uncertain": 51,
+          "hemorrhagic|moderate": 1
+        },
+        "ischemic": {
+          "normal|uncertain": 71,
+          "normal|normal": 50,
+          "ischemic|high": 410,
+          "ischemic|moderate": 57,
+          "ischemic|uncertain": 47
+        }
+      },
+      "ischemic_alert_any": 0.7354330708661417,
+      "ischemic_alert_high": 0.6456692913385826,
+      "ischemic_predicted_normal": 121,
+      "ischemic_predicted_normal_confident": 50,
+      "normal_false_alert_any": 0.010191846522781775,
+      "normal_false_alert_high": 0.0035971223021582736,
+      "alerts_total": 484,
+      "alert_ppv": 0.9648760330578512,
+      "uncertain_share": 0.33521493703864524,
+      "accuracy": 0.9179331306990881
+    },
+    "v2_locked_rule_calibrated_display": {
+      "n": 2303,
+      "tier_by_true_class": {
+        "normal": {
+          "normal|uncertain": 486,
+          "normal|normal": 1157,
+          "ischemic|high": 9,
+          "ischemic|moderate": 13,
+          "ischemic|uncertain": 3
+        },
+        "ischemic": {
+          "normal|uncertain": 80,
+          "normal|normal": 71,
+          "ischemic|high": 434,
+          "ischemic|moderate": 44,
+          "ischemic|uncertain": 6
+        }
+      },
+      "ischemic_alert_any": 0.752755905511811,
+      "ischemic_alert_high": 0.6834645669291338,
+      "ischemic_predicted_normal": 151,
+      "ischemic_predicted_normal_confident": 71,
+      "normal_false_alert_any": 0.013189448441247002,
+      "normal_false_alert_high": 0.00539568345323741,
+      "alerts_total": 500,
+      "alert_ppv": 0.956,
+      "uncertain_share": 0.2496743378202345,
+      "accuracy": 0.9235779418150238
+    },
+    "v2_predicted_class_not_largest_displayed_prob": 73
+  }
+}

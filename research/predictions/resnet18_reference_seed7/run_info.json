@@ -1,0 +1,15 @@
+{
+  "kernel": "atik68/neuroscan-q-round24-seed7-office",
+  "kernel_dir": "C:\\NeuroScan\\kaggle_kernels\\phase_q_round24_seed7_office",
+  "run_dir": "C:\\kaggle\\runs\\phase_q_round24_seed7_office\\20260930-221655",
+  "workers": 6,
+  "num_workers_patched": true,
+  "started": "2026-09-30T22:16:55.797337",
+  "torch": "2.6.0+cu124",
+  "cuda": "12.4",
+  "gpu": "NVIDIA GeForce RTX 4060 Ti",
+  "vram_GB": 17.2,
+  "finished": "2026-09-30T23:56:01.876329",
+  "minutes": 99.1,
+  "exit_code": 0
+}

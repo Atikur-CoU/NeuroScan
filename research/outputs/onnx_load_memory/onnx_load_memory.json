@@ -1,0 +1,53 @@
+{
+  "default": {
+    "load_s": 1.73,
+    "rss_after_load_mb": 195,
+    "peak_after_load_mb": 204,
+    "rss_after_requests_mb": 220,
+    "peak_total_mb": 298,
+    "seconds_per_request": 0.853,
+    "cam_sum": 2.7857789993286133,
+    "logits_maxabs_vs_default": 0.0
+  },
+  "disabled": {
+    "load_s": 0.32,
+    "rss_after_load_mb": 180,
+    "peak_after_load_mb": 180,
+    "rss_after_requests_mb": 187,
+    "peak_total_mb": 265,
+    "seconds_per_request": 1.224,
+    "cam_sum": 2.7857789993286133,
+    "logits_maxabs_vs_default": 2.384185791015625e-07
+  },
+  "basic": {
+    "load_s": 0.32,
+    "rss_after_load_mb": 190,
+    "peak_after_load_mb": 190,
+    "rss_after_requests_mb": 197,
+    "peak_total_mb": 275,
+    "seconds_per_request": 1.225,
+    "cam_sum": 2.7857789993286133,
+    "logits_maxabs_vs_default": 2.384185791015625e-07
+  },
+  "no_prepack": {
+    "load_s": 0.29,
+    "rss_after_load_mb": 165,
+    "peak_after_load_mb": 178,
+    "rss_after_requests_mb": 189,
+    "peak_total_mb": 276,
+    "seconds_per_request": 0.856,
+    "cam_sum": 2.7857789993286133,
+    "logits_maxabs_vs_default": 4.76837158203125e-06
+  },
+  "make_offline": {},
+  "offline_optimized": {
+    "load_s": 0.3,
+    "rss_after_load_mb": 192,
+    "peak_after_load_mb": 192,
+    "rss_after_requests_mb": 231,
+    "peak_total_mb": 291,
+    "seconds_per_request": 1.126,
+    "cam_sum": 2.785778522491455,
+    "logits_maxabs_vs_default": 2.384185791015625e-07
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "phase_n": {
+    "rows_all_datasets": 64166,
+    "cpaisd_rows": 10165,
+    "cpaisd_unique_source_key": 10165,
+    "cpaisd_duplicate_source_key_rows": 0,
+    "cpaisd_studies": 112,
+    "labels": {
+      "normal": 7982,
+      "ischemic": 2183
+    },
+    "by_split": {
+      "train": 7115,
+      "val": 1526,
+      "test": 1524
+    },
+    "dataset_names": {
+      "CPAISD_v2": 10165
+    },
+    "has_context_true": 10165
+  },
+  "phase_o": {
+    "rows_all_datasets": 48482,
+    "cpaisd_rows": 10165,
+    "cpaisd_unique_source_key": 10165,
+    "cpaisd_duplicate_source_key_rows": 0,
+    "cpaisd_studies": 112,
+    "labels": {
+      "normal": 7982,
+      "ischemic": 2183
+    },
+    "by_split": {
+      "train": 7115,
+      "val": 1525,
+      "test": 1525
+    },
+    "dataset_names": {
+      "CPAISD_v2": 10165
+    },
+    "has_context_true": 10165
+  },
+  "phase_p_v1": {
+    "rows_all_datasets": 48482,
+    "cpaisd_rows": 10165,
+    "cpaisd_unique_source_key": 10165,
+    "cpaisd_duplicate_source_key_rows": 0,
+    "cpaisd_studies": 112,
+    "labels": {
+      "normal": 7982,
+      "ischemic": 2183
+    },
+    "by_split": {
+      "train": 6742,
+      "val": 1835,
+      "test": 1588
+    },
+    "dataset_names": {
+      "CPAISD_v2": 10165
+    },
+    "has_context_true": 10165
+  },
+  "phase_p_v2": {
+    "rows_all_datasets": 46058,
+    "cpaisd_rows": 9741,
+    "cpaisd_unique_source_key": 9741,
+    "cpaisd_duplicate_source_key_rows": 0,
+    "cpaisd_studies": 112,
+    "labels": {
+      "normal": 7558,
+      "ischemic": 2183
+    },
+    "by_split": {
+      "train": 6382,
+      "val": 1835,
+      "test": 1524
+    },
+    "dataset_names": {
+      "CPAISD_v2": 9741
+    },
+    "has_context_true": 9741
+  },
+  "phase_p_v3": {
+    "rows_all_datasets": 45987,
+    "cpaisd_rows": 9670,
+    "cpaisd_unique_source_key": 9670,
+    "cpaisd_duplicate_source_key_rows": 0,
+    "cpaisd_studies": 112,
+    "labels": {
+      "normal": 7558,
+      "ischemic": 2112
+    },
+    "by_split": {
+      "train": 6311,
+      "val": 1835,
+      "test": 1524
+    },
+    "dataset_names": {
+      "CPAISD_v2": 9670
+    },
+    "has_context_true": 9670
+  },
+  "transitions": {
+    "phase_n->phase_o": {
+      "dropped": 0,
+      "added": 0
+    },
+    "phase_o->phase_p_v1": {
+      "dropped": 0,
+      "added": 0
+    },
+    "phase_p_v1->phase_p_v2": {
+      "dropped": 424,
+      "added": 0,
+      "dropped_labels": {
+        "normal": 424
+      },
+      "dropped_by_split": {
+        "train": 421,
+        "test": 3
+      },
+      "dropped_has_context_true": 424,
+      "studies_touched": 75,
+      "studies_dropped_entirely": 0,
+      "rows_in_entirely_dropped_studies": 0,
+      "dropped_rel_position_quartiles": [
+        0.793,
+        0.944,
+        0.97,
+        0.99,
+        1.0
+      ],
+      "dropped_at_volume_edge_(first_or_last_slice)": 75
+    },
+    "phase_p_v2->phase_p_v3": {
+      "dropped": 71,
+      "added": 0,
+      "dropped_labels": {
+        "ischemic": 71
+      },
+      "dropped_by_split": {
+        "train": 71
+      },
+      "dropped_has_context_true": 71,
+      "studies_touched": 10,
+      "studies_dropped_entirely": 0,
+      "rows_in_entirely_dropped_studies": 0,
+      "dropped_rel_position_quartiles": [
+        0.439,
+        0.637,
+        0.726,
+        0.868,
+        0.959
+      ],
+      "dropped_at_volume_edge_(first_or_last_slice)": 0
+    }
+  },
+  "all_sources": {
+    "phase_p_v1->phase_p_v2": {
+      "AISD": {
+        "rows_before": 3612,
+        "rows_after": 3612,
+        "dropped": 0
+      },
+      "CPAISD_v2": {
+        "rows_before": 10165,
+        "rows_after": 9741,
+        "dropped": 424,
+        "dropped_labels": {
+          "normal": 424
+        },
+        "dropped_by_old_split": {
+          "train": 421,
+          "test": 3
+        },
+        "dropped_low_quality": {
+          "True": 424
+        },
+        "low_quality_before": 620,
+        "low_quality_kept_by_label_split": {
+          "normal|test": 72,
+          "normal|train": 2,
+          "normal|val": 122
+        },
+        "dropped_foreground_median": 0.01490752551020405
+      },
+      "ISLES2022_dwi_adc": {
+        "rows_before": 15684,
+        "rows_after": 13764,
+        "dropped": 1920,
+        "dropped_labels": {
+          "normal": 1862,
+          "ischemic": 58
+        },
+        "dropped_by_old_split": {
+          "train": 1351,
+          "val": 301,
+          "test": 268
+        },
+        "dropped_low_quality": {
+          "True": 1920
+        },
+        "low_quality_before": 2751,
+        "low_quality_kept_by_label_split": {
+          "ischemic|test": 4,
+          "ischemic|train": 11,
+          "ischemic|val": 9,
+          "normal|test": 117,
+          "normal|train": 600,
+          "normal|val": 90
+        },
+        "dropped_foreground_median": 0.0012954400510204
+      },
+      "Kaggle_CT": {
+        "rows_before": 6787,
+        "rows_after": 6787,
+        "dropped": 0
+      },
+      "MRI_Images": {
+        "rows_before": 756,
+        "rows_after": 756,
+        "dropped": 0
+      },
+      "RSNA_ICH": {
+        "rows_before": 8000,
+        "rows_after": 8000,
+        "dropped": 0
+      },
+      "SICH_CT": {
+        "rows_before": 3478,
+        "rows_after": 3398,
+        "dropped": 80,
+        "dropped_labels": {
+          "normal": 80
+        },
+        "dropped_by_old_split": {
+          "train": 60,
+          "test": 13,
+          "val": 7
+        },
+        "dropped_low_quality": {
+          "True": 80
+        },
+        "low_quality_before": 111,
+        "low_quality_kept_by_label_split": {
+          "normal|train": 20,
+          "normal|val": 11
+        },
+        "dropped_foreground_median": 0.0169702646683673
+      }
+    },
+    "phase_p_v2->phase_p_v3": {
+      "AISD": {
+        "rows_before": 3612,
+        "rows_after": 3612,
+        "dropped": 0
+      },
+      "CPAISD_v2": {
+        "rows_before": 9741,
+        "rows_after": 9670,
+        "dropped": 71,
+        "dropped_labels": {
+          "ischemic": 71
+        },
+        "dropped_by_old_split": {
+          "train": 71
+        },
+        "dropped_low_quality": {
+          "False": 71
+        },
+        "low_quality_before": 196,
+        "low_quality_kept_by_label_split": {
+          "normal|test": 74,
+          "normal|val": 122
+        },
+        "dropped_foreground_median": 0.3153698979591837
+      },
+      "ISLES2022_dwi_adc": {
+        "rows_before": 13764,
+        "rows_after": 13764,
+        "dropped": 0
+      },
+      "Kaggle_CT": {
+        "rows_before": 6787,
+        "rows_after": 6787,
+        "dropped": 0
+      },
+      "MRI_Images": {
+        "rows_before": 756,
+        "rows_after": 756,
+        "dropped": 0
+      },
+      "RSNA_ICH": {
+        "rows_before": 8000,
+        "rows_after": 8000,
+        "dropped": 0
+      },
+      "SICH_CT": {
+        "rows_before": 3398,
+        "rows_after": 3398,
+        "dropped": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,1968 @@
+{
+  "note": "Backbone comparison on identical data, partition, recipe and 4-view TTA; decision = plain argmax. Validation = primary basis for comparing backbones; held-out test = descriptive (post hoc).",
+  "models": [
+    {
+      "name": "convnext_s123",
+      "key": "round30as123",
+      "dataset": "atik68/neuroscan-q-round30as123-preds",
+      "arch": "convnext_tiny",
+      "display": "ConvNeXt-Tiny (final)",
+      "seed": 123,
+      "best_epoch": 9,
+      "stopped_after": 24,
+      "params_M": 27.8
+    },
+    {
+      "name": "convnext_s7",
+      "key": "round30as7",
+      "dataset": "atik68/neuroscan-q-round30as7-preds",
+      "arch": "convnext_tiny",
+      "display": "ConvNeXt-Tiny",
+      "seed": 7,
+      "best_epoch": 41,
+      "stopped_after": 45,
+      "params_M": 27.8
+    },
+    {
+      "name": "resnet18_s123",
+      "key": "round24ctl",
+      "dataset": "atik68/neuroscan-q-round24ctl-preds",
+      "arch": "resnet18",
+      "display": "ResNet18",
+      "seed": 123,
+      "best_epoch": 14,
+      "stopped_after": 29,
+      "params_M": 11.2
+    },
+    {
+      "name": "resnet18_s7",
+      "key": "round24s7",
+      "dataset": "atik68/neuroscan-q-round24s7-preds",
+      "arch": "resnet18",
+      "display": "ResNet18",
+      "seed": 7,
+      "best_epoch": 25,
+      "stopped_after": 40,
+      "params_M": 11.2
+    },
+    {
+      "name": "effb0_s123",
+      "key": "effb0",
+      "dataset": "atik68/neuroscan-q-effb0-office-preds",
+      "arch": "efficientnet_b0",
+      "display": "EfficientNet-B0",
+      "seed": 123,
+      "best_epoch": 8,
+      "stopped_after": 23,
+      "params_M": 4.0
+    },
+    {
+      "name": "effb0_s7",
+      "key": "effb0s7",
+      "dataset": "atik68/neuroscan-q-effb0s7-office-preds",
+      "arch": "efficientnet_b0",
+      "display": "EfficientNet-B0",
+      "seed": 7,
+      "best_epoch": 21,
+      "stopped_after": 36,
+      "params_M": 4.0
+    },
+    {
+      "name": "mobilenetv2_s123",
+      "key": "bbmobilenetv2s123",
+      "dataset": "atik68/neuroscan-q-bb-mobilenetv2-preds",
+      "arch": "mobilenet_v2",
+      "display": "MobileNetV2",
+      "seed": 123,
+      "best_epoch": 16,
+      "stopped_after": 31,
+      "params_M": 2.2
+    },
+    {
+      "name": "densenet121_s123",
+      "key": "bbdensenet121s123",
+      "dataset": "atik68/neuroscan-q-bb-densenet121-preds",
+      "arch": "densenet121",
+      "display": "DenseNet121",
+      "seed": 123,
+      "best_epoch": 36,
+      "stopped_after": 45,
+      "params_M": 7.0
+    },
+    {
+      "name": "swint_s123",
+      "key": "bbswints123",
+      "dataset": "atik68/neuroscan-q-bb-swint-preds",
+      "arch": "swin_t",
+      "display": "Swin-Tiny",
+      "seed": 123,
+      "best_epoch": 31,
+      "stopped_after": 45,
+      "params_M": 27.5
+    },
+    {
+      "name": "resnet101_s123",
+      "key": "bbresnet101s123",
+      "dataset": "atik68/neuroscan-q-bb-resnet101-preds",
+      "arch": "resnet101",
+      "display": "ResNet101",
+      "seed": 123,
+      "best_epoch": 9,
+      "stopped_after": 24,
+      "params_M": 42.5
+    },
+    {
+      "name": "vgg16_s123",
+      "key": "bbvgg16s123",
+      "dataset": "atik68/neuroscan-q-bb-vgg16-preds",
+      "arch": "vgg16",
+      "display": "VGG16",
+      "seed": 123,
+      "best_epoch": 38,
+      "stopped_after": 45,
+      "params_M": 134.3
+    }
+  ],
+  "validation": {
+    "rows": 12969,
+    "patient_clusters": 1934,
+    "per_model": {
+      "convnext_s123": {
+        "n": 12969,
+        "accuracy": 0.8907394556249518,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            7636,
+            593,
+            265
+          ],
+          [
+            456,
+            2484,
+            2
+          ],
+          [
+            101,
+            0,
+            1432
+          ]
+        ],
+        "normal_recall": 0.8989875206027784,
+        "normal_f1": 0.9152034517888177,
+        "normal_precision": 0.9320151348712316,
+        "normal_specificity": 0.8755307262569832,
+        "normal_npv": 0.8203517587939698,
+        "ischemic_recall": 0.8443235893949694,
+        "ischemic_f1": 0.8253862767901645,
+        "ischemic_precision": 0.8072798180045498,
+        "ischemic_specificity": 0.9408596788670589,
+        "ischemic_npv": 0.9536999595632835,
+        "hemorrhagic_recall": 0.9341161121983039,
+        "hemorrhagic_f1": 0.8861386138613861,
+        "hemorrhagic_precision": 0.8428487345497352,
+        "hemorrhagic_specificity": 0.9766526757607555,
+        "hemorrhagic_npv": 0.9910381543921917,
+        "balanced_accuracy": 0.8924757407320172,
+        "macro_f1_present_classes": 0.8755761141467895,
+        "ischemic_auroc": 0.9564232486630082,
+        "ischemic_pr_auc": 0.9059387323071862,
+        "hemorrhagic_auroc": 0.9943288859957923,
+        "hemorrhagic_pr_auc": 0.9622106696117649,
+        "macro_ovr_auroc": 0.9659417525287303
+      },
+      "convnext_s7": {
+        "n": 12969,
+        "accuracy": 0.8968309044644922,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            7964,
+            342,
+            188
+          ],
+          [
+            646,
+            2295,
+            1
+          ],
+          [
+            161,
+            0,
+            1372
+          ]
+        ],
+        "normal_recall": 0.9376030138921592,
+        "normal_f1": 0.922560092673038,
+        "normal_precision": 0.9079922471782009,
+        "normal_specificity": 0.8196648044692737,
+        "normal_npv": 0.873749404478323,
+        "ischemic_recall": 0.7800815771583957,
+        "ischemic_f1": 0.8227280874708729,
+        "ischemic_precision": 0.8703071672354948,
+        "ischemic_specificity": 0.965892091353346,
+        "ischemic_npv": 0.9373790166473094,
+        "hemorrhagic_recall": 0.8949771689497716,
+        "hemorrhagic_f1": 0.8868778280542986,
+        "hemorrhagic_precision": 0.8789237668161435,
+        "hemorrhagic_specificity": 0.9834732423924449,
+        "hemorrhagic_npv": 0.9858870967741935,
+        "balanced_accuracy": 0.8708872533334423,
+        "macro_f1_present_classes": 0.8773886693994032,
+        "ischemic_auroc": 0.952115420248402,
+        "ischemic_pr_auc": 0.8958314444654524,
+        "hemorrhagic_auroc": 0.992319604129462,
+        "hemorrhagic_pr_auc": 0.9541152336868152,
+        "macro_ovr_auroc": 0.9622706632603272
+      },
+      "resnet18_s123": {
+        "n": 12969,
+        "accuracy": 0.8779397023671833,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            7697,
+            487,
+            310
+          ],
+          [
+            674,
+            2263,
+            5
+          ],
+          [
+            102,
+            5,
+            1426
+          ]
+        ],
+        "normal_recall": 0.9061690605133035,
+        "normal_f1": 0.9072906229740084,
+        "normal_precision": 0.9084149651835242,
+        "normal_specificity": 0.8265921787709497,
+        "normal_npv": 0.8227313167259787,
+        "ischemic_recall": 0.7692046227056424,
+        "ischemic_f1": 0.7944532209935053,
+        "ischemic_precision": 0.821415607985481,
+        "ischemic_specificity": 0.9509324822977959,
+        "ischemic_npv": 0.9335226160172313,
+        "hemorrhagic_recall": 0.9302022178734507,
+        "hemorrhagic_f1": 0.8711056811240073,
+        "hemorrhagic_precision": 0.8190695002871913,
+        "hemorrhagic_specificity": 0.9724554039874082,
+        "hemorrhagic_npv": 0.9904702529390809,
+        "balanced_accuracy": 0.8685253003641322,
+        "macro_f1_present_classes": 0.8576165083638404,
+        "ischemic_auroc": 0.9477127256068709,
+        "ischemic_pr_auc": 0.8797514555390583,
+        "hemorrhagic_auroc": 0.9927919569175013,
+        "hemorrhagic_pr_auc": 0.9502707663435148,
+        "macro_ovr_auroc": 0.9592475951765714
+      },
+      "resnet18_s7": {
+        "n": 12969,
+        "accuracy": 0.8828745469966844,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            7822,
+            447,
+            225
+          ],
+          [
+            683,
+            2256,
+            3
+          ],
+          [
+            156,
+            5,
+            1372
+          ]
+        ],
+        "normal_recall": 0.9208853308217565,
+        "normal_f1": 0.9119207228213349,
+        "normal_precision": 0.9031289689412308,
+        "normal_specificity": 0.8125139664804469,
+        "normal_npv": 0.8440111420612814,
+        "ischemic_recall": 0.7668252889191026,
+        "ischemic_f1": 0.7985840707964602,
+        "ischemic_precision": 0.8330871491875923,
+        "ischemic_specificity": 0.954921711379276,
+        "ischemic_npv": 0.9331449176493519,
+        "hemorrhagic_recall": 0.8949771689497716,
+        "hemorrhagic_f1": 0.8758378550909671,
+        "hemorrhagic_precision": 0.8575,
+        "hemorrhagic_specificity": 0.9800629590766002,
+        "hemorrhagic_npv": 0.9858386841410854,
+        "balanced_accuracy": 0.8608959295635437,
+        "macro_f1_present_classes": 0.8621142162362542,
+        "ischemic_auroc": 0.9487493387161259,
+        "ischemic_pr_auc": 0.8818526191826341,
+        "hemorrhagic_auroc": 0.989053861565325,
+        "hemorrhagic_pr_auc": 0.940755606162759,
+        "macro_ovr_auroc": 0.9583529284097846
+      },
+      "effb0_s123": {
+        "n": 12969,
+        "accuracy": 0.8796360552085742,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            7589,
+            570,
+            335
+          ],
+          [
+            556,
+            2382,
+            4
+          ],
+          [
+            94,
+            2,
+            1437
+          ]
+        ],
+        "normal_recall": 0.8934542029668001,
+        "normal_f1": 0.9070698619494412,
+        "normal_precision": 0.9211069304527248,
+        "normal_specificity": 0.8547486033519553,
+        "normal_npv": 0.8086680761099366,
+        "ischemic_recall": 0.8096532970768185,
+        "ischemic_f1": 0.8080054274084125,
+        "ischemic_precision": 0.8063642518618822,
+        "ischemic_specificity": 0.942954024134836,
+        "ischemic_npv": 0.944083874188717,
+        "hemorrhagic_recall": 0.9373776908023483,
+        "hemorrhagic_f1": 0.8685403445149592,
+        "hemorrhagic_precision": 0.8091216216216216,
+        "hemorrhagic_specificity": 0.9703567681007346,
+        "hemorrhagic_npv": 0.9914232109354061,
+        "balanced_accuracy": 0.880161730281989,
+        "macro_f1_present_classes": 0.8612052112909376,
+        "ischemic_auroc": 0.9491311596012316,
+        "ischemic_pr_auc": 0.8907052283302737,
+        "hemorrhagic_auroc": 0.9930216592091853,
+        "hemorrhagic_pr_auc": 0.953506820376089,
+        "macro_ovr_auroc": 0.9598828840716673
+      },
+      "effb0_s7": {
+        "n": 12969,
+        "accuracy": 0.8828745469966844,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            7721,
+            502,
+            271
+          ],
+          [
+            614,
+            2322,
+            6
+          ],
+          [
+            125,
+            1,
+            1407
+          ]
+        ],
+        "normal_recall": 0.9089945844125265,
+        "normal_f1": 0.9108175061932288,
+        "normal_precision": 0.9126477541371159,
+        "normal_specificity": 0.8348603351955307,
+        "normal_npv": 0.8285650920381459,
+        "ischemic_recall": 0.7892590074779062,
+        "ischemic_f1": 0.8052713715970176,
+        "ischemic_precision": 0.8219469026548673,
+        "ischemic_specificity": 0.9498354443003889,
+        "ischemic_npv": 0.9388801261829653,
+        "hemorrhagic_recall": 0.9178082191780822,
+        "hemorrhagic_f1": 0.8747280074603668,
+        "hemorrhagic_precision": 0.8355106888361045,
+        "hemorrhagic_specificity": 0.9757782441413082,
+        "hemorrhagic_npv": 0.98883473637572,
+        "balanced_accuracy": 0.872020603689505,
+        "macro_f1_present_classes": 0.863605628416871,
+        "ischemic_auroc": 0.9496597629635877,
+        "ischemic_pr_auc": 0.8928852605788538,
+        "hemorrhagic_auroc": 0.992476893443919,
+        "hemorrhagic_pr_auc": 0.9514267463834118,
+        "macro_ovr_auroc": 0.9609677919116176
+      },
+      "mobilenetv2_s123": {
+        "n": 12969,
+        "accuracy": 0.8691495103708844,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            7551,
+            712,
+            231
+          ],
+          [
+            585,
+            2356,
+            1
+          ],
+          [
+            161,
+            7,
+            1365
+          ]
+        ],
+        "normal_recall": 0.8889804567930304,
+        "normal_f1": 0.8994103984277292,
+        "normal_precision": 0.9100879836085332,
+        "normal_specificity": 0.8332960893854748,
+        "normal_npv": 0.7981592465753424,
+        "ischemic_recall": 0.8008157715839564,
+        "ischemic_f1": 0.7831145088914742,
+        "ischemic_precision": 0.7661788617886179,
+        "ischemic_specificity": 0.9282936072603969,
+        "ischemic_npv": 0.9407721851627249,
+        "hemorrhagic_recall": 0.8904109589041096,
+        "hemorrhagic_f1": 0.8722044728434505,
+        "hemorrhagic_precision": 0.8547276142767689,
+        "hemorrhagic_specificity": 0.9797131864288212,
+        "hemorrhagic_npv": 0.9852268730214562,
+        "balanced_accuracy": 0.8600690624270322,
+        "macro_f1_present_classes": 0.8515764600542179,
+        "ischemic_auroc": 0.9432739624767038,
+        "ischemic_pr_auc": 0.876826464180305,
+        "hemorrhagic_auroc": 0.9910749793456172,
+        "hemorrhagic_pr_auc": 0.9437795608768027,
+        "macro_ovr_auroc": 0.9546070474588798
+      },
+      "densenet121_s123": {
+        "n": 12969,
+        "accuracy": 0.8896599583622484,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            7902,
+            381,
+            211
+          ],
+          [
+            693,
+            2248,
+            1
+          ],
+          [
+            141,
+            4,
+            1388
+          ]
+        ],
+        "normal_recall": 0.9303037438191665,
+        "normal_f1": 0.9172373766686013,
+        "normal_precision": 0.904532967032967,
+        "normal_specificity": 0.8136312849162011,
+        "normal_npv": 0.8601464682258445,
+        "ischemic_recall": 0.7641060503059144,
+        "ischemic_f1": 0.806457399103139,
+        "ischemic_precision": 0.8537789593619446,
+        "ischemic_specificity": 0.961603670090755,
+        "ischemic_npv": 0.9328560371517027,
+        "hemorrhagic_recall": 0.9054142204827136,
+        "hemorrhagic_f1": 0.8860517076284711,
+        "hemorrhagic_precision": 0.8675,
+        "hemorrhagic_specificity": 0.981462049667716,
+        "hemorrhagic_npv": 0.9872460198786173,
+        "balanced_accuracy": 0.8666080048692648,
+        "macro_f1_present_classes": 0.8699154944667371,
+        "ischemic_auroc": 0.933393755961555,
+        "ischemic_pr_auc": 0.8787742938733859,
+        "hemorrhagic_auroc": 0.98919751818852,
+        "hemorrhagic_pr_auc": 0.9366869798841838,
+        "macro_ovr_auroc": 0.9518657403891853
+      },
+      "swint_s123": {
+        "n": 12969,
+        "accuracy": 0.8876551777315136,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            7664,
+            534,
+            296
+          ],
+          [
+            544,
+            2393,
+            5
+          ],
+          [
+            78,
+            0,
+            1455
+          ]
+        ],
+        "normal_recall": 0.9022839651518719,
+        "normal_f1": 0.9134684147794994,
+        "normal_precision": 0.924933622978518,
+        "normal_specificity": 0.8610055865921787,
+        "normal_npv": 0.8227631859918856,
+        "ischemic_recall": 0.8133922501699524,
+        "ischemic_f1": 0.8154711194411314,
+        "ischemic_precision": 0.8175606422958661,
+        "ischemic_specificity": 0.946743791762242,
+        "ischemic_npv": 0.9453296156144194,
+        "hemorrhagic_recall": 0.949119373776908,
+        "hemorrhagic_f1": 0.884767406506537,
+        "hemorrhagic_precision": 0.8285876993166287,
+        "hemorrhagic_specificity": 0.9736796082546345,
+        "hemorrhagic_npv": 0.9930437884598234,
+        "balanced_accuracy": 0.8882651963662441,
+        "macro_f1_present_classes": 0.871235646909056,
+        "ischemic_auroc": 0.9556995229128803,
+        "ischemic_pr_auc": 0.9041538925712349,
+        "hemorrhagic_auroc": 0.9949753550603067,
+        "hemorrhagic_pr_auc": 0.9650849621443949,
+        "macro_ovr_auroc": 0.9662946967970951
+      },
+      "resnet101_s123": {
+        "n": 12969,
+        "accuracy": 0.8799444829979182,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            7574,
+            642,
+            278
+          ],
+          [
+            504,
+            2435,
+            3
+          ],
+          [
+            125,
+            5,
+            1403
+          ]
+        ],
+        "normal_recall": 0.8916882505297857,
+        "normal_f1": 0.9072288435048212,
+        "normal_precision": 0.923320736315982,
+        "normal_specificity": 0.8594413407821229,
+        "normal_npv": 0.8069660092320604,
+        "ischemic_recall": 0.827668252889191,
+        "ischemic_f1": 0.8084329349269588,
+        "ischemic_precision": 0.7900713822193381,
+        "ischemic_specificity": 0.9354742196070609,
+        "ischemic_npv": 0.9487205421260241,
+        "hemorrhagic_recall": 0.9151989562948467,
+        "hemorrhagic_f1": 0.8722412185265775,
+        "hemorrhagic_precision": 0.8331353919239906,
+        "hemorrhagic_specificity": 0.9754284714935292,
+        "hemorrhagic_npv": 0.9884802835622508,
+        "balanced_accuracy": 0.8781851532379411,
+        "macro_f1_present_classes": 0.8626343323194524,
+        "ischemic_auroc": 0.9524750712166207,
+        "ischemic_pr_auc": 0.8865787767113373,
+        "hemorrhagic_auroc": 0.9930303293726658,
+        "hemorrhagic_pr_auc": 0.9532593850853062,
+        "macro_ovr_auroc": 0.9621273016458033
+      },
+      "vgg16_s123": {
+        "n": 12969,
+        "accuracy": 0.890276813940936,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            7895,
+            421,
+            178
+          ],
+          [
+            640,
+            2296,
+            6
+          ],
+          [
+            174,
+            4,
+            1355
+          ]
+        ],
+        "normal_recall": 0.9294796326818932,
+        "normal_f1": 0.9178631634017322,
+        "normal_precision": 0.906533471121828,
+        "normal_specificity": 0.8181005586592178,
+        "normal_npv": 0.8593896713615023,
+        "ischemic_recall": 0.7804214819850442,
+        "ischemic_f1": 0.8108776266996292,
+        "ischemic_precision": 0.8438074237412716,
+        "ischemic_specificity": 0.957614441009275,
+        "ischemic_npv": 0.9369633099141296,
+        "hemorrhagic_recall": 0.8838878016960209,
+        "hemorrhagic_f1": 0.8821614583333334,
+        "hemorrhagic_precision": 0.8804418453541261,
+        "hemorrhagic_specificity": 0.9839104582021686,
+        "hemorrhagic_npv": 0.9844269466316711,
+        "balanced_accuracy": 0.8645963054543194,
+        "macro_f1_present_classes": 0.8703007494782317,
+        "ischemic_auroc": 0.9424290649101945,
+        "ischemic_pr_auc": 0.8871003139469602,
+        "hemorrhagic_auroc": 0.9887569940269418,
+        "hemorrhagic_pr_auc": 0.9495227445318934,
+        "macro_ovr_auroc": 0.9562450424739634
+      }
+    },
+    "paired_vs_final": {
+      "convnext_s7": {
+        "accuracy": {
+          "diff_other_minus_ref": 0.006091448839540381,
+          "ci95": [
+            -0.0026551583042501155,
+            0.014267566614662516
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": 0.0018125552526137012,
+          "ci95": [
+            -0.008316490293037371,
+            0.010649736964822224
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.004307828414606196,
+          "ci95": [
+            -0.00816768543524678,
+            -0.0007803824436491335
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.0020092818663303147,
+          "ci95": [
+            -0.0032181275840159366,
+            -0.000993191185612902
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.06424201223657378,
+          "ci95": [
+            -0.08856238142023491,
+            -0.044186283596385635
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.03913894324853229,
+          "ci95": [
+            -0.051494236988308115,
+            -0.027350551628256416
+          ]
+        }
+      },
+      "resnet18_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.012799753257768498,
+          "ci95": [
+            -0.020785432442052013,
+            -0.004732127272139778
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.017959605782949084,
+          "ci95": [
+            -0.026756096804786703,
+            -0.009447825274867924
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.008710523056137287,
+          "ci95": [
+            -0.01575234061604172,
+            -0.0015863649287093066
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.0015369290782909495,
+          "ci95": [
+            -0.002316011659364267,
+            -0.0007680736202288576
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.07511896668932705,
+          "ci95": [
+            -0.09837900363706815,
+            -0.05391715918417411
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.003913894324853229,
+          "ci95": [
+            -0.015874332480171952,
+            0.008426381581115316
+          ]
+        }
+      },
+      "resnet18_s7": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.007864908628267386,
+          "ci95": [
+            -0.016279961929475194,
+            0.0005300319842774012
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.013461897910535314,
+          "ci95": [
+            -0.022447411180386293,
+            -0.004654641231464259
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.007673909946882329,
+          "ci95": [
+            -0.014231798752516716,
+            -0.0007897693611449192
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.0052750244304672345,
+          "ci95": [
+            -0.007655784755883685,
+            -0.003169789201090074
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.07749830047586681,
+          "ci95": [
+            -0.10003795038264524,
+            -0.054372189479755216
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.03913894324853229,
+          "ci95": [
+            -0.05284217861244645,
+            -0.02504937776788967
+          ]
+        }
+      },
+      "effb0_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.011103400416377585,
+          "ci95": [
+            -0.018958865951219366,
+            -0.00289911974561811
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.014370902855851853,
+          "ci95": [
+            -0.022573215902897705,
+            -0.005864432178890815
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.0072920890617765854,
+          "ci95": [
+            -0.013347537234354301,
+            -0.001715150687303977
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.0013072267866069964,
+          "ci95": [
+            -0.002175972167779469,
+            -0.0005324639734183988
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.034670292318150886,
+          "ci95": [
+            -0.054727321770119804,
+            -0.015156614739996412
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": 0.003261578604044413,
+          "ci95": [
+            -0.008509962091195622,
+            0.014203861257639044
+          ]
+        }
+      },
+      "effb0_s7": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.007864908628267386,
+          "ci95": [
+            -0.01583589381384643,
+            -7.836302795968541e-05
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.011970485729918434,
+          "ci95": [
+            -0.020397365243417696,
+            -0.003550958095195216
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.006763485699420535,
+          "ci95": [
+            -0.011676843680131657,
+            -0.0016747664455938754
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.0018519925518732938,
+          "ci95": [
+            -0.0029611298891286083,
+            -0.0007847662538620993
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.055064581917063204,
+          "ci95": [
+            -0.0763155300693052,
+            -0.035162907268170424
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.01630789302022173,
+          "ci95": [
+            -0.02764976958525345,
+            -0.004666356382978658
+          ]
+        }
+      },
+      "mobilenetv2_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.021589945254067433,
+          "ci95": [
+            -0.029523861022950976,
+            -0.013502567524166424
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.023999654092571543,
+          "ci95": [
+            -0.032254146046675945,
+            -0.015346823990895287
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.013149286186304399,
+          "ci95": [
+            -0.019270341326545284,
+            -0.006921054187453171
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.003253906650175109,
+          "ci95": [
+            -0.0043256043367750855,
+            -0.0022257462987023977
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.04350781781101298,
+          "ci95": [
+            -0.06686606103046963,
+            -0.021569539237164398
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.04370515329419433,
+          "ci95": [
+            -0.055915033221650694,
+            -0.031228717466788382
+          ]
+        }
+      },
+      "densenet121_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.0010794972627033994,
+          "ci95": [
+            -0.009215923737436007,
+            0.006680083706372834
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.005660619680052381,
+          "ci95": [
+            -0.014217052752446144,
+            0.002735655553731586
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.023029492701453158,
+          "ci95": [
+            -0.03240402769904031,
+            -0.014879479320195463
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.005131367807272302,
+          "ci95": [
+            -0.007359254058619402,
+            -0.0032994017389247707
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.08021753908905505,
+          "ci95": [
+            -0.10180928628030986,
+            -0.05849243083833741
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.028701891715590344,
+          "ci95": [
+            -0.04092130036879511,
+            -0.01602940452903155
+          ]
+        }
+      },
+      "swint_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.0030842778934382364,
+          "ci95": [
+            -0.009872161974612336,
+            0.0038544567127449846
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.004340467237733514,
+          "ci95": [
+            -0.011947479173367337,
+            0.0029488036808483923
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.0007237257501279126,
+          "ci95": [
+            -0.00429285396535205,
+            0.0030191245881421576
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": 0.0006464690645143767,
+          "ci95": [
+            0.00013375668085353342,
+            0.001133432688777508
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.030931339225017007,
+          "ci95": [
+            -0.05092379709604592,
+            -0.012702788236380762
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": 0.015003261578604099,
+          "ci95": [
+            0.006643858657772064,
+            0.023948505735868507
+          ]
+        }
+      },
+      "resnet101_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.010794972627033661,
+          "ci95": [
+            -0.01669238114807999,
+            -0.004714729972361252
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.012941781827337073,
+          "ci95": [
+            -0.019098399398360298,
+            -0.006715108503145177
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.003948177446387535,
+          "ci95": [
+            -0.0076258158572899805,
+            0.0002975837019826562
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.001298556623126501,
+          "ci95": [
+            -0.0020731356890624636,
+            -0.0006507789173649833
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.01665533650577844,
+          "ci95": [
+            -0.02863774352659874,
+            -0.005115663162972485
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.018917155903457217,
+          "ci95": [
+            -0.030128688261706223,
+            -0.007406785980611497
+          ]
+        }
+      },
+      "vgg16_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.0004626416840157743,
+          "ci95": [
+            -0.01018973046761026,
+            0.007801483666829275
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.005275364668557825,
+          "ci95": [
+            -0.016090510887561853,
+            0.004069572538119934
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.013994183752813694,
+          "ci95": [
+            -0.020923573583453963,
+            -0.007451292592046862
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.00557189196885044,
+          "ci95": [
+            -0.008129199103156948,
+            -0.0034268477274782246
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.06390210740992519,
+          "ci95": [
+            -0.095754954719517,
+            -0.037301652802599825
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.05022831050228305,
+          "ci95": [
+            -0.06377789664252802,
+            -0.036989795918367374
+          ]
+        }
+      }
+    }
+  },
+  "test_A_plus_B": {
+    "rows": 8930,
+    "patient_clusters": 1787,
+    "per_model": {
+      "convnext_s123": {
+        "n": 8930,
+        "accuracy": 0.8847704367301232,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            5091,
+            462,
+            235
+          ],
+          [
+            212,
+            1459,
+            2
+          ],
+          [
+            116,
+            2,
+            1351
+          ]
+        ],
+        "normal_recall": 0.8795784381478922,
+        "normal_f1": 0.9085393057910235,
+        "normal_precision": 0.9394722273482192,
+        "normal_specificity": 0.8956078930617442,
+        "normal_npv": 0.8014810595272003,
+        "ischemic_recall": 0.872086072922893,
+        "ischemic_f1": 0.8114571746384872,
+        "ischemic_precision": 0.7587103484139366,
+        "ischemic_specificity": 0.9360617334986909,
+        "ischemic_npv": 0.9694591123162551,
+        "hemorrhagic_recall": 0.9196732471068755,
+        "hemorrhagic_f1": 0.8838730781812234,
+        "hemorrhagic_precision": 0.8507556675062973,
+        "hemorrhagic_specificity": 0.9682348210695617,
+        "hemorrhagic_npv": 0.9839280849904658,
+        "balanced_accuracy": 0.8904459193925535,
+        "macro_f1_present_classes": 0.8679565195369113,
+        "ischemic_auroc": 0.963408703808537,
+        "ischemic_pr_auc": 0.8837119175961249,
+        "hemorrhagic_auroc": 0.989658454505749,
+        "hemorrhagic_pr_auc": 0.9592405761094313,
+        "macro_ovr_auroc": 0.966382991194919
+      },
+      "convnext_s7": {
+        "n": 8930,
+        "accuracy": 0.8916013437849944,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            5354,
+            253,
+            181
+          ],
+          [
+            361,
+            1309,
+            3
+          ],
+          [
+            168,
+            2,
+            1299
+          ]
+        ],
+        "normal_recall": 0.9250172771250864,
+        "normal_f1": 0.9174877902493359,
+        "normal_precision": 0.9100798912119666,
+        "normal_specificity": 0.831635900700191,
+        "normal_npv": 0.8575648178536265,
+        "ischemic_recall": 0.7824267782426778,
+        "ischemic_f1": 0.8087735557615076,
+        "ischemic_precision": 0.8369565217391305,
+        "ischemic_specificity": 0.9648615130219099,
+        "ischemic_npv": 0.950583763236492,
+        "hemorrhagic_recall": 0.8842750170183798,
+        "hemorrhagic_f1": 0.8800813008130082,
+        "hemorrhagic_precision": 0.8759271746459879,
+        "hemorrhagic_specificity": 0.9753384264843855,
+        "hemorrhagic_npv": 0.9771720155767423,
+        "balanced_accuracy": 0.863906357462048,
+        "macro_f1_present_classes": 0.8687808822746174,
+        "ischemic_auroc": 0.9607390634069247,
+        "ischemic_pr_auc": 0.8803079535821592,
+        "hemorrhagic_auroc": 0.9859721653118111,
+        "hemorrhagic_pr_auc": 0.9526256167902314,
+        "macro_ovr_auroc": 0.9629713038336805
+      },
+      "resnet18_s123": {
+        "n": 8930,
+        "accuracy": 0.8725643896976484,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            5146,
+            346,
+            296
+          ],
+          [
+            374,
+            1297,
+            2
+          ],
+          [
+            118,
+            2,
+            1349
+          ]
+        ],
+        "normal_recall": 0.8890808569454043,
+        "normal_f1": 0.9007526693506039,
+        "normal_precision": 0.9127350124157503,
+        "normal_specificity": 0.8434118395926161,
+        "normal_npv": 0.8049817739975699,
+        "ischemic_recall": 0.7752540346682606,
+        "ischemic_f1": 0.781796262808921,
+        "ischemic_precision": 0.7884498480243161,
+        "ischemic_specificity": 0.9520463001240181,
+        "ischemic_npv": 0.9483870967741935,
+        "hemorrhagic_recall": 0.9183117767188563,
+        "hemorrhagic_f1": 0.8658536585365854,
+        "hemorrhagic_precision": 0.8190649666059502,
+        "hemorrhagic_specificity": 0.9600589733279721,
+        "hemorrhagic_npv": 0.9835232733763559,
+        "balanced_accuracy": 0.8608822227775071,
+        "macro_f1_present_classes": 0.8494675302320367,
+        "ischemic_auroc": 0.9540794587841934,
+        "ischemic_pr_auc": 0.8505528638780657,
+        "hemorrhagic_auroc": 0.9881828439585413,
+        "hemorrhagic_pr_auc": 0.9518643896814192,
+        "macro_ovr_auroc": 0.9594643791063854
+      },
+      "resnet18_s7": {
+        "n": 8930,
+        "accuracy": 0.883538633818589,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            5258,
+            289,
+            241
+          ],
+          [
+            352,
+            1321,
+            0
+          ],
+          [
+            156,
+            2,
+            1311
+          ]
+        ],
+        "normal_recall": 0.9084312370421562,
+        "normal_f1": 0.9101609832092782,
+        "normal_precision": 0.9118973291710024,
+        "normal_specificity": 0.838319541693189,
+        "normal_npv": 0.8324905183312263,
+        "ischemic_recall": 0.789599521817095,
+        "ischemic_f1": 0.8042617960426179,
+        "ischemic_precision": 0.8194789081885856,
+        "ischemic_specificity": 0.9599007854485324,
+        "ischemic_npv": 0.9518994260726975,
+        "hemorrhagic_recall": 0.8924438393464942,
+        "hemorrhagic_f1": 0.8679245283018868,
+        "hemorrhagic_precision": 0.8447164948453608,
+        "hemorrhagic_specificity": 0.9676986999061788,
+        "hemorrhagic_npv": 0.9785849823800488,
+        "balanced_accuracy": 0.8634915327352485,
+        "macro_f1_present_classes": 0.8607824358512609,
+        "ischemic_auroc": 0.9552677914046508,
+        "ischemic_pr_auc": 0.8661854458608548,
+        "hemorrhagic_auroc": 0.9810055173217956,
+        "hemorrhagic_pr_auc": 0.9411410842956212,
+        "macro_ovr_auroc": 0.95781679788328
+      },
+      "effb0_s123": {
+        "n": 8930,
+        "accuracy": 0.8720044792833147,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            5054,
+            408,
+            326
+          ],
+          [
+            291,
+            1380,
+            2
+          ],
+          [
+            114,
+            2,
+            1353
+          ]
+        ],
+        "normal_recall": 0.8731859018659295,
+        "normal_f1": 0.8987285498355116,
+        "normal_precision": 0.9258105880197839,
+        "normal_specificity": 0.8711012094207511,
+        "normal_npv": 0.7885335638144627,
+        "ischemic_recall": 0.8248655110579797,
+        "ischemic_f1": 0.7969968235633843,
+        "ischemic_precision": 0.770949720670391,
+        "ischemic_specificity": 0.943502824858757,
+        "ischemic_npv": 0.9589635854341737,
+        "hemorrhagic_recall": 0.9210347174948945,
+        "hemorrhagic_f1": 0.8590476190476191,
+        "hemorrhagic_precision": 0.8048780487804879,
+        "hemorrhagic_specificity": 0.9560380646026002,
+        "hemorrhagic_npv": 0.9839977927990068,
+        "balanced_accuracy": 0.8730287101396014,
+        "macro_f1_present_classes": 0.8515909974821717,
+        "ischemic_auroc": 0.959203188281389,
+        "ischemic_pr_auc": 0.8777323848161377,
+        "hemorrhagic_auroc": 0.9883483061317535,
+        "hemorrhagic_pr_auc": 0.952659652596456,
+        "macro_ovr_auroc": 0.9627711850993758
+      },
+      "effb0_s7": {
+        "n": 8930,
+        "accuracy": 0.8776035834266518,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            5182,
+            352,
+            254
+          ],
+          [
+            340,
+            1329,
+            4
+          ],
+          [
+            142,
+            1,
+            1326
+          ]
+        ],
+        "normal_recall": 0.8953006219765031,
+        "normal_f1": 0.904994760740482,
+        "normal_precision": 0.9149011299435028,
+        "normal_specificity": 0.8465945257797581,
+        "normal_npv": 0.8144519289650949,
+        "ischemic_recall": 0.7943813508667065,
+        "ischemic_f1": 0.7922503725782414,
+        "ischemic_precision": 0.7901307966706302,
+        "ischemic_specificity": 0.9513573101832713,
+        "ischemic_npv": 0.9525386313465783,
+        "hemorrhagic_recall": 0.9026548672566371,
+        "hemorrhagic_f1": 0.8686537831641009,
+        "hemorrhagic_precision": 0.8371212121212122,
+        "hemorrhagic_specificity": 0.9654201849618014,
+        "hemorrhagic_npv": 0.9805336237408113,
+        "balanced_accuracy": 0.8641122800332822,
+        "macro_f1_present_classes": 0.8552996388276081,
+        "ischemic_auroc": 0.952665567412662,
+        "ischemic_pr_auc": 0.8666952176603059,
+        "hemorrhagic_auroc": 0.9876253728373245,
+        "hemorrhagic_pr_auc": 0.952408980147947,
+        "macro_ovr_auroc": 0.9595808339445848
+      },
+      "mobilenetv2_s123": {
+        "n": 8930,
+        "accuracy": 0.8759238521836507,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            5145,
+            433,
+            210
+          ],
+          [
+            296,
+            1377,
+            0
+          ],
+          [
+            167,
+            2,
+            1300
+          ]
+        ],
+        "normal_recall": 0.8889080856945404,
+        "normal_f1": 0.902948402948403,
+        "normal_precision": 0.9174393723252496,
+        "normal_specificity": 0.8526416295353278,
+        "normal_npv": 0.8064419024683925,
+        "ischemic_recall": 0.8230723251643753,
+        "ischemic_f1": 0.7902439024390244,
+        "ischemic_precision": 0.7599337748344371,
+        "ischemic_specificity": 0.9400578751550227,
+        "ischemic_npv": 0.9584152851924698,
+        "hemorrhagic_recall": 0.8849557522123894,
+        "hemorrhagic_f1": 0.8727760993622021,
+        "hemorrhagic_precision": 0.8609271523178808,
+        "hemorrhagic_specificity": 0.9718536389223965,
+        "hemorrhagic_npv": 0.9772237196765499,
+        "balanced_accuracy": 0.8656453876904351,
+        "macro_f1_present_classes": 0.8553228015832098,
+        "ischemic_auroc": 0.9536236876141847,
+        "ischemic_pr_auc": 0.845262093523815,
+        "hemorrhagic_auroc": 0.9869588253289695,
+        "hemorrhagic_pr_auc": 0.9493669709292202,
+        "macro_ovr_auroc": 0.9579790892129237
+      },
+      "densenet121_s123": {
+        "n": 8930,
+        "accuracy": 0.8877939529675252,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            5339,
+            246,
+            203
+          ],
+          [
+            375,
+            1296,
+            2
+          ],
+          [
+            170,
+            6,
+            1293
+          ]
+        ],
+        "normal_recall": 0.9224257083621286,
+        "normal_f1": 0.9148389307745031,
+        "normal_precision": 0.9073759347382733,
+        "normal_specificity": 0.8265436028007639,
+        "normal_npv": 0.8525935653315824,
+        "ischemic_recall": 0.7746563060370592,
+        "ischemic_f1": 0.8047190313567215,
+        "ischemic_precision": 0.8372093023255814,
+        "ischemic_specificity": 0.965274906986358,
+        "ischemic_npv": 0.948929829314549,
+        "hemorrhagic_recall": 0.8801906058543226,
+        "hemorrhagic_f1": 0.871587462082912,
+        "hemorrhagic_precision": 0.863150867823765,
+        "hemorrhagic_specificity": 0.9725237903766251,
+        "hemorrhagic_npv": 0.976318622174381,
+        "balanced_accuracy": 0.8590908734178367,
+        "macro_f1_present_classes": 0.8637151414047123,
+        "ischemic_auroc": 0.9452432966385446,
+        "ischemic_pr_auc": 0.8647886178051583,
+        "hemorrhagic_auroc": 0.9796008452028606,
+        "hemorrhagic_pr_auc": 0.9340006012070224,
+        "macro_ovr_auroc": 0.9532268555760105
+      },
+      "swint_s123": {
+        "n": 8930,
+        "accuracy": 0.8836506159014558,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            5138,
+            357,
+            293
+          ],
+          [
+            283,
+            1390,
+            0
+          ],
+          [
+            103,
+            3,
+            1363
+          ]
+        ],
+        "normal_recall": 0.8876986869384934,
+        "normal_f1": 0.9084158415841584,
+        "normal_precision": 0.9301230992034757,
+        "normal_specificity": 0.8771483131763208,
+        "normal_npv": 0.8091603053435115,
+        "ischemic_recall": 0.830842797369994,
+        "ischemic_f1": 0.8121530820917324,
+        "ischemic_precision": 0.7942857142857143,
+        "ischemic_specificity": 0.9503927242662257,
+        "ischemic_npv": 0.9605849582172702,
+        "hemorrhagic_recall": 0.9278420694349898,
+        "hemorrhagic_f1": 0.87232,
+        "hemorrhagic_precision": 0.8230676328502415,
+        "hemorrhagic_specificity": 0.9607291247822007,
+        "hemorrhagic_npv": 0.9854275501787187,
+        "balanced_accuracy": 0.8821278512478257,
+        "macro_f1_present_classes": 0.8642963078919635,
+        "ischemic_auroc": 0.9654388972998101,
+        "ischemic_pr_auc": 0.8862783023282932,
+        "hemorrhagic_auroc": 0.9903014623170051,
+        "hemorrhagic_pr_auc": 0.960316241333381,
+        "macro_ovr_auroc": 0.9684917968480263
+      },
+      "resnet101_s123": {
+        "n": 8930,
+        "accuracy": 0.867973124300112,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            5008,
+            539,
+            241
+          ],
+          [
+            256,
+            1415,
+            2
+          ],
+          [
+            139,
+            2,
+            1328
+          ]
+        ],
+        "normal_recall": 0.8652384243261921,
+        "normal_f1": 0.8950049146635689,
+        "normal_precision": 0.9268924671478808,
+        "normal_specificity": 0.8742838956078931,
+        "normal_npv": 0.7788488800680465,
+        "ischemic_recall": 0.8457860131500299,
+        "ischemic_f1": 0.7798291540369248,
+        "ischemic_precision": 0.7234151329243353,
+        "ischemic_specificity": 0.9254512884111892,
+        "ischemic_npv": 0.9630054488098652,
+        "hemorrhagic_recall": 0.9040163376446563,
+        "hemorrhagic_f1": 0.8736842105263158,
+        "hemorrhagic_precision": 0.8453214513049013,
+        "hemorrhagic_specificity": 0.9674306393244874,
+        "hemorrhagic_npv": 0.9808397880146759,
+        "balanced_accuracy": 0.8716802583736261,
+        "macro_f1_present_classes": 0.8495060930756031,
+        "ischemic_auroc": 0.9530700246875021,
+        "ischemic_pr_auc": 0.8397119997437714,
+        "hemorrhagic_auroc": 0.9879817529027047,
+        "hemorrhagic_pr_auc": 0.9511381073947264,
+        "macro_ovr_auroc": 0.9572932921547305
+      },
+      "vgg16_s123": {
+        "n": 8930,
+        "accuracy": 0.8884658454647256,
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            5328,
+            294,
+            166
+          ],
+          [
+            353,
+            1318,
+            2
+          ],
+          [
+            181,
+            0,
+            1288
+          ]
+        ],
+        "normal_recall": 0.9205252246026261,
+        "normal_f1": 0.9146781115879828,
+        "normal_precision": 0.9089048106448311,
+        "normal_specificity": 0.83004455760662,
+        "normal_npv": 0.8500651890482399,
+        "ischemic_recall": 0.7878063359234907,
+        "ischemic_f1": 0.8024353120243531,
+        "ischemic_precision": 0.8176178660049628,
+        "ischemic_specificity": 0.9594873914840844,
+        "ischemic_npv": 0.9514894779994534,
+        "hemorrhagic_recall": 0.876786929884275,
+        "hemorrhagic_f1": 0.8806837606837606,
+        "hemorrhagic_precision": 0.8846153846153846,
+        "hemorrhagic_specificity": 0.9774829111379172,
+        "hemorrhagic_npv": 0.9757827134064758,
+        "balanced_accuracy": 0.8617061634701306,
+        "macro_f1_present_classes": 0.8659323947653655,
+        "ischemic_auroc": 0.9499329583547793,
+        "ischemic_pr_auc": 0.8707215048413052,
+        "hemorrhagic_auroc": 0.9819302715851496,
+        "hemorrhagic_pr_auc": 0.9470164804279222,
+        "macro_ovr_auroc": 0.9573684974684343
+      }
+    },
+    "paired_vs_final": {
+      "convnext_s7": {
+        "accuracy": {
+          "diff_other_minus_ref": 0.006830907054871216,
+          "ci95": [
+            -0.001995506094010799,
+            0.015466626426376496
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": 0.0008243627377060303,
+          "ci95": [
+            -0.009067750613547379,
+            0.010453549435492279
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.0026696404016123276,
+          "ci95": [
+            -0.007884685365556855,
+            0.0020414508067476324
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.003686289193937875,
+          "ci95": [
+            -0.00512024066812145,
+            -0.0023341270540340143
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.08965929468021516,
+          "ci95": [
+            -0.11417974386724385,
+            -0.06462856585163589
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.03539823008849563,
+          "ci95": [
+            -0.04579356316198425,
+            -0.02556734856327254
+          ]
+        }
+      },
+      "resnet18_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.012206047032474854,
+          "ci95": [
+            -0.020613809786553965,
+            -0.0034086597653340944
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.018488989304874637,
+          "ci95": [
+            -0.027901882989675223,
+            -0.008851807011288822
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.009329245024343624,
+          "ci95": [
+            -0.014966505630846066,
+            -0.0037296136693561774
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.0014756105472076841,
+          "ci95": [
+            -0.002798065536220892,
+            -0.00016251223065974306
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.09683203825463238,
+          "ci95": [
+            -0.12184180449584876,
+            -0.0724359153226557
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.001361470388019148,
+          "ci95": [
+            -0.012297195977180033,
+            0.009308665470477463
+          ]
+        }
+      },
+      "resnet18_s7": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.001231802911534241,
+          "ci95": [
+            -0.010275717913039745,
+            0.008029587386261926
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.007174083685650423,
+          "ci95": [
+            -0.017446747089097554,
+            0.0032563921127258277
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.008140912403886258,
+          "ci95": [
+            -0.015575808405316433,
+            -0.001233751239348907
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.008652937183953324,
+          "ci95": [
+            -0.012116196076149523,
+            -0.005495482985802728
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.08248655110579795,
+          "ci95": [
+            -0.10911511640746434,
+            -0.05683040307996594
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.027229407760381297,
+          "ci95": [
+            -0.041023331570393125,
+            -0.014178415606202581
+          ]
+        }
+      },
+      "effb0_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.012765957446808529,
+          "ci95": [
+            -0.022286760424233457,
+            -0.0032812150693934763
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.016365522054739623,
+          "ci95": [
+            -0.026958788489523662,
+            -0.006039515941630659
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.004205515527148096,
+          "ci95": [
+            -0.011129513503920658,
+            0.0023722920220063297
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.0013101483739954567,
+          "ci95": [
+            -0.002459840533417243,
+            -0.00012180186816384891
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.0472205618649133,
+          "ci95": [
+            -0.07764890231491207,
+            -0.019352281445219697
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": 0.001361470388019037,
+          "ci95": [
+            -0.00831760531481202,
+            0.011677842817624925
+          ]
+        }
+      },
+      "effb0_s7": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.007166853303471443,
+          "ci95": [
+            -0.016091687885913378,
+            0.0023278276253480517
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.012656880709303264,
+          "ci95": [
+            -0.022789229558105407,
+            -0.0023577790990517203
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.010743136395875097,
+          "ci95": [
+            -0.01795813491777479,
+            -0.003992573854069532
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.002033081668424419,
+          "ci95": [
+            -0.0037541219169274554,
+            -0.0004231267731342692
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.0777047220561865,
+          "ci95": [
+            -0.10485962566844921,
+            -0.054286384392468495
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.017018379850238352,
+          "ci95": [
+            -0.029963200927893736,
+            -0.004212748577875967
+          ]
+        }
+      },
+      "mobilenetv2_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.00884658454647258,
+          "ci95": [
+            -0.016442264471659557,
+            -0.0007859803582783237
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.012633717953701495,
+          "ci95": [
+            -0.021315647908339348,
+            -0.0038400324427456663
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.009785016194352347,
+          "ci95": [
+            -0.015501216512324134,
+            -0.004000413853213814
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.002699629176779461,
+          "ci95": [
+            -0.0043194531366412825,
+            -0.0012138290552424944
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.049013747758517634,
+          "ci95": [
+            -0.07171144921654433,
+            -0.027670976545508
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.034717494894486056,
+          "ci95": [
+            -0.04938292487345261,
+            -0.020886437255244625
+          ]
+        }
+      },
+      "densenet121_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": 0.0030235162374019353,
+          "ci95": [
+            -0.0058897641831852894,
+            0.011767701868710035
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.004241378132199047,
+          "ci95": [
+            -0.014528268877906012,
+            0.005532811751455074
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.018165407169992487,
+          "ci95": [
+            -0.02722118632737632,
+            -0.009932757178536493
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.010057609302888348,
+          "ci95": [
+            -0.013704705077029788,
+            -0.006806518635511664
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.09742976688583382,
+          "ci95": [
+            -0.12624558130400632,
+            -0.07114212512036312
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.03948264125255285,
+          "ci95": [
+            -0.05145709202404247,
+            -0.027662120911128348
+          ]
+        }
+      },
+      "swint_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.0011198208286674616,
+          "ci95": [
+            -0.007939135187185914,
+            0.006300160973524106
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.003660211644947786,
+          "ci95": [
+            -0.011575898402239045,
+            0.004933636770669902
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": 0.0020301934912730912,
+          "ci95": [
+            -0.0023110532264202844,
+            0.0063909182154747776
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": 0.0006430078112561466,
+          "ci95": [
+            -0.00035610642704372587,
+            0.0016925842655417574
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.04124327555289897,
+          "ci95": [
+            -0.06426088259343714,
+            -0.01887101169668001
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": 0.008168822328114334,
+          "ci95": [
+            -0.0007028650235564205,
+            0.016835016835016762
+          ]
+        }
+      },
+      "resnet101_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": -0.016797312430011258,
+          "ci95": [
+            -0.02408825041963103,
+            -0.009375822880087646
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.018450426461308234,
+          "ci95": [
+            -0.026453338809718056,
+            -0.010594242893764372
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.010338679121034922,
+          "ci95": [
+            -0.01604750741282137,
+            -0.004793902227620962
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.0016767016030442283,
+          "ci95": [
+            -0.003743607051258091,
+            -7.172510732100384e-05
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.026300059772863094,
+          "ci95": [
+            -0.04830928136538439,
+            -0.005443099323544004
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.015656909462219204,
+          "ci95": [
+            -0.02656077768931462,
+            -0.004026107874392505
+          ]
+        }
+      },
+      "vgg16_s123": {
+        "accuracy": {
+          "diff_other_minus_ref": 0.00369540873460239,
+          "ci95": [
+            -0.006248368762268,
+            0.013072499039135828
+          ]
+        },
+        "macro_f1_present_classes": {
+          "diff_other_minus_ref": -0.0020241247715457877,
+          "ci95": [
+            -0.013945050126014578,
+            0.008745470684588866
+          ]
+        },
+        "ischemic_auroc": {
+          "diff_other_minus_ref": -0.013475745453757737,
+          "ci95": [
+            -0.02530666287019866,
+            -0.00355944726688209
+          ]
+        },
+        "hemorrhagic_auroc": {
+          "diff_other_minus_ref": -0.007728182920599402,
+          "ci95": [
+            -0.010479656446511745,
+            -0.005069163257867552
+          ]
+        },
+        "ischemic_recall": {
+          "diff_other_minus_ref": -0.08427973699940228,
+          "ci95": [
+            -0.119146149019461,
+            -0.05400346255600731
+          ]
+        },
+        "hemorrhagic_recall": {
+          "diff_other_minus_ref": -0.0428863172226005,
+          "ci95": [
+            -0.05720114006357863,
+            -0.02781542423130723
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "kernel": "atik68/neuroscan-q-round24-control-office",
+  "kernel_dir": "C:\\NeuroScan\\kaggle_kernels\\phase_q_round24_control_office",
+  "run_dir": "C:\\kaggle\\runs\\phase_q_round24_control_office\\20260930-143314",
+  "workers": 6,
+  "num_workers_patched": true,
+  "started": "2026-09-30T14:33:14.995806",
+  "torch": "2.6.0+cu124",
+  "cuda": "12.4",
+  "gpu": "NVIDIA GeForce RTX 4060 Ti",
+  "vram_GB": 17.2,
+  "finished": "2026-09-30T15:44:02.723206",
+  "minutes": 70.8,
+  "exit_code": 0
+}

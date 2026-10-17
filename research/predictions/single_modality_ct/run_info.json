@@ -1,0 +1,15 @@
+{
+  "kernel": "atik68/neuroscan-q-c1-ct-only-s123-office",
+  "kernel_dir": "C:\\NeuroScan\\kaggle_kernels\\phase_q_c1_ct_only_s123_office",
+  "run_dir": "C:\\kaggle\\runs\\phase_q_c1_ct_only_s123_office\\20261007-032830",
+  "workers": 6,
+  "num_workers_patched": true,
+  "started": "2026-10-07T03:28:30.802179",
+  "torch": "2.6.0+cu124",
+  "cuda": "12.4",
+  "gpu": "NVIDIA GeForce RTX 4060 Ti",
+  "vram_GB": 17.2,
+  "finished": "2026-10-07T07:32:26.114833",
+  "minutes": 243.9,
+  "exit_code": 0
+}

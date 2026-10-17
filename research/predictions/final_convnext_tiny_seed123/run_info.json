@@ -1,0 +1,15 @@
+{
+  "kernel": "atik68/neuroscan-q-round30a-convnext-s123-office",
+  "kernel_dir": "C:\\NeuroScan\\kaggle_kernels\\phase_q_round30a_convnext_s123_office",
+  "run_dir": "C:\\kaggle\\runs\\phase_q_round30a_convnext_s123_office\\20261002-055256",
+  "workers": 6,
+  "num_workers_patched": true,
+  "started": "2026-10-02T05:52:56.673201",
+  "torch": "2.6.0+cu124",
+  "cuda": "12.4",
+  "gpu": "NVIDIA GeForce RTX 4060 Ti",
+  "vram_GB": 17.2,
+  "finished": "2026-10-02T10:52:49.425634",
+  "minutes": 299.9,
+  "exit_code": 0
+}

@@ -1,0 +1,399 @@
+{
+  "condition": "backbone_swint_round24_recipe_seed123_office_pc",
+  "checkpoint_epoch": 30,
+  "checkpoint_val_acc_incl_cpaisd_soop": 0.8842624720487315,
+  "startup": {
+    "soop_edge_check": {
+      "rows": 36600,
+      "edge_rows_top_bottom_3": 8706,
+      "edge_share": 0.2379,
+      "edge_rows_by_label": {
+        "normal": 8435,
+        "ischemic": 271
+      },
+      "preview_dwi_foreground_fraction": [
+        0.318,
+        0.268,
+        0.327,
+        0.244,
+        0.321,
+        0.272,
+        0.168,
+        0.309,
+        0.234,
+        0.34,
+        0.377,
+        0.311
+      ]
+    },
+    "data": {
+      "train_rows": 85872,
+      "val_rows": 12969,
+      "train_by_dataset": {
+        "SOOP_dwi_adc": 31307,
+        "RSNA_ICH": 27116,
+        "ISLES2022_dwi_adc": 9014,
+        "CPAISD_v2": 6311,
+        "AISD": 5064,
+        "Kaggle_CT": 4753,
+        "SICH_CT": 2307
+      },
+      "train_by_label": {
+        "normal": 53791,
+        "ischemic": 17271,
+        "hemorrhagic": 14810
+      },
+      "soop_holdout_patients": 66,
+      "soop_holdout_rows": 1672,
+      "soop_moved_to_train_patients": 371,
+      "rsna_extra_rows": 16000,
+      "rsna_rows_all_splits": 32000
+    }
+  },
+  "VALIDATION (decision set)": {
+    "full_val_incl_cpaisd_bbswints123": {
+      "n": 12969,
+      "accuracy": 0.8876551777315136,
+      "macro_f1": 0.871235646909056,
+      "confusion_matrix": [
+        [
+          7664,
+          534,
+          296
+        ],
+        [
+          544,
+          2393,
+          5
+        ],
+        [
+          78,
+          0,
+          1455
+        ]
+      ],
+      "normal_recall": 0.9022839651518719,
+      "normal_precision": 0.924933622978518,
+      "ischemic_recall": 0.8133922501699524,
+      "ischemic_precision": 0.8175606422958661,
+      "hemorrhagic_recall": 0.949119373776908,
+      "hemorrhagic_precision": 0.8285876993166287,
+      "ischemic_auroc": 0.9556997263066133,
+      "ischemic_pr_auc": 0.9041555018356097,
+      "hemorrhagic_auroc": 0.9949753550603067,
+      "hemorrhagic_pr_auc": 0.9650907124867321
+    },
+    "cpaisd_val_bbswints123": {
+      "n": 1835,
+      "accuracy": 0.8452316076294278,
+      "macro_f1": 0.5086376961227161,
+      "confusion_matrix": [
+        [
+          1320,
+          129,
+          3
+        ],
+        [
+          148,
+          231,
+          4
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "normal_recall": 0.9090909090909091,
+      "normal_precision": 0.8991825613079019,
+      "ischemic_recall": 0.6031331592689295,
+      "ischemic_precision": 0.6416666666666667,
+      "hemorrhagic_recall": 0.0,
+      "hemorrhagic_precision": 0.0,
+      "ischemic_auroc": 0.8808485999323882,
+      "ischemic_pr_auc": 0.6127697512183782
+    },
+    "isles_only_bbswints123": {
+      "n": 2447,
+      "accuracy": 0.890069472823866,
+      "macro_f1": 0.5832152545098631,
+      "confusion_matrix": [
+        [
+          1516,
+          78,
+          0
+        ],
+        [
+          191,
+          662,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "normal_recall": 0.9510664993726474,
+      "normal_precision": 0.888107791446983,
+      "ischemic_recall": 0.776084407971864,
+      "ischemic_precision": 0.8945945945945946,
+      "hemorrhagic_recall": 0.0,
+      "hemorrhagic_precision": 0.0,
+      "ischemic_auroc": 0.9346538381768678,
+      "ischemic_pr_auc": 0.9217655442300167
+    },
+    "soop_val_only_bbswints123": {
+      "n": 3621,
+      "accuracy": 0.9077602872134769,
+      "macro_f1": 0.5932160712463742,
+      "confusion_matrix": [
+        [
+          2374,
+          218,
+          0
+        ],
+        [
+          116,
+          913,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "normal_recall": 0.9158950617283951,
+      "normal_precision": 0.9534136546184739,
+      "ischemic_recall": 0.8872691933916423,
+      "ischemic_precision": 0.8072502210433244,
+      "hemorrhagic_recall": 0.0,
+      "hemorrhagic_precision": 0.0,
+      "ischemic_auroc": 0.9590651957432001,
+      "ischemic_pr_auc": 0.9401257628415081
+    },
+    "rsna_only_bbswints123": {
+      "n": 2498,
+      "accuracy": 0.8582866293034428,
+      "macro_f1": 0.5715056835607726,
+      "confusion_matrix": [
+        [
+          966,
+          0,
+          283
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          71,
+          0,
+          1178
+        ]
+      ],
+      "normal_recall": 0.7734187349879904,
+      "normal_precision": 0.9315332690453231,
+      "ischemic_recall": 0.0,
+      "ischemic_precision": 0.0,
+      "hemorrhagic_recall": 0.9431545236188951,
+      "hemorrhagic_precision": 0.8062970568104039,
+      "hemorrhagic_auroc": 0.9525763124510818,
+      "hemorrhagic_pr_auc": 0.9538722355172278
+    },
+    "per_source_bbswints123": {
+      "AISD": {
+        "ischemic": {
+          "n": 511,
+          "recall": 0.8551859099804305,
+          "predicted_as": {
+            "ischemic": 437,
+            "normal": 74
+          }
+        },
+        "normal": {
+          "n": 511,
+          "recall": 0.8082191780821918,
+          "predicted_as": {
+            "normal": 413,
+            "ischemic": 98
+          }
+        }
+      },
+      "CPAISD_v2": {
+        "ischemic": {
+          "n": 383,
+          "recall": 0.6031331592689295,
+          "predicted_as": {
+            "ischemic": 231,
+            "normal": 148,
+            "hemorrhagic": 4
+          }
+        },
+        "normal": {
+          "n": 1452,
+          "recall": 0.9090909090909091,
+          "predicted_as": {
+            "normal": 1320,
+            "ischemic": 129,
+            "hemorrhagic": 3
+          }
+        }
+      },
+      "ISLES2022_dwi_adc": {
+        "ischemic": {
+          "n": 853,
+          "recall": 0.776084407971864,
+          "predicted_as": {
+            "ischemic": 662,
+            "normal": 191
+          }
+        },
+        "normal": {
+          "n": 1594,
+          "recall": 0.9510664993726474,
+          "predicted_as": {
+            "normal": 1516,
+            "ischemic": 78
+          }
+        }
+      },
+      "Kaggle_CT": {
+        "hemorrhagic": {
+          "n": 168,
+          "recall": 0.9761904761904762,
+          "predicted_as": {
+            "hemorrhagic": 164,
+            "normal": 4
+          }
+        },
+        "ischemic": {
+          "n": 166,
+          "recall": 0.9036144578313253,
+          "predicted_as": {
+            "ischemic": 150,
+            "normal": 15,
+            "hemorrhagic": 1
+          }
+        },
+        "normal": {
+          "n": 684,
+          "recall": 0.97953216374269,
+          "predicted_as": {
+            "normal": 670,
+            "ischemic": 11,
+            "hemorrhagic": 3
+          }
+        }
+      },
+      "RSNA_ICH": {
+        "hemorrhagic": {
+          "n": 1249,
+          "recall": 0.9431545236188951,
+          "predicted_as": {
+            "hemorrhagic": 1178,
+            "normal": 71
+          }
+        },
+        "normal": {
+          "n": 1249,
+          "recall": 0.7734187349879904,
+          "predicted_as": {
+            "normal": 966,
+            "hemorrhagic": 283
+          }
+        }
+      },
+      "SICH_CT": {
+        "hemorrhagic": {
+          "n": 116,
+          "recall": 0.9741379310344828,
+          "predicted_as": {
+            "hemorrhagic": 113,
+            "normal": 3
+          }
+        },
+        "normal": {
+          "n": 412,
+          "recall": 0.9830097087378641,
+          "predicted_as": {
+            "normal": 405,
+            "hemorrhagic": 7
+          }
+        }
+      },
+      "SOOP_dwi_adc": {
+        "ischemic": {
+          "n": 1029,
+          "recall": 0.8872691933916423,
+          "predicted_as": {
+            "ischemic": 913,
+            "normal": 116
+          }
+        },
+        "normal": {
+          "n": 2592,
+          "recall": 0.9158950617283951,
+          "predicted_as": {
+            "normal": 2374,
+            "ischemic": 218
+          }
+        }
+      }
+    },
+    "isles_size_bbswints123": [
+      {
+        "bin": "0",
+        "n": 0,
+        "caught": 0,
+        "recall": NaN
+      },
+      {
+        "bin": "1-10",
+        "n": 36,
+        "caught": 4,
+        "recall": 0.1111
+      },
+      {
+        "bin": "11-25",
+        "n": 73,
+        "caught": 36,
+        "recall": 0.4932
+      },
+      {
+        "bin": "26-50",
+        "n": 76,
+        "caught": 39,
+        "recall": 0.5132
+      },
+      {
+        "bin": "51-100",
+        "n": 100,
+        "caught": 69,
+        "recall": 0.69
+      },
+      {
+        "bin": "101-250",
+        "n": 134,
+        "caught": 114,
+        "recall": 0.8507
+      },
+      {
+        "bin": "251-1000",
+        "n": 261,
+        "caught": 238,
+        "recall": 0.9119
+      },
+      {
+        "bin": ">1000",
+        "n": 173,
+        "caught": 162,
+        "recall": 0.9364
+      }
+    ]
+  },
+  "TEST and SOOP hold-out": "frozen -- probabilities saved, metrics not computed (evaluation protocol 2026-09-30)",
+  "note": "bbswints123 = Swin-Tiny on the final model's recipe (post-hoc backbone comparison)."
+}

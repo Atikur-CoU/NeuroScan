@@ -5,11 +5,12 @@ Always-on replacement for the Kaggle/Colab + ngrok notebook setup
 
 **v2 (2026-10):** serves the paper's final model (R30A s123, ConvNeXt-Tiny)
 as ONNX with ONNX Runtime — no PyTorch at run time (peak ~300 MB, ~0.85 s
-per request on the free tier's one CPU). `/api/predict` accepts
+per request measured on one CPU thread off the hosting tier; the free tier
+provides 0.1 CPU, so requests there are slower). `/api/predict` accepts
 `modality` (CT/MRI) plus `prev_file` + `next_file` (CT adjacent slices,
 optional) or `adc_file` (MRI, required). CT with one slice runs the
 single-image fallback with a warning; MRI without ADC is refused, because
-the model detects almost no ischemia from one sequence (reviewer
+the model detects almost no ischemia from one sequence (post-hoc
 experiment C2). Older clients that send only `file` are treated as CT. Decision rule: 4-view
 TTA, plain argmax (the rule the paper evaluates the alert tiers under).
 See the docstring of `inference.py`. `webapp/inference.py` is the old

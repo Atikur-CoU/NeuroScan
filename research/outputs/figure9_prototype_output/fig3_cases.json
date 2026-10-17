@@ -1,0 +1,140 @@
+[
+  {
+    "name": "SICH_hemorrhagic",
+    "dir": "/tmp/fig3_cases/SICH_hemorrhagic",
+    "modality": "CT",
+    "source": "SICH",
+    "label": "hemorrhagic",
+    "offline_probs": [
+      0.018,
+      0.0,
+      0.9819
+    ],
+    "prediction": "hemorrhagic",
+    "probs": [
+      0.018,
+      0.0,
+      0.9819
+    ],
+    "tier": "High alert",
+    "pathway": "ct_adjacent_slices",
+    "likely_not_a_scan": false,
+    "warnings": []
+  },
+  {
+    "name": "AISD_ischemic",
+    "dir": "/tmp/fig3_cases/AISD_ischemic",
+    "modality": "CT",
+    "source": "AISD",
+    "label": "ischemic",
+    "offline_probs": [
+      0.0021,
+      0.9977,
+      0.0002
+    ],
+    "prediction": "ischemic",
+    "probs": [
+      0.0021,
+      0.9977,
+      0.0002
+    ],
+    "tier": "High alert",
+    "pathway": "ct_adjacent_slices",
+    "likely_not_a_scan": false,
+    "warnings": []
+  },
+  {
+    "name": "AISD_normal",
+    "dir": "/tmp/fig3_cases/AISD_normal",
+    "modality": "CT",
+    "source": "AISD",
+    "label": "normal",
+    "offline_probs": [
+      0.9229,
+      0.0768,
+      0.0003
+    ],
+    "prediction": "normal",
+    "probs": [
+      0.9229,
+      0.0768,
+      0.0003
+    ],
+    "tier": "Normal",
+    "pathway": "ct_adjacent_slices",
+    "likely_not_a_scan": false,
+    "warnings": []
+  },
+  {
+    "name": "ISLES 2022_ischemic",
+    "dir": "/tmp/fig3_cases/ISLES 2022_ischemic",
+    "modality": "MRI",
+    "source": "ISLES 2022",
+    "label": "ischemic",
+    "offline_probs": [
+      0.494,
+      0.5054,
+      0.0005
+    ],
+    "prediction": "ischemic",
+    "probs": [
+      0.494,
+      0.5054,
+      0.0005
+    ],
+    "tier": "Uncertain",
+    "pathway": "mri_dwi_adc",
+    "likely_not_a_scan": false,
+    "warnings": [
+      "MRI: hemorrhage was not represented in training or evaluation; MRI results concern normal versus ischemic only."
+    ]
+  },
+  {
+    "name": "SOOP_ischemic",
+    "dir": "/tmp/fig3_cases/SOOP_ischemic",
+    "modality": "MRI",
+    "source": "SOOP",
+    "label": "ischemic",
+    "offline_probs": [
+      0.0001,
+      0.9999,
+      0.0001
+    ],
+    "prediction": "ischemic",
+    "probs": [
+      0.0001,
+      0.9999,
+      0.0001
+    ],
+    "tier": "High alert",
+    "pathway": "mri_dwi_adc",
+    "likely_not_a_scan": false,
+    "warnings": [
+      "MRI: hemorrhage was not represented in training or evaluation; MRI results concern normal versus ischemic only."
+    ]
+  },
+  {
+    "name": "SOOP_normal",
+    "dir": "/tmp/fig3_cases/SOOP_normal",
+    "modality": "MRI",
+    "source": "SOOP",
+    "label": "normal",
+    "offline_probs": [
+      0.5285,
+      0.4712,
+      0.0004
+    ],
+    "prediction": "normal",
+    "probs": [
+      0.5285,
+      0.4712,
+      0.0004
+    ],
+    "tier": "Uncertain",
+    "pathway": "mri_dwi_adc",
+    "likely_not_a_scan": false,
+    "warnings": [
+      "MRI: hemorrhage was not represented in training or evaluation; MRI results concern normal versus ischemic only."
+    ]
+  }
+]

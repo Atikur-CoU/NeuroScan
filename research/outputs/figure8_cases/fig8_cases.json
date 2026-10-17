@@ -1,0 +1,92 @@
+[
+  {
+    "name": "AISD_0_hit",
+    "dataset": "AISD",
+    "sample_index": 0,
+    "source_key": "AISD/image/0226309/010.png",
+    "out_path": "AISD/ischemic/0226309_010.png",
+    "pk": "AISD:0226309",
+    "pred_locked": "ischemic",
+    "probs": [
+      0.0004,
+      0.9995,
+      0.0
+    ],
+    "lesion_px_224": 13
+  },
+  {
+    "name": "AISD_1_hit",
+    "dataset": "AISD",
+    "sample_index": 1,
+    "source_key": "AISD/image/0073397/018.png",
+    "out_path": "AISD/ischemic/0073397_018.png",
+    "pk": "AISD:0073397",
+    "pred_locked": "ischemic",
+    "probs": [
+      0.0024,
+      0.9975,
+      0.0001
+    ],
+    "lesion_px_224": 565
+  },
+  {
+    "name": "CPAISD_v2_2_hit",
+    "dataset": "CPAISD_v2",
+    "sample_index": 2,
+    "source_key": "/kaggle/input/datasets/atik68/neuroscan-cpaisd/test/2.25.116613827163187469445304378258728959191/00035/raw.dcm",
+    "out_path": "CPAISD_v2/f5e3b6435ecdbabdcdaae37cbf482f01.png",
+    "pk": "CPAISD:2.25.116613827163187469445304378258728959191",
+    "pred_locked": "ischemic",
+    "probs": [
+      0.0518,
+      0.9478,
+      0.0004
+    ],
+    "lesion_px_224": 2323
+  },
+  {
+    "name": "CPAISD_v2_0_miss",
+    "dataset": "CPAISD_v2",
+    "sample_index": 0,
+    "source_key": "/kaggle/input/datasets/atik68/neuroscan-cpaisd/train/2.25.298183699450834617808295813540600270339/00025/raw.dcm",
+    "out_path": "CPAISD_v2/32b92b01beb621bc0db94159b3a01f39.png",
+    "pk": "CPAISD:2.25.298183699450834617808295813540600270339",
+    "pred_locked": "normal",
+    "probs": [
+      0.9701,
+      0.0296,
+      0.0002
+    ],
+    "lesion_px_224": 2451
+  },
+  {
+    "name": "ISLES2022_dwi_adc_0_hit",
+    "dataset": "ISLES2022_dwi_adc",
+    "sample_index": 0,
+    "source_key": "sub-strokecase0085/ses-0001/dwi/slice0031",
+    "out_path": "ISLES2022/stroke/d31f32adf9236c7d36b572d9c6d264b9.png",
+    "pk": "ISLES:sub-strokecase0085/ses-0001",
+    "pred_locked": "ischemic",
+    "probs": [
+      0.0146,
+      0.9854,
+      0.0001
+    ],
+    "lesion_px_224": 528
+  },
+  {
+    "name": "ISLES2022_dwi_adc_1_hit",
+    "dataset": "ISLES2022_dwi_adc",
+    "sample_index": 1,
+    "source_key": "sub-strokecase0218/ses-0001/dwi/slice0015",
+    "out_path": "ISLES2022/stroke/805f44172bc15035b743c1ea8e193cff.png",
+    "pk": "ISLES:sub-strokecase0218/ses-0001",
+    "pred_locked": "ischemic",
+    "probs": [
+      0.0003,
+      0.9997,
+      0.0001
+    ],
+    "lesion_px_224": 324
+  }
+]
