@@ -56,5 +56,8 @@ Software versions are listed in Supplementary Section S2.
   paragraph lists exactly what changed. No entry, date, number or decision was changed.
 - Comments and output labels in the analysis code were harmonized to the terms used in the paper ("post-hoc");
   no code logic was changed.
+- In `code/analysis/final_evaluation/evaluate.py`, "pre-registered" means that the evaluation plan was written into
+  the dated development record before the final model was scored; it was not filed with a public registry. The paper
+  therefore calls the plan pre-specified. The script is kept exactly as it ran.
 - Model weights are not stored here because of file-size limits; the served ONNX model is fetched by the inference
   service at start-up and its SHA-256 fingerprint is checked before serving.
