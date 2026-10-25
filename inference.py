@@ -39,6 +39,8 @@ model's evidence is concentrated, not a lesion boundary.
 import base64
 import hashlib
 import io
+import os
+import time
 from pathlib import Path
 
 import numpy as np
@@ -46,9 +48,23 @@ import onnxruntime as ort
 from PIL import Image
 
 MODELS_DIR = Path(__file__).parent / "models"
-MODEL_FILE = MODELS_DIR / "neuroscan_r30a_s123.onnx"
-EXPECTED_SHA256 = "4937ab381ee3e7c29d5ab18ea761a8c19ddffb6488210fb6030511a8041502eb"
-MODEL_VERSION = "r30a_s123_convnext_tiny_onnx"
+# Served copy of the model, chosen by NEUROSCAN_MODEL_VARIANT (default fp32 = the evaluated model). int8_dynamic = the
+# same model with INT8 dynamic quantization of the backbone's MatMul weights; the classifier head and the in-graph
+# Grad-CAM stay FP32 (kernel neuroscan-p2-compression-gradcam: 33.8 MB instead of 111.4 MB, 99.71% of held-out
+# predictions unchanged, every change a near-tie). Each copy is checked against its own SHA-256 at start-up and reports
+# its own model_version, so stored predictions say which copy made them.
+MODEL_VARIANTS = {
+    "fp32": ("neuroscan_r30a_s123.onnx", "4937ab381ee3e7c29d5ab18ea761a8c19ddffb6488210fb6030511a8041502eb",
+             "r30a_s123_convnext_tiny_onnx"),
+    "int8_dynamic": ("neuroscan_r30a_s123_int8_dynamic.onnx",
+                     "ad2f6e0ee22b28ec98295b742075a2168e480801073a8df3f1222df37c74d99f",
+                     "r30a_s123_convnext_tiny_onnx_int8_dynamic"),
+}
+MODEL_VARIANT = os.environ.get("NEUROSCAN_MODEL_VARIANT", "fp32").strip().lower()
+if MODEL_VARIANT not in MODEL_VARIANTS:
+    raise RuntimeError(f"NEUROSCAN_MODEL_VARIANT must be one of {sorted(MODEL_VARIANTS)}, not {MODEL_VARIANT!r}.")
+_MODEL_NAME, EXPECTED_SHA256, MODEL_VERSION = MODEL_VARIANTS[MODEL_VARIANT]
+MODEL_FILE = MODELS_DIR / _MODEL_NAME
 
 TARGET_SIZE = (224, 224)
 VALID_LABELS = ("normal", "ischemic", "hemorrhagic")
@@ -145,6 +161,19 @@ def _softmax(z: np.ndarray) -> np.ndarray:
     return e / e.sum(axis=1, keepdims=True)
 
 
+def process_memory_mb() -> dict | None:
+    """Current (VmRSS) and peak (VmHWM) resident memory of this process, from /proc on Linux; None elsewhere."""
+    try:
+        out = {}
+        with open("/proc/self/status") as f:
+            for line in f:
+                if line.startswith(("VmRSS", "VmHWM")):
+                    out["rss" if line.startswith("VmRSS") else "peak"] = int(line.split()[1]) // 1024
+        return out or None
+    except OSError:
+        return None
+
+
 def _sha256(path: Path) -> str:
     h = hashlib.sha256()
     with open(path, "rb") as f:
@@ -228,9 +257,12 @@ class ThreeClassPipeline:
 
     def predict(self, modality: str, image: Image.Image, prev: Image.Image | None = None,
                 nxt: Image.Image | None = None, adc: Image.Image | None = None) -> dict:
+        t0 = time.perf_counter()
         merged, pathway, base = build_input(modality, image, prev, nxt, adc)
         x = np.stack([_to_array(v) for v in _tta_views(merged)])
+        t1 = time.perf_counter()
         logits, cams = self.session.run(["logits", "gradcam"], {"image": x})
+        t2 = time.perf_counter()
         probs = _softmax(logits.astype(np.float64)).mean(axis=0)
         idx = int(np.argmax(probs))
         prediction = VALID_LABELS[idx]
@@ -278,6 +310,10 @@ class ThreeClassPipeline:
             result["heatmap_png_base64"] = base64.b64encode(buf.getvalue()).decode("ascii")
         except Exception:
             pass
+        t3 = time.perf_counter()
+        # Server-side time per stage (paper 2, E1): separates the model's time from the network and the platform.
+        result["timing_ms"] = {"preprocess": round(1000 * (t1 - t0), 1), "model": round(1000 * (t2 - t1), 1),
+                               "postprocess": round(1000 * (t3 - t2), 1), "total": round(1000 * (t3 - t0), 1)}
         return result
 
 

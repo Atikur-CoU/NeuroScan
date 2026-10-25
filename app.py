@@ -20,14 +20,16 @@ project's standing rule of never committing real secrets to any repo.
 """
 import io
 import os
+import time
 
 from fastapi import FastAPI, File, Form, Header, HTTPException, UploadFile
 from PIL import Image, UnidentifiedImageError
 
-from inference import InputError, get_pipeline
+from inference import MODEL_VARIANT, MODEL_VERSION, InputError, get_pipeline, process_memory_mb
 
 MAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 MB
 API_KEY = os.environ.get("NEUROSCAN_API_KEY", "")
+STARTED = time.time()
 
 app = FastAPI(title="NeuroScan Inference API")
 
@@ -53,8 +55,11 @@ def health(x_api_key: str = Header(default="")):
     pipeline = get_pipeline()
     return {
         "status": "ok",
-        "checkpoint": {"epoch": pipeline.epoch, "val_acc": pipeline.val_acc, "model_version": "r30a_s123_convnext_tiny_onnx",
-                       "weights_sha256": pipeline.weights_sha256},
+        "checkpoint": {"epoch": pipeline.epoch, "val_acc": pipeline.val_acc, "model_version": MODEL_VERSION,
+                       "model_variant": MODEL_VARIANT, "weights_sha256": pipeline.weights_sha256},
+        # Paper 2, E1: process memory (MB; current and peak since start) and seconds since start-up.
+        "memory_mb": process_memory_mb(),
+        "uptime_s": round(time.time() - STARTED, 1),
     }
 
 
@@ -84,6 +89,7 @@ async def predict(
     x_api_key: str = Header(default=""),
 ):
     _check_api_key(x_api_key)
+    t0 = time.perf_counter()
     modality = modality.strip().upper()
     image = await _read_image(file, "The image")
     prev = await _read_image(prev_file, "The previous slice")
@@ -96,4 +102,6 @@ async def predict(
     except InputError as e:
         raise HTTPException(status_code=400, detail=str(e))
     result["filename"] = file.filename
+    # Whole request inside the server, upload reading and image decoding included (the rest is network and queueing).
+    result.setdefault("timing_ms", {})["request"] = round(1000 * (time.perf_counter() - t0), 1)
     return result
