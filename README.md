@@ -21,6 +21,10 @@ of no traffic and takes ~30-60s to wake on the next request. There is no
 manual-restart routine like the notebook needed, though — once deployed,
 it just works, cold start aside.
 
+**Packages:** `requirements.txt` lists the six packages the server imports; `requirements.lock` pins every package
+installed (29 in the Docker image, with SHA-256 hashes) and is what the Docker image installs. After changing `requirements.txt`,
+regenerate the lock with the command at the top of `requirements.lock`.
+
 ## Where the checkpoint comes from
 
 The model checkpoint is downloaded at **container startup** (`start.sh`)
@@ -100,7 +104,7 @@ Github → Settings → Developer settings → **Personal access tokens** →
    - `NEUROSCAN_API_KEY` — a random value (e.g. `python -c "import secrets; print(secrets.token_urlsafe(24))"`) — this is what the PHP site's Settings page will need too.
    - `GITHUB_TOKEN` — the fine-grained token from step 3.
    - `NEUROSCAN_MODEL_VARIANT` (optional) — `fp32` (default, the evaluated model) or `int8_dynamic` (the INT8 copy,
-     33.8 MB; upload `neuroscan_r30a_s123_int8_dynamic.onnx` to the same release first). The server checks the chosen
+     33.8 MB; upload `neuroscan_r30a_s123_int8_dynamic.onnx` first to its own release, tag `paper2-int8-dynamic`). The server checks the chosen
      file's own SHA-256 and reports the variant in `/api/health` and as `model_version` with every prediction.
    - Remove `KAGGLE_USERNAME`/`KAGGLE_KEY` if they're still there from an earlier attempt — no longer used.
 4. Create/redeploy.

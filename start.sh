@@ -19,11 +19,11 @@ if [ -z "$GITHUB_TOKEN" ]; then
 fi
 
 REPO="Atikur-CoU/NeuroScan"
-RELEASE_TAG="checkpoint-v2-convnext"
 # Which copy of the model to serve (inference.py reads the same variable and checks that file's own SHA-256).
+# The INT8 copy lives in its own release, so the release cited for the FP32 model stays unchanged.
 case "${NEUROSCAN_MODEL_VARIANT:-fp32}" in
-    fp32) ASSET_NAME="neuroscan_r30a_s123.onnx" ;;
-    int8_dynamic) ASSET_NAME="neuroscan_r30a_s123_int8_dynamic.onnx" ;;
+    fp32) RELEASE_TAG="checkpoint-v2-convnext"; ASSET_NAME="neuroscan_r30a_s123.onnx" ;;
+    int8_dynamic) RELEASE_TAG="paper2-int8-dynamic"; ASSET_NAME="neuroscan_r30a_s123_int8_dynamic.onnx" ;;
     *) echo "FATAL: NEUROSCAN_MODEL_VARIANT must be fp32 or int8_dynamic." >&2; exit 1 ;;
 esac
 
