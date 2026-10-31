@@ -18,6 +18,7 @@ The expected key is read from the NEUROSCAN_API_KEY environment variable
 (set in the Render dashboard) rather than hardcoded, matching the
 project's standing rule of never committing real secrets to any repo.
 """
+import hmac
 import io
 import os
 import time
@@ -28,6 +29,9 @@ from PIL import Image, UnidentifiedImageError
 from inference import MODEL_VARIANT, MODEL_VERSION, InputError, get_pipeline, process_memory_mb
 
 MAX_UPLOAD_BYTES = 10 * 1024 * 1024  # 10 MB
+# Same limit as the web app: a small, highly compressed file can otherwise decode into a huge pixel buffer,
+# and the free tier has 512 MB. The size is read from the header, before decoding.
+MAX_IMAGE_SIDE = 4096
 API_KEY = os.environ.get("NEUROSCAN_API_KEY", "")
 STARTED = time.time()
 
@@ -45,7 +49,7 @@ def load_models():
 
 
 def _check_api_key(x_api_key: str = Header(default="")):
-    if not API_KEY or x_api_key != API_KEY:
+    if not API_KEY or not hmac.compare_digest(x_api_key.encode(), API_KEY.encode()):
         raise HTTPException(status_code=401, detail="Missing or invalid X-API-Key.")
 
 
@@ -73,8 +77,11 @@ async def _read_image(upload: UploadFile | None, what: str) -> Image.Image | Non
         raise HTTPException(status_code=400, detail=f"{what} is too large (10 MB limit).")
     try:
         image = Image.open(io.BytesIO(raw))
+        if max(image.size) > MAX_IMAGE_SIDE:
+            raise HTTPException(status_code=400, detail=f"{what} is too large ({MAX_IMAGE_SIDE} px per side limit).")
         image.load()
-    except UnidentifiedImageError:
+    except (UnidentifiedImageError, OSError, SyntaxError, ValueError, Image.DecompressionBombError):
+        # Not an image, or a damaged one (e.g. truncated): a client error, not a server failure.
         raise HTTPException(status_code=400, detail=f"Could not read {what.lower()} as an image.")
     return image
 
