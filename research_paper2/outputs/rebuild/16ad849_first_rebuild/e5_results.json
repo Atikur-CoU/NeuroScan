@@ -1,0 +1,184 @@
+{
+  "started_utc": "2026-10-30T17:19:32+00:00",
+  "host": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "machine": "AMD64"
+  },
+  "script_sha256": "7b80d40456d237005319cbf24b18ea620e99e1e8d74ab43f86915a3f1be718e6",
+  "note": "local rebuild without Docker; Render builds python:3.11-slim",
+  "commit": "16ad849598c07cf915b17ce4a8d7be878b29e4e9",
+  "sums": {
+    "listed": 168,
+    "mismatched_or_missing": []
+  },
+  "pip_freeze": [
+    "annotated-types==0.8.0",
+    "anyio==4.15.1",
+    "click==8.5.0",
+    "colorama==0.4.6",
+    "coloredlogs==15.0.1",
+    "fastapi==0.115.0",
+    "flatbuffers==25.12.19",
+    "h11==0.16.0",
+    "httptools==0.9.0",
+    "humanfriendly==10.0",
+    "idna==3.20",
+    "mpmath==1.3.0",
+    "numpy==2.1.3",
+    "onnxruntime==1.20.1",
+    "packaging==26.3",
+    "pillow==11.0.0",
+    "protobuf==7.36.2",
+    "pydantic==2.14.2",
+    "pydantic_core==2.50.2",
+    "pyreadline3==3.5.6",
+    "python-dotenv==1.2.4",
+    "python-multipart==0.0.9",
+    "PyYAML==6.0.3",
+    "starlette==0.38.6",
+    "sympy==1.14.0",
+    "typing-inspection==0.4.4",
+    "typing_extensions==4.16.0",
+    "uvicorn==0.30.6",
+    "watchfiles==1.3.0",
+    "websockets==17.4"
+  ],
+  "models": {
+    "fp32": {
+      "file": "neuroscan_r30a_s123.onnx",
+      "bytes": 111385523,
+      "sha256": "4937ab381ee3e7c29d5ab18ea761a8c19ddffb6488210fb6030511a8041502eb",
+      "pinned_sha256": "4937ab381ee3e7c29d5ab18ea761a8c19ddffb6488210fb6030511a8041502eb",
+      "match": true
+    },
+    "int8_dynamic": {
+      "file": "neuroscan_r30a_s123_int8_dynamic.onnx",
+      "bytes": 33832372,
+      "sha256": "ad2f6e0ee22b28ec98295b742075a2168e480801073a8df3f1222df37c74d99f",
+      "pinned_sha256": "ad2f6e0ee22b28ec98295b742075a2168e480801073a8df3f1222df37c74d99f",
+      "match": true
+    }
+  },
+  "pack_sha256": "db8ff4c84db5234da62a5e15cb6652f6a87febd6ebb9789cc458aae8cf52283d",
+  "serve": {
+    "fp32": {
+      "ready_seconds": 3.2,
+      "health": {
+        "status": "ok",
+        "checkpoint": {
+          "epoch": 8,
+          "val_acc": 0.8876551777315136,
+          "model_version": "r30a_s123_convnext_tiny_onnx",
+          "model_variant": "fp32",
+          "weights_sha256": "4937ab381ee3e7c29d5ab18ea761a8c19ddffb6488210fb6030511a8041502eb"
+        },
+        "memory_mb": null,
+        "uptime_s": 1.0
+      },
+      "health_after": {
+        "status": "ok",
+        "checkpoint": {
+          "epoch": 8,
+          "val_acc": 0.8876551777315136,
+          "model_version": "r30a_s123_convnext_tiny_onnx",
+          "model_variant": "fp32",
+          "weights_sha256": "4937ab381ee3e7c29d5ab18ea761a8c19ddffb6488210fb6030511a8041502eb"
+        },
+        "memory_mb": null,
+        "uptime_s": 19.5
+      },
+      "served_variant_and_sha_ok": true,
+      "answered": 28,
+      "of": 28,
+      "same_prediction_as_answer_sheet": 28,
+      "max_abs_prob_diff": {
+        "median": 4e-05,
+        "max": 0.0001,
+        "n_over_0.001": 0
+      },
+      "correct_vs_true_label": 26,
+      "all_heatmaps_present": true,
+      "median_server_model_ms": 627.4
+    },
+    "int8_dynamic": {
+      "ready_seconds": 1.6,
+      "health": {
+        "status": "ok",
+        "checkpoint": {
+          "epoch": 8,
+          "val_acc": 0.8876551777315136,
+          "model_version": "r30a_s123_convnext_tiny_onnx_int8_dynamic",
+          "model_variant": "int8_dynamic",
+          "weights_sha256": "ad2f6e0ee22b28ec98295b742075a2168e480801073a8df3f1222df37c74d99f"
+        },
+        "memory_mb": null,
+        "uptime_s": 0.5
+      },
+      "health_after": {
+        "status": "ok",
+        "checkpoint": {
+          "epoch": 8,
+          "val_acc": 0.8876551777315136,
+          "model_version": "r30a_s123_convnext_tiny_onnx_int8_dynamic",
+          "model_variant": "int8_dynamic",
+          "weights_sha256": "ad2f6e0ee22b28ec98295b742075a2168e480801073a8df3f1222df37c74d99f"
+        },
+        "memory_mb": null,
+        "uptime_s": 16.8
+      },
+      "served_variant_and_sha_ok": true,
+      "answered": 28,
+      "of": 28,
+      "same_prediction_as_answer_sheet": 28,
+      "max_abs_prob_diff": {
+        "median": 0.00038,
+        "max": 0.01981,
+        "n_over_0.001": 10
+      },
+      "correct_vs_true_label": 26,
+      "all_heatmaps_present": true,
+      "median_server_model_ms": 529.5
+    }
+  },
+  "total_seconds": 86.2,
+  "steps": [
+    {
+      "step": "clone",
+      "seconds": 1.5,
+      "ok": true,
+      "detail": "commit 16ad849, 178 tracked files"
+    },
+    {
+      "step": "sums",
+      "seconds": 0.4,
+      "ok": true,
+      "detail": "168/168 files match"
+    },
+    {
+      "step": "venv",
+      "seconds": 40.7,
+      "ok": true,
+      "detail": "6 pinned packages installed"
+    },
+    {
+      "step": "models",
+      "seconds": 2.1,
+      "ok": true,
+      "detail": "fp32 match, int8_dynamic match"
+    },
+    {
+      "step": "serve_fp32",
+      "seconds": 21.6,
+      "ok": true,
+      "detail": "ready 3.2 s; 28/28 same prediction; max prob diff 0.0001"
+    },
+    {
+      "step": "serve_int8_dynamic",
+      "seconds": 17.9,
+      "ok": true,
+      "detail": "ready 1.6 s; 28/28 same prediction; max prob diff 0.01981"
+    }
+  ],
+  "all_ok": true
+}

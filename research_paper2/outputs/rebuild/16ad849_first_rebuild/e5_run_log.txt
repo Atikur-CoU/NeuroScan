@@ -1,0 +1,7 @@
+[23:19:33] clone: OK in 1.5 s  commit 16ad849, 178 tracked files
+[23:19:34] sums: OK in 0.4 s  168/168 files match
+[23:20:14] venv: OK in 40.7 s  6 pinned packages installed
+[23:20:17] models: OK in 2.1 s  fp32 match, int8_dynamic match
+[23:20:38] serve_fp32: OK in 21.6 s  ready 3.2 s; 28/28 same prediction; max prob diff 0.0001
+[23:20:57] serve_int8_dynamic: OK in 17.9 s  ready 1.6 s; 28/28 same prediction; max prob diff 0.01981
+[23:20:58] done in 86.2 s; all steps OK: True; outputs in paper\second_paper\e5_rebuild\out

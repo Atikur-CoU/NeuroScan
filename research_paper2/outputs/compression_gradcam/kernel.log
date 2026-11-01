@@ -1,0 +1,232 @@
+[{"stream_name":"stdout","time":32.29925475,"data":"[   0.5 min | RSS   0.0 GB] pip onnxruntime==1.20.1 onnx==1.18.0: exit 0 (31s) \n"}
+,{"stream_name":"stdout","time":34.772267114,"data":"[   0.6 min | RSS   0.0 GB] pip --no-deps onnxconverter-common==1.16.0: exit 0 (2s) \n"}
+,{"stream_name":"stdout","time":55.891553227,"data":"[   0.9 min | RSS   0.0 GB] pip onnxruntime==1.20.1 numpy==2.1.3 pillow==11.0.0 -\u003e /tmp/srvpkgs: exit 0 (21s) 21.3,!=4.21.4,!=4.21.5,\u003c6.0.0dev,\u003e=3.20.2, but you have protobuf 7.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":55.891596339,"data":"ydf 0.15.0 requires protobuf\u003c7.0.0,\u003e=5.29.1, but you have protobuf 7.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":55.891603791,"data":"grpcio-status 1.71.2 requires protobuf\u003c6.0dev,\u003e=5.26.1, but you have protobuf 7.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":55.891607588,"data":"\n"}
+,{"stream_name":"stdout","time":73.921345499,"data":"[   1.2 min | RSS   0.4 GB] inputs resolved (1.7s): ONNX /kaggle/input/notebooks/atik68/neuroscan-q-onnx-export-check/output/neuroscan_r30a_s123.onnx\n"}
+,{"stream_name":"stdout","time":81.242458374,"data":"[   1.3 min | RSS   0.5 GB] rows (5.6s): {'internal_test': 7406, 'SOOP': 1672, 'CPAISD': 1524}, patients 1853, calibration 512, E3 600\n"}
+,{"stream_name":"stdout","time":81.699475375,"data":"[   1.3 min | RSS   0.5 GB] zip aisd_normal_images.zip: 5470 members in central directory (0.5s)\n"}
+,{"stream_name":"stdout","time":81.90145766,"data":"[   1.3 min | RSS   0.5 GB] zip rsna_normal_images.zip: 8000 members in central directory (0.2s)\n"}
+,{"stream_name":"stdout","time":83.037526136,"data":"[   1.4 min | RSS   0.5 GB] zip soop_images.zip: 73200 members in central directory (1.1s)\n"}
+,{"stream_name":"stdout","time":545.417007355,"data":"[   9.1 min | RSS   0.5 GB] resolved 15885 files by direct path (461.7s); missing 0\n"}
+,{"stream_name":"stdout","time":837.210407812,"data":"[  13.9 min | RSS   2.1 GB] decoded held-out: 10602 rows (292s, 1.60 GB)\n"}
+,{"stream_name":"stdout","time":870.454096968,"data":"[  14.5 min | RSS   2.2 GB] decoded calibration: 512 rows (33s, 0.08 GB)\n"}
+,{"stream_name":"stdout","time":870.455203704,"data":"[  14.5 min | RSS   2.2 GB] file reads by source: {'Kaggle_CT': 1118, 'RSNA_ICH': 1227, 'AISD': 1809, 'CPAISD_v2': 4776, 'SICH_CT': 1893, 'ISLES2022': 4742, 'AISD/normal/': 1809, 'RSNA_ICH/normal/': 1227, 'SOOP/': 3484}\n"}
+,{"stream_name":"stdout","time":873.210439594,"data":"[  14.5 min | RSS   2.6 GB] quant_pre_process done (3s); head nodes excluded from INT8: 26 (['Add', 'Cast', 'Div', 'Einsum', 'Gather', 'Gemm', 'Mul', 'ReduceMean', 'Relu', 'Shape', 'Sqrt', 'Sub', 'Unsqueeze'])\n"}
+,{"stream_name":"stderr","time":873.871888166,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 6.178903078080111e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.871930985,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.876929656,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -5.640762168468427e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":873.876963998,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.884543404,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 8.669606899047722e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.884578775,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.890249551,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.2208048986222043e-25 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.890305275,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.890311714,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.8049962975507973e-22 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":873.89031721,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.89104237,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -8.311813104455723e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":873.891055,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.891923704,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 2.2021074355957504e-25 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.891945303,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.891950544,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -2.2239561906825333e-23 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":873.891955777,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.892060115,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 4.450599773702518e-14 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.892092744,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.892120735,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -2.8572919860578667e-30 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":873.892136582,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.893591595,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.538525698217449e-32 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.893623424,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.893628885,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.180724355142122e-25 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":873.893635116,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.893760824,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 4.5085606255323984e-12 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.89376819,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.893813704,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -2.645952854234122e-32 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":873.893821015,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.895358991,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 9.354528942546069e-33 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.89538678,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.89539323,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.0748538752799366e-26 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":873.895398903,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.915851034,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 5.826754634341569e-10 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.91593305,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.934801561,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -4.571548473109033e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":873.934862701,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.955612342,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 6.116612638606966e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.95566178,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.958192678,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 7.332756268851881e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.958251337,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.958785152,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -2.7962601123476816e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":873.958803151,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.960254901,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.6709070793652359e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.960296858,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.961038738,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.085972721805774e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.961054278,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.961692498,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.1102998520584606e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":873.961718542,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.963025915,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.78596674011078e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.963058041,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.96306414,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -6.155151766051858e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":873.963069681,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":873.986608163,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 4.571089728955258e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":873.986661256,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.00548698,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -9.778477050303991e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.005540178,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.021425728,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -7.073906260757212e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.02147887,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.036690333,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 6.95132342798388e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.036795808,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.048736264,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -2.1447672082786085e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.048795569,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.07013726,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.5667852005261125e-10 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.070213243,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.082569351,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -4.5959247074733867e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.082625406,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.103000823,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 7.175199989717385e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.103052444,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.115408086,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.894407519742458e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.115460189,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.14994763,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -5.140799785863237e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.149999106,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.169935023,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.5119535845542487e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.169986974,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.181366349,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -6.249148754022826e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.181419501,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.202612457,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.8648863703285556e-11 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.202664447,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.21528567,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.2764363788164701e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.215443998,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.237540943,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 6.218497272669765e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.237592852,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.250819347,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.5046657253492413e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.250868212,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.272169504,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.0791153748357374e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.272241452,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.284678527,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -8.7730009923348e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.28472797,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.305130267,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 4.6076095827629615e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.305201022,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.317097234,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -3.985873436862519e-11 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.317143041,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.339527051,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.3448252511594205e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.339576881,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.351880523,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -3.1951255530238143e-10 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.351977477,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.374218247,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 6.364835769545607e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.374276307,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.3862836,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.1638610963871088e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.386334049,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.407846763,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.833533668284872e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.407913051,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.420129765,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -3.670192483262724e-10 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.420197323,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.441064987,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 2.4069830573125728e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.44111462,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.452645843,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -9.965073211049003e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.45269662,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.475078389,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 2.360815759185811e-29 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.475130911,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.487806235,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -5.648850027091197e-29 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.48787835,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.509376785,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.1739938798882577e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.509441621,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.519855162,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -5.880814057945827e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.519907048,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.5434123,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.705010338643036e-34 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.543497489,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.555831798,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.5295178926239397e-34 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.555889597,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.579637988,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.5061022973792433e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.579689072,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.590523413,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -6.985713341123301e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.590575713,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.612812151,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 9.817308706546063e-37 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.612858958,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.62524114,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -2.5548597364250434e-36 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.625292543,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.660582626,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.2446688124612137e-10 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.660625133,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.683097215,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -4.0210493268411085e-10 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.683173808,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.819642093,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.8627037412510816e-11 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":874.819714475,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":874.842504605,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -5.038587949646178e-11 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":874.842568895,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":875.02207359,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.139145115042206e-11 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":875.022182611,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":875.049572158,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -4.2222652457679644e-11 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":875.049619625,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":875.229118942,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 2.349414066071809e-12 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":875.229208592,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":875.256394227,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -9.972518687575982e-14 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":875.256445012,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":875.37878868,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 9.538950185294937e-11 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":875.378849551,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":875.405360888,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -3.8720324169183584e-10 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":875.405415569,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":875.555711825,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.006790560886513e-14 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":875.555820331,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":875.581235363,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -3.566250959363519e-14 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":875.581322837,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":875.676860483,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 4.05847977447138e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":875.676910615,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":875.676916888,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -3.656668079443648e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":875.676923228,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":875.967854867,"data":"[  14.6 min | RSS   2.4 GB] FP16 built (3s)\n"}
+,{"stream_name":"stdout","time":877.348264943,"data":"[  14.6 min | RSS   2.5 GB] INT8 dynamic built (1s)\n"}
+,{"stream_name":"stdout","time":1023.289322245,"data":"[  17.0 min | RSS   2.9 GB] INT8 static built with 512 calibration rows (146s)\n"}
+,{"stream_name":"stdout","time":1023.33384136,"data":"[  17.0 min | RSS   2.9 GB] FP16: session creation failed: Fail: [ONNXRuntimeError] : 1 : FAIL : Load model from /kaggle/working/output/models/neuroscan_r30a_s123_fp16.onnx failed:Type Error: Type (tensor(float16)) of output arg (/Cast_output_0) of node (/Cast) does not match expected type (tensor(float)).\n"}
+,{"stream_name":"stdout","time":1038.560397424,"data":"[  17.3 min | RSS   2.9 GB] FP32: 111.39 MB, sha256 4937ab381ee3, ops [('Add', 74), ('Constant', 59), ('Mul', 59), ('Transpose', 44), ('MatMul', 36), ('Conv', 22), ('LayerNormalization', 22), ('Div', 21)]\n"}
+,{"stream_name":"stdout","time":1039.111058128,"data":"[  17.3 min | RSS   2.9 GB] FP16: 55.77 MB, sha256 8467ecb21cb9, ops [('Add', 74), ('Constant', 59), ('Mul', 59), ('Transpose', 44), ('MatMul', 36), ('Conv', 22), ('LayerNormalization', 22), ('Div', 21)]\n"}
+,{"stream_name":"stdout","time":1039.655510425,"data":"[  17.3 min | RSS   2.9 GB] FP16-LN: 55.82 MB, sha256 f56c3cb8ea50, ops [('Add', 74), ('Cast', 61), ('Constant', 59), ('Mul', 59), ('Transpose', 44), ('MatMul', 36), ('Conv', 22), ('LayerNormalization', 22)]\n"}
+,{"stream_name":"stdout","time":1039.983443827,"data":"[  17.3 min | RSS   2.9 GB] INT8-dyn: 33.83 MB, sha256 ad2f6e0ee22b, ops [('Mul', 133), ('Add', 75), ('Transpose', 42), ('Cast', 38), ('DynamicQuantizeLinear', 37), ('MatMulInteger', 37), ('Conv', 22), ('LayerNormalization', 22)]\n"}
+,{"stream_name":"stdout","time":1040.262989513,"data":"[  17.3 min | RSS   2.9 GB] INT8-static: 28.56 MB, sha256 35d8a4007b81, ops [('DequantizeLinear', 193), ('QuantizeLinear', 113), ('Add', 74), ('Mul', 59), ('Transpose', 42), ('MatMul', 36), ('Conv', 22), ('LayerNormalization', 22)]\n"}
+,{"stream_name":"stdout","time":1254.104366869,"data":"[  20.9 min | RSS   4.5 GB]   [FP32] 512/10602 (214s; projected 74 min)\n"}
+,{"stream_name":"stdout","time":1895.75933544,"data":"[  31.6 min | RSS   4.5 GB]   [FP32] 2048/10602 (855s; projected 74 min)\n"}
+,{"stream_name":"stdout","time":2758.154330846,"data":"[  45.9 min | RSS   4.5 GB]   [FP32] 4096/10602 (1718s; projected 74 min)\n"}
+,{"stream_name":"stdout","time":3626.0084921,"data":"[  60.4 min | RSS   4.5 GB]   [FP32] 6144/10602 (2586s; projected 74 min)\n"}
+,{"stream_name":"stdout","time":4482.594504332,"data":"[  74.7 min | RSS   4.5 GB]   [FP32] 8192/10602 (3442s; projected 74 min)\n"}
+,{"stream_name":"stdout","time":5336.423861127,"data":"[  88.9 min | RSS   4.5 GB]   [FP32] 10240/10602 (4296s; projected 74 min)\n"}
+,{"stream_name":"stdout","time":5489.00806628,"data":"[  91.5 min | RSS   4.5 GB]   [FP32] 10602/10602 (4449s; projected 74 min)\n"}
+,{"stream_name":"stdout","time":5489.472318913,"data":"[  91.5 min | RSS   2.9 GB] FP32 ONNX vs saved final-evaluation probabilities: {'max_abs_diff': 0.00024937722556983566, 'mean_abs_diff': 8.188344109126959e-06, 'argmax_mismatches': 0, 'mismatches_at_ties': 0}\n"}
+,{"stream_name":"stdout","time":5652.532478691,"data":"[  94.2 min | RSS   4.5 GB]   [INT8-dyn] 512/10602 (163s; projected 56 min)\n"}
+,{"stream_name":"stdout","time":6137.267603868,"data":"[ 102.3 min | RSS   4.5 GB]   [INT8-dyn] 2048/10602 (648s; projected 56 min)\n"}
+,{"stream_name":"stdout","time":6783.437904655,"data":"[ 113.0 min | RSS   4.5 GB]   [INT8-dyn] 4096/10602 (1294s; projected 56 min)\n"}
+,{"stream_name":"stdout","time":7426.607364979,"data":"[ 123.8 min | RSS   4.5 GB]   [INT8-dyn] 6144/10602 (1937s; projected 56 min)\n"}
+,{"stream_name":"stdout","time":8069.701569129,"data":"[ 134.5 min | RSS   4.5 GB]   [INT8-dyn] 8192/10602 (2580s; projected 56 min)\n"}
+,{"stream_name":"stdout","time":8714.786186513,"data":"[ 145.2 min | RSS   4.5 GB]   [INT8-dyn] 10240/10602 (3225s; projected 56 min)\n"}
+,{"stream_name":"stdout","time":8828.04398198,"data":"[ 147.1 min | RSS   4.5 GB]   [INT8-dyn] 10602/10602 (3338s; projected 56 min)\n"}
+,{"stream_name":"stdout","time":8997.986093252,"data":"[ 149.9 min | RSS   4.5 GB]   [INT8-static] 512/10602 (169s; projected 58 min)\n"}
+,{"stream_name":"stdout","time":9502.634930129,"data":"[ 158.4 min | RSS   4.5 GB]   [INT8-static] 2048/10602 (674s; projected 58 min)\n"}
+,{"stream_name":"stdout","time":10176.038371474,"data":"[ 169.6 min | RSS   4.5 GB]   [INT8-static] 4096/10602 (1347s; projected 58 min)\n"}
+,{"stream_name":"stdout","time":10847.439352419,"data":"[ 180.8 min | RSS   4.5 GB]   [INT8-static] 6144/10602 (2019s; projected 58 min)\n"}
+,{"stream_name":"stdout","time":11518.54786503,"data":"[ 192.0 min | RSS   4.5 GB]   [INT8-static] 8192/10602 (2690s; projected 58 min)\n"}
+,{"stream_name":"stdout","time":12190.764232335,"data":"[ 203.2 min | RSS   4.5 GB]   [INT8-static] 10240/10602 (3362s; projected 58 min)\n"}
+,{"stream_name":"stdout","time":12309.07500679,"data":"[ 205.1 min | RSS   4.5 GB]   [INT8-static] 10602/10602 (3480s; projected 58 min)\n"}
+,{"stream_name":"stdout","time":12331.661771193,"data":"[ 205.5 min | RSS   2.9 GB] E2 INT8-dyn pooled_internal_test: n=8930 agreement 0.9971 [0.9959813116897612, 0.9980917419003139] flips 26 tier 0.9868 max|dp| 0.0980\n"}
+,{"stream_name":"stdout","time":12350.63330562,"data":"[ 205.8 min | RSS   2.9 GB] E2 INT8-dyn internal_test: n=7406 agreement 0.9972 [0.9959355281631875, 0.9982546818448294] flips 21 tier 0.9885 max|dp| 0.0980\n"}
+,{"stream_name":"stdout","time":12354.511833357,"data":"[ 205.9 min | RSS   2.9 GB] E2 INT8-dyn CPAISD: n=1524 agreement 0.9967 [0.9942853505501501, 0.9987752789955635] flips 5 tier 0.9783 max|dp| 0.0895\n"}
+,{"stream_name":"stdout","time":12358.601677941,"data":"[ 206.0 min | RSS   2.9 GB] E2 INT8-dyn SOOP_holdout: n=1672 agreement 0.9964 [0.9927926845114344, 0.9993986861238956] flips 6 tier 0.9892 max|dp| 0.0662\n"}
+,{"stream_name":"stdout","time":12381.255219771,"data":"[ 206.3 min | RSS   2.9 GB] E2 INT8-static pooled_internal_test: n=8930 agreement 0.9657 [0.9616627708472636, 0.9697173716581977] flips 306 tier 0.9006 max|dp| 0.9182\n"}
+,{"stream_name":"stdout","time":12400.559460179,"data":"[ 206.7 min | RSS   2.9 GB] E2 INT8-static internal_test: n=7406 agreement 0.9664 [0.9619275643686259, 0.9704691935418943] flips 249 tier 0.9053 max|dp| 0.9182\n"}
+,{"stream_name":"stdout","time":12404.593574237,"data":"[ 206.7 min | RSS   2.9 GB] E2 INT8-static CPAISD: n=1524 agreement 0.9626 [0.9535502912813238, 0.9715477943699766] flips 57 tier 0.8773 max|dp| 0.6649\n"}
+,{"stream_name":"stdout","time":12408.827922952,"data":"[ 206.8 min | RSS   2.9 GB] E2 INT8-static SOOP_holdout: n=1672 agreement 0.9844 [0.9788260558614538, 0.9901858424934428] flips 26 tier 0.9342 max|dp| 0.2535\n"}
+,{"stream_name":"stdout","time":12409.621772989,"data":"[ 206.8 min | RSS   2.9 GB] latency set: 200 requests (raw stored files, as uploaded)\n"}
+,{"stream_name":"stdout","time":12639.474999913,"data":"[ 210.6 min | RSS   2.9 GB] E2 cost FP32 (230s): {\"load_s\": 1.074, \"rss_after_load_mb\": 216, \"peak_rss_mb\": 4398, \"first_request_s\": 0.972, \"error\": null} e2e median 0.906s p95 0.953s; model-only median 0.889s\n"}
+,{"stream_name":"stdout","time":12820.5422042,"data":"[ 213.7 min | RSS   2.9 GB] E2 cost INT8-dyn (181s): {\"load_s\": 0.451, \"rss_after_load_mb\": 113, \"peak_rss_mb\": 4398, \"first_request_s\": 0.802, \"error\": null} e2e median 0.719s p95 0.760s; model-only median 0.687s\n"}
+,{"stream_name":"stdout","time":13000.641923747,"data":"[ 216.7 min | RSS   2.9 GB] E2 cost INT8-static (180s): {\"load_s\": 0.449, \"rss_after_load_mb\": 113, \"peak_rss_mb\": 4398, \"first_request_s\": 0.834, \"error\": null} e2e median 0.714s p95 0.749s; model-only median 0.688s\n"}
+,{"stream_name":"stdout","time":13570.433234872,"data":"[ 226.2 min | RSS   5.3 GB] E3 agreement (570s): {\"rows\": 600, \"onnx_closed_form_vs_autograd\": {\"raw_maxabs\": 1.344829797744751e-06, \"relative_maxabs\": 1.5666038962081075e-05, \"normalised_maxabs\": 4.1961669921875e-05, \"normalised_maxabs_median\": 2.1904706954956055e-06, \"share_rows_normalised_below_1e-5\": 0.9666666666666667}, \"torch_closed_form_vs_autograd\": {\"raw_maxabs\": 3.8743019104003906e-07, \"relative_maxabs\": 4.0925119719759095e-06, \"normalised_maxabs\": 8.411705493927002e-06, \"normalised_maxabs_median\": 5.364418029785156e-07, \"share_rows_normalised_below_1e-5\": 1.0}, \"onnx_vs_torch_closed_form\": {\"raw_maxabs\": 1.385807991027832e-06, \"relative_maxabs\": 1.6664367649354972e-05, \"normalised_maxabs\": 4.202127456665039e-05, \"normalised_maxabs_median\": 2.2258609533309937e-06, \"share_rows_normalised_below_1e-5\": 0.9583333333333334}}\n"}
+,{"stream_name":"stdout","time":13600.200370415,"data":"[ 226.6 min | RSS   5.3 GB] E3 cost torch_forward (27s): {\"rss_after_inputs_mb\": 86, \"rss_after_load_mb\": 490, \"seconds\": {\"n\": 97, \"median\": 0.2193138599395752, \"p95\": 0.23318324089050294, \"max\": 0.26780176162719727, \"mean\": 0.2211903935855197}, \"peak_rss_mb\": 5511}\n"}
+,{"stream_name":"stdout","time":13627.367622238,"data":"[ 227.1 min | RSS   5.3 GB] E3 cost torch_closed_form (27s): {\"rss_after_inputs_mb\": 85, \"rss_after_load_mb\": 490, \"seconds\": {\"n\": 97, \"median\": 0.22134160995483398, \"p95\": 0.23703627586364745, \"max\": 0.24148225784301758, \"mean\": 0.2242749425553784}, \"peak_rss_mb\": 5511}\n"}
+,{"stream_name":"stdout","time":13703.066191355,"data":"[ 228.4 min | RSS   5.3 GB] E3 cost torch_autograd_pred (76s): {\"rss_after_inputs_mb\": 86, \"rss_after_load_mb\": 490, \"seconds\": {\"n\": 97, \"median\": 0.7003986835479736, \"p95\": 0.7483837604522705, \"max\": 0.752577543258667, \"mean\": 0.7081037378802741}, \"peak_rss_mb\": 5511}\n"}
+,{"stream_name":"stdout","time":13876.671139861,"data":"[ 231.3 min | RSS   5.3 GB] E3 cost torch_autograd_all3 (174s): {\"rss_after_inputs_mb\": 85, \"rss_after_load_mb\": 490, \"seconds\": {\"n\": 97, \"median\": 1.6792504787445068, \"p95\": 1.7704183101654052, \"max\": 2.075960397720337, \"mean\": 1.6845921732715725}, \"peak_rss_mb\": 5511}\n"}
+,{"stream_name":"stdout","time":13898.763393394,"data":"[ 231.6 min | RSS   5.3 GB] E3 cost onnx_logits_only (22s): {\"rss_after_inputs_mb\": 90, \"rss_after_load_mb\": 263, \"seconds\": {\"n\": 97, \"median\": 0.214216947555542, \"p95\": 0.2229524612426758, \"max\": 0.2279813289642334, \"mean\": 0.21440100178276142}, \"peak_rss_mb\": 5511}\n"}
+,{"stream_name":"stdout","time":13921.434991245,"data":"[ 232.0 min | RSS   5.3 GB] E3 cost onnx_logits_gradcam (23s): {\"rss_after_inputs_mb\": 89, \"rss_after_load_mb\": 275, \"seconds\": {\"n\": 97, \"median\": 0.22130179405212402, \"p95\": 0.22987675666809082, \"max\": 0.2433319091796875, \"mean\": 0.22037010094554155}, \"peak_rss_mb\": 5511}\n"}
+,{"stream_name":"stdout","time":13936.74554243,"data":"[ 232.3 min | RSS   5.3 GB] E3 maps INT8-dyn: {\"pearson_r\": {\"median\": 0.999056187575379, \"q1\": 0.9979390549336232, \"q3\": 0.9995575115151903, \"mean\": 0.9921054747159158, \"n\": 10602}, \"same_peak_cell\": 0.939916996793058, \"display_iou\": {\"median\": 0.9576672251090856, \"q1\": 0.9174517150801587, \"q3\": 0.9782230067689107, \"mean\": 0.9253178815559304, \"n\": 10602}, \"outline_appears\": 9, \"outline_disappears\": 23}\n"}
+,{"stream_name":"stdout","time":13952.857843646,"data":"[ 232.5 min | RSS   5.3 GB] E3 maps INT8-static: {\"pearson_r\": {\"median\": 0.9521136082032378, \"q1\": 0.8885538915573501, \"q3\": 0.9819133713563737, \"mean\": 0.9005200427981725, \"n\": 10602}, \"same_peak_cell\": 0.6789285040558385, \"display_iou\": {\"median\": 0.7045454545454546, \"q1\": 0.47762320002672815, \"q3\": 0.8498829435708475, \"mean\": 0.6392172142524724, \"n\": 10602}, \"outline_appears\": 213, \"outline_disappears\": 110}\n"}
+,{"stream_name":"stdout","time":13953.010710641,"data":"[ 232.5 min | RSS   5.3 GB] Done.\n"}
+,{"stream_name":"stderr","time":13958.525137059,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":13958.525203392,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":13959.051969612,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":13959.052015199,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":13960.199304091,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":13962.090770727,"data":"[NbConvertApp] Writing 572683 bytes to __results__.html\n"}
+]

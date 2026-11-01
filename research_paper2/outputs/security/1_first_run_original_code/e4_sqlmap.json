@@ -1,0 +1,101 @@
+{
+ "sqlmap_version": "1.10.11.1#dev",
+ "options": [
+  "--batch",
+  "--level=3",
+  "--risk=1",
+  "--flush-session",
+  "--disable-coloring"
+ ],
+ "targets": {
+  "login_form": {
+   "injectable": false,
+   "sqlmap_says_not_injectable": true,
+   "parameters_seen": [
+    "email",
+    "password"
+   ],
+   "requests": 434
+  },
+  "register_form": {
+   "injectable": false,
+   "sqlmap_says_not_injectable": false,
+   "parameters_seen": [],
+   "requests": 25
+  },
+  "api_login_json": {
+   "injectable": false,
+   "sqlmap_says_not_injectable": false,
+   "parameters_seen": [],
+   "requests": 24
+  },
+  "audit_log_filters": {
+   "injectable": false,
+   "sqlmap_says_not_injectable": true,
+   "parameters_seen": [
+    "action",
+    "actor_id",
+    "date_from",
+    "date_to",
+    "page"
+   ],
+   "requests": 1041
+  },
+  "admin_user_edit": {
+   "injectable": false,
+   "sqlmap_says_not_injectable": true,
+   "parameters_seen": [
+    "id"
+   ],
+   "requests": 232
+  },
+  "scan_view_uuid": {
+   "injectable": false,
+   "sqlmap_says_not_injectable": true,
+   "parameters_seen": [
+    "uuid"
+   ],
+   "requests": 232
+  },
+  "scan_image_uuid": {
+   "injectable": false,
+   "sqlmap_says_not_injectable": true,
+   "parameters_seen": [
+    "uuid"
+   ],
+   "requests": 232
+  },
+  "provider_patient": {
+   "injectable": false,
+   "sqlmap_says_not_injectable": true,
+   "parameters_seen": [
+    "patient_id"
+   ],
+   "requests": 232
+  },
+  "review_form_uuid": {
+   "injectable": false,
+   "sqlmap_says_not_injectable": true,
+   "parameters_seen": [
+    "scan_uuid"
+   ],
+   "requests": 232
+  },
+  "api_scans": {
+   "injectable": false,
+   "sqlmap_says_not_injectable": true,
+   "parameters_seen": [
+    "patient_id"
+   ],
+   "requests": 233
+  },
+  "api_scan_detail": {
+   "injectable": false,
+   "sqlmap_says_not_injectable": true,
+   "parameters_seen": [
+    "uuid"
+   ],
+   "requests": 233
+  }
+ }
+}

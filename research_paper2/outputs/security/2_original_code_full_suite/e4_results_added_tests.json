@@ -1,0 +1,139 @@
+{
+ "run": {
+  "finished_utc": "2026-10-31T01:55:08+00:00",
+  "site": "http://localhost/neuroscan_e4/public",
+  "inference": "http://127.0.0.1:8765",
+  "tests": 16,
+  "passed": 11
+ },
+ "results": [
+  {
+   "id": "AC-1",
+   "category": "AC",
+   "test": "14 protected pages without logging in",
+   "expected": "all refused",
+   "observed": "14 of 14 refused",
+   "pass": true
+  },
+  {
+   "id": "AC-2",
+   "category": "AC",
+   "test": "5 API endpoints without a token or with a made-up token",
+   "expected": "all 401",
+   "observed": "10 of 10 refused",
+   "pass": true
+  },
+  {
+   "id": "AC-3",
+   "category": "AC",
+   "test": "role checks (14 page-role pairs a role must not open)",
+   "expected": "all refused",
+   "observed": "14 of 14 refused",
+   "pass": true
+  },
+  {
+   "id": "AC-4",
+   "category": "AC",
+   "test": "another patient opens patient A's scan",
+   "expected": "refused everywhere",
+   "observed": "0 of 6 visible",
+   "pass": true
+  },
+  {
+   "id": "AC-5",
+   "category": "AC",
+   "test": "unassigned doctor opens patient A's scan",
+   "expected": "refused everywhere",
+   "observed": "0 of 8 visible",
+   "pass": true
+  },
+  {
+   "id": "AC-6",
+   "category": "AC",
+   "test": "assigned doctor opens patient A's scan (control)",
+   "expected": "visible",
+   "observed": "all visible",
+   "pass": true
+  },
+  {
+   "id": "AC-7",
+   "category": "AC",
+   "test": "assigned radiologist opens patient A's scan (control)",
+   "expected": "visible",
+   "observed": "all visible",
+   "pass": true
+  },
+  {
+   "id": "AC-8",
+   "category": "AC",
+   "test": "internal folders (includes, storage, sql) not served over HTTP",
+   "expected": "403/404 for every path",
+   "observed": "all refused",
+   "pass": true
+  },
+  {
+   "id": "AC-9",
+   "category": "AC",
+   "test": "one-time admin-creation page absent from the web folder",
+   "expected": "404",
+   "observed": "HTTP 403 (page present, guarded by a token in its source)",
+   "pass": false
+  },
+  {
+   "id": "AC-10",
+   "category": "AC",
+   "test": "admin links a patient as another patient's provider",
+   "expected": "refused, nothing stored",
+   "observed": "HTTP 200, link stored",
+   "pass": false
+  },
+  {
+   "id": "HDR-1",
+   "category": "HDR",
+   "test": "security headers on every page",
+   "expected": "5 headers present",
+   "observed": "all present",
+   "pass": true
+  },
+  {
+   "id": "HDR-2",
+   "category": "HDR",
+   "test": "Content-Security-Policy blocks inline script",
+   "expected": "no 'unsafe-inline' in script-src",
+   "observed": "script-src allows 'unsafe-inline'",
+   "pass": false
+  },
+  {
+   "id": "HDR-3",
+   "category": "HDR",
+   "test": "session cookie flags",
+   "expected": "HttpOnly and SameSite (Secure needs HTTPS: checked on the host)",
+   "observed": "path=/; HttpOnly; SameSite=Lax",
+   "pass": true
+  },
+  {
+   "id": "HDR-4",
+   "category": "HDR",
+   "test": "no directory listings",
+   "expected": "403/404",
+   "observed": "includes/ 403, api/ 403",
+   "pass": true
+  },
+  {
+   "id": "HDR-5",
+   "category": "HDR",
+   "test": "no PHP version in response headers",
+   "expected": "no X-Powered-By",
+   "observed": "X-Powered-By: PHP/7.4.7",
+   "pass": false
+  },
+  {
+   "id": "HDR-6",
+   "category": "HDR",
+   "test": "no PHP error text in pages after a database fault",
+   "expected": "no error text, file path or query",
+   "observed": "HTTP 200, page shows ['Fatal error', 'PDOException', 'SQLSTATE', 'Stack trace', ' on line ']",
+   "pass": false
+  }
+ ]
+}

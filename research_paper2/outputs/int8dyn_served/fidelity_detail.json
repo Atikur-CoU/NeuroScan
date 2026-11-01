@@ -1,0 +1,1072 @@
+{
+  "source": "/kaggle/working/output/e2_per_row_probs.csv",
+  "rows": 10602,
+  "note": "descriptive, added after the expert review; no NI margin",
+  "sens_spec": {
+    "INT8-dyn": {
+      "dataset:AISD": {
+        "n": 1138,
+        "patients_or_clusters": 57,
+        "positives": {
+          "normal": 569,
+          "ischemic": 569
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.7978910369068541,
+            "sens_int8": 0.8014059753954306,
+            "spec_fp32": 0.9384885764499121,
+            "spec_int8": 0.9384885764499121,
+            "sens_diff": 0.0035149384885764245,
+            "sens_diff_ci95": [
+              0.0,
+              0.00896097565684052
+            ],
+            "spec_diff": 0.0,
+            "spec_diff_ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.9367311072056239,
+            "sens_int8": 0.9367311072056239,
+            "spec_fp32": 0.7978910369068541,
+            "spec_int8": 0.8014059753954306,
+            "sens_diff": 0.0,
+            "sens_diff_ci95": [
+              0.0,
+              0.0
+            ],
+            "spec_diff": 0.0035149384885764245,
+            "spec_diff_ci95": [
+              0.0,
+              0.00896097565684052
+            ]
+          }
+        }
+      },
+      "dataset:CPAISD_v2": {
+        "n": 1524,
+        "patients_or_clusters": 18,
+        "positives": {
+          "normal": 1225,
+          "ischemic": 299
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.8204081632653061,
+            "sens_int8": 0.8212244897959183,
+            "spec_fp32": 0.8595317725752508,
+            "spec_int8": 0.8595317725752508,
+            "sens_diff": 0.0008163265306122547,
+            "sens_diff_ci95": [
+              0.0,
+              0.0025576539604814977
+            ],
+            "spec_diff": 0.0,
+            "spec_diff_ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.8595317725752508,
+            "sens_int8": 0.8595317725752508,
+            "spec_fp32": 0.8204081632653061,
+            "spec_int8": 0.8212244897959183,
+            "sens_diff": 0.0,
+            "sens_diff_ci95": [
+              0.0,
+              0.0
+            ],
+            "spec_diff": 0.0008163265306122547,
+            "spec_diff_ci95": [
+              0.0,
+              0.0025576539604814977
+            ]
+          }
+        }
+      },
+      "dataset:ISLES2022_dwi_adc": {
+        "n": 2303,
+        "patients_or_clusters": 37,
+        "positives": {
+          "normal": 1668,
+          "ischemic": 635
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.9592326139088729,
+            "sens_int8": 0.9634292565947242,
+            "spec_fp32": 0.8094488188976378,
+            "spec_int8": 0.8031496062992126,
+            "sens_diff": 0.004196642685851293,
+            "sens_diff_ci95": [
+              0.0016627192098367688,
+              0.007285241824638286
+            ],
+            "spec_diff": -0.006299212598425141,
+            "spec_diff_ci95": [
+              -0.013385534088639014,
+              -0.0013546502757252324
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.8094488188976378,
+            "sens_int8": 0.8031496062992126,
+            "spec_fp32": 0.959832134292566,
+            "spec_int8": 0.9640287769784173,
+            "sens_diff": -0.006299212598425141,
+            "sens_diff_ci95": [
+              -0.013385534088639014,
+              -0.0013546502757252324
+            ],
+            "spec_diff": 0.004196642685851293,
+            "spec_diff_ci95": [
+              0.0016627192098367688,
+              0.007285241824638289
+            ]
+          }
+        }
+      },
+      "dataset:Kaggle_CT": {
+        "n": 1016,
+        "patients_or_clusters": 1016,
+        "positives": {
+          "normal": 685,
+          "ischemic": 170,
+          "hemorrhagic": 161
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.9036496350364963,
+            "sens_int8": 0.9051094890510949,
+            "spec_fp32": 0.945619335347432,
+            "spec_int8": 0.9395770392749244,
+            "sens_diff": 0.0014598540145985828,
+            "sens_diff_ci95": [
+              -0.0044711057232466826,
+              0.008450704225352101
+            ],
+            "spec_diff": -0.006042296072507614,
+            "spec_diff_ci95": [
+              -0.01543209876543206,
+              0.0
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.9117647058823529,
+            "sens_int8": 0.9,
+            "spec_fp32": 0.9267139479905437,
+            "spec_int8": 0.9278959810874704,
+            "sens_diff": -0.0117647058823529,
+            "sens_diff_ci95": [
+              -0.030492480921741758,
+              0.0
+            ],
+            "spec_diff": 0.0011820330969266601,
+            "spec_diff_ci95": [
+              -0.0035929220695299887,
+              0.006945251937984468
+            ]
+          },
+          "hemorrhagic": {
+            "sens_fp32": 0.9627329192546584,
+            "sens_int8": 0.9627329192546584,
+            "spec_fp32": 0.991812865497076,
+            "spec_int8": 0.991812865497076,
+            "sens_diff": 0.0,
+            "sens_diff_ci95": [
+              0.0,
+              0.0
+            ],
+            "spec_diff": 0.0,
+            "spec_diff_ci95": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      },
+      "dataset:RSNA_ICH": {
+        "n": 2386,
+        "patients_or_clusters": 641,
+        "positives": {
+          "normal": 1193,
+          "hemorrhagic": 1193
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.8147527242246437,
+            "sens_int8": 0.8172673931265717,
+            "spec_fp32": 0.9086336965632859,
+            "spec_int8": 0.9077954735959766,
+            "sens_diff": 0.0025146689019279744,
+            "sens_diff_ci95": [
+              0.0,
+              0.005645275195917598
+            ],
+            "spec_diff": -0.0008382229673092878,
+            "spec_diff_ci95": [
+              -0.002643230077150738,
+              0.0
+            ]
+          },
+          "hemorrhagic": {
+            "sens_fp32": 0.9086336965632859,
+            "sens_int8": 0.9077954735959766,
+            "spec_fp32": 0.8147527242246437,
+            "spec_int8": 0.8172673931265717,
+            "sens_diff": -0.0008382229673092878,
+            "sens_diff_ci95": [
+              -0.002643230077150738,
+              0.0
+            ],
+            "spec_diff": 0.0025146689019279744,
+            "spec_diff_ci95": [
+              0.0,
+              0.005645275195917598
+            ]
+          }
+        }
+      },
+      "dataset:SICH_CT": {
+        "n": 563,
+        "patients_or_clusters": 18,
+        "positives": {
+          "normal": 448,
+          "hemorrhagic": 115
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.984375,
+            "sens_int8": 0.9866071428571429,
+            "spec_fp32": 0.9739130434782609,
+            "spec_int8": 0.9739130434782609,
+            "sens_diff": 0.0022321428571429047,
+            "sens_diff_ci95": [
+              0.0,
+              0.007335412771465533
+            ],
+            "spec_diff": 0.0,
+            "spec_diff_ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "hemorrhagic": {
+            "sens_fp32": 0.9739130434782609,
+            "sens_int8": 0.9739130434782609,
+            "spec_fp32": 0.984375,
+            "spec_int8": 0.9866071428571429,
+            "sens_diff": 0.0,
+            "sens_diff_ci95": [
+              0.0,
+              0.0
+            ],
+            "spec_diff": 0.0022321428571429047,
+            "spec_diff_ci95": [
+              0.0,
+              0.007335412771465533
+            ]
+          }
+        }
+      },
+      "dataset:SOOP_dwi_adc": {
+        "n": 1672,
+        "patients_or_clusters": 66,
+        "positives": {
+          "normal": 1200,
+          "ischemic": 472
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.94,
+            "sens_int8": 0.9441666666666667,
+            "spec_fp32": 0.8601694915254238,
+            "spec_int8": 0.8580508474576272,
+            "sens_diff": 0.004166666666666763,
+            "sens_diff_ci95": [
+              0.000841025224219194,
+              0.007960071132846167
+            ],
+            "spec_diff": -0.0021186440677966045,
+            "spec_diff_ci95": [
+              -0.006466216972682409,
+              0.0
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.8601694915254238,
+            "sens_int8": 0.8580508474576272,
+            "spec_fp32": 0.94,
+            "spec_int8": 0.9441666666666667,
+            "sens_diff": -0.0021186440677966045,
+            "sens_diff_ci95": [
+              -0.006466216972682409,
+              0.0
+            ],
+            "spec_diff": 0.004166666666666763,
+            "spec_diff_ci95": [
+              0.000841025224219194,
+              0.007960071132846167
+            ]
+          }
+        }
+      },
+      "cohort:pooled_internal_test": {
+        "n": 8930,
+        "patients_or_clusters": 1787,
+        "positives": {
+          "normal": 5788,
+          "ischemic": 1673,
+          "hemorrhagic": 1469
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.8795784381478922,
+            "sens_int8": 0.88217000691085,
+            "spec_fp32": 0.8956078930617442,
+            "spec_int8": 0.8933800127307447,
+            "sens_diff": 0.002591568762957852,
+            "sens_diff_ci95": [
+              0.00120147442293152,
+              0.00413084451145792
+            ],
+            "spec_diff": -0.00222788033099941,
+            "spec_diff_ci95": [
+              -0.0039278273034394125,
+              -0.0006750466249171688
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.872086072922893,
+            "sens_int8": 0.8684997011356844,
+            "spec_fp32": 0.9360617334986909,
+            "spec_int8": 0.937577511368334,
+            "sens_diff": -0.003586371787208553,
+            "sens_diff_ci95": [
+              -0.006610632117927942,
+              -0.0011627569348782343
+            ],
+            "spec_diff": 0.0015157778696430757,
+            "spec_diff_ci95": [
+              0.0005462857810729721,
+              0.0025507379609208463
+            ]
+          },
+          "hemorrhagic": {
+            "sens_fp32": 0.9196732471068755,
+            "sens_int8": 0.9189925119128659,
+            "spec_fp32": 0.9682348210695617,
+            "spec_int8": 0.9687709422329447,
+            "sens_diff": -0.000680735194009574,
+            "sens_diff_ci95": [
+              -0.0020834057719054167,
+              0.0
+            ],
+            "spec_diff": 0.0005361211633829743,
+            "spec_diff_ci95": [
+              0.00013085024130976287,
+              0.0010825549693872615
+            ]
+          }
+        }
+      },
+      "cohort:SOOP_holdout": {
+        "n": 1672,
+        "patients_or_clusters": 66,
+        "positives": {
+          "normal": 1200,
+          "ischemic": 472
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.94,
+            "sens_int8": 0.9441666666666667,
+            "spec_fp32": 0.8601694915254238,
+            "spec_int8": 0.8580508474576272,
+            "sens_diff": 0.004166666666666763,
+            "sens_diff_ci95": [
+              0.0008354044543746137,
+              0.007806063282201839
+            ],
+            "spec_diff": -0.0021186440677966045,
+            "spec_diff_ci95": [
+              -0.006961776568293674,
+              0.0
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.8601694915254238,
+            "sens_int8": 0.8580508474576272,
+            "spec_fp32": 0.94,
+            "spec_int8": 0.9441666666666667,
+            "sens_diff": -0.0021186440677966045,
+            "sens_diff_ci95": [
+              -0.006961776568293674,
+              0.0
+            ],
+            "spec_diff": 0.004166666666666763,
+            "spec_diff_ci95": [
+              0.0008354044543746137,
+              0.007806063282201839
+            ]
+          }
+        }
+      }
+    },
+    "INT8-static": {
+      "dataset:AISD": {
+        "n": 1138,
+        "patients_or_clusters": 57,
+        "positives": {
+          "normal": 569,
+          "ischemic": 569
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.7978910369068541,
+            "sens_int8": 0.7996485061511424,
+            "spec_fp32": 0.9384885764499121,
+            "spec_int8": 0.9367311072056239,
+            "sens_diff": 0.0017574692442882123,
+            "sens_diff_ci95": [
+              -0.016823217473485336,
+              0.01925909496377484
+            ],
+            "spec_diff": -0.0017574692442882123,
+            "spec_diff_ci95": [
+              -0.012323155142041275,
+              0.00883549413377267
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.9367311072056239,
+            "sens_int8": 0.9367311072056239,
+            "spec_fp32": 0.7978910369068541,
+            "spec_int8": 0.7996485061511424,
+            "sens_diff": 0.0,
+            "sens_diff_ci95": [
+              -0.011834569829493746,
+              0.012089984121678094
+            ],
+            "spec_diff": 0.0017574692442882123,
+            "spec_diff_ci95": [
+              -0.016823217473485336,
+              0.01925909496377484
+            ]
+          }
+        }
+      },
+      "dataset:CPAISD_v2": {
+        "n": 1524,
+        "patients_or_clusters": 18,
+        "positives": {
+          "normal": 1225,
+          "ischemic": 299
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.8204081632653061,
+            "sens_int8": 0.8008163265306123,
+            "spec_fp32": 0.8595317725752508,
+            "spec_int8": 0.862876254180602,
+            "sens_diff": -0.01959183673469378,
+            "sens_diff_ci95": [
+              -0.03598784341527785,
+              0.0
+            ],
+            "spec_diff": 0.0033444816053511683,
+            "spec_diff_ci95": [
+              -0.027274502840909046,
+              0.03747077374802899
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.8595317725752508,
+            "sens_int8": 0.862876254180602,
+            "spec_fp32": 0.8204081632653061,
+            "spec_int8": 0.8008163265306123,
+            "sens_diff": 0.0033444816053511683,
+            "sens_diff_ci95": [
+              -0.027274502840909046,
+              0.03747077374802899
+            ],
+            "spec_diff": -0.01959183673469378,
+            "spec_diff_ci95": [
+              -0.03598784341527785,
+              0.0
+            ]
+          }
+        }
+      },
+      "dataset:ISLES2022_dwi_adc": {
+        "n": 2303,
+        "patients_or_clusters": 37,
+        "positives": {
+          "normal": 1668,
+          "ischemic": 635
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.9592326139088729,
+            "sens_int8": 0.9634292565947242,
+            "spec_fp32": 0.8094488188976378,
+            "spec_int8": 0.8062992125984252,
+            "sens_diff": 0.004196642685851293,
+            "sens_diff_ci95": [
+              -0.0017722391207052267,
+              0.010193336066162316
+            ],
+            "spec_diff": -0.0031496062992125706,
+            "spec_diff_ci95": [
+              -0.011646844118701214,
+              0.005182021804835939
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.8094488188976378,
+            "sens_int8": 0.8062992125984252,
+            "spec_fp32": 0.959832134292566,
+            "spec_int8": 0.9634292565947242,
+            "sens_diff": -0.0031496062992125706,
+            "sens_diff_ci95": [
+              -0.011646844118701214,
+              0.005182021804835939
+            ],
+            "spec_diff": 0.003597122302158251,
+            "spec_diff_ci95": [
+              -0.0022727595741382388,
+              0.009644732245602462
+            ]
+          }
+        }
+      },
+      "dataset:Kaggle_CT": {
+        "n": 1016,
+        "patients_or_clusters": 1016,
+        "positives": {
+          "normal": 685,
+          "ischemic": 170,
+          "hemorrhagic": 161
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.9036496350364963,
+            "sens_int8": 0.8627737226277372,
+            "spec_fp32": 0.945619335347432,
+            "spec_int8": 0.9516616314199395,
+            "sens_diff": -0.040875912408759096,
+            "sens_diff_ci95": [
+              -0.05891655870041857,
+              -0.02315401152723282
+            ],
+            "spec_diff": 0.0060422960725075026,
+            "spec_diff_ci95": [
+              -0.008850212075194963,
+              0.020714695752009155
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.9117647058823529,
+            "sens_int8": 0.9294117647058824,
+            "spec_fp32": 0.9267139479905437,
+            "spec_int8": 0.8888888888888888,
+            "sens_diff": 0.01764705882352946,
+            "sens_diff_ci95": [
+              -0.012345679012345626,
+              0.04729829681752754
+            ],
+            "spec_diff": -0.0378250591016549,
+            "spec_diff_ci95": [
+              -0.05386416861826704,
+              -0.0225105178537416
+            ]
+          },
+          "hemorrhagic": {
+            "sens_fp32": 0.9627329192546584,
+            "sens_int8": 0.9316770186335404,
+            "spec_fp32": 0.991812865497076,
+            "spec_int8": 0.991812865497076,
+            "sens_diff": -0.03105590062111807,
+            "sens_diff_ci95": [
+              -0.06207003641036615,
+              -0.006451612903225823
+            ],
+            "spec_diff": 0.0,
+            "spec_diff_ci95": [
+              -0.004728132387706863,
+              0.004678499527507379
+            ]
+          }
+        }
+      },
+      "dataset:RSNA_ICH": {
+        "n": 2386,
+        "patients_or_clusters": 641,
+        "positives": {
+          "normal": 1193,
+          "hemorrhagic": 1193
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.8147527242246437,
+            "sens_int8": 0.7661357921207042,
+            "spec_fp32": 0.9086336965632859,
+            "spec_int8": 0.9086336965632859,
+            "sens_diff": -0.04861693210393958,
+            "sens_diff_ci95": [
+              -0.06432321432980459,
+              -0.033770757868890416
+            ],
+            "spec_diff": 0.0,
+            "spec_diff_ci95": [
+              -0.009373036499685851,
+              0.009005381102417926
+            ]
+          },
+          "hemorrhagic": {
+            "sens_fp32": 0.9086336965632859,
+            "sens_int8": 0.9086336965632859,
+            "spec_fp32": 0.8147527242246437,
+            "spec_int8": 0.7661357921207042,
+            "sens_diff": 0.0,
+            "sens_diff_ci95": [
+              -0.009373036499685851,
+              0.009005381102417926
+            ],
+            "spec_diff": -0.04861693210393958,
+            "spec_diff_ci95": [
+              -0.06432321432980459,
+              -0.033770757868890416
+            ]
+          }
+        }
+      },
+      "dataset:SICH_CT": {
+        "n": 563,
+        "patients_or_clusters": 18,
+        "positives": {
+          "normal": 448,
+          "hemorrhagic": 115
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.984375,
+            "sens_int8": 0.9866071428571429,
+            "spec_fp32": 0.9739130434782609,
+            "spec_int8": 0.9652173913043478,
+            "sens_diff": 0.0022321428571429047,
+            "sens_diff_ci95": [
+              -0.005306462050476196,
+              0.009830448540125917
+            ],
+            "spec_diff": -0.008695652173913104,
+            "spec_diff_ci95": [
+              -0.028308625336927216,
+              0.0
+            ]
+          },
+          "hemorrhagic": {
+            "sens_fp32": 0.9739130434782609,
+            "sens_int8": 0.9652173913043478,
+            "spec_fp32": 0.984375,
+            "spec_int8": 0.9888392857142857,
+            "sens_diff": -0.008695652173913104,
+            "sens_diff_ci95": [
+              -0.028308625336927216,
+              0.0
+            ],
+            "spec_diff": 0.004464285714285698,
+            "spec_diff_ci95": [
+              0.0,
+              0.01154767784912355
+            ]
+          }
+        }
+      },
+      "dataset:SOOP_dwi_adc": {
+        "n": 1672,
+        "patients_or_clusters": 66,
+        "positives": {
+          "normal": 1200,
+          "ischemic": 472
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.94,
+            "sens_int8": 0.9358333333333333,
+            "spec_fp32": 0.8601694915254238,
+            "spec_int8": 0.8538135593220338,
+            "sens_diff": -0.004166666666666652,
+            "sens_diff_ci95": [
+              -0.012412963971300428,
+              0.003442563548907769
+            ],
+            "spec_diff": -0.006355932203389925,
+            "spec_diff_ci95": [
+              -0.01622942642212419,
+              0.0021142768839359526
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.8601694915254238,
+            "sens_int8": 0.8538135593220338,
+            "spec_fp32": 0.94,
+            "spec_int8": 0.9358333333333333,
+            "sens_diff": -0.006355932203389925,
+            "sens_diff_ci95": [
+              -0.01622942642212419,
+              0.0021142768839359526
+            ],
+            "spec_diff": -0.004166666666666652,
+            "spec_diff_ci95": [
+              -0.012412963971300428,
+              0.003442563548907769
+            ]
+          }
+        }
+      },
+      "cohort:pooled_internal_test": {
+        "n": 8930,
+        "patients_or_clusters": 1787,
+        "positives": {
+          "normal": 5788,
+          "ischemic": 1673,
+          "hemorrhagic": 1469
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.8795784381478922,
+            "sens_int8": 0.8621285418106427,
+            "spec_fp32": 0.8956078930617442,
+            "spec_int8": 0.89528962444303,
+            "sens_diff": -0.01744989633724947,
+            "sens_diff_ci95": [
+              -0.023159000425633756,
+              -0.011645780020365188
+            ],
+            "spec_diff": -0.0003182686187142014,
+            "spec_diff_ci95": [
+              -0.006080532031726637,
+              0.005417506526372825
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.872086072922893,
+            "sens_int8": 0.8732815301852959,
+            "spec_fp32": 0.9360617334986909,
+            "spec_int8": 0.9291718340912223,
+            "sens_diff": 0.001195457262402888,
+            "sens_diff_ci95": [
+              -0.007020119651312088,
+              0.009469921370099142
+            ],
+            "spec_diff": -0.006889899407468647,
+            "spec_diff_ci95": [
+              -0.010946464800218974,
+              -0.0028313485848755664
+            ]
+          },
+          "hemorrhagic": {
+            "sens_fp32": 0.9196732471068755,
+            "sens_int8": 0.9155888359428183,
+            "spec_fp32": 0.9682348210695617,
+            "spec_int8": 0.9609971853638922,
+            "sens_diff": -0.004084411164057222,
+            "sens_diff_ci95": [
+              -0.013076708957455751,
+              0.003949085816952077
+            ],
+            "spec_diff": -0.007237635705669487,
+            "spec_diff_ci95": [
+              -0.009882539212367486,
+              -0.004571489664185613
+            ]
+          }
+        }
+      },
+      "cohort:SOOP_holdout": {
+        "n": 1672,
+        "patients_or_clusters": 66,
+        "positives": {
+          "normal": 1200,
+          "ischemic": 472
+        },
+        "by_class": {
+          "normal": {
+            "sens_fp32": 0.94,
+            "sens_int8": 0.9358333333333333,
+            "spec_fp32": 0.8601694915254238,
+            "spec_int8": 0.8538135593220338,
+            "sens_diff": -0.004166666666666652,
+            "sens_diff_ci95": [
+              -0.012147479855991775,
+              0.003308794003480152
+            ],
+            "spec_diff": -0.006355932203389925,
+            "spec_diff_ci95": [
+              -0.016632882882882886,
+              0.002169315288126072
+            ]
+          },
+          "ischemic": {
+            "sens_fp32": 0.8601694915254238,
+            "sens_int8": 0.8538135593220338,
+            "spec_fp32": 0.94,
+            "spec_int8": 0.9358333333333333,
+            "sens_diff": -0.006355932203389925,
+            "sens_diff_ci95": [
+              -0.016632882882882886,
+              0.002169315288126072
+            ],
+            "spec_diff": -0.004166666666666652,
+            "spec_diff_ci95": [
+              -0.012147479855991775,
+              0.003308794003480152
+            ]
+          }
+        }
+      }
+    }
+  },
+  "transitions": {
+    "INT8-dyn": {
+      "tables_rows_fp32_cols_int8": {
+        "true_normal": [
+          [
+            6217,
+            2,
+            0
+          ],
+          [
+            18,
+            516,
+            0
+          ],
+          [
+            4,
+            0,
+            231
+          ]
+        ],
+        "true_ischemic": [
+          [
+            278,
+            0,
+            0
+          ],
+          [
+            7,
+            1858,
+            0
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "true_hemorrhagic": [
+          [
+            116,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            0,
+            1350
+          ]
+        ]
+      },
+      "changed": 32,
+      "kinds": {
+        "wrong_to_correct": 22,
+        "correct_to_wrong": 10
+      },
+      "kinds_by_truth": {
+        "correct_to_wrong": {
+          "hemorrhagic": 1,
+          "ischemic": 7,
+          "normal": 2
+        },
+        "wrong_to_correct": {
+          "hemorrhagic": 0,
+          "ischemic": 0,
+          "normal": 22
+        }
+      },
+      "fp32_margin_median_all": 0.9137474999999999,
+      "fp32_margin_median_changed": 0.01282500000000003,
+      "fp32_margin_max_changed": 0.04397400000000001,
+      "share_changed_with_fp32_margin_below_0.1": 1.0
+    },
+    "INT8-static": {
+      "tables_rows_fp32_cols_int8": {
+        "true_normal": [
+          [
+            6040,
+            107,
+            72
+          ],
+          [
+            58,
+            476,
+            0
+          ],
+          [
+            15,
+            1,
+            219
+          ]
+        ],
+        "true_ischemic": [
+          [
+            260,
+            18,
+            0
+          ],
+          [
+            21,
+            1844,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ]
+        ],
+        "true_hemorrhagic": [
+          [
+            100,
+            0,
+            16
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            17,
+            5,
+            1329
+          ]
+        ]
+      },
+      "changed": 332,
+      "kinds": {
+        "correct_to_wrong": 222,
+        "wrong_to_correct": 109,
+        "wrong_to_wrong": 1
+      },
+      "kinds_by_truth": {
+        "correct_to_wrong": {
+          "hemorrhagic": 22,
+          "ischemic": 21,
+          "normal": 179
+        },
+        "wrong_to_correct": {
+          "hemorrhagic": 16,
+          "ischemic": 20,
+          "normal": 73
+        },
+        "wrong_to_wrong": {
+          "hemorrhagic": 0,
+          "ischemic": 0,
+          "normal": 1
+        }
+      },
+      "fp32_margin_median_all": 0.9137474999999999,
+      "fp32_margin_median_changed": 0.19515550000000004,
+      "fp32_margin_max_changed": 0.9887750000000001,
+      "share_changed_with_fp32_margin_below_0.1": 0.3132530120481928
+    }
+  },
+  "patient_level_ischemic": {
+    "INT8-dyn": {
+      "pooled_internal_test": {
+        "ischemic_patients": 281,
+        "detected_fp32": 265,
+        "detected_int8": 263,
+        "lost": [
+          [
+            "Kaggle_CT",
+            "Kaggle_CT_row:Kaggle_CT/stroke/00cef2570ff8243a9750d99594ce1642.png"
+          ],
+          [
+            "Kaggle_CT",
+            "Kaggle_CT_row:Kaggle_CT/stroke/623d2ac84541368d16f5a7a3b633994d.png"
+          ]
+        ],
+        "gained": []
+      },
+      "SOOP_holdout": {
+        "ischemic_patients": 66,
+        "detected_fp32": 63,
+        "detected_int8": 63,
+        "lost": [],
+        "gained": []
+      }
+    },
+    "INT8-static": {
+      "pooled_internal_test": {
+        "ischemic_patients": 281,
+        "detected_fp32": 265,
+        "detected_int8": 269,
+        "lost": [
+          [
+            "Kaggle_CT",
+            "Kaggle_CT_row:Kaggle_CT/stroke/623d2ac84541368d16f5a7a3b633994d.png"
+          ],
+          [
+            "Kaggle_CT",
+            "Kaggle_CT_row:Kaggle_CT/stroke/a4bc435baa48669542a3d0317bc6cd65.png"
+          ]
+        ],
+        "gained": [
+          [
+            "AISD",
+            "AISD:0538680"
+          ],
+          [
+            "Kaggle_CT",
+            "Kaggle_CT_row:Kaggle_CT/stroke/72eae64492f87aa07314013e1af9d9e0.png"
+          ],
+          [
+            "Kaggle_CT",
+            "Kaggle_CT_row:Kaggle_CT/stroke/b1eaea249ec1f216b86e9190da467631.png"
+          ],
+          [
+            "Kaggle_CT",
+            "Kaggle_CT_row:Kaggle_CT/stroke/c7cd2b09b4f4e4608c025bb27470a822.png"
+          ],
+          [
+            "Kaggle_CT",
+            "Kaggle_CT_row:Kaggle_CT/stroke/d34e153c082b3964c1247dd3f5e536fe.png"
+          ],
+          [
+            "Kaggle_CT",
+            "Kaggle_CT_row:Kaggle_CT/stroke/f934ea9dc51d70d033cb1606d07f5b8c.png"
+          ]
+        ]
+      },
+      "SOOP_holdout": {
+        "ischemic_patients": 66,
+        "detected_fp32": 63,
+        "detected_int8": 63,
+        "lost": [],
+        "gained": []
+      }
+    }
+  }
+}

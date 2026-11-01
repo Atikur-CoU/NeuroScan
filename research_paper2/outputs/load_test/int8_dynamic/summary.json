@@ -1,0 +1,278 @@
+{
+  "cold": [
+    {
+      "repeat": 1,
+      "health_status": 200,
+      "health_error": "",
+      "health_seconds": 23.214,
+      "first_predict_seconds": 3.5913,
+      "first_predict_ok": 1,
+      "model_version": "r30a_s123_convnext_tiny_onnx_int8_dynamic"
+    },
+    {
+      "repeat": 2,
+      "health_status": 200,
+      "health_error": "",
+      "health_seconds": 23.215,
+      "first_predict_seconds": 3.489,
+      "first_predict_ok": 1,
+      "model_version": "r30a_s123_convnext_tiny_onnx_int8_dynamic"
+    },
+    {
+      "repeat": 3,
+      "health_status": 200,
+      "health_error": "",
+      "health_seconds": 21.863,
+      "first_predict_seconds": 4.609,
+      "first_predict_ok": 1,
+      "model_version": "r30a_s123_convnext_tiny_onnx_int8_dynamic"
+    },
+    {
+      "repeat": 4,
+      "health_status": 200,
+      "health_error": "",
+      "health_seconds": 23.947,
+      "first_predict_seconds": 3.6015,
+      "first_predict_ok": 1,
+      "model_version": "r30a_s123_convnext_tiny_onnx_int8_dynamic"
+    },
+    {
+      "repeat": 5,
+      "health_status": 200,
+      "health_error": "",
+      "health_seconds": 21.834,
+      "first_predict_seconds": 3.5059,
+      "first_predict_ok": 1,
+      "model_version": "r30a_s123_convnext_tiny_onnx_int8_dynamic"
+    }
+  ],
+  "server_health": {
+    "after_cold": {
+      "status": 200,
+      "memory_mb": {
+        "peak": 218,
+        "rss": 158
+      },
+      "uptime_s": 11.7,
+      "model_variant": "int8_dynamic",
+      "model_version": "r30a_s123_convnext_tiny_onnx_int8_dynamic"
+    },
+    "after_fidelity": {
+      "status": 200,
+      "memory_mb": {
+        "peak": 220,
+        "rss": 160
+      },
+      "uptime_s": 101.6,
+      "model_variant": "int8_dynamic",
+      "model_version": "r30a_s123_convnext_tiny_onnx_int8_dynamic"
+    },
+    "after_warm": {
+      "status": 200,
+      "memory_mb": {
+        "peak": 220,
+        "rss": 160
+      },
+      "uptime_s": 288.5,
+      "model_variant": "int8_dynamic",
+      "model_version": "r30a_s123_convnext_tiny_onnx_int8_dynamic"
+    },
+    "after_steps": {
+      "status": 200,
+      "memory_mb": {
+        "peak": 220,
+        "rss": 161
+      },
+      "uptime_s": 759.2,
+      "model_variant": "int8_dynamic",
+      "model_version": "r30a_s123_convnext_tiny_onnx_int8_dynamic"
+    }
+  },
+  "fidelity": {
+    "cases": 28,
+    "answered": 28,
+    "same_prediction_as_offline": 28,
+    "max_abs_prob_diff_vs_offline": 0.01981,
+    "heatmaps_returned": 28
+  },
+  "warm": {
+    "requests": 60,
+    "failures": 0,
+    "failure_rate": 0.0,
+    "failure_kinds": {},
+    "all": {
+      "n": 60,
+      "median_s": 3.077,
+      "p95_s": 3.583,
+      "max_s": 3.897,
+      "mean_s": 3.11
+    },
+    "ct_context": {
+      "n": 20,
+      "median_s": 3.133,
+      "p95_s": 3.49,
+      "max_s": 3.49,
+      "mean_s": 3.145
+    },
+    "mri_dwi_adc": {
+      "n": 20,
+      "median_s": 2.994,
+      "p95_s": 3.656,
+      "max_s": 3.656,
+      "mean_s": 3.079
+    },
+    "ct_single": {
+      "n": 20,
+      "median_s": 3.037,
+      "p95_s": 3.897,
+      "max_s": 3.897,
+      "mean_s": 3.107
+    }
+  },
+  "steps": {
+    "1": {
+      "requests": 40,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": {},
+      "all": {
+        "n": 40,
+        "median_s": 3.101,
+        "p95_s": 3.77,
+        "max_s": 4.001,
+        "mean_s": 3.143
+      },
+      "ct_context": {
+        "n": 14,
+        "median_s": 3.178,
+        "p95_s": 4.001,
+        "max_s": 4.001,
+        "mean_s": 3.248
+      },
+      "mri_dwi_adc": {
+        "n": 13,
+        "median_s": 3.073,
+        "p95_s": 3.603,
+        "max_s": 3.603,
+        "mean_s": 3.111
+      },
+      "ct_single": {
+        "n": 13,
+        "median_s": 3.054,
+        "p95_s": 3.77,
+        "max_s": 3.77,
+        "mean_s": 3.062
+      },
+      "wall_seconds": 125.75,
+      "throughput_ok_per_min": 19.09
+    },
+    "2": {
+      "requests": 40,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": {},
+      "all": {
+        "n": 40,
+        "median_s": 5.693,
+        "p95_s": 5.91,
+        "max_s": 6.317,
+        "mean_s": 5.611
+      },
+      "ct_context": {
+        "n": 13,
+        "median_s": 5.717,
+        "p95_s": 5.91,
+        "max_s": 5.91,
+        "mean_s": 5.659
+      },
+      "mri_dwi_adc": {
+        "n": 14,
+        "median_s": 5.681,
+        "p95_s": 5.867,
+        "max_s": 5.867,
+        "mean_s": 5.496
+      },
+      "ct_single": {
+        "n": 13,
+        "median_s": 5.681,
+        "p95_s": 6.317,
+        "max_s": 6.317,
+        "mean_s": 5.688
+      },
+      "wall_seconds": 113.69,
+      "throughput_ok_per_min": 21.11
+    },
+    "4": {
+      "requests": 40,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": {},
+      "all": {
+        "n": 40,
+        "median_s": 8.636,
+        "p95_s": 17.204,
+        "max_s": 21.15,
+        "mean_s": 11.03
+      },
+      "ct_context": {
+        "n": 13,
+        "median_s": 17.061,
+        "p95_s": 21.15,
+        "max_s": 21.15,
+        "mean_s": 16.439
+      },
+      "mri_dwi_adc": {
+        "n": 13,
+        "median_s": 8.597,
+        "p95_s": 11.314,
+        "max_s": 11.314,
+        "mean_s": 8.632
+      },
+      "ct_single": {
+        "n": 14,
+        "median_s": 8.513,
+        "p95_s": 12.212,
+        "max_s": 12.212,
+        "mean_s": 8.235
+      },
+      "wall_seconds": 114.33,
+      "throughput_ok_per_min": 20.99
+    },
+    "8": {
+      "requests": 40,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": {},
+      "all": {
+        "n": 40,
+        "median_s": 17.331,
+        "p95_s": 64.902,
+        "max_s": 84.868,
+        "mean_s": 21.245
+      },
+      "ct_context": {
+        "n": 14,
+        "median_s": 19.955,
+        "p95_s": 84.868,
+        "max_s": 84.868,
+        "mean_s": 27.364
+      },
+      "mri_dwi_adc": {
+        "n": 13,
+        "median_s": 17.212,
+        "p95_s": 47.381,
+        "max_s": 47.381,
+        "mean_s": 17.816
+      },
+      "ct_single": {
+        "n": 13,
+        "median_s": 16.938,
+        "p95_s": 39.744,
+        "max_s": 39.744,
+        "mean_s": 18.084
+      },
+      "wall_seconds": 116.2,
+      "throughput_ok_per_min": 20.65
+    }
+  }
+}

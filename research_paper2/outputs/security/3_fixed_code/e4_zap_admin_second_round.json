@@ -1,0 +1,52 @@
+{
+ "zap": "ZAP_2.17.0",
+ "minutes_per_active_scan": 15,
+ "by_role": {
+  "admin": {
+   "High": [
+    {
+     "alert": "SQL Injection",
+     "pluginid": "40018",
+     "count": 2,
+     "example": "http://localhost/neuroscan_e4/public/admin_assign.php"
+    }
+   ],
+   "Medium": [
+    {
+     "alert": "CSP: style-src unsafe-inline",
+     "pluginid": "10055",
+     "count": 3,
+     "example": "http://localhost/neuroscan_e4/public/"
+    }
+   ],
+   "Low": [
+    {
+     "alert": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+     "pluginid": "10036",
+     "count": 5,
+     "example": "http://localhost/neuroscan_e4/public/"
+    }
+   ],
+   "Informational": [
+    {
+     "alert": "GET for POST",
+     "pluginid": "10058",
+     "count": 4,
+     "example": "http://localhost/neuroscan_e4/public/admin_settings.php"
+    },
+    {
+     "alert": "User Agent Fuzzer",
+     "pluginid": "10104",
+     "count": 3,
+     "example": "http://localhost/neuroscan_e4/public/"
+    },
+    {
+     "alert": "User Controllable HTML Element Attribute (Potential XSS)",
+     "pluginid": "10031",
+     "count": 26,
+     "example": "http://localhost/neuroscan_e4/public/admin_audit_log.php?action=login_success&actor_id=14&date_from=2026-10-31&date_to=2026-10-31"
+    }
+   ]
+  }
+ }
+}

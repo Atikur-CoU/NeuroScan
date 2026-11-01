@@ -1,0 +1,36 @@
+{
+  "started_utc": "2026-10-30T20:15:00+00:00",
+  "url_host": "<int8-dynamic-service>.onrender.com",
+  "self_test": false,
+  "phases": [
+    "cold",
+    "fidelity",
+    "warm",
+    "steps"
+  ],
+  "cold_repeats": 5,
+  "idle_minutes": 16,
+  "warm_n": 60,
+  "steps": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "step_n": 40,
+  "max_requests": 400,
+  "planned_requests": 258,
+  "timeout_s": 120,
+  "window": [
+    "2026-10-31T02:15+06:00",
+    "2026-10-31T05:00+06:00"
+  ],
+  "test_pack_sha256": "db8ff4c84db5234da62a5e15cb6652f6a87febd6ebb9789cc458aae8cf52283d",
+  "test_pack_cases": 28,
+  "script_sha256": "1002cacca88ae9b0c7470cd83b6046e2c6c0e0aac15994878cdacd3f575f3701",
+  "python": "3.12.10",
+  "requests": "2.34.2",
+  "client_os": "Windows-11-10.0.26200-SP0",
+  "finished_utc": "2026-10-30T21:33:41+00:00",
+  "requests_sent": 258
+}

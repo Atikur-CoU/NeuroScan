@@ -1,0 +1,340 @@
+{
+ "run": {
+  "finished_utc": "2026-10-31T00:34:28+00:00",
+  "site": "http://localhost/neuroscan_e4/public",
+  "inference": "http://127.0.0.1:8765",
+  "tests": 41,
+  "passed": 30,
+  "added_later": "AC-10 and HDR-6 run on the original code with a fresh database after ZAP's post-fix scan; see e4_results_added_tests.json"
+ },
+ "results": [
+  {
+   "id": "AUTH-1",
+   "category": "AUTH",
+   "test": "account locked after 5 wrong passwords (web)",
+   "expected": "correct password refused while locked",
+   "observed": "HTTP 200, locked message",
+   "pass": true
+  },
+  {
+   "id": "AUTH-2",
+   "category": "AUTH",
+   "test": "account locked after 5 wrong passwords (api)",
+   "expected": "correct password refused while locked",
+   "observed": "HTTP 429, locked message",
+   "pass": true
+  },
+  {
+   "id": "AUTH-3",
+   "category": "AUTH",
+   "test": "same error for unknown email and wrong password",
+   "expected": "identical message",
+   "observed": "'Invalid email or password.' vs 'Invalid email or password.'",
+   "pass": true
+  },
+  {
+   "id": "AUTH-4",
+   "category": "AUTH",
+   "test": "30 wrong logins across 30 accounts from one address are throttled",
+   "expected": "address-level throttling after a few attempts",
+   "observed": "0 of 30 refused (0.5 s)",
+   "pass": false
+  },
+  {
+   "id": "AUTH-5",
+   "category": "AUTH",
+   "test": "new session id after login",
+   "expected": "different id",
+   "observed": "changed",
+   "pass": true
+  },
+  {
+   "id": "AUTH-6",
+   "category": "AUTH",
+   "test": "old session cookie refused after logout",
+   "expected": "redirect to login",
+   "observed": "HTTP 302",
+   "pass": true
+  },
+  {
+   "id": "AUTH-7",
+   "category": "AUTH",
+   "test": "logout needs a POST with a token (a link on another site cannot log a user out)",
+   "expected": "GET logout.php does nothing",
+   "observed": "GET logged the user out",
+   "pass": false
+  },
+  {
+   "id": "AUTH-8",
+   "category": "AUTH",
+   "test": "account with a temporary password must change it first (web)",
+   "expected": "every page redirects to change_password.php",
+   "observed": "HTTP 302 -> change_password.php",
+   "pass": true
+  },
+  {
+   "id": "AUTH-9",
+   "category": "AUTH",
+   "test": "account with a temporary password must change it first (API)",
+   "expected": "API refuses until the password is changed",
+   "observed": "HTTP 200",
+   "pass": false
+  },
+  {
+   "id": "AUTH-10",
+   "category": "AUTH",
+   "test": "10 registrations in a row from one address are throttled",
+   "expected": "throttling",
+   "observed": "0 of 10 refused",
+   "pass": false
+  },
+  {
+   "id": "AUTH-11",
+   "category": "AUTH",
+   "test": "3-character password refused at registration",
+   "expected": "account not created",
+   "observed": "refused",
+   "pass": true
+  },
+  {
+   "id": "AC-1",
+   "category": "AC",
+   "test": "14 protected pages without logging in",
+   "expected": "all refused",
+   "observed": "14 of 14 refused",
+   "pass": true
+  },
+  {
+   "id": "AC-2",
+   "category": "AC",
+   "test": "5 API endpoints without a token or with a made-up token",
+   "expected": "all 401",
+   "observed": "10 of 10 refused",
+   "pass": true
+  },
+  {
+   "id": "AC-3",
+   "category": "AC",
+   "test": "role checks (14 page-role pairs a role must not open)",
+   "expected": "all refused",
+   "observed": "14 of 14 refused",
+   "pass": true
+  },
+  {
+   "id": "AC-4",
+   "category": "AC",
+   "test": "another patient opens patient A's scan",
+   "expected": "refused everywhere",
+   "observed": "0 of 6 visible",
+   "pass": true
+  },
+  {
+   "id": "AC-5",
+   "category": "AC",
+   "test": "unassigned doctor opens patient A's scan",
+   "expected": "refused everywhere",
+   "observed": "0 of 8 visible",
+   "pass": true
+  },
+  {
+   "id": "AC-6",
+   "category": "AC",
+   "test": "assigned doctor opens patient A's scan (control)",
+   "expected": "visible",
+   "observed": "all visible",
+   "pass": true
+  },
+  {
+   "id": "AC-7",
+   "category": "AC",
+   "test": "assigned radiologist opens patient A's scan (control)",
+   "expected": "visible",
+   "observed": "all visible",
+   "pass": true
+  },
+  {
+   "id": "AC-8",
+   "category": "AC",
+   "test": "internal folders (includes, storage, sql) not served over HTTP",
+   "expected": "403/404 for every path",
+   "observed": "all refused",
+   "pass": true
+  },
+  {
+   "id": "AC-9",
+   "category": "AC",
+   "test": "one-time admin-creation page absent from the web folder",
+   "expected": "404",
+   "observed": "HTTP 403 (page present, guarded by a token in its source)",
+   "pass": false
+  },
+  {
+   "id": "AC-10",
+   "category": "AC",
+   "test": "admin links a patient as another patient's provider",
+   "expected": "refused, nothing stored",
+   "observed": "HTTP 200, link stored",
+   "pass": false
+  },
+  {
+   "id": "CSRF-1",
+   "category": "CSRF",
+   "test": "14 state-changing forms posted without a token and with a wrong token",
+   "expected": "all 403",
+   "observed": "26 of 28 refused; accepted: ['logout.php (missing: HTTP 302)', 'logout.php (wrong: HTTP 302)']",
+   "pass": false
+  },
+  {
+   "id": "UP-1",
+   "category": "UP",
+   "test": "upload rejected: PHP script named .png",
+   "expected": "rejected with a message",
+   "observed": "rejected (HTTP 200)",
+   "pass": true
+  },
+  {
+   "id": "UP-2",
+   "category": "UP",
+   "test": "upload rejected: HTML page named .png",
+   "expected": "rejected with a message",
+   "observed": "rejected (HTTP 200)",
+   "pass": true
+  },
+  {
+   "id": "UP-3",
+   "category": "UP",
+   "test": "upload rejected: SVG with script",
+   "expected": "rejected with a message",
+   "observed": "rejected (HTTP 200)",
+   "pass": true
+  },
+  {
+   "id": "UP-4",
+   "category": "UP",
+   "test": "upload rejected: GIF image",
+   "expected": "rejected with a message",
+   "observed": "rejected (HTTP 200)",
+   "pass": true
+  },
+  {
+   "id": "UP-5",
+   "category": "UP",
+   "test": "upload rejected: decompression bomb (6000 x 6000 PNG, small file)",
+   "expected": "rejected with a message",
+   "observed": "rejected (HTTP 200)",
+   "pass": true
+  },
+  {
+   "id": "UP-6",
+   "category": "UP",
+   "test": "upload rejected: file over the size limit (11 MB)",
+   "expected": "rejected with a message",
+   "observed": "rejected (HTTP 200)",
+   "pass": true
+  },
+  {
+   "id": "UP-7",
+   "category": "UP",
+   "test": "upload rejected: empty file",
+   "expected": "rejected with a message",
+   "observed": "rejected (HTTP 200)",
+   "pass": true
+  },
+  {
+   "id": "UP-8",
+   "category": "UP",
+   "test": "PNG with PHP appended and a '../' file name: re-encoded, random name",
+   "expected": "payload absent from stored file",
+   "observed": "stored file has no payload; type image/png",
+   "pass": true
+  },
+  {
+   "id": "XSS-1",
+   "category": "XSS",
+   "test": "script payload in upload name, notes, review notes, registration name, login email and audit filter; checked on every page that shows them, for three roles",
+   "expected": "always escaped",
+   "observed": "escaped everywhere",
+   "pass": true
+  },
+  {
+   "id": "HDR-1",
+   "category": "HDR",
+   "test": "security headers on every page",
+   "expected": "5 headers present",
+   "observed": "all present",
+   "pass": true
+  },
+  {
+   "id": "HDR-2",
+   "category": "HDR",
+   "test": "Content-Security-Policy blocks inline script",
+   "expected": "no 'unsafe-inline' in script-src",
+   "observed": "script-src allows 'unsafe-inline'",
+   "pass": false
+  },
+  {
+   "id": "HDR-3",
+   "category": "HDR",
+   "test": "session cookie flags",
+   "expected": "HttpOnly and SameSite (Secure needs HTTPS: checked on the host)",
+   "observed": "path=/; HttpOnly; SameSite=Lax",
+   "pass": true
+  },
+  {
+   "id": "HDR-4",
+   "category": "HDR",
+   "test": "no directory listings",
+   "expected": "403/404",
+   "observed": "includes/ 403, api/ 403",
+   "pass": true
+  },
+  {
+   "id": "HDR-5",
+   "category": "HDR",
+   "test": "no PHP version in response headers",
+   "expected": "no X-Powered-By",
+   "observed": "X-Powered-By: PHP/7.4.7",
+   "pass": false
+  },
+  {
+   "id": "HDR-6",
+   "category": "HDR",
+   "test": "no PHP error text in pages after a database fault",
+   "expected": "no error text, file path or query",
+   "observed": "HTTP 200, page shows ['Fatal error', 'PDOException', 'SQLSTATE', 'Stack trace', ' on line ']",
+   "pass": false
+  },
+  {
+   "id": "INF-1",
+   "category": "INF",
+   "test": "health and predict without the correct key (5 variants each)",
+   "expected": "all 401",
+   "observed": "10 of 10 refused",
+   "pass": true
+  },
+  {
+   "id": "INF-2",
+   "category": "INF",
+   "test": "malformed images sent with the correct key",
+   "expected": "4xx answer, server stays up",
+   "observed": "PHP script as image: 400, empty file: 400, bomb 6000x6000: 200, bomb 12000x12000: 200, truncated PNG: 500; server up",
+   "pass": false
+  },
+  {
+   "id": "INF-3",
+   "category": "INF",
+   "test": "unknown modality",
+   "expected": "4xx",
+   "observed": "HTTP 400",
+   "pass": true
+  },
+  {
+   "id": "INF-4",
+   "category": "INF",
+   "test": "no cross-origin access for browsers",
+   "expected": "no Access-Control-Allow-Origin",
+   "observed": "absent",
+   "pass": true
+  }
+ ]
+}

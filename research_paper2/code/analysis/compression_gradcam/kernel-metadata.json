@@ -1,0 +1,29 @@
+{
+  "id": "atik68/neuroscan-p2-compression-gradcam",
+  "title": "NeuroScan P2 Compression Gradcam",
+  "code_file": "e2e3.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "atik68/neuroscan-phase-p-patient-split-v3",
+    "atik68/neuroscan-phase-b-images",
+    "atik68/neuroscan-phase-j-rsna-images",
+    "atik68/neuroscan-phase-l-rsna-more-images",
+    "atik68/neuroscan-phase-k-aisd-images",
+    "atik68/neuroscan-phase-n-cpaisd-v2-images",
+    "atik68/neuroscan-q-round30as123-preds",
+    "atik68/neuroscan-q-phase2-split-data",
+    "atik68/neuroscan-q-r30a-s123-weights"
+  ],
+  "kernel_sources": [
+    "atik68/neuroscan-q-onnx-export-check",
+    "atik68/neuroscan-q-aisd-normals-prep",
+    "atik68/neuroscan-q-rsna-normals-prep",
+    "atik68/neuroscan-q-soop-prep"
+  ],
+  "competition_sources": [],
+  "model_sources": []
+}

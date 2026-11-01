@@ -1,0 +1,29 @@
+[{"stream_name":"stdout","time":28.978459604,"data":"[  0.5 min | parent 23 MB] pip server requirements -\u003e /tmp/srvpkgs: exit 0 (28s) e.\n"}
+,{"stream_name":"stdout","time":28.978716608,"data":"google-adk 2.7.1 requires starlette\u003c2,\u003e=1.3.1, but you have starlette 0.38.6 which is incompatible.\n"}
+,{"stream_name":"stdout","time":28.978725905,"data":"google-adk 2.7.1 requires uvicorn\u003c1,\u003e=0.34, but you have uvicorn 0.30.6 which is incompatible.\n"}
+,{"stream_name":"stdout","time":28.978730434,"data":"google-adk 2.7.1 requires websockets\u003c16,\u003e=15.0.1, but you have websockets 17.3 which is incompatible.\n"}
+,{"stream_name":"stdout","time":28.978734694,"data":"\n"}
+,{"stream_name":"stdout","time":31.772229461,"data":"[  0.5 min | parent 23 MB] models verified: {'FP32': 111.39, 'INT8-dyn': 33.83, 'INT8-static': 28.56}\n"}
+,{"stream_name":"stdout","time":33.153192879,"data":"[  0.5 min | parent 23 MB] test pack: 28 cases -\u003e 40 request kinds\n"}
+,{"stream_name":"stdout","time":97.193487765,"data":"[  1.6 min | parent 23 MB] A FP32 #1 (64s): peak (VmHWM) 298 MB; RSS after load 208 MB, after requests 238 MB; ru_maxrss 298 MB; median 0.783s\n"}
+,{"stream_name":"stdout","time":161.318536497,"data":"[  2.7 min | parent 23 MB] A FP32 #2 (64s): peak (VmHWM) 296 MB; RSS after load 206 MB, after requests 236 MB; ru_maxrss 296 MB; median 0.786s\n"}
+,{"stream_name":"stdout","time":225.18482286,"data":"[  3.7 min | parent 23 MB] A FP32 #3 (64s): peak (VmHWM) 307 MB; RSS after load 227 MB, after requests 247 MB; ru_maxrss 307 MB; median 0.783s\n"}
+,{"stream_name":"stdout","time":279.407886708,"data":"[  4.6 min | parent 23 MB] A INT8-dyn #1 (54s): peak (VmHWM) 195 MB; RSS after load 111 MB, after requests 135 MB; ru_maxrss 195 MB; median 0.667s\n"}
+,{"stream_name":"stdout","time":333.807520381,"data":"[  5.5 min | parent 23 MB] A INT8-dyn #2 (54s): peak (VmHWM) 198 MB; RSS after load 115 MB, after requests 138 MB; ru_maxrss 198 MB; median 0.670s\n"}
+,{"stream_name":"stdout","time":387.998988189,"data":"[  6.4 min | parent 23 MB] A INT8-dyn #3 (54s): peak (VmHWM) 194 MB; RSS after load 111 MB, after requests 134 MB; ru_maxrss 194 MB; median 0.667s\n"}
+,{"stream_name":"stdout","time":442.302625616,"data":"[  7.4 min | parent 23 MB] A INT8-static #1 (54s): peak (VmHWM) 191 MB; RSS after load 108 MB, after requests 134 MB; ru_maxrss 191 MB; median 0.668s\n"}
+,{"stream_name":"stdout","time":496.693082129,"data":"[  8.3 min | parent 23 MB] A INT8-static #2 (54s): peak (VmHWM) 191 MB; RSS after load 107 MB, after requests 134 MB; ru_maxrss 191 MB; median 0.670s\n"}
+,{"stream_name":"stdout","time":551.350839949,"data":"[  9.2 min | parent 23 MB] A INT8-static #3 (55s): peak (VmHWM) 193 MB; RSS after load 109 MB, after requests 135 MB; ru_maxrss 193 MB; median 0.672s\n"}
+,{"stream_name":"stdout","time":553.053257498,"data":"[  9.2 min | parent 2071 MB] control: parent now holds 2.1 GB\n"}
+,{"stream_name":"stdout","time":617.140621533,"data":"[ 10.3 min | parent 2071 MB] control child: VmHWM 298 MB vs ru_maxrss 2071 MB\n"}
+,{"stream_name":"stdout","time":713.630315879,"data":"[ 11.9 min | parent 26 MB] B FP32: {\"ready_s\": 2.07, \"after_startup\": {\"hwm\": 247, \"rss\": 247}, \"after_requests\": {\"hwm\": 328, \"rss\": 269}, \"requests_ok\": 120, \"latency_median_s\": 0.7808222770690918, \"error\": null}\n"}
+,{"stream_name":"stdout","time":795.658759855,"data":"[ 13.2 min | parent 26 MB] B INT8-dyn: {\"ready_s\": 1.02, \"after_startup\": {\"hwm\": 145, \"rss\": 145}, \"after_requests\": {\"hwm\": 228, \"rss\": 168}, \"requests_ok\": 120, \"latency_median_s\": 0.6705403327941895, \"error\": null}\n"}
+,{"stream_name":"stdout","time":878.14221202,"data":"[ 14.6 min | parent 26 MB] B INT8-static: {\"ready_s\": 1.03, \"after_startup\": {\"hwm\": 135, \"rss\": 135}, \"after_requests\": {\"hwm\": 213, \"rss\": 156}, \"requests_ok\": 120, \"latency_median_s\": 0.6735246181488037, \"error\": null}\n"}
+,{"stream_name":"stdout","time":878.143233137,"data":"[ 14.6 min | parent 26 MB] Done.\n"}
+,{"stream_name":"stderr","time":880.578285227,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":880.578317335,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":880.975110863,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":880.975135111,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":881.918609766,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":883.126668461,"data":"[NbConvertApp] Writing 373524 bytes to __results__.html\n"}
+]

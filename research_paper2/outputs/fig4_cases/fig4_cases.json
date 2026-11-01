@@ -1,0 +1,207 @@
+{
+  "cases": {
+    "A": {
+      "held_i": 1490,
+      "out_path": "AISD/ischemic/0226208_016.png",
+      "dataset": "AISD",
+      "label": "ischemic",
+      "FP32": {
+        "probs": [
+          0.004318559946206189,
+          0.9955938245509899,
+          8.76155028039187e-05
+        ],
+        "pred": "ischemic",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 0.0,
+        "pred_same_as_saved": true
+      },
+      "INT8-dyn": {
+        "probs": [
+          0.005167124068865553,
+          0.9947436964585059,
+          8.917947262849855e-05
+        ],
+        "pred": "ischemic",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 1.5706997658071487e-07,
+        "pred_same_as_saved": true
+      },
+      "INT8-static": {
+        "probs": [
+          0.001969461237810186,
+          0.9979506074373227,
+          7.99313248672216e-05
+        ],
+        "pred": "ischemic",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 0.0,
+        "pred_same_as_saved": true
+      }
+    },
+    "B": {
+      "held_i": 6884,
+      "out_path": "ISLES2022/stroke/8a421df60b40b9f8525d3e296a200b55.png",
+      "dataset": "ISLES2022_dwi_adc",
+      "label": "ischemic",
+      "FP32": {
+        "probs": [
+          0.00022967357125648405,
+          0.9996913195845203,
+          7.90068442232467e-05
+        ],
+        "pred": "ischemic",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 0.0,
+        "pred_same_as_saved": true
+      },
+      "INT8-dyn": {
+        "probs": [
+          0.0002851935155474252,
+          0.9996359907805121,
+          7.881570394052686e-05
+        ],
+        "pred": "ischemic",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 1.7552333986259328e-07,
+        "pred_same_as_saved": true
+      },
+      "INT8-static": {
+        "probs": [
+          0.00022023452640474228,
+          0.9996866644355302,
+          9.31010380650838e-05
+        ],
+        "pred": "ischemic",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 0.0,
+        "pred_same_as_saved": true
+      }
+    },
+    "C": {
+      "held_i": 4276,
+      "out_path": "Kaggle_CT/stroke/8114b173a9b25ba44bd7e84fd46b69e9.png",
+      "dataset": "Kaggle_CT",
+      "label": "hemorrhagic",
+      "FP32": {
+        "probs": [
+          0.003567776570934402,
+          0.0001242146075282278,
+          0.9963080088215375
+        ],
+        "pred": "hemorrhagic",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 0.0,
+        "pred_same_as_saved": true
+      },
+      "INT8-dyn": {
+        "probs": [
+          0.0038802400117253335,
+          0.00013688266287228314,
+          0.9959828773254025
+        ],
+        "pred": "hemorrhagic",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 1.6098171329304023e-07,
+        "pred_same_as_saved": true
+      },
+      "INT8-static": {
+        "probs": [
+          0.004858389462143189,
+          0.0017247301503760487,
+          0.9934168803874808
+        ],
+        "pred": "hemorrhagic",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 0.0,
+        "pred_same_as_saved": true
+      }
+    },
+    "D": {
+      "held_i": 7992,
+      "out_path": "RSNA_ICH/normal/ID_7ea1db35e.png",
+      "dataset": "RSNA_ICH",
+      "label": "normal",
+      "FP32": {
+        "probs": [
+          0.49308808144394267,
+          0.0010162673135171761,
+          0.5058956512425401
+        ],
+        "pred": "hemorrhagic",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 0.0,
+        "pred_same_as_saved": true
+      },
+      "INT8-dyn": {
+        "probs": [
+          0.5010423037318648,
+          0.0010415283663107787,
+          0.4979161679018246
+        ],
+        "pred": "normal",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 4.273198612736451e-07,
+        "pred_same_as_saved": true
+      },
+      "INT8-static": {
+        "probs": [
+          0.5981889497585522,
+          0.008765927630095108,
+          0.3930451226113527
+        ],
+        "pred": "normal",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 0.0,
+        "pred_same_as_saved": true
+      }
+    },
+    "E": {
+      "held_i": 4703,
+      "out_path": "CPAISD_v2/e71329d9cb35a115e9c01f250f6dd836.png",
+      "dataset": "CPAISD_v2",
+      "label": "normal",
+      "FP32": {
+        "probs": [
+          0.5974813234825876,
+          0.4020803687671627,
+          0.00043830775024973937
+        ],
+        "pred": "normal",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 0.0,
+        "pred_same_as_saved": true
+      },
+      "INT8-dyn": {
+        "probs": [
+          0.6158781738208189,
+          0.3836763931437428,
+          0.00044543303543832894
+        ],
+        "pred": "normal",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 9.52917460494973e-08,
+        "pred_same_as_saved": true
+      },
+      "INT8-static": {
+        "probs": [
+          0.4925553805392834,
+          0.5064031221212532,
+          0.0010414973394634814
+        ],
+        "pred": "ischemic",
+        "max_prob_diff_vs_saved": 0.0,
+        "max_rel_map_diff_vs_saved": 0.0,
+        "pred_same_as_saved": true
+      }
+    }
+  },
+  "file_reads_by_source": {
+    "AISD": 3,
+    "ISLES2022": 2,
+    "Kaggle_CT": 1,
+    "RSNA_ICH": 1,
+    "CPAISD_v2": 3
+  },
+  "onnxruntime": "1.20.1"
+}

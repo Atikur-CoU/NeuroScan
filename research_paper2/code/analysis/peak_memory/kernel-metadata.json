@@ -1,0 +1,18 @@
+{
+  "id": "atik68/neuroscan-p2-peak-memory",
+  "title": "NeuroScan P2 Peak Memory",
+  "code_file": "peak.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "kernel_sources": [
+    "atik68/neuroscan-q-onnx-export-check",
+    "atik68/neuroscan-p2-compression-gradcam",
+    "atik68/neuroscan-q-test-pack"
+  ],
+  "competition_sources": [],
+  "model_sources": []
+}

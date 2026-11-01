@@ -1,0 +1,1871 @@
+{
+  "note": "paper 2, E2 + E3; settings fixed in advance (PLAN_E2_E3_E4.md); FP32 = the served ONNX file",
+  "server_packages": [
+    "onnxruntime==1.20.1",
+    "numpy==2.1.3",
+    "pillow==11.0.0"
+  ],
+  "python": "3.13.15",
+  "server_python_on_render": "3.11",
+  "main_packages": {
+    "onnxruntime": "1.20.1",
+    "onnx": "1.18.0",
+    "torch": "2.11.0+cpu",
+    "numpy": "2.1.3"
+  },
+  "fp32_sha256": "4937ab381ee3e7c29d5ab18ea761a8c19ddffb6488210fb6030511a8041502eb",
+  "inference_py_sha256": "d36a0d394ac8d5e0c82871b77b078c97b7e2a949f25c27e3841e9b0c307208c5",
+  "rows": {
+    "held_out_by_cohort": {
+      "internal_test": 7406,
+      "SOOP": 1672,
+      "CPAISD": 1524
+    },
+    "held_out_by_dataset": {
+      "RSNA_ICH": 2386,
+      "ISLES2022_dwi_adc": 2303,
+      "SOOP_dwi_adc": 1672,
+      "CPAISD_v2": 1524,
+      "AISD": 1138,
+      "Kaggle_CT": 1016,
+      "SICH_CT": 563
+    },
+    "patients": 1853,
+    "calibration_by_stratum": {
+      "AISD|ischemic": 34,
+      "AISD|normal": 34,
+      "CPAISD_v2|ischemic": 34,
+      "CPAISD_v2|normal": 34,
+      "ISLES2022_dwi_adc|ischemic": 34,
+      "ISLES2022_dwi_adc|normal": 34,
+      "Kaggle_CT|hemorrhagic": 34,
+      "Kaggle_CT|ischemic": 34,
+      "Kaggle_CT|normal": 34,
+      "RSNA_ICH|hemorrhagic": 34,
+      "RSNA_ICH|normal": 34,
+      "SICH_CT|hemorrhagic": 34,
+      "SICH_CT|normal": 34,
+      "SOOP_dwi_adc|ischemic": 35,
+      "SOOP_dwi_adc|normal": 35
+    },
+    "e3_by_stratum": {
+      "AISD|ischemic": 40,
+      "AISD|normal": 40,
+      "CPAISD_v2|ischemic": 40,
+      "CPAISD_v2|normal": 40,
+      "ISLES2022_dwi_adc|ischemic": 40,
+      "ISLES2022_dwi_adc|normal": 40,
+      "Kaggle_CT|hemorrhagic": 40,
+      "Kaggle_CT|ischemic": 40,
+      "Kaggle_CT|normal": 40,
+      "RSNA_ICH|hemorrhagic": 40,
+      "RSNA_ICH|normal": 40,
+      "SICH_CT|hemorrhagic": 40,
+      "SICH_CT|normal": 40,
+      "SOOP_dwi_adc|ischemic": 40,
+      "SOOP_dwi_adc|normal": 40
+    }
+  },
+  "file_reads_by_source": {
+    "Kaggle_CT": 1118,
+    "RSNA_ICH": 1227,
+    "AISD": 1809,
+    "CPAISD_v2": 4776,
+    "SICH_CT": 1893,
+    "ISLES2022": 4742,
+    "AISD/normal/": 1809,
+    "RSNA_ICH/normal/": 1227,
+    "SOOP/": 3484
+  },
+  "quant_excluded_head": {
+    "nodes": 26,
+    "op_types": [
+      "Add",
+      "Cast",
+      "Div",
+      "Einsum",
+      "Gather",
+      "Gemm",
+      "Mul",
+      "ReduceMean",
+      "Relu",
+      "Shape",
+      "Sqrt",
+      "Sub",
+      "Unsqueeze"
+    ]
+  },
+  "variant_errors": {
+    "FP16": "session creation failed: Fail: [ONNXRuntimeError] : 1 : FAIL : Load model from /kaggle/working/output/models/neuroscan_r30a_s123_fp16.onnx failed:Type Error: Type (tensor(float16)) of output arg (/Cast_output_0) of node (/Cast) does not match expected type (tensor(float)).",
+    "FP16-LN": "session creation failed: Fail: [ONNXRuntimeError] : 1 : FAIL : Load model from /kaggle/working/output/models/neuroscan_r30a_s123_fp16_ln.onnx failed:Type Error: Type parameter (T) of Optype (Mul) bound to different types (tensor(float) and tensor(float16) in node (/Mul_2)."
+  },
+  "variants": {
+    "FP32": {
+      "file": "neuroscan_r30a_s123.onnx",
+      "mb": 111.39,
+      "sha256": "4937ab381ee3e7c29d5ab18ea761a8c19ddffb6488210fb6030511a8041502eb",
+      "op_counts": {
+        "Add": 74,
+        "Constant": 59,
+        "Mul": 59,
+        "Transpose": 44,
+        "MatMul": 36,
+        "Conv": 22,
+        "LayerNormalization": 22,
+        "Div": 21,
+        "Erf": 18,
+        "ReduceMean": 6,
+        "Sub": 4,
+        "Unsqueeze": 2,
+        "Shape": 2,
+        "Gather": 2,
+        "Sqrt": 1,
+        "Gemm": 1,
+        "Cast": 1,
+        "Einsum": 1,
+        "Relu": 1
+      },
+      "runs_here": true
+    },
+    "FP16": {
+      "file": "neuroscan_r30a_s123_fp16.onnx",
+      "mb": 55.77,
+      "sha256": "8467ecb21cb978c1a8da2879a082248de833910f73897d1931d04aafaeb35c66",
+      "op_counts": {
+        "Add": 74,
+        "Constant": 59,
+        "Mul": 59,
+        "Transpose": 44,
+        "MatMul": 36,
+        "Conv": 22,
+        "LayerNormalization": 22,
+        "Div": 21,
+        "Erf": 18,
+        "ReduceMean": 6,
+        "Sub": 4,
+        "Cast": 4,
+        "Unsqueeze": 2,
+        "Shape": 2,
+        "Gather": 2,
+        "Sqrt": 1,
+        "Gemm": 1,
+        "Einsum": 1,
+        "Relu": 1
+      },
+      "runs_here": false
+    },
+    "FP16-LN": {
+      "file": "neuroscan_r30a_s123_fp16_ln.onnx",
+      "mb": 55.82,
+      "sha256": "f56c3cb8ea50ab32c2318d3784432c01095819d6e8ec5539361a7995efcb7258",
+      "op_counts": {
+        "Add": 74,
+        "Cast": 61,
+        "Constant": 59,
+        "Mul": 59,
+        "Transpose": 44,
+        "MatMul": 36,
+        "Conv": 22,
+        "LayerNormalization": 22,
+        "Div": 21,
+        "Erf": 18,
+        "ReduceMean": 6,
+        "Sub": 4,
+        "Shape": 2,
+        "Gather": 2,
+        "Unsqueeze": 2,
+        "Sqrt": 1,
+        "Gemm": 1,
+        "Einsum": 1,
+        "Relu": 1
+      },
+      "runs_here": false
+    },
+    "INT8-dyn": {
+      "file": "neuroscan_r30a_s123_int8_dynamic.onnx",
+      "mb": 33.83,
+      "sha256": "ad2f6e0ee22b28ec98295b742075a2168e480801073a8df3f1222df37c74d99f",
+      "op_counts": {
+        "Mul": 133,
+        "Add": 75,
+        "Transpose": 42,
+        "Cast": 38,
+        "DynamicQuantizeLinear": 37,
+        "MatMulInteger": 37,
+        "Conv": 22,
+        "LayerNormalization": 22,
+        "Div": 21,
+        "Erf": 18,
+        "ReduceMean": 4,
+        "Gather": 2,
+        "Sub": 2,
+        "Unsqueeze": 2,
+        "Shape": 1,
+        "Sqrt": 1,
+        "Einsum": 1,
+        "Relu": 1
+      },
+      "runs_here": true
+    },
+    "INT8-static": {
+      "file": "neuroscan_r30a_s123_int8_static.onnx",
+      "mb": 28.56,
+      "sha256": "35d8a4007b813f8fb6eca6c10078823fc5b69a654314c36d76c3412a38b02a46",
+      "op_counts": {
+        "DequantizeLinear": 193,
+        "QuantizeLinear": 113,
+        "Add": 74,
+        "Mul": 59,
+        "Transpose": 42,
+        "MatMul": 36,
+        "Conv": 22,
+        "LayerNormalization": 22,
+        "Div": 21,
+        "Erf": 18,
+        "ReduceMean": 4,
+        "Gather": 2,
+        "Sub": 2,
+        "Unsqueeze": 2,
+        "Shape": 1,
+        "Cast": 1,
+        "Sqrt": 1,
+        "Gemm": 1,
+        "Einsum": 1,
+        "Relu": 1
+      },
+      "runs_here": true
+    }
+  },
+  "agreement_run_minutes": {
+    "FP32": 74.2,
+    "INT8-dyn": 55.7,
+    "INT8-static": 58.0
+  },
+  "fp32_vs_saved": {
+    "max_abs_diff": 0.00024937722556983566,
+    "mean_abs_diff": 8.188344109126959e-06,
+    "argmax_mismatches": 0,
+    "mismatches_at_ties": 0
+  },
+  "E2_agreement": {
+    "INT8-dyn": {
+      "rows_used": "all held-out rows",
+      "pooled_internal_test": {
+        "n": 8930,
+        "patients": 1787,
+        "argmax_agreement": 0.9970884658454647,
+        "argmax_agreement_ci95": [
+          0.9959813116897612,
+          0.9980917419003139
+        ],
+        "flips": 26,
+        "flip_table_rows_fp32_cols_variant": [
+          [
+            5412,
+            7,
+            0
+          ],
+          [
+            16,
+            1907,
+            0
+          ],
+          [
+            3,
+            0,
+            1585
+          ]
+        ],
+        "tier_agreement": 0.9867861142217246,
+        "tier_agreement_ci95": [
+          0.9840023919805726,
+          0.9894433108290911
+        ],
+        "tier_changes": {
+          "grey->blue": 63,
+          "orange->grey": 19,
+          "red->orange": 18,
+          "blue->grey": 12,
+          "orange->red": 5,
+          "grey->orange": 1
+        },
+        "prob_abs_diff_max": 0.09799576961149653,
+        "prob_abs_diff_mean": 0.0036616518094998883,
+        "prob_abs_diff_p99": 0.07878804536601293,
+        "secondary_metric_deltas_variant_minus_fp32": {
+          "accuracy": {
+            "fp32": 0.8847704367301232,
+            "variant": 0.8845464725643897,
+            "diff": -0.00022396416573355893,
+            "ci95": [
+              -0.0013002051094509776,
+              0.0008580267934628454
+            ]
+          },
+          "balanced_accuracy": {
+            "fp32": 0.8904459193925535,
+            "variant": 0.8893115024835874,
+            "diff": -0.001134416908966096,
+            "ci95": [
+              -0.002360827792775502,
+              8.312446419059145e-05
+            ]
+          },
+          "macro_f1_present_classes": {
+            "fp32": 0.8679565195369113,
+            "variant": 0.8675643547396854,
+            "diff": -0.00039216479722592457,
+            "ci95": [
+              -0.0015357396466798429,
+              0.0007436258794363462
+            ]
+          },
+          "normal_recall": {
+            "fp32": 0.8795784381478922,
+            "variant": 0.8804422944022114,
+            "diff": 0.000863856254319284,
+            "ci95": [
+              -0.0005151320396579118,
+              0.002259720070435839
+            ]
+          },
+          "ischemic_recall": {
+            "fp32": 0.872086072922893,
+            "variant": 0.8684997011356844,
+            "diff": -0.003586371787208553,
+            "ci95": [
+              -0.00696644293707537,
+              -0.000571872766814861
+            ]
+          },
+          "ischemic_precision": {
+            "fp32": 0.7587103484139366,
+            "variant": 0.7591431556948798,
+            "diff": 0.00043280728094319265,
+            "ci95": [
+              -0.002552013523176644,
+              0.0033908742626212697
+            ]
+          },
+          "hemorrhagic_recall": {
+            "fp32": 0.9196732471068755,
+            "variant": 0.9189925119128659,
+            "diff": -0.000680735194009574,
+            "ci95": [
+              -0.0020964727096802914,
+              0.0
+            ]
+          },
+          "hemorrhagic_precision": {
+            "fp32": 0.8507556675062973,
+            "variant": 0.8517350157728707,
+            "diff": 0.000979348266573421,
+            "ci95": [
+              -0.0001826357447572563,
+              0.0026713520984169925
+            ]
+          },
+          "ischemic_auroc": {
+            "fp32": 0.9634086626256356,
+            "variant": 0.9640221231251793,
+            "diff": 0.0006134604995436943,
+            "ci95": [
+              0.00029687303158698885,
+              0.0009924651316167126
+            ]
+          },
+          "hemorrhagic_auroc": {
+            "fp32": 0.9896589563209972,
+            "variant": 0.9896612372993983,
+            "diff": 2.280978401048017e-06,
+            "ci95": [
+              -3.654655923746031e-05,
+              3.70814635081762e-05
+            ]
+          },
+          "macro_ovr_auroc": {
+            "fp32": 0.9663830989159785,
+            "variant": 0.9668043009742621,
+            "diff": 0.00042120205828355406,
+            "ci95": [
+              0.00024667868101806433,
+              0.0006120490750061434
+            ]
+          }
+        },
+        "by_source": {
+          "AISD": {
+            "n": 1138,
+            "argmax_agreement": 0.9973637961335676,
+            "flips": 3
+          },
+          "CPAISD_v2": {
+            "n": 1524,
+            "argmax_agreement": 0.9967191601049868,
+            "flips": 5
+          },
+          "ISLES2022_dwi_adc": {
+            "n": 2303,
+            "argmax_agreement": 0.9960920538428137,
+            "flips": 9
+          },
+          "Kaggle_CT": {
+            "n": 1016,
+            "argmax_agreement": 0.9940944881889764,
+            "flips": 6
+          },
+          "RSNA_ICH": {
+            "n": 2386,
+            "argmax_agreement": 0.998742665549036,
+            "flips": 3
+          },
+          "SICH_CT": {
+            "n": 563,
+            "argmax_agreement": 1.0,
+            "flips": 0
+          }
+        }
+      },
+      "internal_test": {
+        "n": 7406,
+        "patients": 1769,
+        "argmax_agreement": 0.997164461247637,
+        "argmax_agreement_ci95": [
+          0.9959355281631875,
+          0.9982546818448294
+        ],
+        "flips": 21,
+        "flip_table_rows_fp32_cols_variant": [
+          [
+            4367,
+            5,
+            0
+          ],
+          [
+            13,
+            1433,
+            0
+          ],
+          [
+            3,
+            0,
+            1585
+          ]
+        ],
+        "tier_agreement": 0.9885228193356738,
+        "tier_agreement_ci95": [
+          0.9858182790310478,
+          0.9913361436065767
+        ],
+        "tier_changes": {
+          "grey->blue": 44,
+          "red->orange": 15,
+          "blue->grey": 11,
+          "orange->grey": 10,
+          "orange->red": 4,
+          "grey->orange": 1
+        },
+        "prob_abs_diff_max": 0.09799576961149653,
+        "prob_abs_diff_mean": 0.0037948249270243688,
+        "prob_abs_diff_p99": 0.07927085829451111,
+        "secondary_metric_deltas_variant_minus_fp32": {
+          "accuracy": {
+            "fp32": 0.8964353227113151,
+            "variant": 0.8963002970564408,
+            "diff": -0.00013502565487433227,
+            "ci95": [
+              -0.0012332357162932101,
+              0.0009822599385726294
+            ]
+          },
+          "balanced_accuracy": {
+            "fp32": 0.8966516024818468,
+            "variant": 0.8955769441296139,
+            "diff": -0.0010746583522329711,
+            "ci95": [
+              -0.00255984535588894,
+              0.00019881278709309546
+            ]
+          },
+          "macro_f1_present_classes": {
+            "fp32": 0.8836536105787509,
+            "variant": 0.8833454995634358,
+            "diff": -0.00030811101531513785,
+            "ci95": [
+              -0.0015875204881006743,
+              0.0009383126285964794
+            ]
+          },
+          "normal_recall": {
+            "fp32": 0.8954635108481263,
+            "variant": 0.8965592811746658,
+            "diff": 0.0010957703265395136,
+            "ci95": [
+              -0.0002262266218809622,
+              0.0026968724817928655
+            ]
+          },
+          "ischemic_recall": {
+            "fp32": 0.8748180494905385,
+            "variant": 0.87117903930131,
+            "diff": -0.00363901018922852,
+            "ci95": [
+              -0.007717398342398374,
+              0.0
+            ]
+          },
+          "ischemic_precision": {
+            "fp32": 0.8312586445366529,
+            "variant": 0.8324061196105702,
+            "diff": 0.0011474750739173256,
+            "ci95": [
+              -0.0023476316177929056,
+              0.004964882607522534
+            ]
+          },
+          "hemorrhagic_recall": {
+            "fp32": 0.9196732471068755,
+            "variant": 0.9189925119128659,
+            "diff": -0.000680735194009574,
+            "ci95": [
+              -0.002115730558676576,
+              0.0
+            ]
+          },
+          "hemorrhagic_precision": {
+            "fp32": 0.8507556675062973,
+            "variant": 0.8517350157728707,
+            "diff": 0.000979348266573421,
+            "ci95": [
+              -0.00017375400094177262,
+              0.002637449452698556
+            ]
+          },
+          "ischemic_auroc": {
+            "fp32": 0.9751812506998097,
+            "variant": 0.9758749068529222,
+            "diff": 0.0006936561531125651,
+            "ci95": [
+              0.0003339476182760398,
+              0.0011744087884886705
+            ]
+          },
+          "hemorrhagic_auroc": {
+            "fp32": 0.9871758753959919,
+            "variant": 0.987177021993927,
+            "diff": 1.1465979350422373e-06,
+            "ci95": [
+              -4.348253303801675e-05,
+              4.894583597966349e-05
+            ]
+          },
+          "macro_ovr_auroc": {
+            "fp32": 0.9721951514714461,
+            "variant": 0.9726621201031085,
+            "diff": 0.0004669686316624011,
+            "ci95": [
+              0.0002782467134892053,
+              0.0006968036667851058
+            ]
+          }
+        },
+        "by_source": {
+          "AISD": {
+            "n": 1138,
+            "argmax_agreement": 0.9973637961335676,
+            "flips": 3
+          },
+          "ISLES2022_dwi_adc": {
+            "n": 2303,
+            "argmax_agreement": 0.9960920538428137,
+            "flips": 9
+          },
+          "Kaggle_CT": {
+            "n": 1016,
+            "argmax_agreement": 0.9940944881889764,
+            "flips": 6
+          },
+          "RSNA_ICH": {
+            "n": 2386,
+            "argmax_agreement": 0.998742665549036,
+            "flips": 3
+          },
+          "SICH_CT": {
+            "n": 563,
+            "argmax_agreement": 1.0,
+            "flips": 0
+          }
+        }
+      },
+      "CPAISD": {
+        "n": 1524,
+        "patients": 18,
+        "argmax_agreement": 0.9967191601049868,
+        "argmax_agreement_ci95": [
+          0.9942853505501501,
+          0.9987752789955635
+        ],
+        "flips": 5,
+        "flip_table_rows_fp32_cols_variant": [
+          [
+            1045,
+            2,
+            0
+          ],
+          [
+            3,
+            474,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "tier_agreement": 0.9783464566929134,
+        "tier_agreement_ci95": [
+          0.9704172724946493,
+          0.9860844188011391
+        ],
+        "tier_changes": {
+          "grey->blue": 19,
+          "orange->grey": 9,
+          "red->orange": 3,
+          "orange->red": 1,
+          "blue->grey": 1
+        },
+        "prob_abs_diff_max": 0.08945945168519409,
+        "prob_abs_diff_mean": 0.00301448638404956,
+        "prob_abs_diff_p99": 0.06309958118404899,
+        "secondary_metric_deltas_variant_minus_fp32": {
+          "accuracy": {
+            "fp32": 0.8280839895013123,
+            "variant": 0.8274278215223098,
+            "diff": -0.0006561679790025865,
+            "ci95": [
+              -0.0034820155553742043,
+              0.0020383569162530767
+            ]
+          },
+          "balanced_accuracy": {
+            "fp32": 0.8399699679202784,
+            "variant": 0.8382977271176029,
+            "diff": -0.0016722408026755842,
+            "ci95": [
+              -0.0058015959389747076,
+              0.0012266941239414038
+            ]
+          },
+          "macro_f1_present_classes": {
+            "fp32": 0.773527116306084,
+            "variant": 0.7724695230120773,
+            "diff": -0.0010575932940066757,
+            "ci95": [
+              -0.00466897778556459,
+              0.0020313196051366137
+            ]
+          },
+          "normal_recall": {
+            "fp32": 0.8204081632653061,
+            "variant": 0.8204081632653061,
+            "diff": 0.0,
+            "ci95": [
+              -0.0032521649320728123,
+              0.0031925939794134064
+            ]
+          },
+          "ischemic_recall": {
+            "fp32": 0.8595317725752508,
+            "variant": 0.8561872909698997,
+            "diff": -0.0033444816053511683,
+            "ci95": [
+              -0.011153456694223973,
+              0.0
+            ]
+          },
+          "ischemic_precision": {
+            "fp32": 0.5387840670859538,
+            "variant": 0.5378151260504201,
+            "diff": -0.000968941035533688,
+            "ci95": [
+              -0.0058936913770349765,
+              0.0034269957694408513
+            ]
+          },
+          "ischemic_auroc": {
+            "fp32": 0.8897003617500512,
+            "variant": 0.890238208995973,
+            "diff": 0.0005378472459217631,
+            "ci95": [
+              -0.0001469070571986808,
+              0.0012615440718534792
+            ]
+          },
+          "macro_ovr_auroc": {
+            "fp32": 0.8894696607740086,
+            "variant": 0.88998293631834,
+            "diff": 0.0005132755443314485,
+            "ci95": [
+              -0.00014738340587091837,
+              0.0011666639774342985
+            ]
+          }
+        },
+        "by_source": {
+          "CPAISD_v2": {
+            "n": 1524,
+            "argmax_agreement": 0.9967191601049868,
+            "flips": 5
+          }
+        }
+      },
+      "SOOP_holdout": {
+        "n": 1672,
+        "patients": 66,
+        "argmax_agreement": 0.9964114832535885,
+        "argmax_agreement_ci95": [
+          0.9927926845114344,
+          0.9993986861238956
+        ],
+        "flips": 6,
+        "flip_table_rows_fp32_cols_variant": [
+          [
+            1192,
+            2,
+            0
+          ],
+          [
+            4,
+            474,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "tier_agreement": 0.9892344497607656,
+        "tier_agreement_ci95": [
+          0.9839285714285714,
+          0.9939615347633782
+        ],
+        "tier_changes": {
+          "grey->blue": 9,
+          "red->orange": 4,
+          "blue->grey": 3,
+          "orange->red": 1,
+          "orange->grey": 1
+        },
+        "prob_abs_diff_max": 0.06615531289389609,
+        "prob_abs_diff_mean": 0.0022065302594800394,
+        "prob_abs_diff_p99": 0.029678549991058997,
+        "secondary_metric_deltas_variant_minus_fp32": {
+          "accuracy": {
+            "fp32": 0.9174641148325359,
+            "variant": 0.9174641148325359,
+            "diff": 0.0,
+            "ci95": [
+              -0.002402402402402415,
+              0.0023938478948144545
+            ]
+          },
+          "balanced_accuracy": {
+            "fp32": 0.9000847457627119,
+            "variant": 0.8994420903954803,
+            "diff": -0.000642655367231626,
+            "ci95": [
+              -0.0036492719266370682,
+              0.0016367619080864698
+            ]
+          },
+          "macro_f1_present_classes": {
+            "fp32": 0.898546365914787,
+            "variant": 0.898417193212316,
+            "diff": -0.00012917270247103652,
+            "ci95": [
+              -0.003103612228636715,
+              0.002646636901004448
+            ]
+          },
+          "normal_recall": {
+            "fp32": 0.94,
+            "variant": 0.9408333333333333,
+            "diff": 0.0008333333333333526,
+            "ci95": [
+              -0.0017316392446374757,
+              0.0036245786909534336
+            ]
+          },
+          "ischemic_recall": {
+            "fp32": 0.8601694915254238,
+            "variant": 0.8580508474576272,
+            "diff": -0.0021186440677966045,
+            "ci95": [
+              -0.007223085274465318,
+              0.0
+            ]
+          },
+          "ischemic_precision": {
+            "fp32": 0.8493723849372385,
+            "variant": 0.8508403361344538,
+            "diff": 0.0014679511972152115,
+            "ci95": [
+              -0.00448498228386566,
+              0.007697018906453243
+            ]
+          },
+          "ischemic_auroc": {
+            "fp32": 0.9507891949152543,
+            "variant": 0.950333686440678,
+            "diff": -0.00045550847457631605,
+            "ci95": [
+              -0.0008758705568589625,
+              -7.334864333800903e-05
+            ]
+          },
+          "macro_ovr_auroc": {
+            "fp32": 0.950791843220339,
+            "variant": 0.9503310381355932,
+            "diff": -0.00046080508474588555,
+            "ci95": [
+              -0.000881789337276892,
+              -8.167322744490338e-05
+            ]
+          }
+        },
+        "by_source": {
+          "SOOP_dwi_adc": {
+            "n": 1672,
+            "argmax_agreement": 0.9964114832535885,
+            "flips": 6
+          }
+        }
+      }
+    },
+    "INT8-static": {
+      "rows_used": "all held-out rows",
+      "pooled_internal_test": {
+        "n": 8930,
+        "patients": 1787,
+        "argmax_agreement": 0.9657334826427771,
+        "argmax_agreement_ci95": [
+          0.9616627708472636,
+          0.9697173716581977
+        ],
+        "flips": 306,
+        "flip_table_rows_fp32_cols_variant": [
+          [
+            5220,
+            111,
+            88
+          ],
+          [
+            67,
+            1856,
+            0
+          ],
+          [
+            32,
+            8,
+            1548
+          ]
+        ],
+        "tier_agreement": 0.9005599104143337,
+        "tier_agreement_ci95": [
+          0.8931226782148384,
+          0.9079262116122233
+        ],
+        "tier_changes": {
+          "blue->grey": 299,
+          "grey->blue": 145,
+          "grey->orange": 99,
+          "red->orange": 96,
+          "orange->red": 78,
+          "orange->grey": 69,
+          "grey->red": 62,
+          "red->grey": 21,
+          "blue->red": 9,
+          "blue->orange": 5,
+          "red->blue": 3,
+          "not_validated->grey": 1,
+          "orange->blue": 1
+        },
+        "prob_abs_diff_max": 0.9182194190723301,
+        "prob_abs_diff_mean": 0.02613897285331167,
+        "prob_abs_diff_p99": 0.3446962818869566,
+        "secondary_metric_deltas_variant_minus_fp32": {
+          "accuracy": {
+            "fp32": 0.8847704367301232,
+            "variant": 0.8730123180291154,
+            "diff": -0.011758118701007847,
+            "ci95": [
+              -0.016091209597287513,
+              -0.007489458055567068
+            ]
+          },
+          "balanced_accuracy": {
+            "fp32": 0.8904459193925535,
+            "variant": 0.8836663026462522,
+            "diff": -0.006779616746301231,
+            "ci95": [
+              -0.011087476372584842,
+              -0.0024242583133116426
+            ]
+          },
+          "macro_f1_present_classes": {
+            "fp32": 0.8679565195369113,
+            "variant": 0.8552879681964655,
+            "diff": -0.012668551340445866,
+            "ci95": [
+              -0.017451202693217517,
+              -0.007982375184679043
+            ]
+          },
+          "normal_recall": {
+            "fp32": 0.8795784381478922,
+            "variant": 0.8621285418106427,
+            "diff": -0.01744989633724947,
+            "ci95": [
+              -0.023605990048639523,
+              -0.011790333645483455
+            ]
+          },
+          "ischemic_recall": {
+            "fp32": 0.872086072922893,
+            "variant": 0.8732815301852959,
+            "diff": 0.001195457262402888,
+            "ci95": [
+              -0.0069406211948898735,
+              0.010248193135368072
+            ]
+          },
+          "ischemic_precision": {
+            "fp32": 0.7587103484139366,
+            "variant": 0.739746835443038,
+            "diff": -0.0189635129708986,
+            "ci95": [
+              -0.030242627938536583,
+              -0.007982346379098495
+            ]
+          },
+          "hemorrhagic_recall": {
+            "fp32": 0.9196732471068755,
+            "variant": 0.9155888359428183,
+            "diff": -0.004084411164057222,
+            "ci95": [
+              -0.012345890846233965,
+              0.004202049758765048
+            ]
+          },
+          "hemorrhagic_precision": {
+            "fp32": 0.8507556675062973,
+            "variant": 0.8221271393643031,
+            "diff": -0.028628528141994125,
+            "ci95": [
+              -0.03821302578967258,
+              -0.018696380065213306
+            ]
+          },
+          "ischemic_auroc": {
+            "fp32": 0.9634086626256356,
+            "variant": 0.9615461247260411,
+            "diff": -0.001862537899594563,
+            "ci95": [
+              -0.0038685157367721406,
+              0.00019222506033925036
+            ]
+          },
+          "hemorrhagic_auroc": {
+            "fp32": 0.9896589563209972,
+            "variant": 0.9874919356008631,
+            "diff": -0.002167020720134083,
+            "ci95": [
+              -0.0031244027792176193,
+              -0.0013037860285380954
+            ]
+          },
+          "macro_ovr_auroc": {
+            "fp32": 0.9663830989159785,
+            "variant": 0.9637532012930388,
+            "diff": -0.0026298976229397475,
+            "ci95": [
+              -0.004129284965015492,
+              -0.0011450819385983777
+            ]
+          }
+        },
+        "by_source": {
+          "AISD": {
+            "n": 1138,
+            "argmax_agreement": 0.9622144112478032,
+            "flips": 43
+          },
+          "CPAISD_v2": {
+            "n": 1524,
+            "argmax_agreement": 0.9625984251968503,
+            "flips": 57
+          },
+          "ISLES2022_dwi_adc": {
+            "n": 2303,
+            "argmax_agreement": 0.9848024316109423,
+            "flips": 35
+          },
+          "Kaggle_CT": {
+            "n": 1016,
+            "argmax_agreement": 0.9478346456692913,
+            "flips": 53
+          },
+          "RSNA_ICH": {
+            "n": 2386,
+            "argmax_agreement": 0.9522212908633697,
+            "flips": 114
+          },
+          "SICH_CT": {
+            "n": 563,
+            "argmax_agreement": 0.9928952042628775,
+            "flips": 4
+          }
+        }
+      },
+      "internal_test": {
+        "n": 7406,
+        "patients": 1769,
+        "argmax_agreement": 0.9663786119362678,
+        "argmax_agreement_ci95": [
+          0.9619275643686259,
+          0.9704691935418943
+        ],
+        "flips": 249,
+        "flip_table_rows_fp32_cols_variant": [
+          [
+            4214,
+            70,
+            88
+          ],
+          [
+            51,
+            1395,
+            0
+          ],
+          [
+            32,
+            8,
+            1548
+          ]
+        ],
+        "tier_agreement": 0.9053470159330272,
+        "tier_agreement_ci95": [
+          0.8979166998918927,
+          0.9126592073267054
+        ],
+        "tier_changes": {
+          "blue->grey": 242,
+          "grey->blue": 136,
+          "red->orange": 67,
+          "grey->red": 61,
+          "grey->orange": 60,
+          "orange->red": 51,
+          "orange->grey": 45,
+          "red->grey": 21,
+          "blue->red": 9,
+          "blue->orange": 4,
+          "red->blue": 3,
+          "not_validated->grey": 1,
+          "orange->blue": 1
+        },
+        "prob_abs_diff_max": 0.9182194190723301,
+        "prob_abs_diff_mean": 0.025439586711661473,
+        "prob_abs_diff_p99": 0.34596249470603335,
+        "secondary_metric_deltas_variant_minus_fp32": {
+          "accuracy": {
+            "fp32": 0.8964353227113151,
+            "variant": 0.8853632190116122,
+            "diff": -0.011072103699702907,
+            "ci95": [
+              -0.015105069741187593,
+              -0.0070430022048243515
+            ]
+          },
+          "balanced_accuracy": {
+            "fp32": 0.8966516024818468,
+            "variant": 0.8899077784302065,
+            "diff": -0.0067438240516403125,
+            "ci95": [
+              -0.01076908200171918,
+              -0.0027010355689035524
+            ]
+          },
+          "macro_f1_present_classes": {
+            "fp32": 0.8836536105787509,
+            "variant": 0.8721369502679904,
+            "diff": -0.011516660310760485,
+            "ci95": [
+              -0.015998785816639178,
+              -0.007155164947128936
+            ]
+          },
+          "normal_recall": {
+            "fp32": 0.8954635108481263,
+            "variant": 0.878588647819417,
+            "diff": -0.01687486302870922,
+            "ci95": [
+              -0.022644195101592497,
+              -0.011190223351883993
+            ]
+          },
+          "ischemic_recall": {
+            "fp32": 0.8748180494905385,
+            "variant": 0.8755458515283843,
+            "diff": 0.0007278020378457262,
+            "ci95": [
+              -0.007072637354920924,
+              0.008329936113028699
+            ]
+          },
+          "ischemic_precision": {
+            "fp32": 0.8312586445366529,
+            "variant": 0.8167006109979633,
+            "diff": -0.014558033538689563,
+            "ci95": [
+              -0.025280363596085733,
+              -0.00397896194618195
+            ]
+          },
+          "hemorrhagic_recall": {
+            "fp32": 0.9196732471068755,
+            "variant": 0.9155888359428183,
+            "diff": -0.004084411164057222,
+            "ci95": [
+              -0.012228468691809852,
+              0.003994673768308868
+            ]
+          },
+          "hemorrhagic_precision": {
+            "fp32": 0.8507556675062973,
+            "variant": 0.8221271393643031,
+            "diff": -0.028628528141994125,
+            "ci95": [
+              -0.039127575300579295,
+              -0.018701664992535737
+            ]
+          },
+          "ischemic_auroc": {
+            "fp32": 0.9751812506998097,
+            "variant": 0.9742856150023745,
+            "diff": -0.0008956356974351154,
+            "ci95": [
+              -0.0024871919036906246,
+              0.0006869419320552543
+            ]
+          },
+          "hemorrhagic_auroc": {
+            "fp32": 0.9871758753959919,
+            "variant": 0.9845967180010028,
+            "diff": -0.002579157394989151,
+            "ci95": [
+              -0.0038114381195267,
+              -0.001604471016314888
+            ]
+          },
+          "macro_ovr_auroc": {
+            "fp32": 0.9721951514714461,
+            "variant": 0.9698587894709695,
+            "diff": -0.0023363620004765995,
+            "ci95": [
+              -0.0036078497703139673,
+              -0.00113050221421614
+            ]
+          }
+        },
+        "by_source": {
+          "AISD": {
+            "n": 1138,
+            "argmax_agreement": 0.9622144112478032,
+            "flips": 43
+          },
+          "ISLES2022_dwi_adc": {
+            "n": 2303,
+            "argmax_agreement": 0.9848024316109423,
+            "flips": 35
+          },
+          "Kaggle_CT": {
+            "n": 1016,
+            "argmax_agreement": 0.9478346456692913,
+            "flips": 53
+          },
+          "RSNA_ICH": {
+            "n": 2386,
+            "argmax_agreement": 0.9522212908633697,
+            "flips": 114
+          },
+          "SICH_CT": {
+            "n": 563,
+            "argmax_agreement": 0.9928952042628775,
+            "flips": 4
+          }
+        }
+      },
+      "CPAISD": {
+        "n": 1524,
+        "patients": 18,
+        "argmax_agreement": 0.9625984251968503,
+        "argmax_agreement_ci95": [
+          0.9535502912813238,
+          0.9715477943699766
+        ],
+        "flips": 57,
+        "flip_table_rows_fp32_cols_variant": [
+          [
+            1006,
+            41,
+            0
+          ],
+          [
+            16,
+            461,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "tier_agreement": 0.8772965879265092,
+        "tier_agreement_ci95": [
+          0.8557353976073188,
+          0.8954936112304566
+        ],
+        "tier_changes": {
+          "blue->grey": 57,
+          "grey->orange": 39,
+          "red->orange": 29,
+          "orange->red": 27,
+          "orange->grey": 24,
+          "grey->blue": 9,
+          "blue->orange": 1,
+          "grey->red": 1
+        },
+        "prob_abs_diff_max": 0.6649279425395278,
+        "prob_abs_diff_mean": 0.029537695796265338,
+        "prob_abs_diff_p99": 0.3323327517890289,
+        "secondary_metric_deltas_variant_minus_fp32": {
+          "accuracy": {
+            "fp32": 0.8280839895013123,
+            "variant": 0.812992125984252,
+            "diff": -0.015091863517060378,
+            "ci95": [
+              -0.031256013820853745,
+              0.0006486355891254008
+            ]
+          },
+          "balanced_accuracy": {
+            "fp32": 0.8399699679202784,
+            "variant": 0.8318462903556072,
+            "diff": -0.00812367756467125,
+            "ci95": [
+              -0.026109856686150436,
+              0.010347179453424586
+            ]
+          },
+          "macro_f1_present_classes": {
+            "fp32": 0.773527116306084,
+            "variant": 0.7586794877564593,
+            "diff": -0.014847628549624625,
+            "ci95": [
+              -0.0327250901458815,
+              0.0024512427652252098
+            ]
+          },
+          "normal_recall": {
+            "fp32": 0.8204081632653061,
+            "variant": 0.8008163265306123,
+            "diff": -0.01959183673469378,
+            "ci95": [
+              -0.03671074882836265,
+              -0.0009518488959830624
+            ]
+          },
+          "ischemic_recall": {
+            "fp32": 0.8595317725752508,
+            "variant": 0.862876254180602,
+            "diff": 0.0033444816053511683,
+            "ci95": [
+              -0.029741315640463808,
+              0.03703703703703698
+            ]
+          },
+          "ischemic_precision": {
+            "fp32": 0.5387840670859538,
+            "variant": 0.5139442231075697,
+            "diff": -0.024839843978384124,
+            "ci95": [
+              -0.04869823171192071,
+              -0.000660484288864753
+            ]
+          },
+          "ischemic_auroc": {
+            "fp32": 0.8897003617500512,
+            "variant": 0.8806607057538735,
+            "diff": -0.009039655996177731,
+            "ci95": [
+              -0.020393019003691837,
+              0.0035113641420806874
+            ]
+          },
+          "macro_ovr_auroc": {
+            "fp32": 0.8894696607740086,
+            "variant": 0.8804136236434372,
+            "diff": -0.009056037130571348,
+            "ci95": [
+              -0.020485170148660754,
+              0.003604642922772924
+            ]
+          }
+        },
+        "by_source": {
+          "CPAISD_v2": {
+            "n": 1524,
+            "argmax_agreement": 0.9625984251968503,
+            "flips": 57
+          }
+        }
+      },
+      "SOOP_holdout": {
+        "n": 1672,
+        "patients": 66,
+        "argmax_agreement": 0.9844497607655502,
+        "argmax_agreement_ci95": [
+          0.9788260558614538,
+          0.9901858424934428
+        ],
+        "flips": 26,
+        "flip_table_rows_fp32_cols_variant": [
+          [
+            1180,
+            14,
+            0
+          ],
+          [
+            12,
+            466,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "tier_agreement": 0.9342105263157895,
+        "tier_agreement_ci95": [
+          0.9214876033057852,
+          0.9469354196399474
+        ],
+        "tier_changes": {
+          "grey->blue": 50,
+          "blue->grey": 31,
+          "orange->red": 11,
+          "orange->grey": 8,
+          "grey->orange": 6,
+          "red->orange": 4
+        },
+        "prob_abs_diff_max": 0.253486730688625,
+        "prob_abs_diff_mean": 0.011918264620692004,
+        "prob_abs_diff_p99": 0.1364718852210948,
+        "secondary_metric_deltas_variant_minus_fp32": {
+          "accuracy": {
+            "fp32": 0.9174641148325359,
+            "variant": 0.9126794258373205,
+            "diff": -0.004784688995215336,
+            "ci95": [
+              -0.010682651169675131,
+              0.0011919128814935009
+            ]
+          },
+          "balanced_accuracy": {
+            "fp32": 0.9000847457627119,
+            "variant": 0.8948234463276836,
+            "diff": -0.005261299435028288,
+            "ci95": [
+              -0.010880543777533332,
+              0.00037257604015094415
+            ]
+          },
+          "macro_f1_present_classes": {
+            "fp32": 0.898546365914787,
+            "variant": 0.892800933082263,
+            "diff": -0.0057454328325239334,
+            "ci95": [
+              -0.012708332017749416,
+              0.0011253060421171788
+            ]
+          },
+          "normal_recall": {
+            "fp32": 0.94,
+            "variant": 0.9358333333333333,
+            "diff": -0.004166666666666652,
+            "ci95": [
+              -0.011656278504104532,
+              0.003381234150464876
+            ]
+          },
+          "ischemic_recall": {
+            "fp32": 0.8601694915254238,
+            "variant": 0.8538135593220338,
+            "diff": -0.006355932203389925,
+            "ci95": [
+              -0.01598264944672583,
+              0.0022224702380952517
+            ]
+          },
+          "ischemic_precision": {
+            "fp32": 0.8493723849372385,
+            "variant": 0.8395833333333333,
+            "diff": -0.009789051603905197,
+            "ci95": [
+              -0.025649206358746072,
+              0.006169852783906149
+            ]
+          },
+          "ischemic_auroc": {
+            "fp32": 0.9507891949152543,
+            "variant": 0.9503725282485875,
+            "diff": -0.0004166666666667318,
+            "ci95": [
+              -0.002450630482900665,
+              0.0016952653333013649
+            ]
+          },
+          "macro_ovr_auroc": {
+            "fp32": 0.950791843220339,
+            "variant": 0.9503787076271186,
+            "diff": -0.00041313559322042614,
+            "ci95": [
+              -0.0024363248085902374,
+              0.0017028749994493434
+            ]
+          }
+        },
+        "by_source": {
+          "SOOP_dwi_adc": {
+            "n": 1672,
+            "argmax_agreement": 0.9844497607655502,
+            "flips": 26
+          }
+        }
+      }
+    }
+  },
+  "E2_server_cost": {
+    "FP32": {
+      "rss_start_mb": 15,
+      "load_s": 1.074,
+      "rss_after_load_mb": 216,
+      "peak_after_load_mb": 4398,
+      "versions": {
+        "onnxruntime": "1.20.1",
+        "numpy": "2.1.3"
+      },
+      "first_request_s": 0.972,
+      "rss_after_requests_mb": 333,
+      "peak_rss_mb": 4398,
+      "e2e_after_warmup": {
+        "all": {
+          "n": 197,
+          "median": 0.9061756134033203,
+          "p95": 0.953315544128418,
+          "max": 1.0486414432525635,
+          "mean": 0.9144427764234204
+        },
+        "ct_context": {
+          "n": 98,
+          "median": 0.9139655828475952,
+          "p95": 0.9539288282394409,
+          "max": 0.9790592193603516,
+          "mean": 0.9186246711380628
+        },
+        "ct_single": {
+          "n": 39,
+          "median": 0.8994274139404297,
+          "p95": 0.9392242193222046,
+          "max": 0.9422075748443604,
+          "mean": 0.9047114543425732
+        },
+        "mri_dwi_adc": {
+          "n": 60,
+          "median": 0.903679370880127,
+          "p95": 0.9534636974334717,
+          "max": 1.0486414432525635,
+          "mean": 0.9139377077420553
+        }
+      },
+      "model_only_after_warmup": {
+        "n": 47,
+        "median": 0.8889265060424805,
+        "p95": 0.9192997455596924,
+        "max": 1.0314626693725586,
+        "mean": 0.8932463057497715
+      }
+    },
+    "INT8-dyn": {
+      "rss_start_mb": 15,
+      "load_s": 0.451,
+      "rss_after_load_mb": 113,
+      "peak_after_load_mb": 4398,
+      "versions": {
+        "onnxruntime": "1.20.1",
+        "numpy": "2.1.3"
+      },
+      "first_request_s": 0.802,
+      "rss_after_requests_mb": 252,
+      "peak_rss_mb": 4398,
+      "e2e_after_warmup": {
+        "all": {
+          "n": 197,
+          "median": 0.7187533378601074,
+          "p95": 0.7597165107727051,
+          "max": 0.9084963798522949,
+          "mean": 0.7268973800736636
+        },
+        "ct_context": {
+          "n": 98,
+          "median": 0.7198171615600586,
+          "p95": 0.7575535297393798,
+          "max": 0.9084963798522949,
+          "mean": 0.728613661260021
+        },
+        "ct_single": {
+          "n": 39,
+          "median": 0.7132797241210938,
+          "p95": 0.7497598886489868,
+          "max": 0.7532482147216797,
+          "mean": 0.7228981592716315
+        },
+        "mri_dwi_adc": {
+          "n": 60,
+          "median": 0.7165558338165283,
+          "p95": 0.7618454217910766,
+          "max": 0.7710366249084473,
+          "mean": 0.7266936143239339
+        }
+      },
+      "model_only_after_warmup": {
+        "n": 47,
+        "median": 0.6870286464691162,
+        "p95": 0.7081597805023193,
+        "max": 0.7265157699584961,
+        "mean": 0.6892371684946912
+      }
+    },
+    "INT8-static": {
+      "rss_start_mb": 15,
+      "load_s": 0.449,
+      "rss_after_load_mb": 113,
+      "peak_after_load_mb": 4398,
+      "versions": {
+        "onnxruntime": "1.20.1",
+        "numpy": "2.1.3"
+      },
+      "first_request_s": 0.834,
+      "rss_after_requests_mb": 248,
+      "peak_rss_mb": 4398,
+      "e2e_after_warmup": {
+        "all": {
+          "n": 197,
+          "median": 0.714381217956543,
+          "p95": 0.7490638732910156,
+          "max": 0.8760824203491211,
+          "mean": 0.7196133076236938
+        },
+        "ct_context": {
+          "n": 98,
+          "median": 0.7162439823150635,
+          "p95": 0.7501352310180665,
+          "max": 0.7804348468780518,
+          "mean": 0.7199009316308158
+        },
+        "ct_single": {
+          "n": 39,
+          "median": 0.7082693576812744,
+          "p95": 0.738690710067749,
+          "max": 0.7440586090087891,
+          "mean": 0.7133843042911627
+        },
+        "mri_dwi_adc": {
+          "n": 60,
+          "median": 0.7150503396987915,
+          "p95": 0.7509337782859802,
+          "max": 0.8760824203491211,
+          "mean": 0.7231923739115397
+        }
+      },
+      "model_only_after_warmup": {
+        "n": 47,
+        "median": 0.6878209114074707,
+        "p95": 0.747257113456726,
+        "max": 0.8552532196044922,
+        "mean": 0.6983970936308516
+      }
+    }
+  },
+  "weights_sha256": "1e2db8a7431f1dddb2686dc34e6c013983d8d2117909e8887eeb3bfef8d368c8",
+  "E3_agreement": {
+    "rows": 600,
+    "onnx_closed_form_vs_autograd": {
+      "raw_maxabs": 1.344829797744751e-06,
+      "relative_maxabs": 1.5666038962081075e-05,
+      "normalised_maxabs": 4.1961669921875e-05,
+      "normalised_maxabs_median": 2.1904706954956055e-06,
+      "share_rows_normalised_below_1e-5": 0.9666666666666667
+    },
+    "torch_closed_form_vs_autograd": {
+      "raw_maxabs": 3.8743019104003906e-07,
+      "relative_maxabs": 4.0925119719759095e-06,
+      "normalised_maxabs": 8.411705493927002e-06,
+      "normalised_maxabs_median": 5.364418029785156e-07,
+      "share_rows_normalised_below_1e-5": 1.0
+    },
+    "onnx_vs_torch_closed_form": {
+      "raw_maxabs": 1.385807991027832e-06,
+      "relative_maxabs": 1.6664367649354972e-05,
+      "normalised_maxabs": 4.202127456665039e-05,
+      "normalised_maxabs_median": 2.2258609533309937e-06,
+      "share_rows_normalised_below_1e-5": 0.9583333333333334
+    }
+  },
+  "E3_cost": {
+    "torch_forward": {
+      "rss_after_inputs_mb": 86,
+      "rss_after_load_mb": 490,
+      "seconds": {
+        "n": 97,
+        "median": 0.2193138599395752,
+        "p95": 0.23318324089050294,
+        "max": 0.26780176162719727,
+        "mean": 0.2211903935855197
+      },
+      "peak_rss_mb": 5511
+    },
+    "torch_closed_form": {
+      "rss_after_inputs_mb": 85,
+      "rss_after_load_mb": 490,
+      "seconds": {
+        "n": 97,
+        "median": 0.22134160995483398,
+        "p95": 0.23703627586364745,
+        "max": 0.24148225784301758,
+        "mean": 0.2242749425553784
+      },
+      "peak_rss_mb": 5511
+    },
+    "torch_autograd_pred": {
+      "rss_after_inputs_mb": 86,
+      "rss_after_load_mb": 490,
+      "seconds": {
+        "n": 97,
+        "median": 0.7003986835479736,
+        "p95": 0.7483837604522705,
+        "max": 0.752577543258667,
+        "mean": 0.7081037378802741
+      },
+      "peak_rss_mb": 5511
+    },
+    "torch_autograd_all3": {
+      "rss_after_inputs_mb": 85,
+      "rss_after_load_mb": 490,
+      "seconds": {
+        "n": 97,
+        "median": 1.6792504787445068,
+        "p95": 1.7704183101654052,
+        "max": 2.075960397720337,
+        "mean": 1.6845921732715725
+      },
+      "peak_rss_mb": 5511
+    },
+    "onnx_logits_only": {
+      "rss_after_inputs_mb": 90,
+      "rss_after_load_mb": 263,
+      "seconds": {
+        "n": 97,
+        "median": 0.214216947555542,
+        "p95": 0.2229524612426758,
+        "max": 0.2279813289642334,
+        "mean": 0.21440100178276142
+      },
+      "peak_rss_mb": 5511
+    },
+    "onnx_logits_gradcam": {
+      "rss_after_inputs_mb": 89,
+      "rss_after_load_mb": 275,
+      "seconds": {
+        "n": 97,
+        "median": 0.22130179405212402,
+        "p95": 0.22987675666809082,
+        "max": 0.2433319091796875,
+        "mean": 0.22037010094554155
+      },
+      "peak_rss_mb": 5511
+    }
+  },
+  "E3_maps_under_compression": {
+    "INT8-dyn": {
+      "all": {
+        "pearson_r": {
+          "median": 0.999056187575379,
+          "q1": 0.9979390549336232,
+          "q3": 0.9995575115151903,
+          "mean": 0.9921054747159158,
+          "n": 10602
+        },
+        "same_peak_cell": 0.939916996793058,
+        "display_iou": {
+          "median": 0.9576672251090856,
+          "q1": 0.9174517150801587,
+          "q3": 0.9782230067689107,
+          "mean": 0.9253178815559304,
+          "n": 10602
+        },
+        "outline_appears": 9,
+        "outline_disappears": 23
+      },
+      "CPAISD": {
+        "pearson_r": {
+          "median": 0.9991017318390254,
+          "q1": 0.997872501819601,
+          "q3": 0.9995580386067578,
+          "mean": 0.9959608620301984,
+          "n": 1524
+        },
+        "same_peak_cell": 0.9507874015748031,
+        "display_iou": {
+          "median": 0.9521370279411077,
+          "q1": 0.9137677057138511,
+          "q3": 0.9734334596187384,
+          "mean": 0.929297116647017,
+          "n": 1524
+        },
+        "outline_appears": 2,
+        "outline_disappears": 3
+      },
+      "SOOP": {
+        "pearson_r": {
+          "median": 0.9988622858462374,
+          "q1": 0.9976132312328425,
+          "q3": 0.9993865295343105,
+          "mean": 0.9968319192334686,
+          "n": 1672
+        },
+        "same_peak_cell": 0.9246411483253588,
+        "display_iou": {
+          "median": 0.9496177147350945,
+          "q1": 0.8998181719164524,
+          "q3": 0.9739163225785802,
+          "mean": 0.9200499454872324,
+          "n": 1672
+        },
+        "outline_appears": 2,
+        "outline_disappears": 4
+      },
+      "internal_test": {
+        "pearson_r": {
+          "median": 0.9990907945493623,
+          "q1": 0.9980311807275936,
+          "q3": 0.9995885423105901,
+          "mean": 0.9902450607947284,
+          "n": 7406
+        },
+        "same_peak_cell": 0.9411288144747502,
+        "display_iou": {
+          "median": 0.9606900763151951,
+          "q1": 0.9226303401501219,
+          "q3": 0.9797119545316051,
+          "mean": 0.9256883426453236,
+          "n": 7406
+        },
+        "outline_appears": 5,
+        "outline_disappears": 16
+      }
+    },
+    "INT8-static": {
+      "all": {
+        "pearson_r": {
+          "median": 0.9521136082032378,
+          "q1": 0.8885538915573501,
+          "q3": 0.9819133713563737,
+          "mean": 0.9005200427981725,
+          "n": 10602
+        },
+        "same_peak_cell": 0.6789285040558385,
+        "display_iou": {
+          "median": 0.7045454545454546,
+          "q1": 0.47762320002672815,
+          "q3": 0.8498829435708475,
+          "mean": 0.6392172142524724,
+          "n": 10602
+        },
+        "outline_appears": 213,
+        "outline_disappears": 110
+      },
+      "CPAISD": {
+        "pearson_r": {
+          "median": 0.9151241060659603,
+          "q1": 0.8278017102872574,
+          "q3": 0.9594339728780752,
+          "mean": 0.8675092810337593,
+          "n": 1524
+        },
+        "same_peak_cell": 0.5656167979002624,
+        "display_iou": {
+          "median": 0.5626182741347694,
+          "q1": 0.35158217107164746,
+          "q3": 0.7487232188361669,
+          "mean": 0.5369822314186059,
+          "n": 1524
+        },
+        "outline_appears": 41,
+        "outline_disappears": 16
+      },
+      "SOOP": {
+        "pearson_r": {
+          "median": 0.9621566896971929,
+          "q1": 0.9239527629767514,
+          "q3": 0.9858023965976369,
+          "mean": 0.942249646965269,
+          "n": 1672
+        },
+        "same_peak_cell": 0.6955741626794258,
+        "display_iou": {
+          "median": 0.7336097265327022,
+          "q1": 0.5394171308634677,
+          "q3": 0.865594435816929,
+          "mean": 0.6869253123152479,
+          "n": 1672
+        },
+        "outline_appears": 14,
+        "outline_disappears": 12
+      },
+      "internal_test": {
+        "pearson_r": {
+          "median": 0.9559081755815226,
+          "q1": 0.8917810832979718,
+          "q3": 0.9834198778206593,
+          "mean": 0.8978919713374081,
+          "n": 7406
+        },
+        "same_peak_cell": 0.6984877126654064,
+        "display_iou": {
+          "median": 0.7230214075171943,
+          "q1": 0.49333716059442423,
+          "q3": 0.8617558769444859,
+          "mean": 0.6494843184757847,
+          "n": 7406
+        },
+        "outline_appears": 158,
+        "outline_disappears": 82
+      }
+    }
+  }
+}

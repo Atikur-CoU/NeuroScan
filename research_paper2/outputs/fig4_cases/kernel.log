@@ -1,0 +1,18 @@
+[{"stream_name":"stdout","time":7.624287508,"data":"[  0.1 min] pip onnxruntime==1.20.1: exit 0 (7s) \n"}
+,{"stream_name":"stdout","time":10.453313296,"data":"[  0.2 min] inputs resolved (1.1s)\n"}
+,{"stream_name":"stdout","time":12.628145123,"data":"[  0.2 min] held-out rows rebuilt: 10602; all five case rows match (2.2s)\n"}
+,{"stream_name":"stdout","time":12.767014386,"data":"[  0.2 min] zip aisd_normal_images.zip: central directory read (0.1s)\n"}
+,{"stream_name":"stdout","time":12.961724443,"data":"[  0.2 min] zip rsna_normal_images.zip: central directory read (0.2s)\n"}
+,{"stream_name":"stdout","time":13.715996076,"data":"[  0.2 min] zip soop_images.zip: central directory read (0.8s)\n"}
+,{"stream_name":"stdout","time":16.984359616,"data":"[  0.3 min] decoded 5 cases (3.3s); file reads by source {'AISD': 3, 'ISLES2022': 2, 'Kaggle_CT': 1, 'RSNA_ICH': 1, 'CPAISD_v2': 3}\n"}
+,{"stream_name":"stdout","time":20.644896028,"data":"[  0.3 min] FP32: five cases re-run (3.7s): A dp=0.0e+00 dmap=0.0e+00 same_pred=True; B dp=0.0e+00 dmap=0.0e+00 same_pred=True; C dp=0.0e+00 dmap=0.0e+00 same_pred=True; D dp=0.0e+00 dmap=0.0e+00 same_pred=True; E dp=0.0e+00 dmap=0.0e+00 same_pred=True\n"}
+,{"stream_name":"stdout","time":24.098835417,"data":"[  0.4 min] INT8-dyn: five cases re-run (3.5s): A dp=0.0e+00 dmap=1.6e-07 same_pred=True; B dp=0.0e+00 dmap=1.8e-07 same_pred=True; C dp=0.0e+00 dmap=1.6e-07 same_pred=True; D dp=0.0e+00 dmap=4.3e-07 same_pred=True; E dp=0.0e+00 dmap=9.5e-08 same_pred=True\n"}
+,{"stream_name":"stdout","time":26.81103561,"data":"[  0.4 min] INT8-static: five cases re-run (2.7s): A dp=0.0e+00 dmap=0.0e+00 same_pred=True; B dp=0.0e+00 dmap=0.0e+00 same_pred=True; C dp=0.0e+00 dmap=0.0e+00 same_pred=True; D dp=0.0e+00 dmap=0.0e+00 same_pred=True; E dp=0.0e+00 dmap=0.0e+00 same_pred=True\n"}
+,{"stream_name":"stdout","time":26.850074128,"data":"[  0.4 min] Done.\n"}
+,{"stream_name":"stderr","time":29.808425686,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":29.808462926,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":30.170467887,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":30.170499112,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":31.333483711,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":32.642947824,"data":"[NbConvertApp] Writing 331025 bytes to __results__.html\n"}
+]

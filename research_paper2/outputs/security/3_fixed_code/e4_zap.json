@@ -1,0 +1,231 @@
+{
+ "zap": "ZAP_2.17.0",
+ "minutes_per_active_scan": 15,
+ "by_role": {
+  "anonymous": {
+   "Medium": [
+    {
+     "alert": "CSP: style-src unsafe-inline",
+     "pluginid": "10055",
+     "count": 5,
+     "example": "http://localhost/neuroscan_e4/public/"
+    }
+   ],
+   "Low": [
+    {
+     "alert": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+     "pluginid": "10036",
+     "count": 5,
+     "example": "http://localhost/neuroscan_e4/public/"
+    }
+   ],
+   "Informational": [
+    {
+     "alert": "Authentication Request Identified",
+     "pluginid": "10111",
+     "count": 1,
+     "example": "http://localhost/neuroscan_e4/public/login.php"
+    },
+    {
+     "alert": "GET for POST",
+     "pluginid": "10058",
+     "count": 2,
+     "example": "http://localhost/neuroscan_e4/public/login.php"
+    },
+    {
+     "alert": "Session Management Response Identified",
+     "pluginid": "10112",
+     "count": 2,
+     "example": "http://localhost/neuroscan_e4/public/"
+    },
+    {
+     "alert": "User Agent Fuzzer",
+     "pluginid": "10104",
+     "count": 3,
+     "example": "http://localhost/neuroscan_e4/public/"
+    },
+    {
+     "alert": "User Controllable HTML Element Attribute (Potential XSS)",
+     "pluginid": "10031",
+     "count": 8,
+     "example": "http://localhost/neuroscan_e4/public/login.php"
+    }
+   ]
+  },
+  "patient_a": {
+   "Medium": [
+    {
+     "alert": "CSP: style-src unsafe-inline",
+     "pluginid": "10055",
+     "count": 5,
+     "example": "http://localhost/neuroscan_e4/public/"
+    }
+   ],
+   "Low": [
+    {
+     "alert": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+     "pluginid": "10036",
+     "count": 5,
+     "example": "http://localhost/neuroscan_e4/public/"
+    }
+   ],
+   "Informational": [
+    {
+     "alert": "GET for POST",
+     "pluginid": "10058",
+     "count": 1,
+     "example": "http://localhost/neuroscan_e4/public/scan_upload.php"
+    },
+    {
+     "alert": "Information Disclosure - Suspicious Comments",
+     "pluginid": "10027",
+     "count": 1,
+     "example": "http://localhost/neuroscan_e4/public/assets/js/alert_tone.js"
+    },
+    {
+     "alert": "User Agent Fuzzer",
+     "pluginid": "10104",
+     "count": 3,
+     "example": "http://localhost/neuroscan_e4/public/assets/css"
+    },
+    {
+     "alert": "User Controllable HTML Element Attribute (Potential XSS)",
+     "pluginid": "10031",
+     "count": 2,
+     "example": "http://localhost/neuroscan_e4/public/scan_upload.php"
+    }
+   ]
+  },
+  "doctor_a": {
+   "Medium": [
+    {
+     "alert": "CSP: style-src unsafe-inline",
+     "pluginid": "10055",
+     "count": 5,
+     "example": "http://localhost/neuroscan_e4/public/"
+    }
+   ],
+   "Low": [
+    {
+     "alert": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+     "pluginid": "10036",
+     "count": 5,
+     "example": "http://localhost/neuroscan_e4/public/"
+    }
+   ],
+   "Informational": [
+    {
+     "alert": "Information Disclosure - Suspicious Comments",
+     "pluginid": "10027",
+     "count": 1,
+     "example": "http://localhost/neuroscan_e4/public/assets/js/alert_tone.js"
+    },
+    {
+     "alert": "User Agent Fuzzer",
+     "pluginid": "10104",
+     "count": 3,
+     "example": "http://localhost/neuroscan_e4/public/"
+    },
+    {
+     "alert": "User Controllable HTML Element Attribute (Potential XSS)",
+     "pluginid": "10031",
+     "count": 1,
+     "example": "http://localhost/neuroscan_e4/public/review_form.php?scan_uuid=33312979-59fd-4fef-ab95-0355c494c575"
+    }
+   ]
+  },
+  "admin": {
+   "High": [
+    {
+     "alert": "SQL Injection",
+     "pluginid": "40018",
+     "count": 2,
+     "example": "http://localhost/neuroscan_e4/public/admin_assign.php"
+    }
+   ],
+   "Medium": [
+    {
+     "alert": "CSP: style-src unsafe-inline",
+     "pluginid": "10055",
+     "count": 3,
+     "example": "http://localhost/neuroscan_e4/public/"
+    }
+   ],
+   "Low": [
+    {
+     "alert": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+     "pluginid": "10036",
+     "count": 5,
+     "example": "http://localhost/neuroscan_e4/public/"
+    }
+   ],
+   "Informational": [
+    {
+     "alert": "GET for POST",
+     "pluginid": "10058",
+     "count": 4,
+     "example": "http://localhost/neuroscan_e4/public/admin_settings.php"
+    },
+    {
+     "alert": "User Agent Fuzzer",
+     "pluginid": "10104",
+     "count": 3,
+     "example": "http://localhost/neuroscan_e4/public/"
+    },
+    {
+     "alert": "User Controllable HTML Element Attribute (Potential XSS)",
+     "pluginid": "10031",
+     "count": 26,
+     "example": "http://localhost/neuroscan_e4/public/admin_audit_log.php?action=login_success&actor_id=14&date_from=2026-10-31&date_to=2026-10-31"
+    }
+   ]
+  },
+  "admin_first_round": {
+   "High": [
+    {
+     "alert": "SQL Injection",
+     "pluginid": "40018",
+     "count": 1,
+     "example": "http://localhost/neuroscan_e4/public/admin_assign.php"
+    }
+   ],
+   "Medium": [
+    {
+     "alert": "CSP: style-src unsafe-inline",
+     "pluginid": "10055",
+     "count": 2,
+     "example": "http://localhost/neuroscan_e4/public/"
+    },
+    {
+     "alert": "Parameter Tampering",
+     "pluginid": "40008",
+     "count": 13,
+     "example": "http://localhost/neuroscan_e4/public/admin_assign.php"
+    }
+   ],
+   "Low": [
+    {
+     "alert": "Server Leaks Version Information via \"Server\" HTTP Response Header Field",
+     "pluginid": "10036",
+     "count": 5,
+     "example": "http://localhost/neuroscan_e4/public/"
+    }
+   ],
+   "Informational": [
+    {
+     "alert": "User Agent Fuzzer",
+     "pluginid": "10104",
+     "count": 3,
+     "example": "http://localhost/neuroscan_e4/public/"
+    },
+    {
+     "alert": "User Controllable HTML Element Attribute (Potential XSS)",
+     "pluginid": "10031",
+     "count": 26,
+     "example": "http://localhost/neuroscan_e4/public/admin_audit_log.php?action=login_success&actor_id=14&date_from=2026-10-31&date_to=2026-10-31"
+    }
+   ]
+  }
+ },
+ "note": "admin re-scanned after the second round of fixes (error display off, assignment roles checked); admin_first_round is the scan after the first round"
+}
