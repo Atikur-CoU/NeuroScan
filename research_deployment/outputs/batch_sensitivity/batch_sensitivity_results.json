@@ -1,0 +1,1407 @@
+{
+  "note": "NeuroScan paper 2 -- how far INT8-dynamic's outputs depend on the batch (2026-11-05). CPU only; no training; no new",
+  "onnxruntime": "1.20.1",
+  "skipped": [],
+  "timing_min": {
+    "controls": 14.2,
+    "views_alone": 44.4,
+    "partner_stage": 57.5,
+    "random_b16_seed123": 58.3,
+    "random_b2_seed123": 54.5,
+    "random_b32_seed123": 58.2,
+    "random_b8_seed123": 56.1,
+    "random_b4_seed123": 54.6,
+    "random_b16_seed124": 57.1
+  },
+  "int8_dynamic_sha256": "ad2f6e0ee22b28ec98295b742075a2168e480801073a8df3f1222df37c74d99f",
+  "inference_py_sha256": "ad9a4f614121aa32cf2037deb2374d5f5fd408bf321dce59034d21819cbfa526",
+  "file_reads_by_source": {
+    "Kaggle_CT": 1016,
+    "RSNA_ICH": 2386,
+    "AISD": 3414,
+    "CPAISD_v2": 4572,
+    "SICH_CT": 1689,
+    "ISLES2022": 4606,
+    "SOOP": 3344
+  },
+  "rss_after_decode_gb": 1.829156,
+  "stage2_selection": {
+    "targets": 476,
+    "near_ties": 251,
+    "others": 225,
+    "partners": {
+      "CT_normal_median": {
+        "rank0_out_path": "Kaggle_CT/normal/54b94e0b00cf279f10cad3c106ca2e15.png",
+        "rank0_mean_intensity": 49.241290656887756
+      },
+      "CT_normal_highest": {
+        "rank0_out_path": "RSNA_ICH/normal/ID_e97870365.png",
+        "rank0_mean_intensity": 247.74362244897958
+      },
+      "CT_ischemic_median": {
+        "rank0_out_path": "AISD/ischemic/0538763_012.png",
+        "rank0_mean_intensity": 54.14716863307823
+      },
+      "CT_ischemic_highest": {
+        "rank0_out_path": "Kaggle_CT/stroke/36a429bfacf5899ca8d67e90c41cbad8.png",
+        "rank0_mean_intensity": 99.93283641581633
+      },
+      "CT_hemorrhagic_median": {
+        "rank0_out_path": "RSNA_ICH/hemorrhagic/ID_c549f7c6d.png",
+        "rank0_mean_intensity": 48.593470982142854
+      },
+      "CT_hemorrhagic_highest": {
+        "rank0_out_path": "RSNA_ICH/hemorrhagic/ID_fdd543edf.png",
+        "rank0_mean_intensity": 242.69240274234693
+      },
+      "MRI_normal_median": {
+        "rank0_out_path": "SOOP/normal/eabc1c766c18e8440be343b6d29511f0.png",
+        "rank0_mean_intensity": 24.56545626062925
+      },
+      "MRI_normal_highest": {
+        "rank0_out_path": "ISLES2022/normal/cb228517fd8bfc858566cdf2c11e0655.png",
+        "rank0_mean_intensity": 254.92139668367346
+      },
+      "MRI_ischemic_median": {
+        "rank0_out_path": "SOOP/ischemic/a8f92bab9bfb206eae1fb2bbbe6b9e76.png",
+        "rank0_mean_intensity": 35.68969892644558
+      },
+      "MRI_ischemic_highest": {
+        "rank0_out_path": "SOOP/ischemic/3111ab702f233c3ab711437fa3ac13d1.png",
+        "rank0_mean_intensity": 57.9002378295068
+      }
+    },
+    "partner_replaced_for_same_patient": 8
+  },
+  "controls": {
+    "reference_vs_saved_served": {
+      "max_prob_diff": 0.0,
+      "max_rel_map_diff": 0.0,
+      "limits": [
+        1e-05,
+        0.001
+      ]
+    },
+    "repeatability_same_batches": {
+      "max_prob_diff": 0.0,
+      "max_rel_map_diff": 0.0,
+      "limits": [
+        1e-05,
+        0.001
+      ]
+    },
+    "thread_count_1_vs_4": {
+      "max_prob_diff": 0.0,
+      "max_rel_map_diff": 2.621655426082725e-07,
+      "limits": [
+        1e-05,
+        0.001
+      ]
+    },
+    "FP32_batches_of_8": {
+      "max_prob_diff": 0.0,
+      "max_rel_map_diff": 2.3894435230431554e-07,
+      "limits": [
+        0.0001,
+        0.001
+      ]
+    },
+    "FP32_white_partner": {
+      "max_prob_diff": 0.0,
+      "max_rel_map_diff": 2.3894435230431554e-07,
+      "limits": [
+        0.0001,
+        0.001
+      ]
+    },
+    "INT8-static_batches_of_8": {
+      "max_prob_diff": 0.0,
+      "max_rel_map_diff": 1.9177808496806392e-07,
+      "limits": [
+        0.0001,
+        0.001
+      ]
+    },
+    "INT8-static_white_partner": {
+      "max_prob_diff": 0.0,
+      "max_rel_map_diff": 1.9177808496806392e-07,
+      "limits": [
+        0.0001,
+        0.001
+      ]
+    },
+    "INT8-dyn_batches_of_8_vs_served": {
+      "max_prob_diff": 0.036441764836814494,
+      "max_rel_map_diff": 0.04544401541352272
+    }
+  },
+  "dry_run": {
+    "views_alone_s_per_slice": 0.263663437217474,
+    "b2_s_per_slice": 0.31249191612005234,
+    "b4_s_per_slice": 0.3152252547442913,
+    "b8_s_per_slice": 0.33607327938079834,
+    "b16_s_per_slice": 0.3565683923661709,
+    "b32_s_per_slice": 0.3545366209000349,
+    "partner_s_per_pair": 0.5984679261843363,
+    "projected_total_min": 514.4435507023707,
+    "hwm_gb": 12.929768
+  },
+  "same_patient_batch_share": {
+    "random_b16_seed123": 0.3650075414781297,
+    "random_b2_seed123": 0.0050933786078098476,
+    "random_b32_seed123": 0.8433734939759037,
+    "random_b8_seed123": 0.09351432880844646,
+    "random_b4_seed123": 0.023764617125612977,
+    "random_b16_seed124": 0.33031674208144796
+  },
+  "conditions": {
+    "served_four_views_together": {
+      "vs_served": {
+        "predictions_differ": 0,
+        "to_normal": 0,
+        "from_normal": 0,
+        "between_stroke_classes": 0,
+        "fp32_margin_of_differing": {
+          "median": null,
+          "max": null
+        },
+        "near_tie_share": null,
+        "patients_with_a_difference": 0,
+        "tier_changes": 0,
+        "prob_diff": {
+          "max": 0.0,
+          "p99": 0.0,
+          "median": 0.0
+        },
+        "map_rel_diff": {
+          "max": 0.0,
+          "p99": 0.0,
+          "median": 0.0
+        },
+        "same_peak_cell": 1.0,
+        "display_iou": {
+          "median": 1.0,
+          "q1": 1.0,
+          "q3": 1.0
+        },
+        "iou_below_0.5": 0.0
+      },
+      "vs_fp32": {
+        "changed": 32,
+        "to_normal": 30,
+        "from_normal": 2,
+        "between_stroke_classes": 0,
+        "correct_to_wrong": 10,
+        "wrong_to_correct": 22,
+        "maps_map_rel_diff": {
+          "max": 0.6390801668167114,
+          "p99": 0.4718274474143982,
+          "median": 0.052166007459163666
+        },
+        "maps_same_peak_cell": 0.9536879833993586,
+        "maps_display_iou": {
+          "median": 0.9606758566311168,
+          "q1": 0.9217506872171747,
+          "q3": 0.979465867318468
+        },
+        "maps_iou_below_0.5": 0.018864365214110546
+      },
+      "ischemic_detection": {
+        "pooled_internal_test": {
+          "ischemic_patients": 281,
+          "detected": 263
+        },
+        "SOOP_holdout": {
+          "ischemic_patients": 66,
+          "detected": 63
+        }
+      },
+      "agreement_with_fp32": {
+        "pooled_internal_test": {
+          "argmax_agreement": 0.9970884658454647,
+          "argmax_agreement_ci95": [
+            0.9960023755506722,
+            0.9980963950205208
+          ],
+          "flips": 26,
+          "tier_agreement": 0.9880179171332587,
+          "tier_agreement_ci95": [
+            0.9857366954600859,
+            0.9902650670814791
+          ],
+          "prob_abs_diff_max": 0.08233074851377298
+        },
+        "internal_test": {
+          "argmax_agreement": 0.9966243586281394,
+          "argmax_agreement_ci95": [
+            0.9952514036810434,
+            0.9978723474979279
+          ],
+          "flips": 25,
+          "tier_agreement": 0.9882527680259249,
+          "tier_agreement_ci95": [
+            0.9854332199737545,
+            0.9908832258931901
+          ],
+          "prob_abs_diff_max": 0.08233074851377298
+        },
+        "CPAISD": {
+          "argmax_agreement": 0.9993438320209974,
+          "argmax_agreement_ci95": [
+            0.9980301711902385,
+            1.0
+          ],
+          "flips": 1,
+          "tier_agreement": 0.9868766404199475,
+          "tier_agreement_ci95": [
+            0.9824299812430727,
+            0.991084272316869
+          ],
+          "prob_abs_diff_max": 0.07123785225084592
+        },
+        "SOOP_holdout": {
+          "argmax_agreement": 0.9964114832535885,
+          "argmax_agreement_ci95": [
+            0.9934130749884295,
+            0.9988095238095238
+          ],
+          "flips": 6,
+          "tier_agreement": 0.9886363636363636,
+          "tier_agreement_ci95": [
+            0.9827688651218063,
+            0.9935235787825174
+          ],
+          "prob_abs_diff_max": 0.0657434385076473
+        }
+      }
+    },
+    "file_order_batches_of_16": {
+      "vs_served": {
+        "predictions_differ": 22,
+        "to_normal": 4,
+        "from_normal": 18,
+        "between_stroke_classes": 0,
+        "fp32_margin_of_differing": {
+          "median": 0.010743364483569856,
+          "max": 0.0539584670141422
+        },
+        "near_tie_share": 1.0,
+        "patients_with_a_difference": 21,
+        "tier_changes": 108,
+        "prob_diff": {
+          "max": 0.05888490992769846,
+          "p99": 0.03392522936954419,
+          "median": 0.0005355522939816393
+        },
+        "map_rel_diff": {
+          "max": 1.2194130420684814,
+          "p99": 0.754911482334137,
+          "median": 0.03845153748989105
+        },
+        "same_peak_cell": 0.9487832484436899,
+        "display_iou": {
+          "median": 0.9651297072912991,
+          "q1": 0.9339770058214389,
+          "q3": 0.9814993976671612
+        },
+        "iou_below_0.5": 0.018204112431616674
+      },
+      "vs_fp32": {
+        "changed": 32,
+        "to_normal": 23,
+        "from_normal": 9,
+        "between_stroke_classes": 0,
+        "correct_to_wrong": 17,
+        "wrong_to_correct": 15,
+        "maps_map_rel_diff": {
+          "max": 0.9229894876480103,
+          "p99": 0.648169755935669,
+          "median": 0.054873473942279816
+        },
+        "maps_same_peak_cell": 0.939916996793058,
+        "maps_display_iou": {
+          "median": 0.9576672251090856,
+          "q1": 0.9174517150801587,
+          "q3": 0.9782230067689107
+        },
+        "maps_iou_below_0.5": 0.017166572344840595
+      },
+      "ischemic_detection": {
+        "pooled_internal_test": {
+          "ischemic_patients": 281,
+          "detected": 263
+        },
+        "SOOP_holdout": {
+          "ischemic_patients": 66,
+          "detected": 63
+        }
+      },
+      "agreement_with_fp32": {
+        "pooled_internal_test": {
+          "argmax_agreement": 0.9970884658454647,
+          "argmax_agreement_ci95": [
+            0.9959813116897612,
+            0.9980917419003139
+          ],
+          "flips": 26,
+          "tier_agreement": 0.9867861142217246,
+          "tier_agreement_ci95": [
+            0.9840023919805726,
+            0.9894433108290911
+          ],
+          "prob_abs_diff_max": 0.09799576961149653
+        },
+        "internal_test": {
+          "argmax_agreement": 0.997164461247637,
+          "argmax_agreement_ci95": [
+            0.9959355281631875,
+            0.9982546818448294
+          ],
+          "flips": 21,
+          "tier_agreement": 0.9885228193356738,
+          "tier_agreement_ci95": [
+            0.9858182790310478,
+            0.9913361436065767
+          ],
+          "prob_abs_diff_max": 0.09799576961149653
+        },
+        "CPAISD": {
+          "argmax_agreement": 0.9967191601049868,
+          "argmax_agreement_ci95": [
+            0.9942853505501501,
+            0.9987752789955635
+          ],
+          "flips": 5,
+          "tier_agreement": 0.9783464566929134,
+          "tier_agreement_ci95": [
+            0.9704172724946493,
+            0.9860844188011391
+          ],
+          "prob_abs_diff_max": 0.08945945168519409
+        },
+        "SOOP_holdout": {
+          "argmax_agreement": 0.9964114832535885,
+          "argmax_agreement_ci95": [
+            0.9927926845114344,
+            0.9993986861238956
+          ],
+          "flips": 6,
+          "tier_agreement": 0.9892344497607656,
+          "tier_agreement_ci95": [
+            0.9839285714285714,
+            0.9939615347633782
+          ],
+          "prob_abs_diff_max": 0.06615531289389609
+        }
+      }
+    },
+    "views_alone": {
+      "vs_served": {
+        "predictions_differ": 17,
+        "to_normal": 4,
+        "from_normal": 13,
+        "between_stroke_classes": 0,
+        "fp32_margin_of_differing": {
+          "median": 0.020393378907743953,
+          "max": 0.05850293332503831
+        },
+        "near_tie_share": 1.0,
+        "patients_with_a_difference": 16,
+        "tier_changes": 65,
+        "prob_diff": {
+          "max": 0.06584859394356773,
+          "p99": 0.017825158860369367,
+          "median": 0.00037421690444433553
+        },
+        "map_rel_diff": {
+          "max": 0.6781413555145264,
+          "p99": 0.16621190309524536,
+          "median": 0.03006724640727043
+        },
+        "same_peak_cell": 0.9678362573099415,
+        "display_iou": {
+          "median": 0.9734209126699385,
+          "q1": 0.9517743403093721,
+          "q3": 0.9866329395713569
+        },
+        "iou_below_0.5": 0.0002829654782116582
+      },
+      "vs_fp32": {
+        "changed": 33,
+        "to_normal": 26,
+        "from_normal": 7,
+        "between_stroke_classes": 0,
+        "correct_to_wrong": 14,
+        "wrong_to_correct": 19,
+        "maps_map_rel_diff": {
+          "max": 0.8062849044799805,
+          "p99": 0.4718274474143982,
+          "median": 0.05182676762342453
+        },
+        "maps_same_peak_cell": 0.955291454442558,
+        "maps_display_iou": {
+          "median": 0.9613579444475937,
+          "q1": 0.924169801794759,
+          "q3": 0.9799444186128461
+        },
+        "maps_iou_below_0.5": 0.01839275608375778
+      },
+      "ischemic_detection": {
+        "pooled_internal_test": {
+          "ischemic_patients": 281,
+          "detected": 264
+        },
+        "SOOP_holdout": {
+          "ischemic_patients": 66,
+          "detected": 63
+        }
+      },
+      "agreement_with_fp32": {
+        "pooled_internal_test": {
+          "argmax_agreement": 0.9970884658454647,
+          "argmax_agreement_ci95": [
+            0.995982397614561,
+            0.9981426024010118
+          ],
+          "flips": 26,
+          "tier_agreement": 0.9867861142217246,
+          "tier_agreement_ci95": [
+            0.9841075389821726,
+            0.9893159895378687
+          ],
+          "prob_abs_diff_max": 0.08098717742160605
+        },
+        "internal_test": {
+          "argmax_agreement": 0.9968944099378882,
+          "argmax_agreement_ci95": [
+            0.995535449883428,
+            0.9980849003187491
+          ],
+          "flips": 23,
+          "tier_agreement": 0.9877126654064272,
+          "tier_agreement_ci95": [
+            0.9846938233124576,
+            0.9904477909875147
+          ],
+          "prob_abs_diff_max": 0.08098717742160605
+        },
+        "CPAISD": {
+          "argmax_agreement": 0.9980314960629921,
+          "argmax_agreement_ci95": [
+            0.9959564629845096,
+            1.0
+          ],
+          "flips": 3,
+          "tier_agreement": 0.9822834645669292,
+          "tier_agreement_ci95": [
+            0.9763228522820896,
+            0.9880374334851908
+          ],
+          "prob_abs_diff_max": 0.07167648756895906
+        },
+        "SOOP_holdout": {
+          "argmax_agreement": 0.9958133971291866,
+          "argmax_agreement_ci95": [
+            0.9927667269439421,
+            0.9987886129618413
+          ],
+          "flips": 7,
+          "tier_agreement": 0.9898325358851675,
+          "tier_agreement_ci95": [
+            0.9838610856496509,
+            0.9946745562130177
+          ],
+          "prob_abs_diff_max": 0.0618225313230803
+        }
+      }
+    },
+    "random_b16_seed123": {
+      "vs_served": {
+        "predictions_differ": 23,
+        "to_normal": 5,
+        "from_normal": 17,
+        "between_stroke_classes": 1,
+        "fp32_margin_of_differing": {
+          "median": 0.017489631466269584,
+          "max": 0.06459148244827839
+        },
+        "near_tie_share": 1.0,
+        "patients_with_a_difference": 22,
+        "tier_changes": 119,
+        "prob_diff": {
+          "max": 0.06136247303402298,
+          "p99": 0.036479204018012516,
+          "median": 0.0005617891518302498
+        },
+        "map_rel_diff": {
+          "max": 1.5266749858856201,
+          "p99": 0.8666266798973083,
+          "median": 0.0405438095331192
+        },
+        "same_peak_cell": 0.9439728353140917,
+        "display_iou": {
+          "median": 0.9621041363511228,
+          "q1": 0.9301673718416431,
+          "q3": 0.9800592109110318
+        },
+        "iou_below_0.5": 0.01801546877947557
+      },
+      "vs_fp32": {
+        "changed": 35,
+        "to_normal": 25,
+        "from_normal": 9,
+        "between_stroke_classes": 1,
+        "correct_to_wrong": 16,
+        "wrong_to_correct": 19,
+        "maps_map_rel_diff": {
+          "max": 1.108108401298523,
+          "p99": 0.7331240773200989,
+          "median": 0.05635768175125122
+        },
+        "maps_same_peak_cell": 0.9363327674023769,
+        "maps_display_iou": {
+          "median": 0.9564025178795917,
+          "q1": 0.9151458923760959,
+          "q3": 0.97679730259494
+        },
+        "maps_iou_below_0.5": 0.015940388605923412
+      },
+      "ischemic_detection": {
+        "pooled_internal_test": {
+          "ischemic_patients": 281,
+          "detected": 264
+        },
+        "SOOP_holdout": {
+          "ischemic_patients": 66,
+          "detected": 63
+        }
+      },
+      "agreement_with_fp32": {
+        "pooled_internal_test": {
+          "argmax_agreement": 0.9967525195968645,
+          "argmax_agreement_ci95": [
+            0.995572245717387,
+            0.9978543629382438
+          ],
+          "flips": 29,
+          "tier_agreement": 0.9858902575587906,
+          "tier_agreement_ci95": [
+            0.9831020003266383,
+            0.988702631809051
+          ],
+          "prob_abs_diff_max": 0.10760620979618407
+        },
+        "internal_test": {
+          "argmax_agreement": 0.9964893329732649,
+          "argmax_agreement_ci95": [
+            0.9951757037165414,
+            0.997702120444146
+          ],
+          "flips": 26,
+          "tier_agreement": 0.987307588441804,
+          "tier_agreement_ci95": [
+            0.9844806323967611,
+            0.9901482974241596
+          ],
+          "prob_abs_diff_max": 0.10760620979618407
+        },
+        "CPAISD": {
+          "argmax_agreement": 0.9980314960629921,
+          "argmax_agreement_ci95": [
+            0.9959564629845096,
+            1.0
+          ],
+          "flips": 3,
+          "tier_agreement": 0.979002624671916,
+          "tier_agreement_ci95": [
+            0.9705685126531657,
+            0.986390795406588
+          ],
+          "prob_abs_diff_max": 0.10629243374718489
+        },
+        "SOOP_holdout": {
+          "argmax_agreement": 0.9964114832535885,
+          "argmax_agreement_ci95": [
+            0.9934170169535257,
+            0.9988067003670323
+          ],
+          "flips": 6,
+          "tier_agreement": 0.9898325358851675,
+          "tier_agreement_ci95": [
+            0.9842211262021836,
+            0.9946140035906643
+          ],
+          "prob_abs_diff_max": 0.0475685525724181
+        }
+      }
+    },
+    "random_b2_seed123": {
+      "vs_served": {
+        "predictions_differ": 16,
+        "to_normal": 5,
+        "from_normal": 11,
+        "between_stroke_classes": 0,
+        "fp32_margin_of_differing": {
+          "median": 0.022597122183166507,
+          "max": 0.043974549057855694
+        },
+        "near_tie_share": 1.0,
+        "patients_with_a_difference": 16,
+        "tier_changes": 65,
+        "prob_diff": {
+          "max": 0.04323530675210241,
+          "p99": 0.018287721038002698,
+          "median": 0.00038488914796874774
+        },
+        "map_rel_diff": {
+          "max": 1.3235286474227905,
+          "p99": 0.7087565660476685,
+          "median": 0.030521148815751076
+        },
+        "same_peak_cell": 0.9601961893982267,
+        "display_iou": {
+          "median": 0.972605919538037,
+          "q1": 0.9476258521954335,
+          "q3": 0.9857820286701285
+        },
+        "iou_below_0.5": 0.017355215996981702
+      },
+      "vs_fp32": {
+        "changed": 32,
+        "to_normal": 27,
+        "from_normal": 5,
+        "between_stroke_classes": 0,
+        "correct_to_wrong": 11,
+        "wrong_to_correct": 21,
+        "maps_map_rel_diff": {
+          "max": 0.848887026309967,
+          "p99": 0.5593052506446838,
+          "median": 0.05382845923304558
+        },
+        "maps_same_peak_cell": 0.9438785134880211,
+        "maps_display_iou": {
+          "median": 0.9594161212778078,
+          "q1": 0.92,
+          "q3": 0.9787767286977204
+        },
+        "maps_iou_below_0.5": 0.015374457649500094
+      },
+      "ischemic_detection": {
+        "pooled_internal_test": {
+          "ischemic_patients": 281,
+          "detected": 265
+        },
+        "SOOP_holdout": {
+          "ischemic_patients": 66,
+          "detected": 63
+        }
+      },
+      "agreement_with_fp32": {
+        "pooled_internal_test": {
+          "argmax_agreement": 0.9968645016797313,
+          "argmax_agreement_ci95": [
+            0.9957026941634871,
+            0.9979113357067988
+          ],
+          "flips": 28,
+          "tier_agreement": 0.986562150055991,
+          "tier_agreement_ci95": [
+            0.9837634340674527,
+            0.9891129446747802
+          ],
+          "prob_abs_diff_max": 0.09296315557772705
+        },
+        "internal_test": {
+          "argmax_agreement": 0.9966243586281394,
+          "argmax_agreement_ci95": [
+            0.9952018072173479,
+            0.9978270169344963
+          ],
+          "flips": 25,
+          "tier_agreement": 0.9877126654064272,
+          "tier_agreement_ci95": [
+            0.9846588614828696,
+            0.9905431745110905
+          ],
+          "prob_abs_diff_max": 0.08779337157898082
+        },
+        "CPAISD": {
+          "argmax_agreement": 0.9980314960629921,
+          "argmax_agreement_ci95": [
+            0.9960678936971599,
+            1.0
+          ],
+          "flips": 3,
+          "tier_agreement": 0.9809711286089239,
+          "tier_agreement_ci95": [
+            0.9751125821581307,
+            0.9864507800483411
+          ],
+          "prob_abs_diff_max": 0.09296315557772705
+        },
+        "SOOP_holdout": {
+          "argmax_agreement": 0.9976076555023924,
+          "argmax_agreement_ci95": [
+            0.994699568558941,
+            0.9994058229352347
+          ],
+          "flips": 4,
+          "tier_agreement": 0.9886363636363636,
+          "tier_agreement_ci95": [
+            0.982550880575183,
+            0.9934602636139672
+          ],
+          "prob_abs_diff_max": 0.06319387844677526
+        }
+      }
+    },
+    "random_b32_seed123": {
+      "vs_served": {
+        "predictions_differ": 21,
+        "to_normal": 5,
+        "from_normal": 16,
+        "between_stroke_classes": 0,
+        "fp32_margin_of_differing": {
+          "median": 0.015375445971096413,
+          "max": 0.06931108701177113
+        },
+        "near_tie_share": 1.0,
+        "patients_with_a_difference": 20,
+        "tier_changes": 114,
+        "prob_diff": {
+          "max": 0.05388840872201295,
+          "p99": 0.040354479671600774,
+          "median": 0.0005933047032056771
+        },
+        "map_rel_diff": {
+          "max": 1.5002886056900024,
+          "p99": 0.8774517178535461,
+          "median": 0.041782114654779434
+        },
+        "same_peak_cell": 0.939916996793058,
+        "display_iou": {
+          "median": 0.9617468909631679,
+          "q1": 0.929098232009015,
+          "q3": 0.9794075896438101
+        },
+        "iou_below_0.5": 0.018204112431616674
+      },
+      "vs_fp32": {
+        "changed": 31,
+        "to_normal": 24,
+        "from_normal": 7,
+        "between_stroke_classes": 0,
+        "correct_to_wrong": 12,
+        "wrong_to_correct": 19,
+        "maps_map_rel_diff": {
+          "max": 1.1777312755584717,
+          "p99": 0.772914707660675,
+          "median": 0.05673712119460106
+        },
+        "maps_same_peak_cell": 0.9327485380116959,
+        "maps_display_iou": {
+          "median": 0.956263508150227,
+          "q1": 0.9144715528020917,
+          "q3": 0.9769786580165428
+        },
+        "maps_iou_below_0.5": 0.018864365214110546
+      },
+      "ischemic_detection": {
+        "pooled_internal_test": {
+          "ischemic_patients": 281,
+          "detected": 265
+        },
+        "SOOP_holdout": {
+          "ischemic_patients": 66,
+          "detected": 63
+        }
+      },
+      "agreement_with_fp32": {
+        "pooled_internal_test": {
+          "argmax_agreement": 0.9970884658454647,
+          "argmax_agreement_ci95": [
+            0.995923557182907,
+            0.9981334904089475
+          ],
+          "flips": 26,
+          "tier_agreement": 0.9862262038073908,
+          "tier_agreement_ci95": [
+            0.9833251124155612,
+            0.9890811966601367
+          ],
+          "prob_abs_diff_max": 0.11101448852382467
+        },
+        "internal_test": {
+          "argmax_agreement": 0.9968944099378882,
+          "argmax_agreement_ci95": [
+            0.9954918167858027,
+            0.9981223679095999
+          ],
+          "flips": 23,
+          "tier_agreement": 0.9877126654064272,
+          "tier_agreement_ci95": [
+            0.9848545771344324,
+            0.9906236120321192
+          ],
+          "prob_abs_diff_max": 0.10794066489043252
+        },
+        "CPAISD": {
+          "argmax_agreement": 0.9980314960629921,
+          "argmax_agreement_ci95": [
+            0.9959564629845096,
+            1.0
+          ],
+          "flips": 3,
+          "tier_agreement": 0.979002624671916,
+          "tier_agreement_ci95": [
+            0.9698753880249669,
+            0.9875192726619262
+          ],
+          "prob_abs_diff_max": 0.11101448852382467
+        },
+        "SOOP_holdout": {
+          "argmax_agreement": 0.9970095693779905,
+          "argmax_agreement_ci95": [
+            0.9940722298281254,
+            0.9993983243279619
+          ],
+          "flips": 5,
+          "tier_agreement": 0.9898325358851675,
+          "tier_agreement_ci95": [
+            0.9849381646367685,
+            0.9946011607031112
+          ],
+          "prob_abs_diff_max": 0.05433654368146401
+        }
+      }
+    },
+    "random_b8_seed123": {
+      "vs_served": {
+        "predictions_differ": 20,
+        "to_normal": 8,
+        "from_normal": 12,
+        "between_stroke_classes": 0,
+        "fp32_margin_of_differing": {
+          "median": 0.01784078343725487,
+          "max": 0.0539584670141422
+        },
+        "near_tie_share": 1.0,
+        "patients_with_a_difference": 18,
+        "tier_changes": 100,
+        "prob_diff": {
+          "max": 0.0542791562785786,
+          "p99": 0.02929605665620493,
+          "median": 0.0005288763005894537
+        },
+        "map_rel_diff": {
+          "max": 1.3869965076446533,
+          "p99": 0.8754956722259521,
+          "median": 0.0388941764831543
+        },
+        "same_peak_cell": 0.9504810413129599,
+        "display_iou": {
+          "median": 0.9646017699115044,
+          "q1": 0.9334869660652472,
+          "q3": 0.9811025784884401
+        },
+        "iou_below_0.5": 0.017826825127334467
+      },
+      "vs_fp32": {
+        "changed": 32,
+        "to_normal": 28,
+        "from_normal": 4,
+        "between_stroke_classes": 0,
+        "correct_to_wrong": 11,
+        "wrong_to_correct": 21,
+        "maps_map_rel_diff": {
+          "max": 0.9883735179901123,
+          "p99": 0.6448854804039001,
+          "median": 0.05651231110095978
+        },
+        "maps_same_peak_cell": 0.9411431805319751,
+        "maps_display_iou": {
+          "median": 0.9573152646191929,
+          "q1": 0.9171252364562585,
+          "q3": 0.9774202232378163
+        },
+        "maps_iou_below_0.5": 0.01311073382380683
+      },
+      "ischemic_detection": {
+        "pooled_internal_test": {
+          "ischemic_patients": 281,
+          "detected": 264
+        },
+        "SOOP_holdout": {
+          "ischemic_patients": 66,
+          "detected": 63
+        }
+      },
+      "agreement_with_fp32": {
+        "pooled_internal_test": {
+          "argmax_agreement": 0.9973124300111982,
+          "argmax_agreement_ci95": [
+            0.9962608434885453,
+            0.9982253918647344
+          ],
+          "flips": 24,
+          "tier_agreement": 0.9858902575587906,
+          "tier_agreement_ci95": [
+            0.9829960524590285,
+            0.9885404737816177
+          ],
+          "prob_abs_diff_max": 0.09906561026793251
+        },
+        "internal_test": {
+          "argmax_agreement": 0.9970294355927626,
+          "argmax_agreement_ci95": [
+            0.9958388982403276,
+            0.9981513575455614
+          ],
+          "flips": 22,
+          "tier_agreement": 0.9878476910613017,
+          "tier_agreement_ci95": [
+            0.985127539488573,
+            0.9905486332978345
+          ],
+          "prob_abs_diff_max": 0.09906561026793251
+        },
+        "CPAISD": {
+          "argmax_agreement": 0.9986876640419947,
+          "argmax_agreement_ci95": [
+            0.9968313819617072,
+            1.0
+          ],
+          "flips": 2,
+          "tier_agreement": 0.9763779527559056,
+          "tier_agreement_ci95": [
+            0.9670181348191206,
+            0.9844361265236002
+          ],
+          "prob_abs_diff_max": 0.0954507023828832
+        },
+        "SOOP_holdout": {
+          "argmax_agreement": 0.9952153110047847,
+          "argmax_agreement_ci95": [
+            0.9916864608076009,
+            0.9982035928143712
+          ],
+          "flips": 8,
+          "tier_agreement": 0.9868421052631579,
+          "tier_agreement_ci95": [
+            0.981480927698033,
+            0.9916267942583732
+          ],
+          "prob_abs_diff_max": 0.06322636522959535
+        }
+      }
+    },
+    "random_b4_seed123": {
+      "vs_served": {
+        "predictions_differ": 22,
+        "to_normal": 6,
+        "from_normal": 16,
+        "between_stroke_classes": 0,
+        "fp32_margin_of_differing": {
+          "median": 0.019532552504989975,
+          "max": 0.05173340155805639
+        },
+        "near_tie_share": 1.0,
+        "patients_with_a_difference": 22,
+        "tier_changes": 84,
+        "prob_diff": {
+          "max": 0.04714072660767488,
+          "p99": 0.024013343997248218,
+          "median": 0.0004610287779018285
+        },
+        "map_rel_diff": {
+          "max": 1.3587276935577393,
+          "p99": 0.8141950368881226,
+          "median": 0.03561116009950638
+        },
+        "same_peak_cell": 0.956140350877193,
+        "display_iou": {
+          "median": 0.9674186659481603,
+          "q1": 0.9394191766092039,
+          "q3": 0.9827737564789705
+        },
+        "iou_below_0.5": 0.017826825127334467
+      },
+      "vs_fp32": {
+        "changed": 32,
+        "to_normal": 25,
+        "from_normal": 7,
+        "between_stroke_classes": 0,
+        "correct_to_wrong": 13,
+        "wrong_to_correct": 19,
+        "maps_map_rel_diff": {
+          "max": 0.9641409516334534,
+          "p99": 0.5961007475852966,
+          "median": 0.054914139211177826
+        },
+        "maps_same_peak_cell": 0.9451046972269384,
+        "maps_display_iou": {
+          "median": 0.9582003751000369,
+          "q1": 0.9187684094813444,
+          "q3": 0.9780546228355254
+        },
+        "maps_iou_below_0.5": 0.013016411997736276
+      },
+      "ischemic_detection": {
+        "pooled_internal_test": {
+          "ischemic_patients": 281,
+          "detected": 265
+        },
+        "SOOP_holdout": {
+          "ischemic_patients": 66,
+          "detected": 63
+        }
+      },
+      "agreement_with_fp32": {
+        "pooled_internal_test": {
+          "argmax_agreement": 0.9970884658454647,
+          "argmax_agreement_ci95": [
+            0.9958760198255852,
+            0.9981843301743435
+          ],
+          "flips": 26,
+          "tier_agreement": 0.9857782754759239,
+          "tier_agreement_ci95": [
+            0.9827697366559395,
+            0.9885087620403368
+          ],
+          "prob_abs_diff_max": 0.10048851233718728
+        },
+        "internal_test": {
+          "argmax_agreement": 0.9970294355927626,
+          "argmax_agreement_ci95": [
+            0.9956365892339447,
+            0.9983381163664182
+          ],
+          "flips": 22,
+          "tier_agreement": 0.9874426140966783,
+          "tier_agreement_ci95": [
+            0.9843167668259502,
+            0.990320141058059
+          ],
+          "prob_abs_diff_max": 0.10048851233718728
+        },
+        "CPAISD": {
+          "argmax_agreement": 0.9973753280839895,
+          "argmax_agreement_ci95": [
+            0.9948790279252593,
+            0.9993707030274089
+          ],
+          "flips": 4,
+          "tier_agreement": 0.9776902887139107,
+          "tier_agreement_ci95": [
+            0.9687495114133834,
+            0.985852490338551
+          ],
+          "prob_abs_diff_max": 0.09590161323979929
+        },
+        "SOOP_holdout": {
+          "argmax_agreement": 0.9964114832535885,
+          "argmax_agreement_ci95": [
+            0.9933932941354816,
+            0.9988088147706968
+          ],
+          "flips": 6,
+          "tier_agreement": 0.986244019138756,
+          "tier_agreement_ci95": [
+            0.980792028523121,
+            0.9911566984453893
+          ],
+          "prob_abs_diff_max": 0.07342508482622778
+        }
+      }
+    },
+    "random_b16_seed124": {
+      "vs_served": {
+        "predictions_differ": 23,
+        "to_normal": 6,
+        "from_normal": 17,
+        "between_stroke_classes": 0,
+        "fp32_margin_of_differing": {
+          "median": 0.01594526103206584,
+          "max": 0.07819048920846289
+        },
+        "near_tie_share": 1.0,
+        "patients_with_a_difference": 22,
+        "tier_changes": 105,
+        "prob_diff": {
+          "max": 0.05702398576128065,
+          "p99": 0.03558802021158275,
+          "median": 0.0005712749885406904
+        },
+        "map_rel_diff": {
+          "max": 1.4716119766235352,
+          "p99": 0.8377985954284668,
+          "median": 0.040914081037044525
+        },
+        "same_peak_cell": 0.9437841916619506,
+        "display_iou": {
+          "median": 0.9626260201963357,
+          "q1": 0.9306750367101924,
+          "q3": 0.9799809342230696
+        },
+        "iou_below_0.5": 0.017921146953405017
+      },
+      "vs_fp32": {
+        "changed": 33,
+        "to_normal": 25,
+        "from_normal": 8,
+        "between_stroke_classes": 0,
+        "correct_to_wrong": 13,
+        "wrong_to_correct": 20,
+        "maps_map_rel_diff": {
+          "max": 1.1348137855529785,
+          "p99": 0.7070193886756897,
+          "median": 0.05659200996160507
+        },
+        "maps_same_peak_cell": 0.9351065836634598,
+        "maps_display_iou": {
+          "median": 0.9564467369085061,
+          "q1": 0.9150122246058854,
+          "q3": 0.9774612754114425
+        },
+        "maps_iou_below_0.5": 0.016506319562346727
+      },
+      "ischemic_detection": {
+        "pooled_internal_test": {
+          "ischemic_patients": 281,
+          "detected": 264
+        },
+        "SOOP_holdout": {
+          "ischemic_patients": 66,
+          "detected": 63
+        }
+      },
+      "agreement_with_fp32": {
+        "pooled_internal_test": {
+          "argmax_agreement": 0.996976483762598,
+          "argmax_agreement_ci95": [
+            0.9958118383454851,
+            0.998022571761091
+          ],
+          "flips": 27,
+          "tier_agreement": 0.9860022396416573,
+          "tier_agreement_ci95": [
+            0.9831122997902187,
+            0.9887048482535205
+          ],
+          "prob_abs_diff_max": 0.11455659526213968
+        },
+        "internal_test": {
+          "argmax_agreement": 0.9970294355927626,
+          "argmax_agreement_ci95": [
+            0.995757342005618,
+            0.9982067785864578
+          ],
+          "flips": 22,
+          "tier_agreement": 0.9875776397515528,
+          "tier_agreement_ci95": [
+            0.984854503651047,
+            0.9903437835023398
+          ],
+          "prob_abs_diff_max": 0.11455659526213968
+        },
+        "CPAISD": {
+          "argmax_agreement": 0.9967191601049868,
+          "argmax_agreement_ci95": [
+            0.9941934546741914,
+            0.9992195124812313
+          ],
+          "flips": 5,
+          "tier_agreement": 0.9783464566929134,
+          "tier_agreement_ci95": [
+            0.9696586599241467,
+            0.9861309052053554
+          ],
+          "prob_abs_diff_max": 0.1091410873265466
+        },
+        "SOOP_holdout": {
+          "argmax_agreement": 0.9964114832535885,
+          "argmax_agreement_ci95": [
+            0.9934289127837514,
+            0.9988095415144047
+          ],
+          "flips": 6,
+          "tier_agreement": 0.9880382775119617,
+          "tier_agreement_ci95": [
+            0.9821314219880285,
+            0.9933656005805233
+          ],
+          "prob_abs_diff_max": 0.06378333930537838
+        }
+      }
+    }
+  },
+  "partner_stage": {
+    "near_ties_realistic": {
+      "targets": 251,
+      "pairs": 2510,
+      "pairs_differing": 157,
+      "targets_flipping_for_at_least_one_partner": 52,
+      "to_normal": 31,
+      "from_normal": 126,
+      "prob_diff": {
+        "max": 0.04418610209797791,
+        "p99": 0.023513479475902415,
+        "median": 0.004814903348920124
+      },
+      "range_across_partners_max_prob_diff": {
+        "median": 0.012164845770555544,
+        "q1": 0.009143304309090439,
+        "q3": 0.016440871244002314
+      },
+      "map_rel_diff": {
+        "max": 0.27589157223701477,
+        "median": 0.03195413015782833
+      },
+      "same_peak": 0.9725099601593625
+    },
+    "others_realistic": {
+      "targets": 225,
+      "pairs": 2250,
+      "pairs_differing": 0,
+      "targets_flipping_for_at_least_one_partner": 0,
+      "to_normal": 0,
+      "from_normal": 0,
+      "prob_diff": {
+        "max": 0.03496196589798026,
+        "p99": 0.018617116197497452,
+        "median": 0.00015901291494851977
+      },
+      "range_across_partners_max_prob_diff": {
+        "median": 0.0004586638238838203,
+        "q1": 5.601473801442047e-05,
+        "q3": 0.004278112650319743
+      },
+      "map_rel_diff": {
+        "max": 1.2434957027435303,
+        "median": 0.026523171924054623
+      },
+      "same_peak": 0.9693333333333334
+    },
+    "near_ties_stress": {
+      "targets": 251,
+      "pairs": 502,
+      "pairs_differing": 21,
+      "targets_flipping_for_at_least_one_partner": 17,
+      "to_normal": 2,
+      "from_normal": 19,
+      "prob_diff": {
+        "max": 0.03384267583744405,
+        "p99": 0.017697656810969607,
+        "median": 0.0029371317058073942
+      },
+      "range_across_partners_max_prob_diff": {
+        "median": 0.004759286876522384,
+        "q1": 0.0029889954838760724,
+        "q3": 0.008447664520267822
+      },
+      "map_rel_diff": {
+        "max": 0.13764768838882446,
+        "median": 0.023085681721568108
+      },
+      "same_peak": 0.9820717131474104
+    },
+    "others_stress": {
+      "targets": 225,
+      "pairs": 450,
+      "pairs_differing": 0,
+      "targets_flipping_for_at_least_one_partner": 0,
+      "to_normal": 0,
+      "from_normal": 0,
+      "prob_diff": {
+        "max": 0.019891924795428784,
+        "p99": 0.010836954676056354,
+        "median": 0.0001063752720015461
+      },
+      "range_across_partners_max_prob_diff": {
+        "median": 0.0002124465314151669,
+        "q1": 2.1239883722247877e-05,
+        "q3": 0.0017643312189802307
+      },
+      "map_rel_diff": {
+        "max": 0.4824642539024353,
+        "median": 0.018408861942589283
+      },
+      "same_peak": 0.9622222222222222
+    },
+    "by_partner": {
+      "CT_hemorrhagic_highest": {
+        "pairs_differing": 13,
+        "median_prob_diff": 0.0021470751256284504,
+        "max_prob_diff": 0.026771778490204845,
+        "median_map_rel_diff": 0.02915035467594862
+      },
+      "CT_hemorrhagic_median": {
+        "pairs_differing": 13,
+        "median_prob_diff": 0.0018279042798785977,
+        "max_prob_diff": 0.030828699997714093,
+        "median_map_rel_diff": 0.02899240981787443
+      },
+      "CT_ischemic_highest": {
+        "pairs_differing": 15,
+        "median_prob_diff": 0.002176397068028635,
+        "max_prob_diff": 0.03178248322370647,
+        "median_map_rel_diff": 0.02850206382572651
+      },
+      "CT_ischemic_median": {
+        "pairs_differing": 19,
+        "median_prob_diff": 0.002056591250735318,
+        "max_prob_diff": 0.03496196589798026,
+        "median_map_rel_diff": 0.02948253322392702
+      },
+      "CT_normal_highest": {
+        "pairs_differing": 15,
+        "median_prob_diff": 0.002105581496784359,
+        "max_prob_diff": 0.03769013841869551,
+        "median_map_rel_diff": 0.02859876025468111
+      },
+      "CT_normal_median": {
+        "pairs_differing": 17,
+        "median_prob_diff": 0.001394624987198223,
+        "max_prob_diff": 0.03259240441074057,
+        "median_map_rel_diff": 0.02718962449580431
+      },
+      "MRI_ischemic_highest": {
+        "pairs_differing": 19,
+        "median_prob_diff": 0.0022770580830930864,
+        "max_prob_diff": 0.04001507784630692,
+        "median_map_rel_diff": 0.031924350187182426
+      },
+      "MRI_ischemic_median": {
+        "pairs_differing": 21,
+        "median_prob_diff": 0.0025082219555868923,
+        "max_prob_diff": 0.029270072849792106,
+        "median_map_rel_diff": 0.03168562799692154
+      },
+      "MRI_normal_highest": {
+        "pairs_differing": 10,
+        "median_prob_diff": 0.0019132964699702937,
+        "max_prob_diff": 0.029639981171369456,
+        "median_map_rel_diff": 0.026664297096431255
+      },
+      "MRI_normal_median": {
+        "pairs_differing": 15,
+        "median_prob_diff": 0.0023012847928639,
+        "max_prob_diff": 0.04418610209797791,
+        "median_map_rel_diff": 0.034849660471081734
+      },
+      "stress_black": {
+        "pairs_differing": 9,
+        "median_prob_diff": 0.0008910579271123598,
+        "max_prob_diff": 0.0170661540282121,
+        "median_map_rel_diff": 0.017390388064086437
+      },
+      "stress_white": {
+        "pairs_differing": 12,
+        "median_prob_diff": 0.0019053103542044925,
+        "max_prob_diff": 0.03384267583744405,
+        "median_map_rel_diff": 0.025624278001487255
+      }
+    }
+  }
+}

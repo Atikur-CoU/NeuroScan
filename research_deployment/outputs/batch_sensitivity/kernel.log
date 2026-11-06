@@ -1,0 +1,90 @@
+[{"stream_name":"stdout","time":6.355965084,"data":"[   0.1 min] pip onnxruntime==1.20.1: exit 0 (6s) \n"}
+,{"stream_name":"stdout","time":9.627662377,"data":"[   0.1 min] inputs resolved (1.9s); INT8-dynamic ad2f6e0ee22b28ec\n"}
+,{"stream_name":"stdout","time":10.860245867,"data":"[   0.2 min] held-out rows rebuilt in the saved order: 10602 (1.2s)\n"}
+,{"stream_name":"stdout","time":10.977196678,"data":"[   0.2 min] zip aisd_normal_images.zip: central directory read (0.1s)\n"}
+,{"stream_name":"stdout","time":11.103840892,"data":"[   0.2 min] zip rsna_normal_images.zip: central directory read (0.1s)\n"}
+,{"stream_name":"stdout","time":11.985673567,"data":"[   0.2 min] zip soop_images.zip: central directory read (0.9s)\n"}
+,{"stream_name":"stdout","time":200.416847363,"data":"[   3.3 min] decoded 10602 rows (188s, 1.60 GB); reads {'Kaggle_CT': 1016, 'RSNA_ICH': 2386, 'AISD': 3414, 'CPAISD_v2': 4572, 'SICH_CT': 1689, 'ISLES2022': 4606, 'SOOP': 3344}\n"}
+,{"stream_name":"stdout","time":201.987603417,"data":"[   3.4 min] stage 2: 476 targets (251 near-ties, 225 others), 12 partners\n"}
+,{"stream_name":"stdout","time":272.589068502,"data":"[   4.5 min]   [reference] 256/256 batches (71s; projected 1 min; RSS 2.2 GB)\n"}
+,{"stream_name":"stdout","time":272.616007338,"data":"[   4.5 min] control reference_vs_saved_served: max prob diff 0.00e+00, map 0.00e+00\n"}
+,{"stream_name":"stdout","time":355.235024143,"data":"[   5.9 min]   [repeat 1] 32/32 batches (83s; projected 1 min; RSS 2.1 GB)\n"}
+,{"stream_name":"stdout","time":437.557484362,"data":"[   7.3 min]   [repeat 2] 32/32 batches (82s; projected 1 min; RSS 2.1 GB)\n"}
+,{"stream_name":"stdout","time":437.57522273,"data":"[   7.3 min] control repeatability_same_batches: max prob diff 0.00e+00, map 0.00e+00\n"}
+,{"stream_name":"stdout","time":484.661209478,"data":"[   8.1 min]   [1 thread] 16/16 batches (47s; projected 1 min; RSS 2.0 GB)\n"}
+,{"stream_name":"stdout","time":506.859666994,"data":"[   8.4 min]   [4 threads] 16/16 batches (22s; projected 0 min; RSS 2.0 GB)\n"}
+,{"stream_name":"stdout","time":506.870103024,"data":"[   8.4 min] control thread_count_1_vs_4: max prob diff 0.00e+00, map 2.62e-07\n"}
+,{"stream_name":"stdout","time":606.765769979,"data":"[  10.1 min]   [FP32 batches of 8] 32/32 batches (100s; projected 2 min; RSS 2.6 GB)\n"}
+,{"stream_name":"stdout","time":606.812211281,"data":"[  10.1 min] control FP32_batches_of_8: max prob diff 0.00e+00, map 2.39e-07\n"}
+,{"stream_name":"stdout","time":791.090035163,"data":"[  13.2 min]   [FP32 white partner] 256/256 batches (184s; projected 3 min; RSS 2.6 GB)\n"}
+,{"stream_name":"stdout","time":791.148654505,"data":"[  13.2 min] control FP32_white_partner: max prob diff 0.00e+00, map 2.39e-07\n"}
+,{"stream_name":"stdout","time":886.546731925,"data":"[  14.8 min]   [INT8-static batches of 8] 32/32 batches (95s; projected 2 min; RSS 2.2 GB)\n"}
+,{"stream_name":"stdout","time":886.574341193,"data":"[  14.8 min] control INT8-static_batches_of_8: max prob diff 0.00e+00, map 1.92e-07\n"}
+,{"stream_name":"stdout","time":1054.353252479,"data":"[  17.6 min]   [INT8-static white partner] 256/256 batches (168s; projected 3 min; RSS 2.1 GB)\n"}
+,{"stream_name":"stdout","time":1054.382670939,"data":"[  17.6 min] control INT8-static_white_partner: max prob diff 0.00e+00, map 1.92e-07\n"}
+,{"stream_name":"stdout","time":1054.383635876,"data":"[  17.6 min] controls passed (14.2 min); {\"max_prob_diff\": 0.036441764836814494, \"max_rel_map_diff\": 0.04544401541352272}\n"}
+,{"stream_name":"stdout","time":1071.235980849,"data":"[  17.8 min]   [dry views alone] 64/64 (17s; projected 0 min)\n"}
+,{"stream_name":"stdout","time":1091.237819029,"data":"[  18.2 min]   [dry b=2] 32/32 batches (20s; projected 0 min; RSS 2.1 GB)\n"}
+,{"stream_name":"stdout","time":1111.404590241,"data":"[  18.5 min]   [dry b=4] 16/16 batches (20s; projected 0 min; RSS 2.1 GB)\n"}
+,{"stream_name":"stdout","time":1132.914930929,"data":"[  18.9 min]   [dry b=8] 8/8 batches (21s; projected 0 min; RSS 2.2 GB)\n"}
+,{"stream_name":"stdout","time":1155.743699363,"data":"[  19.2 min]   [dry b=16] 4/4 batches (23s; projected 0 min; RSS 2.1 GB)\n"}
+,{"stream_name":"stdout","time":1201.123358588,"data":"[  20.0 min]   [dry b=32] 4/4 batches (45s; projected 1 min; RSS 2.2 GB)\n"}
+,{"stream_name":"stdout","time":1316.026731921,"data":"[  21.9 min]   [dry partners] 192/192 batches (115s; projected 2 min; RSS 2.1 GB)\n"}
+,{"stream_name":"stdout","time":1316.04888469,"data":"[  21.9 min] dry run: {\"views_alone_s_per_slice\": 0.263663437217474, \"b2_s_per_slice\": 0.31249191612005234, \"b4_s_per_slice\": 0.3152252547442913, \"b8_s_per_slice\": 0.33607327938079834, \"b16_s_per_slice\": 0.3565683923661709, \"b32_s_per_slice\": 0.3545366209000349, \"partner_s_per_pair\": 0.5984679261843363, \"projected_total_min\": 514.4435507023707, \"hwm_gb\": 12.929768}\n"}
+,{"stream_name":"stdout","time":1568.179401125,"data":"[  26.1 min]   [views alone] 1000/10602 (252s; projected 45 min)\n"}
+,{"stream_name":"stdout","time":1819.895718486,"data":"[  30.3 min]   [views alone] 2000/10602 (504s; projected 44 min)\n"}
+,{"stream_name":"stdout","time":2071.030809365,"data":"[  34.5 min]   [views alone] 3000/10602 (755s; projected 44 min)\n"}
+,{"stream_name":"stdout","time":2322.788299349,"data":"[  38.7 min]   [views alone] 4000/10602 (1006s; projected 44 min)\n"}
+,{"stream_name":"stdout","time":2573.875980899,"data":"[  42.9 min]   [views alone] 5000/10602 (1258s; projected 44 min)\n"}
+,{"stream_name":"stdout","time":2824.991273385,"data":"[  47.1 min]   [views alone] 6000/10602 (1509s; projected 44 min)\n"}
+,{"stream_name":"stdout","time":3076.646640227,"data":"[  51.3 min]   [views alone] 7000/10602 (1760s; projected 44 min)\n"}
+,{"stream_name":"stdout","time":3327.585817629,"data":"[  55.4 min]   [views alone] 8000/10602 (2011s; projected 44 min)\n"}
+,{"stream_name":"stdout","time":3578.520544082,"data":"[  59.6 min]   [views alone] 9000/10602 (2262s; projected 44 min)\n"}
+,{"stream_name":"stdout","time":3829.504366466,"data":"[  63.8 min]   [views alone] 10000/10602 (2513s; projected 44 min)\n"}
+,{"stream_name":"stdout","time":3980.187645256,"data":"[  66.3 min]   [views alone] 10602/10602 (2664s; projected 44 min)\n"}
+,{"stream_name":"stdout","time":3980.492877349,"data":"[  66.3 min] views_alone: done in 44.4 min; peak RSS 12.9 GB\n"}
+,{"stream_name":"stdout","time":4587.326311984,"data":"[  76.4 min]   [partners] 1000/5712 batches (607s; projected 58 min; RSS 2.5 GB)\n"}
+,{"stream_name":"stdout","time":5191.07631618,"data":"[  86.5 min]   [partners] 2000/5712 batches (1211s; projected 58 min; RSS 2.5 GB)\n"}
+,{"stream_name":"stdout","time":5796.611669905,"data":"[  96.6 min]   [partners] 3000/5712 batches (1816s; projected 58 min; RSS 2.5 GB)\n"}
+,{"stream_name":"stdout","time":6401.792704843,"data":"[ 106.7 min]   [partners] 4000/5712 batches (2421s; projected 58 min; RSS 2.5 GB)\n"}
+,{"stream_name":"stdout","time":7006.088460641,"data":"[ 116.8 min]   [partners] 5000/5712 batches (3026s; projected 58 min; RSS 2.5 GB)\n"}
+,{"stream_name":"stdout","time":7431.97821736,"data":"[ 123.9 min]   [partners] 5712/5712 batches (3451s; projected 58 min; RSS 2.1 GB)\n"}
+,{"stream_name":"stdout","time":10931.991650409,"data":"[ 182.2 min]   [random_b16_seed123] 663/663 batches (3500s; projected 58 min; RSS 2.2 GB)\n"}
+,{"stream_name":"stdout","time":10932.330103317,"data":"[ 182.2 min] random_b16_seed123: done in 58.3 min; peak RSS 12.9 GB\n"}
+,{"stream_name":"stdout","time":11541.414267741,"data":"[ 192.3 min]   [random_b2_seed123] 1000/5301 batches (609s; projected 54 min; RSS 2.6 GB)\n"}
+,{"stream_name":"stdout","time":12169.269363113,"data":"[ 202.8 min]   [random_b2_seed123] 2000/5301 batches (1237s; projected 55 min; RSS 2.5 GB)\n"}
+,{"stream_name":"stdout","time":12794.06724447,"data":"[ 213.2 min]   [random_b2_seed123] 3000/5301 batches (1862s; projected 55 min; RSS 2.6 GB)\n"}
+,{"stream_name":"stdout","time":13415.247497734,"data":"[ 223.6 min]   [random_b2_seed123] 4000/5301 batches (2483s; projected 55 min; RSS 2.4 GB)\n"}
+,{"stream_name":"stdout","time":14022.319285977,"data":"[ 233.7 min]   [random_b2_seed123] 5000/5301 batches (3090s; projected 55 min; RSS 2.5 GB)\n"}
+,{"stream_name":"stdout","time":14200.65185732,"data":"[ 236.7 min]   [random_b2_seed123] 5301/5301 batches (3268s; projected 54 min; RSS 2.1 GB)\n"}
+,{"stream_name":"stdout","time":14200.966035495,"data":"[ 236.7 min] random_b2_seed123: done in 54.5 min; peak RSS 12.9 GB\n"}
+,{"stream_name":"stdout","time":17695.619560836,"data":"[ 294.9 min]   [random_b32_seed123] 332/332 batches (3495s; projected 58 min; RSS 2.2 GB)\n"}
+,{"stream_name":"stdout","time":17695.921723018,"data":"[ 294.9 min] random_b32_seed123: done in 58.2 min; peak RSS 12.9 GB\n"}
+,{"stream_name":"stdout","time":20230.904827318,"data":"[ 337.2 min]   [random_b8_seed123] 1000/1326 batches (2535s; projected 56 min; RSS 2.5 GB)\n"}
+,{"stream_name":"stdout","time":21059.875946808,"data":"[ 351.0 min]   [random_b8_seed123] 1326/1326 batches (3364s; projected 56 min; RSS 2.2 GB)\n"}
+,{"stream_name":"stdout","time":21060.215687164,"data":"[ 351.0 min] random_b8_seed123: done in 56.1 min; peak RSS 12.9 GB\n"}
+,{"stream_name":"stdout","time":22306.653667833,"data":"[ 371.8 min]   [random_b4_seed123] 1000/2651 batches (1246s; projected 55 min; RSS 3.0 GB)\n"}
+,{"stream_name":"stdout","time":23534.93106362,"data":"[ 392.2 min]   [random_b4_seed123] 2000/2651 batches (2475s; projected 55 min; RSS 3.0 GB)\n"}
+,{"stream_name":"stdout","time":24335.313385381,"data":"[ 405.6 min]   [random_b4_seed123] 2651/2651 batches (3275s; projected 55 min; RSS 2.2 GB)\n"}
+,{"stream_name":"stdout","time":24335.63952945,"data":"[ 405.6 min] random_b4_seed123: done in 54.6 min; peak RSS 12.9 GB\n"}
+,{"stream_name":"stdout","time":27762.79970831,"data":"[ 462.7 min]   [random_b16_seed124] 663/663 batches (3427s; projected 57 min; RSS 2.2 GB)\n"}
+,{"stream_name":"stdout","time":27763.124218188,"data":"[ 462.7 min] random_b16_seed124: done in 57.1 min; peak RSS 12.9 GB\n"}
+,{"stream_name":"stdout","time":27829.971606404,"data":"[ 463.8 min] served_four_views_together: differs from served on 0, {\"argmax_agreement\": 0.9970884658454647, \"argmax_agreement_ci95\": [0.9960023755506722, 0.9980963950205208], \"flips\": 26, \"tier_agreement\": 0.988017917 (67s)\n"}
+,{"stream_name":"stdout","time":27897.461543246,"data":"[ 464.9 min] file_order_batches_of_16: differs from served on 22, {\"argmax_agreement\": 0.9970884658454647, \"argmax_agreement_ci95\": [0.9959813116897612, 0.9980917419003139], \"flips\": 26, \"tier_agreement\": 0.986786114 (67s)\n"}
+,{"stream_name":"stdout","time":27968.857670118,"data":"[ 466.1 min] views_alone: differs from served on 17, {\"argmax_agreement\": 0.9970884658454647, \"argmax_agreement_ci95\": [0.995982397614561, 0.9981426024010118], \"flips\": 26, \"tier_agreement\": 0.9867861142 (71s)\n"}
+,{"stream_name":"stdout","time":28036.198521333,"data":"[ 467.3 min] random_b16_seed123: differs from served on 23, {\"argmax_agreement\": 0.9967525195968645, \"argmax_agreement_ci95\": [0.995572245717387, 0.9978543629382438], \"flips\": 29, \"tier_agreement\": 0.9858902575 (67s)\n"}
+,{"stream_name":"stdout","time":28104.108104817,"data":"[ 468.4 min] random_b2_seed123: differs from served on 16, {\"argmax_agreement\": 0.9968645016797313, \"argmax_agreement_ci95\": [0.9957026941634871, 0.9979113357067988], \"flips\": 28, \"tier_agreement\": 0.986562150 (68s)\n"}
+,{"stream_name":"stdout","time":28172.052066202,"data":"[ 469.5 min] random_b32_seed123: differs from served on 21, {\"argmax_agreement\": 0.9970884658454647, \"argmax_agreement_ci95\": [0.995923557182907, 0.9981334904089475], \"flips\": 26, \"tier_agreement\": 0.9862262038 (68s)\n"}
+,{"stream_name":"stdout","time":28240.048268238,"data":"[ 470.7 min] random_b8_seed123: differs from served on 20, {\"argmax_agreement\": 0.9973124300111982, \"argmax_agreement_ci95\": [0.9962608434885453, 0.9982253918647344], \"flips\": 24, \"tier_agreement\": 0.985890257 (68s)\n"}
+,{"stream_name":"stdout","time":28308.205226703,"data":"[ 471.8 min] random_b4_seed123: differs from served on 22, {\"argmax_agreement\": 0.9970884658454647, \"argmax_agreement_ci95\": [0.9958760198255852, 0.9981843301743435], \"flips\": 26, \"tier_agreement\": 0.985778275 (68s)\n"}
+,{"stream_name":"stdout","time":28375.891337832,"data":"[ 472.9 min] random_b16_seed124: differs from served on 23, {\"argmax_agreement\": 0.996976483762598, \"argmax_agreement_ci95\": [0.9958118383454851, 0.998022571761091], \"flips\": 27, \"tier_agreement\": 0.98600223964 (68s)\n"}
+,{"stream_name":"stdout","time":28376.332518976,"data":"[ 472.9 min] reference check: changed vs FP32 32 (paper 32), detection {'pooled_internal_test': {'ischemic_patients': 281, 'detected': 263}, 'SOOP_holdout': {'ischemic_patients': 66, 'detected': 63}} (paper 263/281, 63/66), pooled agreement 0.9971 (paper 0.9971)\n"}
+,{"stream_name":"stdout","time":28376.592832546,"data":"[ 472.9 min] partner stage: {\"near_ties_realistic\": {\"targets\": 251, \"pairs\": 2510, \"pairs_differing\": 157, \"targets_flipping_for_at_least_one_partner\": 52, \"to_normal\": 31, \"from_normal\": 126, \"prob_diff\": {\"max\": 0.04418610209797791, \"p99\": 0.023513479475902415, \"median\": 0.004814903348920124}, \"range_across_partners_max_prob_diff\": {\"median\": 0.012164845770555544, \"q1\": 0.009143304309090439, \"q3\": 0.016440871244002314}, \"map_rel_diff\": {\"max\": 0.27589157223701477, \"median\": 0.03195413015782833}, \"same_peak\": 0.9725099601593625}, \"others_realistic\": {\"targets\": 225, \"pairs\": 2250, \"pairs_differing\": 0, \"targets_flipping_for_at_least_one_partner\": 0, \"to_normal\": 0, \"from_normal\": 0, \"prob_diff\": {\"max\": 0.03496196589798026, \"p99\": 0.018617116197497452, \"median\": 0.00015901291494851977}, \"range_across_partners_max_prob_diff\": {\"median\": 0.0004586638238838203, \"q1\": 5.601473801442047e-05, \"q3\": 0.004278112650319743}, \"map_rel_diff\": {\"max\": 1.2434957027435303, \"median\": 0.026523171924054623}, \"same_peak\": 0.9693333333333334}, \"near_ties_stress\": {\"targets\": 251, \"pairs\": 502, \"pairs_differing\": 21, \"targets_flipping_for_at_least_one_partner\": 17, \"to_normal\": 2, \"from_normal\": 19, \"prob_diff\": {\"max\": 0.03384267583744405, \"p99\": 0.017697656810969607, \"median\": 0.0029371317058073942}, \"range_across_partners_max_prob_diff\": {\"median\": 0.004759286876522384, \"q1\": 0.0029889954838760724, \"q3\": 0.008447664520267822}, \"map_rel_diff\": {\"max\": 0.13764768838882446, \"median\": 0.023085681721568108}, \"same_peak\": 0.\n"}
+,{"stream_name":"stdout","time":28376.594263334,"data":"[ 472.9 min] Done. Peak RSS 12.9 GB; skipped []\n"}
+,{"stream_name":"stderr","time":28380.081967787,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":28380.08201117,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":28380.44373559,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":28380.443779788,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":28381.712307398,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":28383.170380245,"data":"[NbConvertApp] Writing 523848 bytes to __results__.html\n"}
+]
