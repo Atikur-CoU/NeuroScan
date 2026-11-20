@@ -1,0 +1,19 @@
+Options -Indexes
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "DENY"
+  # No inline script (all scripts are files in assets/js). Inline style is still allowed: the pages use style
+  # attributes, which cannot run code. blob: lets the upload page preview the chosen file.
+  Header set Content-Security-Policy "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+  Header set Referrer-Policy "same-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  # Do not advertise the PHP version.
+  Header always unset X-Powered-By
+  Header unset X-Powered-By
+</IfModule>
+
+# Once AutoSSL is confirmed active on the real host, uncomment to force HTTPS:
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
