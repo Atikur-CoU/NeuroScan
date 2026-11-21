@@ -1,7 +1,7 @@
 """Figure 4 of paper 2: what the platform shows for five held-out slices under FP32, INT8-dynamic and INT8-static.
 Inputs and maps come from Kaggle kernel atik68/neuroscan-p2-fig4-cases (one slice's 4 views per run, as the server);
 overlays are drawn by the server's own code (render_inference_server/inference.py: display rule, tier tint, outline).
-Noto Sans, labels under each panel (companion-paper conventions). Usage: python -I make_fig4.py"""
+Times New Roman (author's request, 21 Nov 2026), labels under each panel. Usage: python -I make_fig4.py"""
 import json
 import sys
 import types
@@ -22,9 +22,9 @@ sys.modules["onnxruntime"] = types.ModuleType("onnxruntime")   # the overlay cod
 sys.path.insert(0, str(ROOT / "render_inference_server"))
 import inference as srv  # noqa: E402
 
-for f in ("NotoSans-Regular", "NotoSans-Bold", "NotoSans-Italic"):
+for f in ("times", "timesbd", "timesi", "timesbi"):
     font_manager.fontManager.addfont(f"C:/Windows/Fonts/{f}.ttf")
-plt.rcParams.update({"font.family": "Noto Sans", "font.size": 7.5})
+plt.rcParams.update({"font.family": "Times New Roman", "font.size": 7.5})
 
 R = json.loads((KOUT / "fig4_cases.json").read_text())["cases"]
 C = np.load(KOUT / "fig4_cases.npz")

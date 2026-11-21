@@ -1,5 +1,5 @@
 """Figure 2 of paper 2: the served model's head with the closed-form Grad-CAM branch, as one ONNX graph.
-Black and white, Noto Sans (same conventions as the companion paper's diagrams). Usage: python -I make_fig2.py"""
+Black and white, Times New Roman (author's request, 21 Nov 2026). Usage: python -I make_fig2.py"""
 from pathlib import Path
 
 import matplotlib
@@ -9,10 +9,11 @@ import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib import font_manager  # noqa: E402
 from matplotlib.patches import FancyBboxPatch  # noqa: E402
 
-for f in ("NotoSans-Regular", "NotoSans-Bold", "NotoSans-Italic", "NotoSans-BoldItalic"):
+for f in ("times", "timesbd", "timesi", "timesbi"):
     font_manager.fontManager.addfont(f"C:/Windows/Fonts/{f}.ttf")
-plt.rcParams.update({"font.family": "Noto Sans", "font.size": 8, "mathtext.fontset": "custom",
-                     "mathtext.rm": "Noto Sans", "mathtext.it": "Noto Sans:italic", "mathtext.bf": "Noto Sans:bold"})
+plt.rcParams.update({"font.family": "Times New Roman", "font.size": 8, "mathtext.fontset": "custom",
+                     "mathtext.rm": "Times New Roman", "mathtext.it": "Times New Roman:italic",
+                     "mathtext.bf": "Times New Roman:bold"})
 OUT = Path(__file__).resolve().parent
 INK, GREY = "black", "0.88"
 

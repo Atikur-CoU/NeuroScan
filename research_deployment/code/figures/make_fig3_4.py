@@ -1,6 +1,6 @@
 """Figures 3 and 4 of paper 2 (JTCSST revision; black and white): response time (3) and throughput (4) of the two matched free-tier services under concurrent users.
 Data: the load-test logs in ../e1_load/e1_fp32 and ../e1_load/e1_int8 (requests.csv, summary.json); no other input.
-Noto Sans, labels under each panel (companion-paper conventions). Usage: python -I make_fig3_4.py"""
+Times New Roman (author's request, 21 Nov 2026), labels under each panel. Usage: python -I make_fig3_4.py"""
 import csv
 import json
 import statistics
@@ -15,9 +15,9 @@ from matplotlib import font_manager  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 E1 = HERE.parent / "e1_load"
-for f in ("NotoSans-Regular", "NotoSans-Bold", "NotoSans-Italic"):
+for f in ("times", "timesbd", "timesi", "timesbi"):
     font_manager.fontManager.addfont(f"C:/Windows/Fonts/{f}.ttf")
-plt.rcParams.update({"font.family": "Noto Sans", "font.size": 7.5, "axes.linewidth": 0.6,
+plt.rcParams.update({"font.family": "Times New Roman", "font.size": 7.5, "axes.linewidth": 0.6,
                      "xtick.major.width": 0.6, "ytick.major.width": 0.6})
 SERVICES = (("e1_fp32", "FP32", "black", "o", "-"), ("e1_int8", "INT8-dynamic", "0.45", "s", (0, (4, 2))))
 USERS = (1, 2, 4, 8)
