@@ -1,0 +1,191 @@
+{
+  "warm": {
+    "answered": 6,
+    "service_time_s": 2.61,
+    "network_overhead_s": 0.305
+  },
+  "rates": {
+    "8": {
+      "requests": 40,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": {},
+      "all": {
+        "n": 40,
+        "median_s": 3.124,
+        "p95_s": 5.752,
+        "max_s": 8.518,
+        "mean_s": 3.538
+      },
+      "ct_context": {
+        "n": 14,
+        "median_s": 2.931,
+        "p95_s": 4.06,
+        "max_s": 4.06,
+        "mean_s": 3.113
+      },
+      "mri_dwi_adc": {
+        "n": 13,
+        "median_s": 3.056,
+        "p95_s": 5.455,
+        "max_s": 5.455,
+        "mean_s": 3.46
+      },
+      "ct_single": {
+        "n": 13,
+        "median_s": 3.403,
+        "p95_s": 8.518,
+        "max_s": 8.518,
+        "mean_s": 4.074
+      },
+      "offered_per_min": 8.0,
+      "achieved_arrivals_per_min": 6.78,
+      "server_model_s_median": 2.481,
+      "md1": {
+        "rho": 0.348,
+        "wq_s": 0.7
+      },
+      "md1_mean_response_s": 3.61
+    },
+    "12": {
+      "requests": 60,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": {},
+      "all": {
+        "n": 60,
+        "median_s": 3.059,
+        "p95_s": 7.473,
+        "max_s": 13.728,
+        "mean_s": 3.735
+      },
+      "ct_context": {
+        "n": 20,
+        "median_s": 3.272,
+        "p95_s": 6.078,
+        "max_s": 6.078,
+        "mean_s": 3.556
+      },
+      "mri_dwi_adc": {
+        "n": 20,
+        "median_s": 3.035,
+        "p95_s": 13.728,
+        "max_s": 13.728,
+        "mean_s": 3.69
+      },
+      "ct_single": {
+        "n": 20,
+        "median_s": 3.045,
+        "p95_s": 9.858,
+        "max_s": 9.858,
+        "mean_s": 3.96
+      },
+      "offered_per_min": 12.0,
+      "achieved_arrivals_per_min": 11.79,
+      "server_model_s_median": 2.484,
+      "md1": {
+        "rho": 0.522,
+        "wq_s": 1.43
+      },
+      "md1_mean_response_s": 4.34
+    },
+    "14": {
+      "requests": 60,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": {},
+      "all": {
+        "n": 60,
+        "median_s": 3.598,
+        "p95_s": 9.276,
+        "max_s": 13.367,
+        "mean_s": 4.527
+      },
+      "ct_context": {
+        "n": 20,
+        "median_s": 4.092,
+        "p95_s": 13.367,
+        "max_s": 13.367,
+        "mean_s": 4.687
+      },
+      "mri_dwi_adc": {
+        "n": 20,
+        "median_s": 3.256,
+        "p95_s": 8.038,
+        "max_s": 8.038,
+        "mean_s": 4.291
+      },
+      "ct_single": {
+        "n": 20,
+        "median_s": 4.013,
+        "p95_s": 10.04,
+        "max_s": 10.04,
+        "mean_s": 4.604
+      },
+      "offered_per_min": 14.0,
+      "achieved_arrivals_per_min": 13.31,
+      "server_model_s_median": 2.479,
+      "md1": {
+        "rho": 0.609,
+        "wq_s": 2.03
+      },
+      "md1_mean_response_s": 4.94
+    },
+    "18": {
+      "requests": 60,
+      "failures": 1,
+      "failure_rate": 0.0167,
+      "failure_kinds": {
+        "HTTP 502": 1
+      },
+      "all": {
+        "n": 59,
+        "median_s": 4.624,
+        "p95_s": 17.058,
+        "max_s": 22.442,
+        "mean_s": 5.789
+      },
+      "ct_context": {
+        "n": 20,
+        "median_s": 5.112,
+        "p95_s": 22.442,
+        "max_s": 22.442,
+        "mean_s": 7.081
+      },
+      "mri_dwi_adc": {
+        "n": 19,
+        "median_s": 4.544,
+        "p95_s": 18.382,
+        "max_s": 18.382,
+        "mean_s": 5.9
+      },
+      "ct_single": {
+        "n": 20,
+        "median_s": 4.603,
+        "p95_s": 10.411,
+        "max_s": 10.411,
+        "mean_s": 4.392
+      },
+      "offered_per_min": 18.0,
+      "achieved_arrivals_per_min": 17.86,
+      "server_model_s_median": 2.498,
+      "md1": {
+        "rho": 0.783,
+        "wq_s": 4.71
+      },
+      "md1_mean_response_s": 7.62
+    }
+  },
+  "server_health": {
+    "after_rates": {
+      "status": 200,
+      "memory_mb": {
+        "peak": 217,
+        "rss": 158
+      },
+      "uptime_s": 1242.5,
+      "model_variant": "int8_dynamic",
+      "model_version": "r30a_s123_convnext_tiny_onnx_int8_dynamic"
+    }
+  }
+}

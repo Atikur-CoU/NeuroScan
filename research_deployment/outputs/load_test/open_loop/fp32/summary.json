@@ -1,0 +1,149 @@
+{
+  "warm": {
+    "answered": 6,
+    "service_time_s": 3.681,
+    "network_overhead_s": 0.393
+  },
+  "rates": {
+    "8": {
+      "requests": 40,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": {},
+      "all": {
+        "n": 40,
+        "median_s": 4.192,
+        "p95_s": 8.483,
+        "max_s": 8.688,
+        "mean_s": 5.033
+      },
+      "ct_context": {
+        "n": 14,
+        "median_s": 4.154,
+        "p95_s": 7.52,
+        "max_s": 7.52,
+        "mean_s": 4.611
+      },
+      "mri_dwi_adc": {
+        "n": 13,
+        "median_s": 4.007,
+        "p95_s": 7.592,
+        "max_s": 7.592,
+        "mean_s": 4.939
+      },
+      "ct_single": {
+        "n": 13,
+        "median_s": 4.299,
+        "p95_s": 8.688,
+        "max_s": 8.688,
+        "mean_s": 5.581
+      },
+      "offered_per_min": 8.0,
+      "achieved_arrivals_per_min": 6.78,
+      "server_model_s_median": 3.602,
+      "md1": {
+        "rho": 0.491,
+        "wq_s": 1.77
+      },
+      "md1_mean_response_s": 5.84
+    },
+    "12": {
+      "requests": 60,
+      "failures": 0,
+      "failure_rate": 0.0,
+      "failure_kinds": {},
+      "all": {
+        "n": 60,
+        "median_s": 5.619,
+        "p95_s": 17.599,
+        "max_s": 25.713,
+        "mean_s": 7.426
+      },
+      "ct_context": {
+        "n": 20,
+        "median_s": 5.972,
+        "p95_s": 17.599,
+        "max_s": 17.599,
+        "mean_s": 6.946
+      },
+      "mri_dwi_adc": {
+        "n": 20,
+        "median_s": 5.364,
+        "p95_s": 21.132,
+        "max_s": 21.132,
+        "mean_s": 7.425
+      },
+      "ct_single": {
+        "n": 20,
+        "median_s": 5.911,
+        "p95_s": 25.713,
+        "max_s": 25.713,
+        "mean_s": 7.906
+      },
+      "offered_per_min": 12.0,
+      "achieved_arrivals_per_min": 11.79,
+      "server_model_s_median": 3.702,
+      "md1": {
+        "rho": 0.736,
+        "wq_s": 5.13
+      },
+      "md1_mean_response_s": 9.2
+    },
+    "14": {
+      "requests": 60,
+      "failures": 2,
+      "failure_rate": 0.0333,
+      "failure_kinds": {
+        "HTTP 502": 2
+      },
+      "all": {
+        "n": 58,
+        "median_s": 6.612,
+        "p95_s": 40.849,
+        "max_s": 56.711,
+        "mean_s": 10.666
+      },
+      "ct_context": {
+        "n": 18,
+        "median_s": 8.301,
+        "p95_s": 48.587,
+        "max_s": 48.587,
+        "mean_s": 12.135
+      },
+      "mri_dwi_adc": {
+        "n": 20,
+        "median_s": 5.892,
+        "p95_s": 40.849,
+        "max_s": 40.849,
+        "mean_s": 9.263
+      },
+      "ct_single": {
+        "n": 20,
+        "median_s": 6.528,
+        "p95_s": 56.711,
+        "max_s": 56.711,
+        "mean_s": 10.748
+      },
+      "offered_per_min": 14.0,
+      "achieved_arrivals_per_min": 13.31,
+      "server_model_s_median": 3.796,
+      "md1": {
+        "rho": 0.859,
+        "wq_s": 11.2
+      },
+      "md1_mean_response_s": 15.27
+    }
+  },
+  "server_health": {
+    "after_rates": {
+      "status": 200,
+      "memory_mb": {
+        "peak": 317,
+        "rss": 258
+      },
+      "uptime_s": 1032.6,
+      "model_variant": "fp32",
+      "model_version": "r30a_s123_convnext_tiny_onnx"
+    }
+  }
+}

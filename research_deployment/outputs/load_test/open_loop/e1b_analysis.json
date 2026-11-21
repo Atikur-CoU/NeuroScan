@@ -1,0 +1,195 @@
+{
+  "e1b_fp32": {
+    "warm": {
+      "answered": 6,
+      "service_time_s": 3.681,
+      "network_overhead_s": 0.393
+    },
+    "rates": {
+      "8": {
+        "offered_per_min": 8.0,
+        "achieved_per_min": 6.78,
+        "sent": 40,
+        "answered": 40,
+        "failures": {},
+        "service_mean_s": 3.702,
+        "service_cv2": 0.001,
+        "rho_achieved": 0.418,
+        "measured_mean_s": 5.03,
+        "measured_median_s": 4.19,
+        "measured_p95_s": 7.64,
+        "max_s": 8.69,
+        "measured_mean_wait_s": 0.94,
+        "md1_mean_s": 5.43,
+        "mg1_mean_s": 5.43,
+        "fifo_replay_mean_s": 4.93,
+        "send_delay_max_s": 0.169,
+        "matches_offline": "27/40",
+        "max_prob_diff_vs_offline": 0.0001
+      },
+      "12": {
+        "offered_per_min": 12.0,
+        "achieved_per_min": 11.79,
+        "sent": 60,
+        "answered": 60,
+        "failures": {},
+        "service_mean_s": 3.819,
+        "service_cv2": 0.002,
+        "rho_achieved": 0.75,
+        "measured_mean_s": 7.43,
+        "measured_median_s": 5.62,
+        "measured_p95_s": 17.15,
+        "max_s": 25.71,
+        "measured_mean_wait_s": 3.21,
+        "md1_mean_s": 9.95,
+        "mg1_mean_s": 9.96,
+        "fifo_replay_mean_s": 7.3,
+        "send_delay_max_s": 0.021,
+        "matches_offline": "40/60",
+        "max_prob_diff_vs_offline": 0.0001
+      },
+      "14": {
+        "offered_per_min": 14.0,
+        "achieved_per_min": 13.31,
+        "sent": 60,
+        "answered": 58,
+        "failures": {
+          "": 2
+        },
+        "service_mean_s": 3.911,
+        "service_cv2": 0.001,
+        "rho_achieved": 0.867,
+        "measured_mean_s": 10.67,
+        "measured_median_s": 6.61,
+        "measured_p95_s": 28.43,
+        "max_s": 56.71,
+        "measured_mean_wait_s": 6.36,
+        "md1_mean_s": 17.1,
+        "mg1_mean_s": 17.11,
+        "fifo_replay_mean_s": 10.46,
+        "send_delay_max_s": 0.003,
+        "matches_offline": "38/58",
+        "max_prob_diff_vs_offline": 0.0001
+      }
+    },
+    "health": {
+      "after_rates": {
+        "status": 200,
+        "memory_mb": {
+          "peak": 317,
+          "rss": 258
+        },
+        "uptime_s": 1032.6,
+        "model_variant": "fp32",
+        "model_version": "r30a_s123_convnext_tiny_onnx"
+      }
+    }
+  },
+  "e1b_int8": {
+    "warm": {
+      "answered": 6,
+      "service_time_s": 2.61,
+      "network_overhead_s": 0.305
+    },
+    "rates": {
+      "8": {
+        "offered_per_min": 8.0,
+        "achieved_per_min": 6.78,
+        "sent": 40,
+        "answered": 40,
+        "failures": {},
+        "service_mean_s": 2.589,
+        "service_cv2": 0.005,
+        "rho_achieved": 0.292,
+        "measured_mean_s": 3.54,
+        "measured_median_s": 3.12,
+        "measured_p95_s": 5.45,
+        "max_s": 8.52,
+        "measured_mean_wait_s": 0.64,
+        "md1_mean_s": 3.43,
+        "mg1_mean_s": 3.43,
+        "fifo_replay_mean_s": 3.24,
+        "send_delay_max_s": 0.009,
+        "matches_offline": "27/40",
+        "max_prob_diff_vs_offline": 0.01981
+      },
+      "12": {
+        "offered_per_min": 12.0,
+        "achieved_per_min": 11.79,
+        "sent": 60,
+        "answered": 60,
+        "failures": {},
+        "service_mean_s": 2.557,
+        "service_cv2": 0.002,
+        "rho_achieved": 0.502,
+        "measured_mean_s": 3.74,
+        "measured_median_s": 3.06,
+        "measured_p95_s": 6.08,
+        "max_s": 13.73,
+        "measured_mean_wait_s": 0.87,
+        "md1_mean_s": 4.15,
+        "mg1_mean_s": 4.16,
+        "fifo_replay_mean_s": 3.57,
+        "send_delay_max_s": 0.096,
+        "matches_offline": "40/60",
+        "max_prob_diff_vs_offline": 0.01981
+      },
+      "14": {
+        "offered_per_min": 14.0,
+        "achieved_per_min": 13.31,
+        "sent": 60,
+        "answered": 60,
+        "failures": {},
+        "service_mean_s": 2.546,
+        "service_cv2": 0.002,
+        "rho_achieved": 0.565,
+        "measured_mean_s": 4.53,
+        "measured_median_s": 3.6,
+        "measured_p95_s": 9.02,
+        "max_s": 13.37,
+        "measured_mean_wait_s": 1.68,
+        "md1_mean_s": 4.5,
+        "mg1_mean_s": 4.51,
+        "fifo_replay_mean_s": 4.31,
+        "send_delay_max_s": 0.003,
+        "matches_offline": "40/60",
+        "max_prob_diff_vs_offline": 0.01955
+      },
+      "18": {
+        "offered_per_min": 18.0,
+        "achieved_per_min": 17.86,
+        "sent": 60,
+        "answered": 59,
+        "failures": {
+          "": 1
+        },
+        "service_mean_s": 2.593,
+        "service_cv2": 0.002,
+        "rho_achieved": 0.772,
+        "measured_mean_s": 5.79,
+        "measured_median_s": 4.62,
+        "measured_p95_s": 13.09,
+        "max_s": 22.44,
+        "measured_mean_wait_s": 2.89,
+        "md1_mean_s": 7.29,
+        "mg1_mean_s": 7.3,
+        "fifo_replay_mean_s": 5.59,
+        "send_delay_max_s": 0.004,
+        "matches_offline": "39/59",
+        "max_prob_diff_vs_offline": 0.01981
+      }
+    },
+    "health": {
+      "after_rates": {
+        "status": 200,
+        "memory_mb": {
+          "peak": 217,
+          "rss": 158
+        },
+        "uptime_s": 1242.5,
+        "model_variant": "int8_dynamic",
+        "model_version": "r30a_s123_convnext_tiny_onnx_int8_dynamic"
+      }
+    }
+  }
+}
