@@ -1,0 +1,58 @@
+{
+  "note": "K6, revision; ImageNet weights with a 3-row head, synthetic phantoms; no stroke data",
+  "versions": {
+    "torch": "2.11.0+cpu",
+    "onnxruntime": "1.20.1",
+    "onnx": "1.18.0"
+  },
+  "classes": [
+    1,
+    500,
+    999
+  ],
+  "models": {
+    "swin_t_post_norm": {
+      "torchvision": "swin_t(Swin_T_Weights.IMAGENET1K_V1)",
+      "head_vs_full_model_logits_maxabs": 9.5367431640625e-07,
+      "cam_layer_shape": [
+        768,
+        7,
+        7
+      ],
+      "autograd_gradient_position_spread_rel": 1.5429385769039072e-07,
+      "closed_form_applicable": true,
+      "torch_closed_form_vs_autograd": {
+        "normalised_maxabs": 2.562999725341797e-06,
+        "normalised_maxabs_median": 1.0132789611816406e-06
+      },
+      "onnx_mb": 112.3,
+      "onnx_vs_torch_logits_maxabs": 5.7220458984375e-06,
+      "onnx_closed_form_vs_autograd": {
+        "normalised_maxabs": 5.856901407241821e-05,
+        "normalised_maxabs_median": 1.4871358871459961e-05
+      },
+      "ort_1thread_median_s": {
+        "logits_only": 0.2250937745000101,
+        "logits_and_gradcam": 0.22301097400000458,
+        "extra_share": -0.009253034672469074
+      },
+      "quant_pre_process": "skip_symbolic_shape",
+      "int8_dynamic": {
+        "matmul_nodes_eligible": 75,
+        "dynamic_quantize_nodes": 52,
+        "mb": 29.8,
+        "batched_vs_per_request_prob_maxabs": 0.0034870505332946777,
+        "batched_vs_per_request_logit_maxabs": 0.26101016998291016,
+        "batched_vs_per_request_top1_changes": 0,
+        "batched_vs_per_request_map_rel_diff": {
+          "median": 0.0767483115196228,
+          "max": 0.12027274072170258
+        },
+        "per_request_vs_fp32_prob_maxabs": 0.004202485084533691,
+        "per_request_vs_fp32_top1_changes": 0,
+        "batch_dependent": true
+      },
+      "seconds": 74.8
+    }
+  }
+}

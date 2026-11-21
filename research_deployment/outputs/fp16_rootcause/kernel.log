@@ -1,0 +1,190 @@
+[{"stream_name":"stdout","time":12.298726741,"data":"[  0.2 min] pip onnxruntime==1.20.1 onnx==1.18.0: exit 0 (11s) \n"}
+,{"stream_name":"stdout","time":13.549415296,"data":"[  0.2 min] pip --no-deps onnxconverter-common==1.16.0: exit 0 (1s) \n"}
+,{"stream_name":"stdout","time":22.233283828,"data":"[  0.4 min] pip onnxruntime -\u003e /tmp/ort_new: exit 0 (9s) which is incompatible.\n"}
+,{"stream_name":"stdout","time":22.233322696,"data":"ydf 0.15.0 requires protobuf\u003c7.0.0,\u003e=5.29.1, but you have protobuf 7.36.2 which is incompatible.\n"}
+,{"stream_name":"stdout","time":22.23332995,"data":"numba 0.61.2 requires numpy\u003c2.3,\u003e=1.24, but you have numpy 2.5.5 which is incompatible.\n"}
+,{"stream_name":"stdout","time":22.233334582,"data":"gradio 6.30.0 requires pillow\u003c13.0,\u003e=8.0, but you have pillow 13.0.0 which is incompatible.\n"}
+,{"stream_name":"stdout","time":22.233338878,"data":"\n"}
+,{"stream_name":"stdout","time":25.908299873,"data":"[  0.4 min] served model /kaggle/input/notebooks/atik68/neuroscan-q-onnx-export-check/output/neuroscan_r30a_s123.onnx ok; 376 nodes; opset [('', 17)]\n"}
+,{"stream_name":"stdout","time":37.471993194,"data":"[  0.6 min] FP32 reference: 0.164 s per image, one thread\n"}
+,{"stream_name":"stderr","time":38.315818957,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 6.178903078080111e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.315855337,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.320334303,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -5.640762168468427e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.32036799,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.328216907,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 8.669606899047722e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.328250392,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.333728187,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.2208048986222043e-25 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.33378061,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.333785735,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.8049962975507973e-22 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.333790521,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.334343574,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -8.311813104455723e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.334356904,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.335184545,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 2.2021074355957504e-25 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.33520324,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.335207866,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -2.2239561906825333e-23 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.335212494,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.335383246,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 4.450599773702518e-14 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.335417367,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.335422442,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -2.8572919860578667e-30 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.335426517,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.336815059,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.538525698217449e-32 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.336832665,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.336837496,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.180724355142122e-25 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.336841673,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.336963215,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 4.5085606255323984e-12 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.336971847,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.336985648,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -2.645952854234122e-32 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.336991005,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.338452805,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 9.354528942546069e-33 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.338470798,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.338475547,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.0748538752799366e-26 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.338480347,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.361502598,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 5.826754634341569e-10 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.361549761,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.380641168,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -4.571548473109033e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.380684657,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.40615456,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 6.116612638606966e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.406193403,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.408532791,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 7.332756268851881e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.408566524,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.409109068,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -2.7962601123476816e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.409128845,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.410497237,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.6709070793652359e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.410535872,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.411218904,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.085972721805774e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.411237475,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.412049878,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.1102998520584606e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.412072656,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.413255554,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.78596674011078e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.413280368,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.41328588,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -6.155151766051858e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.413290873,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.435037879,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 4.571089728955258e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.435079882,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.452313092,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -9.778477050303991e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.452352913,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.466826127,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -7.073906260757212e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.466896402,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.480292493,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 6.95132342798388e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.480327608,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.49198995,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -2.1447672082786085e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.492035414,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.512146174,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.5667852005261125e-10 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.512183528,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.522557422,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -4.5959247074733867e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.522594796,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.541463638,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 7.175199989717385e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.541502888,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.551866054,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.894407519742458e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.551928441,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.581799305,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -5.140799785863237e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.581836265,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.600109594,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.5119535845542487e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.60014527,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.610299411,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -6.249148754022826e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.610343992,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.630297097,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.8648863703285556e-11 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.630335963,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.640568957,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.2764363788164701e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.640611453,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.660319579,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 6.218497272669765e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.660357838,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.671122973,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.5046657253492413e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.671162434,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.690626751,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.0791153748357374e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.690665579,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.701692433,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -8.7730009923348e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.70173792,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.720657611,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 4.6076095827629615e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.720695552,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.731445065,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -3.985873436862519e-11 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.731526389,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.75135402,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.3448252511594205e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.751395861,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.761594097,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -3.1951255530238143e-10 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.761646711,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.78134437,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 6.364835769545607e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.781380531,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.792113079,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.1638610963871088e-08 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.792150641,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.811551233,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.833533668284872e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.81158934,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.822347035,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -3.670192483262724e-10 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.82238423,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.843270705,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 2.4069830573125728e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.843308303,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.852976785,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -9.965073211049003e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.853018121,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.873053942,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 2.360815759185811e-29 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.873087799,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.884080358,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -5.648850027091197e-29 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.884118011,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.903208744,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.1739938798882577e-08 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.903241325,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.913051802,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -5.880814057945827e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.913111241,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.933955014,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.705010338643036e-34 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.933989074,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.94454525,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -1.5295178926239397e-34 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.944584128,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.96751093,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 3.5061022973792433e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.96756819,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.976628737,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -6.985713341123301e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":38.976670245,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":38.997022611,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 9.817308706546063e-37 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":38.997058669,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.008094146,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -2.5548597364250434e-36 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":39.008134485,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.049662021,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.2446688124612137e-10 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":39.049717014,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.074002751,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -4.0210493268411085e-10 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":39.074040192,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.192058468,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.8627037412510816e-11 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":39.192097018,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.214801123,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -5.038587949646178e-11 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":39.214838903,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.36994727,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.139145115042206e-11 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":39.370007373,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.394797056,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -4.2222652457679644e-11 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":39.394851104,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.539514414,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 2.349414066071809e-12 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":39.539556238,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.564074102,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -9.972518687575982e-14 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":39.564141517,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.670628072,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 9.538950185294937e-11 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":39.670668925,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.697279329,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -3.8720324169183584e-10 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":39.697352349,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.820490583,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 1.006790560886513e-14 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":39.820528134,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.842093467,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -3.566250959363519e-14 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":39.842131639,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.921789324,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:52: UserWarning: the float32 number 4.05847977447138e-09 will be truncated to 1e-07\n"}
+,{"stream_name":"stderr","time":39.921830758,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":39.921835015,"data":"/usr/local/lib/python3.13/dist-packages/onnxconverter_common/float16.py:70: UserWarning: the float32 number -3.656668079443648e-09 will be truncated to -1e-07\n"}
+,{"stream_name":"stderr","time":39.921838229,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":40.088336597,"data":"[  0.7 min] A_plain: does NOT load: [ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/A_plain.onnx failed:Type Error: Type (tensor(float16)) of output arg (/Cast_output_0) of node (/Cast) does not match expected type (tensor(float)).\n"}
+,{"stream_name":"stdout","time":42.553542612,"data":"[  0.7 min] B_layernorm_fp32: does NOT load: [ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/B_layernorm_fp32.onnx failed:Type Error: Type parameter (T) of Optype (Mul) bound to different types (tensor(float) and tensor(float16) in node (/Mul_2).\n"}
+,{"stream_name":"stdout","time":63.916532976,"data":"[  1.0 min] C_plain_logits_only: loads; finite True; max|dp| 1.51e-03; top-1 changes 0; 55.8 MB; 0.370 s\n"}
+,{"stream_name":"stderr","time":69.021650825,"data":"\u001b[0;93m2026-11-20 14:40:03.534770132 [W:onnxruntime:, constant_folding.cc:268 ApplyImpl] Could not find a CPU kernel and hence can't constant fold ReduceMean node '/ReduceMean_4'\u001b[m\n"}
+,{"stream_name":"stderr","time":69.027201895,"data":"\u001b[0;93m2026-11-20 14:40:03.540364872 [W:onnxruntime:, constant_folding.cc:268 ApplyImpl] Could not find a CPU kernel and hence can't constant fold ReduceMean node '/ReduceMean_4'\u001b[m\n"}
+,{"stream_name":"stderr","time":69.202837783,"data":"\u001b[0;93m2026-11-20 14:40:03.716014559 [W:onnxruntime:, constant_folding.cc:268 ApplyImpl] Could not find a CPU kernel and hence can't constant fold ReduceMean node '/ReduceMean_4'\u001b[m\n"}
+,{"stream_name":"stderr","time":69.20772436,"data":"\u001b[0;93m2026-11-20 14:40:03.720928348 [W:onnxruntime:, constant_folding.cc:268 ApplyImpl] Could not find a CPU kernel and hence can't constant fold ReduceMean node '/ReduceMean_4'\u001b[m\n"}
+,{"stream_name":"stdout","time":87.719142822,"data":"[  1.4 min] D_plain_repaired: loads; finite True; max|dp| 1.51e-03; top-1 changes 0; 55.8 MB; 0.370 s\n"}
+,{"stream_name":"stdout","time":115.726250782,"data":"[  1.9 min] E_layernorm_fp32_repaired: loads; finite True; max|dp| 1.01e-03; top-1 changes 0; 55.8 MB; 0.359 s\n"}
+,{"stream_name":"stderr","time":117.735924283,"data":"\u001b[0;93m2026-11-20 14:40:52.248995630 [W:onnxruntime:, constant_folding.cc:268 ApplyImpl] Could not find a CPU kernel and hence can't constant fold ReduceMean node '/ReduceMean_4'\u001b[m\n"}
+,{"stream_name":"stderr","time":117.740881064,"data":"\u001b[0;93m2026-11-20 14:40:52.254066563 [W:onnxruntime:, constant_folding.cc:268 ApplyImpl] Could not find a CPU kernel and hence can't constant fold ReduceMean node '/ReduceMean_4'\u001b[m\n"}
+,{"stream_name":"stdout","time":134.492596841,"data":"[  2.2 min] F_ort_converter: loads; finite True; max|dp| 1.42e-03; top-1 changes 0; 55.8 MB; 0.296 s\n"}
+,{"stream_name":"stderr","time":136.963775732,"data":"\u001b[0;93m2026-11-20 14:41:11.476877648 [W:onnxruntime:, constant_folding.cc:268 ApplyImpl] Could not find a CPU kernel and hence can't constant fold Sub node '/Sub_2'\u001b[m\n"}
+,{"stream_name":"stderr","time":136.972585731,"data":"\u001b[0;93m2026-11-20 14:41:11.485748686 [W:onnxruntime:, constant_folding.cc:268 ApplyImpl] Could not find a CPU kernel and hence can't constant fold Sub node '/Sub_2'\u001b[m\n"}
+,{"stream_name":"stdout","time":155.35415871,"data":"[  2.6 min] G_ort_converter_layernorm_fp32: loads; finite True; max|dp| 1.01e-03; top-1 changes 0; 55.8 MB; 0.365 s\n"}
+,{"stream_name":"stdout","time":158.584853298,"data":"[  2.6 min] H_opset20_plain: does NOT load: [ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/H_opset20_plain.onnx failed:Type Error: Type (tensor(float16)) of output arg (/Cast_output_0) of node (/Cast) does not match expected type (tensor(float)).\n"}
+,{"stream_name":"stdout","time":159.102355081,"data":"[  2.6 min] newest onnxruntime: {\"version\": \"1.32.0\", \"/tmp/k3/A_plain.onnx\": \"[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/A_plain.onnx failed:Type Error: Type (tensor(float16)) of output arg (/Cast_output_0) of node (/Cast) does not match expected type (tensor(float)).\", \"/tmp/k3/B_layernorm_fp32.onnx\": \"[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/B_layernorm_fp32.onnx failed:Type Error: Type parameter (T) of Optype (Mul) bound to different types (tensor(float) and tensor(float16) in node (/Mul_2).\"}\n"}
+,{"stream_name":"stdout","time":159.104834497,"data":"[  2.6 min] Done.\n"}
+,{"stream_name":"stderr","time":162.023545039,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":162.023584017,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":162.318923975,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":162.318955028,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":163.387568998,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":164.690537295,"data":"[NbConvertApp] Writing 353390 bytes to __results__.html\n"}
+]

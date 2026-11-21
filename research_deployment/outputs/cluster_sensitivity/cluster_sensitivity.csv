@@ -1,0 +1,241 @@
+scheme,n_slices,n_clusters,kaggle_ct_clusters,copy,measure,point,ci_low,ci_high,ci_width,ci_excludes_zero
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,INT8-dyn (served),agreement,0.997088,0.995929,0.998207,0.002277,
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,INT8-dyn (served),accuracy,0.000896,-0.000215,0.001943,0.002158,False
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,INT8-dyn (served),normal_recall,0.002592,0.001222,0.004004,0.002782,True
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,INT8-dyn (served),ischemic_recall,-0.003586,-0.006728,-0.001113,0.005614,True
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,INT8-dyn (served),hemorrhagic_recall,-0.000681,-0.002108,0.0,0.002108,False
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,INT8-dyn (served),balanced_accuracy,-0.000559,-0.001819,0.000486,0.002305,False
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,INT8-static (min-max),agreement,0.965733,0.961786,0.969589,0.007803,
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,INT8-static (min-max),accuracy,-0.011758,-0.015926,-0.007448,0.008479,True
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,INT8-static (min-max),normal_recall,-0.01745,-0.023211,-0.011695,0.011516,True
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,INT8-static (min-max),ischemic_recall,0.001195,-0.007014,0.009866,0.016881,False
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,INT8-static (min-max),hemorrhagic_recall,-0.004084,-0.012526,0.00406,0.016586,False
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,INT8-static (min-max),balanced_accuracy,-0.00678,-0.010884,-0.002568,0.008316,True
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, percentile",agreement,0.967637,0.963562,0.971474,0.007912,
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, percentile",accuracy,-0.012318,-0.016804,-0.008213,0.008591,True
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, percentile",normal_recall,-0.018487,-0.024266,-0.012989,0.011276,True
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, percentile",ischemic_recall,-0.002989,-0.011693,0.006025,0.017718,False
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, percentile",hemorrhagic_recall,0.001361,-0.006178,0.008796,0.014974,False
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, percentile",balanced_accuracy,-0.006705,-0.010942,-0.002358,0.008584,True
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, entropy",agreement,0.96551,0.961444,0.96934,0.007896,
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, entropy",accuracy,-0.013102,-0.017541,-0.008467,0.009074,True
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, entropy",normal_recall,-0.019178,-0.025269,-0.012933,0.012336,True
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, entropy",ischemic_recall,-0.001195,-0.009715,0.00719,0.016905,False
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, entropy",hemorrhagic_recall,-0.002723,-0.010732,0.005172,0.015903,False
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, entropy",balanced_accuracy,-0.007699,-0.012012,-0.003083,0.00893,True
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, first layers FP32",agreement,0.984323,0.981361,0.987114,0.005753,
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, first layers FP32",accuracy,0.001904,-0.000461,0.004426,0.004887,False
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, first layers FP32",normal_recall,0.006393,0.003195,0.00954,0.006344,True
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, first layers FP32",ischemic_recall,-0.010759,-0.019197,-0.003573,0.015625,True
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, first layers FP32",hemorrhagic_recall,-0.001361,-0.005487,0.002797,0.008284,False
+A_published_each_KaggleCT_slice_own_cluster,8930,1787,1016,"static, first layers FP32",balanced_accuracy,-0.001909,-0.004874,0.000926,0.0058,False
+B_KaggleCT_excluded,7914,771,0,INT8-dyn (served),agreement,0.997599,0.996526,0.99858,0.002054,
+B_KaggleCT_excluded,7914,771,0,INT8-dyn (served),accuracy,0.001137,0.000128,0.002186,0.002058,True
+B_KaggleCT_excluded,7914,771,0,INT8-dyn (served),normal_recall,0.002743,0.001519,0.004185,0.002666,True
+B_KaggleCT_excluded,7914,771,0,INT8-dyn (served),ischemic_recall,-0.002661,-0.00556,-0.000624,0.004935,True
+B_KaggleCT_excluded,7914,771,0,INT8-dyn (served),hemorrhagic_recall,-0.000765,-0.002383,0.0,0.002383,False
+B_KaggleCT_excluded,7914,771,0,INT8-dyn (served),balanced_accuracy,-0.000227,-0.001386,0.000765,0.002151,False
+B_KaggleCT_excluded,7914,771,0,INT8-static (min-max),agreement,0.968031,0.963696,0.971974,0.008279,
+B_KaggleCT_excluded,7914,771,0,INT8-static (min-max),accuracy,-0.009477,-0.013798,-0.004719,0.009079,True
+B_KaggleCT_excluded,7914,771,0,INT8-static (min-max),normal_recall,-0.014305,-0.020859,-0.007345,0.013514,True
+B_KaggleCT_excluded,7914,771,0,INT8-static (min-max),ischemic_recall,-0.000665,-0.00977,0.008493,0.018263,False
+B_KaggleCT_excluded,7914,771,0,INT8-static (min-max),hemorrhagic_recall,-0.000765,-0.009126,0.007634,0.016759,False
+B_KaggleCT_excluded,7914,771,0,INT8-static (min-max),balanced_accuracy,-0.005245,-0.009501,-0.000599,0.008902,True
+B_KaggleCT_excluded,7914,771,0,"static, percentile",agreement,0.969295,0.964873,0.973297,0.008424,
+B_KaggleCT_excluded,7914,771,0,"static, percentile",accuracy,-0.010235,-0.014624,-0.005612,0.009012,True
+B_KaggleCT_excluded,7914,771,0,"static, percentile",normal_recall,-0.016069,-0.022562,-0.009917,0.012645,True
+B_KaggleCT_excluded,7914,771,0,"static, percentile",ischemic_recall,-0.003327,-0.012605,0.006435,0.01904,False
+B_KaggleCT_excluded,7914,771,0,"static, percentile",hemorrhagic_recall,0.004587,-0.003087,0.01293,0.016017,False
+B_KaggleCT_excluded,7914,771,0,"static, percentile",balanced_accuracy,-0.004936,-0.009231,-0.000348,0.008883,True
+B_KaggleCT_excluded,7914,771,0,"static, entropy",agreement,0.968031,0.963775,0.972162,0.008387,
+B_KaggleCT_excluded,7914,771,0,"static, entropy",accuracy,-0.010488,-0.015091,-0.005543,0.009548,True
+B_KaggleCT_excluded,7914,771,0,"static, entropy",normal_recall,-0.015285,-0.022005,-0.008247,0.013758,True
+B_KaggleCT_excluded,7914,771,0,"static, entropy",ischemic_recall,-0.002661,-0.011517,0.006663,0.01818,False
+B_KaggleCT_excluded,7914,771,0,"static, entropy",hemorrhagic_recall,-0.000765,-0.009678,0.008137,0.017815,False
+B_KaggleCT_excluded,7914,771,0,"static, entropy",balanced_accuracy,-0.006237,-0.010643,-0.001521,0.009122,True
+B_KaggleCT_excluded,7914,771,0,"static, first layers FP32",agreement,0.984458,0.98138,0.987491,0.006111,
+B_KaggleCT_excluded,7914,771,0,"static, first layers FP32",accuracy,0.001643,-0.000874,0.004386,0.00526,False
+B_KaggleCT_excluded,7914,771,0,"static, first layers FP32",normal_recall,0.006467,0.003229,0.009783,0.006554,True
+B_KaggleCT_excluded,7914,771,0,"static, first layers FP32",ischemic_recall,-0.011976,-0.020527,-0.004334,0.016193,True
+B_KaggleCT_excluded,7914,771,0,"static, first layers FP32",hemorrhagic_recall,-0.001529,-0.006211,0.003106,0.009317,False
+B_KaggleCT_excluded,7914,771,0,"static, first layers FP32",balanced_accuracy,-0.002346,-0.00568,0.000787,0.006467,False
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,INT8-dyn (served),agreement,0.997088,0.995968,0.998091,0.002124,
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,INT8-dyn (served),accuracy,0.000896,-0.000116,0.002004,0.00212,False
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,INT8-dyn (served),normal_recall,0.002592,0.001216,0.004037,0.00282,True
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,INT8-dyn (served),ischemic_recall,-0.003586,-0.006597,-0.00116,0.005436,True
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,INT8-dyn (served),hemorrhagic_recall,-0.000681,-0.002096,0.0,0.002096,False
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,INT8-dyn (served),balanced_accuracy,-0.000559,-0.001751,0.000481,0.002232,False
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,INT8-static (min-max),agreement,0.965733,0.961782,0.969617,0.007836,
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,INT8-static (min-max),accuracy,-0.011758,-0.015934,-0.007493,0.008441,True
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,INT8-static (min-max),normal_recall,-0.01745,-0.023387,-0.011346,0.012041,True
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,INT8-static (min-max),ischemic_recall,0.001195,-0.007256,0.010369,0.017625,False
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,INT8-static (min-max),hemorrhagic_recall,-0.004084,-0.012363,0.004093,0.016456,False
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,INT8-static (min-max),balanced_accuracy,-0.00678,-0.010978,-0.002362,0.008617,True
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, percentile",agreement,0.967637,0.963708,0.971432,0.007724,
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, percentile",accuracy,-0.012318,-0.016437,-0.008089,0.008348,True
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, percentile",normal_recall,-0.018487,-0.023946,-0.01258,0.011366,True
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, percentile",ischemic_recall,-0.002989,-0.011956,0.006736,0.018692,False
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, percentile",hemorrhagic_recall,0.001361,-0.006242,0.008984,0.015227,False
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, percentile",balanced_accuracy,-0.006705,-0.010947,-0.002281,0.008666,True
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, entropy",agreement,0.96551,0.961538,0.969367,0.007828,
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, entropy",accuracy,-0.013102,-0.017563,-0.008536,0.009027,True
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, entropy",normal_recall,-0.019178,-0.025273,-0.012846,0.012427,True
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, entropy",ischemic_recall,-0.001195,-0.009555,0.007988,0.017543,False
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, entropy",hemorrhagic_recall,-0.002723,-0.010885,0.005591,0.016475,False
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, entropy",balanced_accuracy,-0.007699,-0.012148,-0.003013,0.009135,True
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, first layers FP32",agreement,0.984323,0.981317,0.98708,0.005763,
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, first layers FP32",accuracy,0.001904,-0.000341,0.00434,0.00468,False
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, first layers FP32",normal_recall,0.006393,0.003289,0.009614,0.006325,True
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, first layers FP32",ischemic_recall,-0.010759,-0.018703,-0.003654,0.015049,True
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, first layers FP32",hemorrhagic_recall,-0.001361,-0.005529,0.002782,0.008311,False
+C_KaggleCT_file_number_blocks_W20,8930,1110,339,"static, first layers FP32",balanced_accuracy,-0.001909,-0.004787,0.001063,0.00585,False
+C_KaggleCT_file_number_blocks_W50,8930,912,141,INT8-dyn (served),agreement,0.997088,0.995995,0.998062,0.002067,
+C_KaggleCT_file_number_blocks_W50,8930,912,141,INT8-dyn (served),accuracy,0.000896,-0.000114,0.001994,0.002108,False
+C_KaggleCT_file_number_blocks_W50,8930,912,141,INT8-dyn (served),normal_recall,0.002592,0.001243,0.004029,0.002787,True
+C_KaggleCT_file_number_blocks_W50,8930,912,141,INT8-dyn (served),ischemic_recall,-0.003586,-0.00667,-0.001146,0.005524,True
+C_KaggleCT_file_number_blocks_W50,8930,912,141,INT8-dyn (served),hemorrhagic_recall,-0.000681,-0.002107,0.0,0.002107,False
+C_KaggleCT_file_number_blocks_W50,8930,912,141,INT8-dyn (served),balanced_accuracy,-0.000559,-0.001785,0.000468,0.002253,False
+C_KaggleCT_file_number_blocks_W50,8930,912,141,INT8-static (min-max),agreement,0.965733,0.961837,0.969643,0.007806,
+C_KaggleCT_file_number_blocks_W50,8930,912,141,INT8-static (min-max),accuracy,-0.011758,-0.016014,-0.007489,0.008525,True
+C_KaggleCT_file_number_blocks_W50,8930,912,141,INT8-static (min-max),normal_recall,-0.01745,-0.023431,-0.011688,0.011743,True
+C_KaggleCT_file_number_blocks_W50,8930,912,141,INT8-static (min-max),ischemic_recall,0.001195,-0.007359,0.009514,0.016872,False
+C_KaggleCT_file_number_blocks_W50,8930,912,141,INT8-static (min-max),hemorrhagic_recall,-0.004084,-0.012109,0.004149,0.016259,False
+C_KaggleCT_file_number_blocks_W50,8930,912,141,INT8-static (min-max),balanced_accuracy,-0.00678,-0.010976,-0.002581,0.008395,True
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, percentile",agreement,0.967637,0.963765,0.971377,0.007612,
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, percentile",accuracy,-0.012318,-0.016595,-0.008355,0.00824,True
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, percentile",normal_recall,-0.018487,-0.024622,-0.013032,0.01159,True
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, percentile",ischemic_recall,-0.002989,-0.011912,0.006128,0.01804,False
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, percentile",hemorrhagic_recall,0.001361,-0.005962,0.009175,0.015137,False
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, percentile",balanced_accuracy,-0.006705,-0.011028,-0.002446,0.008581,True
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, entropy",agreement,0.96551,0.961663,0.9692,0.007537,
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, entropy",accuracy,-0.013102,-0.017489,-0.008822,0.008667,True
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, entropy",normal_recall,-0.019178,-0.025525,-0.013319,0.012206,True
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, entropy",ischemic_recall,-0.001195,-0.01036,0.007556,0.017916,False
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, entropy",hemorrhagic_recall,-0.002723,-0.010885,0.005514,0.016399,False
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, entropy",balanced_accuracy,-0.007699,-0.012155,-0.003239,0.008916,True
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, first layers FP32",agreement,0.984323,0.981319,0.987187,0.005868,
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, first layers FP32",accuracy,0.001904,-0.000653,0.004492,0.005145,False
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, first layers FP32",normal_recall,0.006393,0.003324,0.009661,0.006337,True
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, first layers FP32",ischemic_recall,-0.010759,-0.019012,-0.003667,0.015344,True
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, first layers FP32",hemorrhagic_recall,-0.001361,-0.005468,0.002721,0.00819,False
+C_KaggleCT_file_number_blocks_W50,8930,912,141,"static, first layers FP32",balanced_accuracy,-0.001909,-0.005023,0.000914,0.005937,False
+C_KaggleCT_file_number_blocks_W100,8930,842,71,INT8-dyn (served),agreement,0.997088,0.995892,0.99813,0.002238,
+C_KaggleCT_file_number_blocks_W100,8930,842,71,INT8-dyn (served),accuracy,0.000896,-0.00011,0.001926,0.002037,False
+C_KaggleCT_file_number_blocks_W100,8930,842,71,INT8-dyn (served),normal_recall,0.002592,0.001236,0.004021,0.002785,True
+C_KaggleCT_file_number_blocks_W100,8930,842,71,INT8-dyn (served),ischemic_recall,-0.003586,-0.006647,-0.001133,0.005514,True
+C_KaggleCT_file_number_blocks_W100,8930,842,71,INT8-dyn (served),hemorrhagic_recall,-0.000681,-0.002098,0.0,0.002098,False
+C_KaggleCT_file_number_blocks_W100,8930,842,71,INT8-dyn (served),balanced_accuracy,-0.000559,-0.001644,0.000451,0.002095,False
+C_KaggleCT_file_number_blocks_W100,8930,842,71,INT8-static (min-max),agreement,0.965733,0.961623,0.96967,0.008048,
+C_KaggleCT_file_number_blocks_W100,8930,842,71,INT8-static (min-max),accuracy,-0.011758,-0.015978,-0.007427,0.008551,True
+C_KaggleCT_file_number_blocks_W100,8930,842,71,INT8-static (min-max),normal_recall,-0.01745,-0.023149,-0.011321,0.011828,True
+C_KaggleCT_file_number_blocks_W100,8930,842,71,INT8-static (min-max),ischemic_recall,0.001195,-0.007273,0.009509,0.016782,False
+C_KaggleCT_file_number_blocks_W100,8930,842,71,INT8-static (min-max),hemorrhagic_recall,-0.004084,-0.012728,0.004188,0.016916,False
+C_KaggleCT_file_number_blocks_W100,8930,842,71,INT8-static (min-max),balanced_accuracy,-0.00678,-0.011223,-0.002518,0.008705,True
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, percentile",agreement,0.967637,0.963775,0.971582,0.007807,
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, percentile",accuracy,-0.012318,-0.01641,-0.007932,0.008478,True
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, percentile",normal_recall,-0.018487,-0.024185,-0.012685,0.0115,True
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, percentile",ischemic_recall,-0.002989,-0.011843,0.005924,0.017767,False
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, percentile",hemorrhagic_recall,0.001361,-0.00609,0.009163,0.015253,False
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, percentile",balanced_accuracy,-0.006705,-0.011024,-0.002208,0.008816,True
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, entropy",agreement,0.96551,0.961707,0.969397,0.00769,
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, entropy",accuracy,-0.013102,-0.017309,-0.008537,0.008772,True
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, entropy",normal_recall,-0.019178,-0.02529,-0.013153,0.012137,True
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, entropy",ischemic_recall,-0.001195,-0.009537,0.007674,0.017211,False
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, entropy",hemorrhagic_recall,-0.002723,-0.010915,0.005424,0.016339,False
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, entropy",balanced_accuracy,-0.007699,-0.011914,-0.003319,0.008595,True
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, first layers FP32",agreement,0.984323,0.981483,0.987098,0.005615,
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, first layers FP32",accuracy,0.001904,-0.000449,0.004481,0.004929,False
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, first layers FP32",normal_recall,0.006393,0.003295,0.00971,0.006416,True
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, first layers FP32",ischemic_recall,-0.010759,-0.018731,-0.003618,0.015113,True
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, first layers FP32",hemorrhagic_recall,-0.001361,-0.005483,0.002825,0.008309,False
+C_KaggleCT_file_number_blocks_W100,8930,842,71,"static, first layers FP32",balanced_accuracy,-0.001909,-0.004751,0.000978,0.005729,False
+C_KaggleCT_file_number_blocks_W250,8930,800,29,INT8-dyn (served),agreement,0.997088,0.995924,0.998129,0.002205,
+C_KaggleCT_file_number_blocks_W250,8930,800,29,INT8-dyn (served),accuracy,0.000896,-0.000111,0.001856,0.001967,False
+C_KaggleCT_file_number_blocks_W250,8930,800,29,INT8-dyn (served),normal_recall,0.002592,0.001225,0.004034,0.002809,True
+C_KaggleCT_file_number_blocks_W250,8930,800,29,INT8-dyn (served),ischemic_recall,-0.003586,-0.006712,-0.001163,0.005549,True
+C_KaggleCT_file_number_blocks_W250,8930,800,29,INT8-dyn (served),hemorrhagic_recall,-0.000681,-0.00211,0.0,0.00211,False
+C_KaggleCT_file_number_blocks_W250,8930,800,29,INT8-dyn (served),balanced_accuracy,-0.000559,-0.001749,0.00042,0.002169,False
+C_KaggleCT_file_number_blocks_W250,8930,800,29,INT8-static (min-max),agreement,0.965733,0.961652,0.969832,0.00818,
+C_KaggleCT_file_number_blocks_W250,8930,800,29,INT8-static (min-max),accuracy,-0.011758,-0.0159,-0.007416,0.008484,True
+C_KaggleCT_file_number_blocks_W250,8930,800,29,INT8-static (min-max),normal_recall,-0.01745,-0.023449,-0.011287,0.012162,True
+C_KaggleCT_file_number_blocks_W250,8930,800,29,INT8-static (min-max),ischemic_recall,0.001195,-0.006786,0.009729,0.016515,False
+C_KaggleCT_file_number_blocks_W250,8930,800,29,INT8-static (min-max),hemorrhagic_recall,-0.004084,-0.012106,0.004104,0.016211,False
+C_KaggleCT_file_number_blocks_W250,8930,800,29,INT8-static (min-max),balanced_accuracy,-0.00678,-0.010832,-0.002507,0.008325,True
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, percentile",agreement,0.967637,0.963671,0.971591,0.007921,
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, percentile",accuracy,-0.012318,-0.016157,-0.008096,0.008061,True
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, percentile",normal_recall,-0.018487,-0.02408,-0.012939,0.011141,True
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, percentile",ischemic_recall,-0.002989,-0.011926,0.006211,0.018138,False
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, percentile",hemorrhagic_recall,0.001361,-0.005626,0.00896,0.014587,False
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, percentile",balanced_accuracy,-0.006705,-0.010818,-0.002263,0.008555,True
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, entropy",agreement,0.96551,0.961462,0.969385,0.007923,
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, entropy",accuracy,-0.013102,-0.017536,-0.008297,0.009239,True
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, entropy",normal_recall,-0.019178,-0.025385,-0.012751,0.012634,True
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, entropy",ischemic_recall,-0.001195,-0.009413,0.007786,0.017199,False
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, entropy",hemorrhagic_recall,-0.002723,-0.010799,0.005285,0.016084,False
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, entropy",balanced_accuracy,-0.007699,-0.011965,-0.003241,0.008724,True
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, first layers FP32",agreement,0.984323,0.981327,0.987124,0.005798,
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, first layers FP32",accuracy,0.001904,-0.000554,0.004311,0.004865,False
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, first layers FP32",normal_recall,0.006393,0.003396,0.009556,0.00616,True
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, first layers FP32",ischemic_recall,-0.010759,-0.018832,-0.003757,0.015075,True
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, first layers FP32",hemorrhagic_recall,-0.001361,-0.005495,0.002717,0.008212,False
+C_KaggleCT_file_number_blocks_W250,8930,800,29,"static, first layers FP32",balanced_accuracy,-0.001909,-0.004896,0.001051,0.005947,False
+C_KaggleCT_file_number_blocks_W500,8930,786,15,INT8-dyn (served),agreement,0.997088,0.996025,0.998139,0.002114,
+C_KaggleCT_file_number_blocks_W500,8930,786,15,INT8-dyn (served),accuracy,0.000896,-0.000113,0.001918,0.002031,False
+C_KaggleCT_file_number_blocks_W500,8930,786,15,INT8-dyn (served),normal_recall,0.002592,0.001224,0.004014,0.00279,True
+C_KaggleCT_file_number_blocks_W500,8930,786,15,INT8-dyn (served),ischemic_recall,-0.003586,-0.006567,-0.001147,0.00542,True
+C_KaggleCT_file_number_blocks_W500,8930,786,15,INT8-dyn (served),hemorrhagic_recall,-0.000681,-0.002089,0.0,0.002089,False
+C_KaggleCT_file_number_blocks_W500,8930,786,15,INT8-dyn (served),balanced_accuracy,-0.000559,-0.001742,0.000443,0.002185,False
+C_KaggleCT_file_number_blocks_W500,8930,786,15,INT8-static (min-max),agreement,0.965733,0.961698,0.969725,0.008028,
+C_KaggleCT_file_number_blocks_W500,8930,786,15,INT8-static (min-max),accuracy,-0.011758,-0.016149,-0.007368,0.008781,True
+C_KaggleCT_file_number_blocks_W500,8930,786,15,INT8-static (min-max),normal_recall,-0.01745,-0.023746,-0.011223,0.012523,True
+C_KaggleCT_file_number_blocks_W500,8930,786,15,INT8-static (min-max),ischemic_recall,0.001195,-0.006989,0.009829,0.016818,False
+C_KaggleCT_file_number_blocks_W500,8930,786,15,INT8-static (min-max),hemorrhagic_recall,-0.004084,-0.012764,0.004071,0.016835,False
+C_KaggleCT_file_number_blocks_W500,8930,786,15,INT8-static (min-max),balanced_accuracy,-0.00678,-0.011087,-0.002415,0.008671,True
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, percentile",agreement,0.967637,0.96376,0.971458,0.007697,
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, percentile",accuracy,-0.012318,-0.016494,-0.008202,0.008292,True
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, percentile",normal_recall,-0.018487,-0.024346,-0.012801,0.011545,True
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, percentile",ischemic_recall,-0.002989,-0.011527,0.00611,0.017637,False
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, percentile",hemorrhagic_recall,0.001361,-0.00609,0.009281,0.015371,False
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, percentile",balanced_accuracy,-0.006705,-0.010856,-0.002219,0.008637,True
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, entropy",agreement,0.96551,0.961525,0.969379,0.007854,
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, entropy",accuracy,-0.013102,-0.017838,-0.008723,0.009115,True
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, entropy",normal_recall,-0.019178,-0.025543,-0.012987,0.012556,True
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, entropy",ischemic_recall,-0.001195,-0.009429,0.007785,0.017213,False
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, entropy",hemorrhagic_recall,-0.002723,-0.010583,0.005338,0.01592,False
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, entropy",balanced_accuracy,-0.007699,-0.012137,-0.003204,0.008932,True
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, first layers FP32",agreement,0.984323,0.981325,0.987207,0.005882,
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, first layers FP32",accuracy,0.001904,-0.000545,0.004268,0.004813,False
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, first layers FP32",normal_recall,0.006393,0.003174,0.009556,0.006382,True
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, first layers FP32",ischemic_recall,-0.010759,-0.018642,-0.003683,0.01496,True
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, first layers FP32",hemorrhagic_recall,-0.001361,-0.005769,0.002745,0.008514,False
+C_KaggleCT_file_number_blocks_W500,8930,786,15,"static, first layers FP32",balanced_accuracy,-0.001909,-0.004962,0.000968,0.00593,False
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,INT8-dyn (served),agreement,0.997088,0.996013,0.998211,0.002198,
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,INT8-dyn (served),accuracy,0.000896,-0.000111,0.001871,0.001982,False
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,INT8-dyn (served),normal_recall,0.002592,0.001478,0.003887,0.00241,True
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,INT8-dyn (served),ischemic_recall,-0.003586,-0.006149,-0.000726,0.005423,True
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,INT8-dyn (served),hemorrhagic_recall,-0.000681,-0.002328,0.0,0.002328,False
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,INT8-dyn (served),balanced_accuracy,-0.000559,-0.001625,0.000483,0.002109,False
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,INT8-static (min-max),agreement,0.965733,0.96121,0.970379,0.009169,
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,INT8-static (min-max),accuracy,-0.011758,-0.017192,-0.005983,0.011208,True
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,INT8-static (min-max),normal_recall,-0.01745,-0.024023,-0.010243,0.01378,True
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,INT8-static (min-max),ischemic_recall,0.001195,-0.007324,0.00971,0.017034,False
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,INT8-static (min-max),hemorrhagic_recall,-0.004084,-0.012625,0.005957,0.018582,False
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,INT8-static (min-max),balanced_accuracy,-0.00678,-0.011415,-0.001934,0.00948,True
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, percentile",agreement,0.967637,0.96271,0.972565,0.009854,
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, percentile",accuracy,-0.012318,-0.017419,-0.006864,0.010555,True
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, percentile",normal_recall,-0.018487,-0.024688,-0.011391,0.013297,True
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, percentile",ischemic_recall,-0.002989,-0.011423,0.005801,0.017225,False
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, percentile",hemorrhagic_recall,0.001361,-0.006532,0.010589,0.017121,False
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, percentile",balanced_accuracy,-0.006705,-0.010872,-0.002061,0.008812,True
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, entropy",agreement,0.96551,0.960131,0.97089,0.01076,
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, entropy",accuracy,-0.013102,-0.019259,-0.006931,0.012328,True
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, entropy",normal_recall,-0.019178,-0.02653,-0.010823,0.015707,True
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, entropy",ischemic_recall,-0.001195,-0.009341,0.006915,0.016256,False
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, entropy",hemorrhagic_recall,-0.002723,-0.010696,0.006253,0.016949,False
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, entropy",balanced_accuracy,-0.007699,-0.012241,-0.002817,0.009423,True
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, first layers FP32",agreement,0.984323,0.981367,0.987372,0.006005,
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, first layers FP32",accuracy,0.001904,-0.000537,0.004237,0.004774,False
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, first layers FP32",normal_recall,0.006393,0.003391,0.009647,0.006256,True
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, first layers FP32",ischemic_recall,-0.010759,-0.019597,-0.003921,0.015676,True
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, first layers FP32",hemorrhagic_recall,-0.001361,-0.005583,0.002781,0.008364,False
+D_KaggleCT_one_cluster_per_class_folder,8930,775,4,"static, first layers FP32",balanced_accuracy,-0.001909,-0.005202,0.000848,0.006049,False

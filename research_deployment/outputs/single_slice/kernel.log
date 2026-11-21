@@ -1,0 +1,41 @@
+[{"stream_name":"stdout","time":7.464810759,"data":"[   0.1 min] pip onnxruntime==1.20.1: exit 0 (7s) \n"}
+,{"stream_name":"stdout","time":11.134246816,"data":"[   0.2 min] inputs resolved and checked (1.9s)\n"}
+,{"stream_name":"stdout","time":12.294386722,"data":"[   0.2 min] held-out rows rebuilt in the saved order: 10602 (1.2s)\n"}
+,{"stream_name":"stdout","time":12.489931017,"data":"[   0.2 min] zip aisd_normal_images.zip: central directory read (0.2s)\n"}
+,{"stream_name":"stdout","time":12.786957386,"data":"[   0.2 min] zip rsna_normal_images.zip: central directory read (0.3s)\n"}
+,{"stream_name":"stdout","time":13.399871027,"data":"[   0.2 min] zip soop_images.zip: central directory read (0.6s)\n"}
+,{"stream_name":"stdout","time":13.407786942,"data":"[   0.2 min] CT slices 6627 (with neighbours 3225); {'RSNA_ICH': 2386, 'CPAISD_v2': 1524, 'AISD': 1138, 'Kaggle_CT': 1016, 'SICH_CT': 563}\n"}
+,{"stream_name":"stdout","time":111.198198615,"data":"[   1.8 min] decoded 6627 single-slice requests (98s, 1.00 GB); reads {'Kaggle_CT': 1016, 'RSNA_ICH': 2386, 'AISD': 1138, 'CPAISD_v2': 1524, 'SICH_CT': 563}\n"}
+,{"stream_name":"stdout","time":397.445357852,"data":"[   6.6 min]   [FP32 single slice] 1000/6627 (286s; projected 32 min)\n"}
+,{"stream_name":"stdout","time":682.428015488,"data":"[  11.4 min]   [FP32 single slice] 2000/6627 (571s; projected 32 min)\n"}
+,{"stream_name":"stdout","time":971.447139229,"data":"[  16.2 min]   [FP32 single slice] 3000/6627 (860s; projected 32 min)\n"}
+,{"stream_name":"stdout","time":1256.194665672,"data":"[  20.9 min]   [FP32 single slice] 4000/6627 (1145s; projected 32 min)\n"}
+,{"stream_name":"stdout","time":1542.763280042,"data":"[  25.7 min]   [FP32 single slice] 5000/6627 (1432s; projected 32 min)\n"}
+,{"stream_name":"stdout","time":1832.285732768,"data":"[  30.5 min]   [FP32 single slice] 6000/6627 (1721s; projected 32 min)\n"}
+,{"stream_name":"stdout","time":2009.915066578,"data":"[  33.5 min]   [FP32 single slice] 6627/6627 (1899s; projected 32 min)\n"}
+,{"stream_name":"stdout","time":2233.860656427,"data":"[  37.2 min]   [INT8-dyn single slice] 1000/6627 (224s; projected 25 min)\n"}
+,{"stream_name":"stdout","time":2456.025655198,"data":"[  40.9 min]   [INT8-dyn single slice] 2000/6627 (446s; projected 25 min)\n"}
+,{"stream_name":"stdout","time":2677.635069918,"data":"[  44.6 min]   [INT8-dyn single slice] 3000/6627 (667s; projected 25 min)\n"}
+,{"stream_name":"stdout","time":2903.375157525,"data":"[  48.4 min]   [INT8-dyn single slice] 4000/6627 (893s; projected 25 min)\n"}
+,{"stream_name":"stdout","time":3134.505644495,"data":"[  52.2 min]   [INT8-dyn single slice] 5000/6627 (1124s; projected 25 min)\n"}
+,{"stream_name":"stdout","time":3363.458459112,"data":"[  56.0 min]   [INT8-dyn single slice] 6000/6627 (1353s; projected 25 min)\n"}
+,{"stream_name":"stdout","time":3504.108177627,"data":"[  58.4 min]   [INT8-dyn single slice] 6627/6627 (1494s; projected 25 min)\n"}
+,{"stream_name":"stdout","time":3504.342249926,"data":"[  58.4 min] control: FP32 single-image vs saved run on 3402 slices without neighbours: max prob diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":3519.200880022,"data":"[  58.6 min] single_slice all_ct: n=6627 agreement 0.9956 [0.9938116174762525, 0.997272964050897] flips 29 tier 0.9894; ischemic recall change -0.0048 [-0.013013067297232195, 0.0028416566985646667]\n"}
+,{"stream_name":"stdout","time":3526.800140802,"data":"[  58.8 min] single_slice with_neighbours: n=3225 agreement 0.9944 [0.9912726758777453, 0.9970366292358877] flips 18 tier 0.9876; ischemic recall change -0.0035 [-0.012896308562497757, 0.0047685832492894405]\n"}
+,{"stream_name":"stdout","time":3530.372102628,"data":"[  58.8 min] single_slice CPAISD: n=1524 agreement 0.9954 [0.9919022861619543, 0.9981780545834212] flips 7 tier 0.9895; ischemic recall change +0.0033 [-0.013157894736842039, 0.02076304786620528]\n"}
+,{"stream_name":"stdout","time":3545.005033526,"data":"[  59.1 min] three_slice all_ct: n=6627 agreement 0.9977 [0.996557169083319, 0.9987959196668099] flips 15 tier 0.9905; ischemic recall change -0.0019 [-0.004911712092849785, 0.0]\n"}
+,{"stream_name":"stdout","time":3552.51709106,"data":"[  59.2 min] three_slice with_neighbours: n=3225 agreement 0.9988 [0.9975070115300717, 0.9996966939642099] flips 4 tier 0.9898; ischemic recall change +0.0000 [0.0, 0.0]\n"}
+,{"stream_name":"stdout","time":3556.074145327,"data":"[  59.3 min] three_slice CPAISD: n=1524 agreement 0.9993 [0.9979660326555974, 1.0] flips 1 tier 0.9869; ischemic recall change +0.0000 [0.0, 0.0]\n"}
+,{"stream_name":"stdout","time":3556.077419889,"data":"[  59.3 min] single-slice changes: {\"changed\": 29, \"by_kind\": {\"wrong_to_correct\": 15, \"correct_to_wrong\": 14}, \"correct_to_wrong_by_truth\": {\"ischemic\": 9, \"normal\": 4, \"hemorrhagic\": 1}, \"to_normal\": 21, \"from_normal\": 8, \"between_stroke_classes\": 0, \"fp32_margin_changed\": {\"median\": 0.01594526103206584, \"max\": 0.11212416195978864}, \"fp32_margin_all_median\": 0.9480660692978289, \"three_slice_changed_same_rows\": 15}\n"}
+,{"stream_name":"stdout","time":3556.09758951,"data":"[  59.3 min] FP32 on 3225 CT slices with neighbours: three-slice {\"accuracy\": 0.8688372093023256, \"balanced_accuracy\": 0.9105029731482771, \"normal_recall\": 0.847457627118644, \"ischemic_recall\": 0.9101382488479263, \"hemorrhagic_recall\": 0.9739130434782609, \"ischemic_auroc\": 0.943750989796058, \"hemorrhagic_auroc\": 0.9995833915839508} single {\"accuracy\": 0.8244961240310078, \"balanced_accuracy\": 0.8376267260253708, \"normal_recall\": 0.8862622658340767, \"ischemic_recall\": 0.6440092165898618, \"hemorrhagic_recall\": 0.9826086956521739, \"ischemic_auroc\": 0.9146526964488562, \"hemorrhagic_auroc\": 0.9977464001118412}\n"}
+,{"stream_name":"stdout","time":3556.101625628,"data":"[  59.3 min] INT8-dyn on 3225 CT slices with neighbours: three-slice {\"accuracy\": 0.870077519379845, \"balanced_accuracy\": 0.9110976802550271, \"normal_recall\": 0.8492417484388939, \"ischemic_recall\": 0.9101382488479263, \"hemorrhagic_recall\": 0.9739130434782609, \"ischemic_auroc\": 0.943769319352688, \"hemorrhagic_auroc\": 0.999577799524675} single {\"accuracy\": 0.8244961240310078, \"balanced_accuracy\": 0.8369206826227144, \"normal_recall\": 0.8876003568242641, \"ischemic_recall\": 0.6405529953917051, \"hemorrhagic_recall\": 0.9826086956521739, \"ischemic_auroc\": 0.9153262465564873, \"hemorrhagic_auroc\": 0.9976904795190829}\n"}
+,{"stream_name":"stdout","time":3565.106876988,"data":"[  59.4 min] maps, single-slice pathway: {\"pearson_r_median\": 0.9993561301350744, \"pearson_r_q1\": 0.9985575273005094, \"same_peak_cell\": 0.9624264373019465, \"display_iou_median\": 0.9650837988826816, \"display_iou_q1\": 0.9363346844238565}\n"}
+,{"stream_name":"stdout","time":3565.19203678,"data":"[  59.4 min] Done.\n"}
+,{"stream_name":"stderr","time":3568.339646938,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":3568.3396839,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":3568.659375992,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":3568.659412666,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":3569.789235021,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":3571.186143166,"data":"[NbConvertApp] Writing 435749 bytes to __results__.html\n"}
+]

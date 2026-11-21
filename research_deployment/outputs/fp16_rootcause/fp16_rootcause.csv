@@ -1,0 +1,9 @@
+variant,loads,error,mb,fp16_initializers,finite,logits_maxabs_vs_fp32,prob_maxabs_vs_fp32,top1_changes_vs_fp32,median_s_1thread,gradcam_normalised_maxabs_vs_fp32
+A_plain,False,[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/A_plain.onnx failed:Type Error: Type (tensor(float16)) of output arg (/Cast_output_0) of node (/Cast) does not match expected type (tensor(float,,,,,,,,
+B_layernorm_fp32,False,[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/B_layernorm_fp32.onnx failed:Type Error: Type parameter (T) of Optype (Mul) bound to different types (tensor(float) and tensor(float16) in node ,,,,,,,,
+C_plain_logits_only,True,,55.8,182.0,True,0.0036329030990600586,0.001509252329032984,0.0,0.36960340950003,
+D_plain_repaired,True,,55.8,183.0,True,0.0036329030990600586,0.001509252329032984,0.0,0.36965674750001654,0.0038560698473607824
+E_layernorm_fp32_repaired,True,,55.8,138.0,True,0.0029020309448242188,0.0010091829473001246,0.0,0.35897434849999854,0.004565202046933503
+F_ort_converter,True,,55.8,183.0,True,0.003298640251159668,0.0014222570994022465,0.0,0.295536310999978,0.003908508608732472
+G_ort_converter_layernorm_fp32,True,,55.8,139.0,True,0.002849578857421875,0.0010098543797297799,0.0,0.3650448914999629,0.0040330171221704125
+H_opset20_plain,False,[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/H_opset20_plain.onnx failed:Type Error: Type (tensor(float16)) of output arg (/Cast_output_0) of node (/Cast) does not match expected type (tens,,,,,,,,

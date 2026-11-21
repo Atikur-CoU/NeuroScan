@@ -1,0 +1,702 @@
+{
+  "note": "K3, revision; served FP32 file, synthetic phantoms; no stroke data",
+  "versions": {
+    "onnxruntime": "1.20.1",
+    "onnx": "1.18.0"
+  },
+  "variants": {
+    "A_plain": {
+      "mb": 55.8,
+      "fp16_initializers": 183,
+      "loads": false,
+      "load_error": "[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/A_plain.onnx failed:Type Error: Type (tensor(float16)) of output arg (/Cast_output_0) of node (/Cast) does not match expected type (tensor(float)).",
+      "failing_nodes": [
+        {
+          "name": "/Cast",
+          "op": "Cast",
+          "attrs": {
+            "to": "1"
+          },
+          "inputs": [
+            "/Mul_4_output_0"
+          ],
+          "outputs": [
+            "/Cast_output_0"
+          ],
+          "consumers": [
+            "/Div_2"
+          ],
+          "part": "Grad-CAM only",
+          "producers": [
+            {
+              "name": "/Mul_4",
+              "op": "Mul",
+              "attrs": {},
+              "inputs": [
+                "/Gather_output_0",
+                "/Gather_1_output_0"
+              ],
+              "outputs": [
+                "/Mul_4_output_0"
+              ],
+              "consumers": [
+                "/Cast"
+              ],
+              "part": "Grad-CAM only",
+              "producers": [
+                {
+                  "name": "/Gather",
+                  "op": "Gather",
+                  "attrs": {
+                    "axis": "0"
+                  },
+                  "inputs": [
+                    "/Shape_output_0",
+                    "/Constant_3_output_0"
+                  ],
+                  "outputs": [
+                    "/Gather_output_0"
+                  ],
+                  "consumers": [
+                    "/Mul_4"
+                  ],
+                  "part": "Grad-CAM only",
+                  "producers": [
+                    {
+                      "name": "/Shape",
+                      "op": "Shape",
+                      "attrs": {},
+                      "inputs": [
+                        "/features/features.7/features.7.2/Add_output_0"
+                      ],
+                      "outputs": [
+                        "/Shape_output_0"
+                      ],
+                      "consumers": [
+                        "/Gather"
+                      ],
+                      "part": "Grad-CAM only"
+                    },
+                    {
+                      "name": "/Constant_3",
+                      "op": "Constant",
+                      "attrs": {
+                        "value": "data_type: 7\nraw_data: \"\\002\\000\\000\\000\\000\\000\\000\\000\"\n"
+                      },
+                      "inputs": [],
+                      "outputs": [
+                        "/Constant_3_output_0"
+                      ],
+                      "consumers": [
+                        "/Gather"
+                      ],
+                      "part": "Grad-CAM only"
+                    }
+                  ]
+                },
+                {
+                  "name": "/Gather_1",
+                  "op": "Gather",
+                  "attrs": {
+                    "axis": "0"
+                  },
+                  "inputs": [
+                    "/Shape_1_output_0",
+                    "/Constant_4_output_0"
+                  ],
+                  "outputs": [
+                    "/Gather_1_output_0"
+                  ],
+                  "consumers": [
+                    "/Mul_4"
+                  ],
+                  "part": "Grad-CAM only",
+                  "producers": [
+                    {
+                      "name": "/Shape_1",
+                      "op": "Shape",
+                      "attrs": {},
+                      "inputs": [
+                        "/features/features.7/features.7.2/Add_output_0"
+                      ],
+                      "outputs": [
+                        "/Shape_1_output_0"
+                      ],
+                      "consumers": [
+                        "/Gather_1"
+                      ],
+                      "part": "Grad-CAM only"
+                    },
+                    {
+                      "name": "/Constant_4",
+                      "op": "Constant",
+                      "attrs": {
+                        "value": "data_type: 7\nraw_data: \"\\003\\000\\000\\000\\000\\000\\000\\000\"\n"
+                      },
+                      "inputs": [],
+                      "outputs": [
+                        "/Constant_4_output_0"
+                      ],
+                      "consumers": [
+                        "/Gather_1"
+                      ],
+                      "part": "Grad-CAM only"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "seconds": 2.6
+    },
+    "B_layernorm_fp32": {
+      "mb": 55.8,
+      "fp16_initializers": 138,
+      "loads": false,
+      "load_error": "[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/B_layernorm_fp32.onnx failed:Type Error: Type parameter (T) of Optype (Mul) bound to different types (tensor(float) and tensor(float16) in node (/Mul_2).",
+      "failing_nodes": [
+        {
+          "name": "/Mul_2",
+          "op": "Mul",
+          "attrs": {},
+          "inputs": [
+            "onnx::ReduceMean_635",
+            "/Unsqueeze_output_0"
+          ],
+          "outputs": [
+            "/Mul_2_output_0"
+          ],
+          "consumers": [
+            "/ReduceMean_5"
+          ],
+          "part": "Grad-CAM only",
+          "producers": [
+            {
+              "input": "onnx::ReduceMean_635"
+            },
+            {
+              "name": "/Unsqueeze",
+              "op": "Unsqueeze",
+              "attrs": {},
+              "inputs": [
+                "/Div_output_0",
+                "/Constant_1_output_0"
+              ],
+              "outputs": [
+                "/Unsqueeze_output_0"
+              ],
+              "consumers": [
+                "/Mul_2",
+                "/Mul_3"
+              ],
+              "part": "Grad-CAM only",
+              "producers": [
+                {
+                  "name": "/Div",
+                  "op": "Div",
+                  "attrs": {},
+                  "inputs": [
+                    "/Sub_1_output_0",
+                    "/Sqrt_output_0"
+                  ],
+                  "outputs": [
+                    "/Div_output_0"
+                  ],
+                  "consumers": [
+                    "/Mul_1",
+                    "/Unsqueeze"
+                  ],
+                  "part": "logits path (shared with Grad-CAM)",
+                  "producers": [
+                    {
+                      "name": "/Sub_1",
+                      "op": "Sub",
+                      "attrs": {},
+                      "inputs": [
+                        "/ReduceMean_output_0",
+                        "/ReduceMean_1_output_0"
+                      ],
+                      "outputs": [
+                        "/Sub_1_output_0"
+                      ],
+                      "consumers": [
+                        "/Div"
+                      ],
+                      "part": "logits path (shared with Grad-CAM)"
+                    },
+                    {
+                      "name": "/Sqrt",
+                      "op": "Sqrt",
+                      "attrs": {},
+                      "inputs": [
+                        "/Add_output_0"
+                      ],
+                      "outputs": [
+                        "/Sqrt_output_0"
+                      ],
+                      "consumers": [
+                        "/Div",
+                        "/Unsqueeze_1"
+                      ],
+                      "part": "logits path (shared with Grad-CAM)"
+                    }
+                  ]
+                },
+                {
+                  "name": "/Constant_1",
+                  "op": "Constant",
+                  "attrs": {
+                    "value": "dims: 1\ndata_type: 7\nraw_data: \"\\001\\000\\000\\000\\000\\000\\000\\000\"\n"
+                  },
+                  "inputs": [],
+                  "outputs": [
+                    "/Constant_1_output_0"
+                  ],
+                  "consumers": [
+                    "/Unsqueeze"
+                  ],
+                  "part": "Grad-CAM only",
+                  "producers": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "seconds": 2.5
+    },
+    "C_plain_logits_only": {
+      "mb": 55.8,
+      "fp16_initializers": 182,
+      "loads": true,
+      "finite": true,
+      "logits_maxabs_vs_fp32": 0.0036329030990600586,
+      "prob_maxabs_vs_fp32": 0.001509252329032984,
+      "top1_changes_vs_fp32": 0,
+      "median_s_1thread": 0.36960340950003,
+      "seconds": 21.4
+    },
+    "D_plain_repaired": {
+      "blocked_nodes": [
+        "/Cast"
+      ],
+      "rounds": [
+        {
+          "error": "[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/D_plain_repaired_try.onnx failed:Type Error: Type (tensor(float16)) of output arg (/Cast_output_0) of node (/Cast) does not match expected type (tensor(float)).",
+          "new_nodes": [
+            "/Cast"
+          ]
+        }
+      ],
+      "blocked_described": [
+        {
+          "name": "/Cast",
+          "op": "Cast",
+          "attrs": {
+            "to": "1"
+          },
+          "inputs": [
+            "/Mul_4_output_0"
+          ],
+          "outputs": [
+            "/Cast_output_0"
+          ],
+          "consumers": [
+            "/Div_2"
+          ],
+          "part": "Grad-CAM only",
+          "producers": [
+            {
+              "name": "/Mul_4",
+              "op": "Mul",
+              "attrs": {},
+              "inputs": [
+                "/Gather_output_0",
+                "/Gather_1_output_0"
+              ],
+              "outputs": [
+                "/Mul_4_output_0"
+              ],
+              "consumers": [
+                "/Cast"
+              ],
+              "part": "Grad-CAM only"
+            }
+          ]
+        }
+      ],
+      "mb": 55.8,
+      "fp16_initializers": 183,
+      "loads": true,
+      "finite": true,
+      "logits_maxabs_vs_fp32": 0.0036329030990600586,
+      "prob_maxabs_vs_fp32": 0.001509252329032984,
+      "top1_changes_vs_fp32": 0,
+      "gradcam_normalised_maxabs_vs_fp32": 0.0038560698473607824,
+      "median_s_1thread": 0.36965674750001654,
+      "seconds": 23.8
+    },
+    "E_layernorm_fp32_repaired": {
+      "blocked_nodes": [
+        "/Mul_2",
+        "/Sub_2",
+        "/Cast"
+      ],
+      "rounds": [
+        {
+          "error": "[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/E_layernorm_fp32_repaired_try.onnx failed:Type Error: Type parameter (T) of Optype (Mul) bound to different types (tensor(float) and tensor(float16) in node (/Mul_2).",
+          "new_nodes": [
+            "/Mul_2"
+          ]
+        },
+        {
+          "error": "[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/E_layernorm_fp32_repaired_try.onnx failed:Type Error: Type parameter (T) of Optype (Sub) bound to different types (tensor(float) and tensor(float16) in node (/Sub_2).",
+          "new_nodes": [
+            "/Sub_2"
+          ]
+        },
+        {
+          "error": "[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/E_layernorm_fp32_repaired_try.onnx failed:Type Error: Type (tensor(float16)) of output arg (/Cast_output_0) of node (/Cast) does not match expected type (tensor(float)).",
+          "new_nodes": [
+            "/Cast"
+          ]
+        }
+      ],
+      "blocked_described": [
+        {
+          "name": "/Mul_2",
+          "op": "Mul",
+          "attrs": {},
+          "inputs": [
+            "onnx::ReduceMean_635",
+            "/Unsqueeze_output_0"
+          ],
+          "outputs": [
+            "/Mul_2_output_0"
+          ],
+          "consumers": [
+            "/ReduceMean_5"
+          ],
+          "part": "Grad-CAM only",
+          "producers": [
+            {
+              "input": "onnx::ReduceMean_635"
+            },
+            {
+              "name": "/Unsqueeze",
+              "op": "Unsqueeze",
+              "attrs": {},
+              "inputs": [
+                "/Div_output_0",
+                "/Constant_1_output_0"
+              ],
+              "outputs": [
+                "/Unsqueeze_output_0"
+              ],
+              "consumers": [
+                "/Mul_2",
+                "/Mul_3"
+              ],
+              "part": "Grad-CAM only"
+            }
+          ]
+        },
+        {
+          "name": "/Sub_2",
+          "op": "Sub",
+          "attrs": {},
+          "inputs": [
+            "onnx::ReduceMean_635",
+            "/ReduceMean_4_output_0"
+          ],
+          "outputs": [
+            "/Sub_2_output_0"
+          ],
+          "consumers": [
+            "/Sub_3"
+          ],
+          "part": "Grad-CAM only",
+          "producers": [
+            {
+              "input": "onnx::ReduceMean_635"
+            },
+            {
+              "name": "/ReduceMean_4",
+              "op": "ReduceMean",
+              "attrs": {
+                "axes": "[2]",
+                "keepdims": "1"
+              },
+              "inputs": [
+                "onnx::ReduceMean_635"
+              ],
+              "outputs": [
+                "/ReduceMean_4_output_0"
+              ],
+              "consumers": [
+                "/Sub_2"
+              ],
+              "part": "Grad-CAM only"
+            }
+          ]
+        },
+        {
+          "name": "/Cast",
+          "op": "Cast",
+          "attrs": {
+            "to": "1"
+          },
+          "inputs": [
+            "/Mul_4_output_0"
+          ],
+          "outputs": [
+            "/Cast_output_0"
+          ],
+          "consumers": [
+            "/Div_2"
+          ],
+          "part": "Grad-CAM only",
+          "producers": [
+            {
+              "name": "/Mul_4",
+              "op": "Mul",
+              "attrs": {},
+              "inputs": [
+                "/Gather_output_0",
+                "/Gather_1_output_0"
+              ],
+              "outputs": [
+                "/Mul_4_output_0"
+              ],
+              "consumers": [
+                "/Cast"
+              ],
+              "part": "Grad-CAM only"
+            }
+          ]
+        }
+      ],
+      "mb": 55.8,
+      "fp16_initializers": 138,
+      "loads": true,
+      "finite": true,
+      "logits_maxabs_vs_fp32": 0.0029020309448242188,
+      "prob_maxabs_vs_fp32": 0.0010091829473001246,
+      "top1_changes_vs_fp32": 0,
+      "gradcam_normalised_maxabs_vs_fp32": 0.004565202046933503,
+      "median_s_1thread": 0.35897434849999854,
+      "seconds": 28.0
+    },
+    "F_ort_converter": {
+      "mb": 55.8,
+      "fp16_initializers": 183,
+      "loads": true,
+      "finite": true,
+      "logits_maxabs_vs_fp32": 0.003298640251159668,
+      "prob_maxabs_vs_fp32": 0.0014222570994022465,
+      "top1_changes_vs_fp32": 0,
+      "gradcam_normalised_maxabs_vs_fp32": 0.003908508608732472,
+      "median_s_1thread": 0.295536310999978,
+      "seconds": 18.8
+    },
+    "G_ort_converter_layernorm_fp32": {
+      "mb": 55.8,
+      "fp16_initializers": 139,
+      "loads": true,
+      "finite": true,
+      "logits_maxabs_vs_fp32": 0.002849578857421875,
+      "prob_maxabs_vs_fp32": 0.0010098543797297799,
+      "top1_changes_vs_fp32": 0,
+      "gradcam_normalised_maxabs_vs_fp32": 0.0040330171221704125,
+      "median_s_1thread": 0.3650448914999629,
+      "seconds": 20.8
+    },
+    "H_opset20_plain": {
+      "mb": 55.8,
+      "fp16_initializers": 183,
+      "loads": false,
+      "load_error": "[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/H_opset20_plain.onnx failed:Type Error: Type (tensor(float16)) of output arg (/Cast_output_0) of node (/Cast) does not match expected type (tensor(float)).",
+      "failing_nodes": [
+        {
+          "name": "/Cast",
+          "op": "Cast",
+          "attrs": {
+            "to": "1"
+          },
+          "inputs": [
+            "/Mul_4_output_0"
+          ],
+          "outputs": [
+            "/Cast_output_0"
+          ],
+          "consumers": [
+            "/Div_2"
+          ],
+          "part": "Grad-CAM only",
+          "producers": [
+            {
+              "name": "/Mul_4",
+              "op": "Mul",
+              "attrs": {},
+              "inputs": [
+                "/Gather_output_0",
+                "/Gather_1_output_0"
+              ],
+              "outputs": [
+                "/Mul_4_output_0"
+              ],
+              "consumers": [
+                "/Cast"
+              ],
+              "part": "Grad-CAM only",
+              "producers": [
+                {
+                  "name": "/Gather",
+                  "op": "Gather",
+                  "attrs": {
+                    "axis": "0"
+                  },
+                  "inputs": [
+                    "/Shape_output_0",
+                    "/Constant_3_output_0"
+                  ],
+                  "outputs": [
+                    "/Gather_output_0"
+                  ],
+                  "consumers": [
+                    "/Mul_4"
+                  ],
+                  "part": "Grad-CAM only",
+                  "producers": [
+                    {
+                      "name": "/Shape",
+                      "op": "Shape",
+                      "attrs": {},
+                      "inputs": [
+                        "/features/features.7/features.7.2/Add_output_0"
+                      ],
+                      "outputs": [
+                        "/Shape_output_0"
+                      ],
+                      "consumers": [
+                        "/Gather"
+                      ],
+                      "part": "Grad-CAM only"
+                    },
+                    {
+                      "name": "/Constant_3",
+                      "op": "Constant",
+                      "attrs": {
+                        "value": "data_type: 7\nraw_data: \"\\002\\000\\000\\000\\000\\000\\000\\000\"\n"
+                      },
+                      "inputs": [],
+                      "outputs": [
+                        "/Constant_3_output_0"
+                      ],
+                      "consumers": [
+                        "/Gather"
+                      ],
+                      "part": "Grad-CAM only"
+                    }
+                  ]
+                },
+                {
+                  "name": "/Gather_1",
+                  "op": "Gather",
+                  "attrs": {
+                    "axis": "0"
+                  },
+                  "inputs": [
+                    "/Shape_1_output_0",
+                    "/Constant_4_output_0"
+                  ],
+                  "outputs": [
+                    "/Gather_1_output_0"
+                  ],
+                  "consumers": [
+                    "/Mul_4"
+                  ],
+                  "part": "Grad-CAM only",
+                  "producers": [
+                    {
+                      "name": "/Shape_1",
+                      "op": "Shape",
+                      "attrs": {},
+                      "inputs": [
+                        "/features/features.7/features.7.2/Add_output_0"
+                      ],
+                      "outputs": [
+                        "/Shape_1_output_0"
+                      ],
+                      "consumers": [
+                        "/Gather_1"
+                      ],
+                      "part": "Grad-CAM only"
+                    },
+                    {
+                      "name": "/Constant_4",
+                      "op": "Constant",
+                      "attrs": {
+                        "value": "data_type: 7\nraw_data: \"\\003\\000\\000\\000\\000\\000\\000\\000\"\n"
+                      },
+                      "inputs": [],
+                      "outputs": [
+                        "/Constant_4_output_0"
+                      ],
+                      "consumers": [
+                        "/Gather_1"
+                      ],
+                      "part": "Grad-CAM only"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "seconds": 3.2
+    }
+  },
+  "source": {
+    "path": "/kaggle/input/notebooks/atik68/neuroscan-q-onnx-export-check/output/neuroscan_r30a_s123.onnx",
+    "sha256": "4937ab381ee3e7c29d5ab18ea761a8c19ddffb6488210fb6030511a8041502eb",
+    "opset": [
+      [
+        "",
+        17
+      ]
+    ],
+    "nodes": 376,
+    "op_counts": {
+      "Add": 74,
+      "Constant": 59,
+      "Mul": 59,
+      "Transpose": 44,
+      "MatMul": 36,
+      "LayerNormalization": 22,
+      "Conv": 22,
+      "Div": 21,
+      "Erf": 18,
+      "ReduceMean": 6,
+      "Sub": 4,
+      "Shape": 2,
+      "Unsqueeze": 2,
+      "Gather": 2,
+      "Gemm": 1,
+      "Sqrt": 1,
+      "Cast": 1,
+      "Einsum": 1,
+      "Relu": 1
+    },
+    "gradcam_only_nodes": 22
+  },
+  "fp32_median_s_1thread": 0.16396098850003682,
+  "newest_onnxruntime": {
+    "version": "1.32.0",
+    "/tmp/k3/A_plain.onnx": "[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/A_plain.onnx failed:Type Error: Type (tensor(float16)) of output arg (/Cast_output_0) of node (/Cast) does not match expected type (tensor(float)).",
+    "/tmp/k3/B_layernorm_fp32.onnx": "[ONNXRuntimeError] : 1 : FAIL : Load model from /tmp/k3/B_layernorm_fp32.onnx failed:Type Error: Type parameter (T) of Optype (Mul) bound to different types (tensor(float) and tensor(float16) in node (/Mul_2)."
+  }
+}

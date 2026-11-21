@@ -1,0 +1,20 @@
+[{"stream_name":"stdout","time":3.607638862,"data":"[ 0.01 min] read /kaggle/input/notebooks/atik68/neuroscan-p2-int8dyn-served/output/e2_per_row_probs.csv (10602 rows) and /kaggle/input/notebooks/atik68/neuroscan-p2-static-calibration/output/per_row_probs.csv (10602 rows) in 0.8 s\n"}
+,{"stream_name":"stdout","time":3.634282543,"data":"[ 0.01 min] INT8-static in both files, max |dp| = 0.00e+00\n"}
+,{"stream_name":"stdout","time":3.682347251,"data":"[ 0.01 min] pooled internal test: 8930 slices, 1787 clusters as published; Kaggle_CT 1016 slices, file numbers 10005-17033, folders {'Normal': 669, 'Ischemia': 170, 'Bleeding': 161, 'External_Test': 16}\n"}
+,{"stream_name":"stdout","time":3.682667007,"data":"[ 0.01 min] changed slices (all / in Kaggle_CT): {'INT8-dyn (served)': {'all': 26, 'Kaggle_CT': 7}, 'INT8-static (min-max)': {'all': 306, 'Kaggle_CT': 53}, 'static, percentile': {'all': 289, 'Kaggle_CT': 46}, 'static, entropy': {'all': 308, 'Kaggle_CT': 55}, 'static, first layers FP32': {'all': 140, 'Kaggle_CT': 17}}\n"}
+,{"stream_name":"stdout","time":7.311425344,"data":"[ 0.07 min] A_published_each_KaggleCT_slice_own_cluster: 8930 slices, 1787 clusters (1016 Kaggle_CT); INT8-dyn agreement 99.7088% [99.5929%, 99.8207%] (4 s)\n"}
+,{"stream_name":"stdout","time":10.592719248,"data":"[ 0.13 min] B_KaggleCT_excluded: 7914 slices, 771 clusters (0 Kaggle_CT); INT8-dyn agreement 99.7599% [99.6526%, 99.8580%] (3 s)\n"}
+,{"stream_name":"stdout","time":14.342315666,"data":"[ 0.19 min] C_KaggleCT_file_number_blocks_W20: 8930 slices, 1110 clusters (339 Kaggle_CT); INT8-dyn agreement 99.7088% [99.5968%, 99.8091%] (4 s)\n"}
+,{"stream_name":"stdout","time":18.012662733,"data":"[ 0.25 min] C_KaggleCT_file_number_blocks_W50: 8930 slices, 912 clusters (141 Kaggle_CT); INT8-dyn agreement 99.7088% [99.5995%, 99.8062%] (4 s)\n"}
+,{"stream_name":"stdout","time":21.699511322,"data":"[ 0.31 min] C_KaggleCT_file_number_blocks_W100: 8930 slices, 842 clusters (71 Kaggle_CT); INT8-dyn agreement 99.7088% [99.5892%, 99.8130%] (4 s)\n"}
+,{"stream_name":"stdout","time":25.324472538,"data":"[ 0.38 min] C_KaggleCT_file_number_blocks_W250: 8930 slices, 800 clusters (29 Kaggle_CT); INT8-dyn agreement 99.7088% [99.5924%, 99.8129%] (4 s)\n"}
+,{"stream_name":"stdout","time":28.927487995,"data":"[ 0.44 min] C_KaggleCT_file_number_blocks_W500: 8930 slices, 786 clusters (15 Kaggle_CT); INT8-dyn agreement 99.7088% [99.6025%, 99.8139%] (4 s)\n"}
+,{"stream_name":"stdout","time":32.697078144,"data":"[ 0.50 min] D_KaggleCT_one_cluster_per_class_folder: 8930 slices, 775 clusters (4 Kaggle_CT); INT8-dyn agreement 99.7088% [99.6013%, 99.8211%] (4 s)\n"}
+,{"stream_name":"stdout","time":32.719469601,"data":"[ 0.50 min] wrote cluster_sensitivity.json and cluster_sensitivity.csv (240 rows). Done.\n"}
+,{"stream_name":"stderr","time":35.84337966,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":35.843417246,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":36.190664277,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":36.190748053,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":38.175988772,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":39.489283467999996,"data":"[NbConvertApp] Writing 327977 bytes to __results__.html\n"}
+]

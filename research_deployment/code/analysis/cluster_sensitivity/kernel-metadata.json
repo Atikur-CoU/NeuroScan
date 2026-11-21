@@ -1,0 +1,17 @@
+{
+  "id": "atik68/neuroscan-p2-cluster-sensitivity",
+  "title": "NeuroScan P2 Cluster Sensitivity",
+  "code_file": "cluster_sens.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [],
+  "kernel_sources": [
+    "atik68/neuroscan-p2-int8dyn-served",
+    "atik68/neuroscan-p2-static-calibration"
+  ],
+  "competition_sources": [],
+  "model_sources": []
+}

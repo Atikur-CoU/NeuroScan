@@ -1,0 +1,16 @@
+{
+  "id": "atik68/neuroscan-p2-fp16-rootcause",
+  "title": "NeuroScan P2 FP16 Rootcause",
+  "code_file": "fp16_rootcause.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "kernel_sources": [
+    "atik68/neuroscan-q-onnx-export-check"
+  ],
+  "competition_sources": [],
+  "model_sources": []
+}
