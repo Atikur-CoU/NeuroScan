@@ -1,0 +1,99 @@
+[{"stream_name":"stdout","time":9.136318883,"data":"[   0.1 min] pip onnxruntime==1.20.1: exit 0 (8s) \n"}
+,{"stream_name":"stdout","time":14.842493339,"data":"[   0.2 min] inputs resolved, 9 model hashes match (3.6s); CT-ICH root /kaggle/input/datasets/vbookshelf/computed-tomography-ct-images/computed-tomography-images-for-intracranial-hemorrhage-detection-and-segmentation-1.0.0\n"}
+,{"stream_name":"stdout","time":61.777218743,"data":"[   1.0 min] rows: {'csv_rows': 2501, 'brain_files_missing': 0, 'label_type_inconsistent_rows': 0, 'slices': 2501, 'patients': 82, 'hemorrhagic_slices': 318, 'patients_with_hemorrhage': 36, 'slices_with_mask': 318, 'hemorrhagic_slices_without_mask': 0} (46.9s)\n"}
+,{"stream_name":"stdout","time":73.551636025,"data":"[   1.2 min] read 2501 slices (12s); first size (650, 650) mode L\n"}
+,{"stream_name":"stdout","time":97.209516653,"data":"[   1.6 min] inputs built for both arms (24s; 164 edge slices use themselves as a neighbour)\n"}
+,{"stream_name":"stdout","time":212.058412523,"data":"[   3.5 min]   [A FP32] 500/2501 (115s; projected 9.6 min)\n"}
+,{"stream_name":"stdout","time":324.800988022,"data":"[   5.4 min]   [A FP32] 1000/2501 (228s; projected 9.5 min)\n"}
+,{"stream_name":"stdout","time":437.678758797,"data":"[   7.3 min]   [A FP32] 1500/2501 (340s; projected 9.5 min)\n"}
+,{"stream_name":"stdout","time":550.710750735,"data":"[   9.2 min]   [A FP32] 2000/2501 (454s; projected 9.5 min)\n"}
+,{"stream_name":"stdout","time":663.05119526,"data":"[  11.0 min]   [A FP32] 2500/2501 (566s; projected 9.4 min)\n"}
+,{"stream_name":"stdout","time":663.07430142,"data":"[  11.0 min]   [A FP32] 2501/2501 (566s; projected 9.4 min)\n"}
+,{"stream_name":"stdout","time":737.605037648,"data":"[  12.3 min]   [A INT8-dynamic] 500/2501 (74s; projected 6.2 min)\n"}
+,{"stream_name":"stdout","time":811.743118649,"data":"[  13.5 min]   [A INT8-dynamic] 1000/2501 (149s; projected 6.2 min)\n"}
+,{"stream_name":"stdout","time":886.173432557,"data":"[  14.7 min]   [A INT8-dynamic] 1500/2501 (223s; projected 6.2 min)\n"}
+,{"stream_name":"stdout","time":960.922802392,"data":"[  16.0 min]   [A INT8-dynamic] 2000/2501 (298s; projected 6.2 min)\n"}
+,{"stream_name":"stdout","time":1035.204323688,"data":"[  17.2 min]   [A INT8-dynamic] 2500/2501 (372s; projected 6.2 min)\n"}
+,{"stream_name":"stdout","time":1035.266788329,"data":"[  17.2 min]   [A INT8-dynamic] 2501/2501 (372s; projected 6.2 min)\n"}
+,{"stream_name":"stdout","time":1111.495247717,"data":"[  18.5 min]   [A INT8-static (min-max)] 500/2501 (76s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":1186.934164834,"data":"[  19.8 min]   [A INT8-static (min-max)] 1000/2501 (152s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":1261.829832746,"data":"[  21.0 min]   [A INT8-static (min-max)] 1500/2501 (227s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":1336.845644567,"data":"[  22.3 min]   [A INT8-static (min-max)] 2000/2501 (302s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":1411.505600648,"data":"[  23.5 min]   [A INT8-static (min-max)] 2500/2501 (376s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":1411.576222026,"data":"[  23.5 min]   [A INT8-static (min-max)] 2501/2501 (376s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":1487.931138471,"data":"[  24.8 min]   [A INT8-static, percentile] 500/2501 (76s; projected 6.4 min)\n"}
+,{"stream_name":"stdout","time":1563.431486549,"data":"[  26.0 min]   [A INT8-static, percentile] 1000/2501 (152s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":1638.774548721,"data":"[  27.3 min]   [A INT8-static, percentile] 1500/2501 (227s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":1713.86379858,"data":"[  28.5 min]   [A INT8-static, percentile] 2000/2501 (302s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":1788.454527273,"data":"[  29.8 min]   [A INT8-static, percentile] 2500/2501 (377s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":1788.599134959,"data":"[  29.8 min]   [A INT8-static, percentile] 2501/2501 (377s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":1864.19682988,"data":"[  31.0 min]   [A INT8-static, entropy] 500/2501 (76s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":1939.351171147,"data":"[  32.3 min]   [A INT8-static, entropy] 1000/2501 (151s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":2014.444241025,"data":"[  33.6 min]   [A INT8-static, entropy] 1500/2501 (226s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":2089.196468956,"data":"[  34.8 min]   [A INT8-static, entropy] 2000/2501 (301s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":2164.157813909,"data":"[  36.0 min]   [A INT8-static, entropy] 2500/2501 (375s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":2164.173050209,"data":"[  36.0 min]   [A INT8-static, entropy] 2501/2501 (376s; projected 6.3 min)\n"}
+,{"stream_name":"stdout","time":2243.338984064,"data":"[  37.4 min]   [A INT8-static, first layers in FP32] 500/2501 (79s; projected 6.6 min)\n"}
+,{"stream_name":"stdout","time":2320.961715334,"data":"[  38.7 min]   [A INT8-static, first layers in FP32] 1000/2501 (157s; projected 6.5 min)\n"}
+,{"stream_name":"stdout","time":2398.79120932,"data":"[  40.0 min]   [A INT8-static, first layers in FP32] 1500/2501 (235s; projected 6.5 min)\n"}
+,{"stream_name":"stdout","time":2476.582489337,"data":"[  41.3 min]   [A INT8-static, first layers in FP32] 2000/2501 (312s; projected 6.5 min)\n"}
+,{"stream_name":"stdout","time":2554.127388573,"data":"[  42.5 min]   [A INT8-static, first layers in FP32] 2500/2501 (390s; projected 6.5 min)\n"}
+,{"stream_name":"stdout","time":2554.235763609,"data":"[  42.5 min]   [A INT8-static, first layers in FP32] 2501/2501 (390s; projected 6.5 min)\n"}
+,{"stream_name":"stdout","time":2633.587003742,"data":"[  43.9 min]   [A M1: lowest 10% in FP32] 500/2501 (79s; projected 6.6 min)\n"}
+,{"stream_name":"stdout","time":2711.62299122,"data":"[  45.2 min]   [A M1: lowest 10% in FP32] 1000/2501 (157s; projected 6.6 min)\n"}
+,{"stream_name":"stdout","time":2789.726300827,"data":"[  46.5 min]   [A M1: lowest 10% in FP32] 1500/2501 (235s; projected 6.5 min)\n"}
+,{"stream_name":"stdout","time":2867.615750257,"data":"[  47.8 min]   [A M1: lowest 10% in FP32] 2000/2501 (313s; projected 6.5 min)\n"}
+,{"stream_name":"stdout","time":2945.671486844,"data":"[  49.1 min]   [A M1: lowest 10% in FP32] 2500/2501 (391s; projected 6.5 min)\n"}
+,{"stream_name":"stdout","time":2945.837185107,"data":"[  49.1 min]   [A M1: lowest 10% in FP32] 2501/2501 (392s; projected 6.5 min)\n"}
+,{"stream_name":"stdout","time":3029.291734506,"data":"[  50.5 min]   [A M2: lowest 25% in FP32] 500/2501 (83s; projected 7.0 min)\n"}
+,{"stream_name":"stdout","time":3111.009169328,"data":"[  51.8 min]   [A M2: lowest 25% in FP32] 1000/2501 (165s; projected 6.9 min)\n"}
+,{"stream_name":"stdout","time":3193.537335281,"data":"[  53.2 min]   [A M2: lowest 25% in FP32] 1500/2501 (248s; projected 6.9 min)\n"}
+,{"stream_name":"stdout","time":3275.419706147,"data":"[  54.6 min]   [A M2: lowest 25% in FP32] 2000/2501 (330s; projected 6.9 min)\n"}
+,{"stream_name":"stdout","time":3357.610677372,"data":"[  55.9 min]   [A M2: lowest 25% in FP32] 2500/2501 (412s; projected 6.9 min)\n"}
+,{"stream_name":"stdout","time":3357.677759539,"data":"[  55.9 min]   [A M2: lowest 25% in FP32] 2501/2501 (412s; projected 6.9 min)\n"}
+,{"stream_name":"stdout","time":3438.701819037,"data":"[  57.3 min]   [A M3: M1 and strided convolutions] 500/2501 (81s; projected 6.7 min)\n"}
+,{"stream_name":"stdout","time":3518.577582597,"data":"[  58.6 min]   [A M3: M1 and strided convolutions] 1000/2501 (161s; projected 6.7 min)\n"}
+,{"stream_name":"stdout","time":3597.83469526,"data":"[  59.9 min]   [A M3: M1 and strided convolutions] 1500/2501 (240s; projected 6.7 min)\n"}
+,{"stream_name":"stdout","time":3677.358190463,"data":"[  61.3 min]   [A M3: M1 and strided convolutions] 2000/2501 (320s; projected 6.7 min)\n"}
+,{"stream_name":"stdout","time":3757.408505406,"data":"[  62.6 min]   [A M3: M1 and strided convolutions] 2500/2501 (400s; projected 6.7 min)\n"}
+,{"stream_name":"stdout","time":3757.708704405,"data":"[  62.6 min]   [A M3: M1 and strided convolutions] 2501/2501 (400s; projected 6.7 min)\n"}
+,{"stream_name":"stdout","time":3873.212253618,"data":"[  64.5 min]   [B FP32] 500/2501 (115s; projected 9.6 min)\n"}
+,{"stream_name":"stdout","time":3986.865142452,"data":"[  66.4 min]   [B FP32] 1000/2501 (229s; projected 9.5 min)\n"}
+,{"stream_name":"stdout","time":4100.241257696,"data":"[  68.3 min]   [B FP32] 1500/2501 (342s; projected 9.5 min)\n"}
+,{"stream_name":"stdout","time":4213.08012162,"data":"[  70.2 min]   [B FP32] 2000/2501 (455s; projected 9.5 min)\n"}
+,{"stream_name":"stdout","time":4325.296902318,"data":"[  72.1 min]   [B FP32] 2500/2501 (568s; projected 9.5 min)\n"}
+,{"stream_name":"stdout","time":4325.302049067,"data":"[  72.1 min]   [B FP32] 2501/2501 (568s; projected 9.5 min)\n"}
+,{"stream_name":"stdout","time":4400.047988625,"data":"[  73.3 min]   [B INT8-dynamic] 500/2501 (75s; projected 6.2 min)\n"}
+,{"stream_name":"stdout","time":4474.152045276,"data":"[  74.5 min]   [B INT8-dynamic] 1000/2501 (149s; projected 6.2 min)\n"}
+,{"stream_name":"stdout","time":4548.555678176,"data":"[  75.8 min]   [B INT8-dynamic] 1500/2501 (223s; projected 6.2 min)\n"}
+,{"stream_name":"stdout","time":4623.293692443,"data":"[  77.0 min]   [B INT8-dynamic] 2000/2501 (298s; projected 6.2 min)\n"}
+,{"stream_name":"stdout","time":4698.157379506,"data":"[  78.3 min]   [B INT8-dynamic] 2500/2501 (373s; projected 6.2 min)\n"}
+,{"stream_name":"stdout","time":4698.158591196,"data":"[  78.3 min]   [B INT8-dynamic] 2501/2501 (373s; projected 6.2 min)\n"}
+,{"stream_name":"stdout","time":4698.837695651,"data":"[  78.3 min] per-slice outputs saved\n"}
+,{"stream_name":"stdout","time":4716.911797481,"data":"[  78.6 min] 318 masks read, 0 empty after resizing (18.1s)\n"}
+,{"stream_name":"stdout","time":4719.321499661,"data":"[  78.6 min] A INT8-dynamic: agreement 0.9912 [0.9872305190098654, 0.9948228827777754] changed 22 patients changed 18 call agreement 1.000 acc 0.6102-\u003e0.6186\n"}
+,{"stream_name":"stdout","time":4721.707781753,"data":"[  78.7 min] A INT8-static (min-max): agreement 0.9436 [0.9332260214626423, 0.9529184516022553] changed 141 patients changed 69 call agreement 0.963 acc 0.6102-\u003e0.6257\n"}
+,{"stream_name":"stdout","time":4724.19570064,"data":"[  78.7 min] A INT8-static, percentile: agreement 0.9476 [0.9371191148421786, 0.9572957319738635] changed 131 patients changed 67 call agreement 0.963 acc 0.6102-\u003e0.6269\n"}
+,{"stream_name":"stdout","time":4726.580530382,"data":"[  78.8 min] A INT8-static, entropy: agreement 0.9460 [0.9350441733477852, 0.9556095721517688] changed 135 patients changed 67 call agreement 0.963 acc 0.6102-\u003e0.6253\n"}
+,{"stream_name":"stdout","time":4728.993441462,"data":"[  78.8 min] A INT8-static, first layers in FP32: agreement 0.9572 [0.9489463002245738, 0.9649402390438248] changed 107 patients changed 62 call agreement 0.988 acc 0.6102-\u003e0.6377\n"}
+,{"stream_name":"stdout","time":4731.383619374,"data":"[  78.8 min] A M1: lowest 10% in FP32: agreement 0.9328 [0.9210624348713882, 0.9436067209844191] changed 168 patients changed 70 call agreement 0.963 acc 0.6102-\u003e0.6417\n"}
+,{"stream_name":"stdout","time":4733.838885553,"data":"[  78.9 min] A M2: lowest 25% in FP32: agreement 0.9596 [0.9496220820736069, 0.968617002209662] changed 101 patients changed 55 call agreement 0.963 acc 0.6102-\u003e0.6114\n"}
+,{"stream_name":"stdout","time":4736.250019273,"data":"[  78.9 min] A M3: M1 and strided convolutions: agreement 0.9488 [0.9396717903344125, 0.9575063788440575] changed 128 patients changed 66 call agreement 0.988 acc 0.6102-\u003e0.6485\n"}
+,{"stream_name":"stdout","time":4738.646303874,"data":"[  79.0 min] B INT8-dynamic: {\"agreement\": 0.9948020791683326, \"changed_slices\": 13}\n"}
+,{"stream_name":"stdout","time":4738.860830956,"data":"[  79.0 min] masks FP32: pointing hit 0.060 [0.019069916365105424, 0.10418640670553926] (chance 0.018); region in mask 0.031; mask covered 0.131\n"}
+,{"stream_name":"stdout","time":4739.073764448,"data":"[  79.0 min] masks INT8-dynamic: pointing hit 0.066 [0.023737116569803172, 0.1141366606222835] (chance 0.018); region in mask 0.031; mask covered 0.144\n"}
+,{"stream_name":"stdout","time":4739.28974721,"data":"[  79.0 min] masks INT8-static (min-max): pointing hit 0.038 [0.012047288252107529, 0.06706029529606326] (chance 0.018); region in mask 0.000; mask covered 0.000\n"}
+,{"stream_name":"stdout","time":4739.500784983,"data":"[  79.0 min] masks INT8-static, percentile: pointing hit 0.047 [0.012499026479750779, 0.08791428571428571] (chance 0.018); region in mask 0.000; mask covered 0.000\n"}
+,{"stream_name":"stdout","time":4739.716464844,"data":"[  79.0 min] masks INT8-static, entropy: pointing hit 0.038 [0.0060781090735452115, 0.07767519583824815] (chance 0.018); region in mask 0.000; mask covered 0.000\n"}
+,{"stream_name":"stdout","time":4739.939579216,"data":"[  79.0 min] masks INT8-static, first layers in FP32: pointing hit 0.053 [0.01869071697586832, 0.09172855242739962] (chance 0.018); region in mask 0.008; mask covered 0.022\n"}
+,{"stream_name":"stdout","time":4740.159455818,"data":"[  79.0 min] masks M1: lowest 10% in FP32: pointing hit 0.031 [0.006896551724137931, 0.059705961211904524] (chance 0.018); region in mask 0.000; mask covered 0.000\n"}
+,{"stream_name":"stdout","time":4740.3730824,"data":"[  79.0 min] masks M2: lowest 25% in FP32: pointing hit 0.041 [0.011318634725461097, 0.08099898964384944] (chance 0.018); region in mask 0.000; mask covered 0.000\n"}
+,{"stream_name":"stdout","time":4740.585599332,"data":"[  79.0 min] masks M3: M1 and strided convolutions: pointing hit 0.053 [0.021493267461009397, 0.0911957960940086] (chance 0.018); region in mask 0.007; mask covered 0.044\n"}
+,{"stream_name":"stdout","time":4740.600603222,"data":"[  79.0 min] Done.\n"}
+,{"stream_name":"stderr","time":4743.509171844,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":4743.509209734,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":4743.910664249,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":4743.910699339,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":4745.143271033,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":4746.557546911,"data":"[NbConvertApp] Writing 439568 bytes to __results__.html\n"}
+]

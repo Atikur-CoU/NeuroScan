@@ -1,0 +1,46 @@
+[{"stream_name":"stdout","time":5.829231897,"data":"[   0.1 min] pip nibabel gdown: exit 0 (5s) \n"}
+,{"stream_name":"stdout","time":11.433422026,"data":"[   0.2 min] inputs resolved; 9 saved map files verified (1.8s)\n"}
+,{"stream_name":"stdout","time":11.649036479,"data":"[   0.2 min] lesion rows: {'AISD': 569, 'CPAISD_v2': 299, 'ISLES2022_dwi_adc': 635} (0.2s)\n"}
+,{"stream_name":"stdout","time":19.675168995,"data":"[   0.3 min] AISD masks: 10972 files (8s)\n"}
+,{"stream_name":"stdout","time":21.687327598,"data":"[   0.3 min] scan /kaggle/input/datasets/atik68/neuroscan-isles2022: 0.1s, 1 dirs, found {derivatives: ['/kaggle/input/datasets/atik68/neuroscan-isles2022/derivatives']}\n"}
+,{"stream_name":"stdout","time":109.062194734,"data":"[   1.8 min] masks and images read (89s); non-empty masks by dataset: {'AISD': [569, 569], 'CPAISD_v2': [299, 299], 'ISLES2022_dwi_adc': [635, 635]}\n"}
+,{"stream_name":"stdout","time":109.622219528,"data":"[   1.8 min] orientation (identity): {'AISD': {'inside_head': 0.9999218989071699, 'contrast_z': -0.6559993028640747}, 'CPAISD_v2': {'inside_head': 0.9999608525521273, 'contrast_z': -0.30662789940834045}, 'ISLES2022_dwi_adc': {'inside_head': 0.9999793691025823, 'contrast_z': 1.4800798892974854}}\n"}
+,{"stream_name":"stdout","time":138.779882567,"data":"[   2.3 min] scored 1503 slices x 9 copies (29s)\n"}
+,{"stream_name":"stdout","time":138.929742189,"data":"[   2.3 min] AISD | FP32: hit 0.132 (chance 0.033) tol16 0.471 energy 0.079 region in mask 0.118 covered 0.317\n"}
+,{"stream_name":"stdout","time":139.236580165,"data":"[   2.3 min] AISD | INT8-dynamic: hit 0.134 (chance 0.033) tol16 0.475 energy 0.078 region in mask 0.117 covered 0.315 | hit changed 1\n"}
+,{"stream_name":"stdout","time":139.536435337,"data":"[   2.3 min] AISD | INT8-static (min-max): hit 0.146 (chance 0.033) tol16 0.508 energy 0.082 region in mask 0.123 covered 0.339 | hit changed 20\n"}
+,{"stream_name":"stdout","time":139.853232306,"data":"[   2.3 min] AISD | INT8-static, percentile: hit 0.127 (chance 0.033) tol16 0.478 energy 0.082 region in mask 0.123 covered 0.332 | hit changed 19\n"}
+,{"stream_name":"stdout","time":140.145881853,"data":"[   2.3 min] AISD | INT8-static, entropy: hit 0.137 (chance 0.033) tol16 0.492 energy 0.081 region in mask 0.123 covered 0.327 | hit changed 21\n"}
+,{"stream_name":"stdout","time":140.451163123,"data":"[   2.3 min] AISD | INT8-static, first layers in FP32: hit 0.132 (chance 0.033) tol16 0.476 energy 0.080 region in mask 0.117 covered 0.320 | hit changed 12\n"}
+,{"stream_name":"stdout","time":140.757222366,"data":"[   2.3 min] AISD | M1: lowest 10% in FP32: hit 0.144 (chance 0.033) tol16 0.499 energy 0.082 region in mask 0.124 covered 0.337 | hit changed 19\n"}
+,{"stream_name":"stdout","time":141.051680774,"data":"[   2.3 min] AISD | M2: lowest 25% in FP32: hit 0.141 (chance 0.033) tol16 0.508 energy 0.082 region in mask 0.127 covered 0.341 | hit changed 21\n"}
+,{"stream_name":"stdout","time":141.349998552,"data":"[   2.3 min] AISD | M3: M1 and strided convolutions: hit 0.134 (chance 0.033) tol16 0.475 energy 0.080 region in mask 0.118 covered 0.320 | hit changed 11\n"}
+,{"stream_name":"stdout","time":141.49062485,"data":"[   2.3 min] CPAISD_v2 | FP32: hit 0.104 (chance 0.168) tol16 0.375 energy 0.150 region in mask 0.127 covered 0.055\n"}
+,{"stream_name":"stdout","time":141.768999533,"data":"[   2.3 min] CPAISD_v2 | INT8-dynamic: hit 0.104 (chance 0.168) tol16 0.371 energy 0.149 region in mask 0.126 covered 0.054 | hit changed 4\n"}
+,{"stream_name":"stdout","time":142.040752164,"data":"[   2.4 min] CPAISD_v2 | INT8-static (min-max): hit 0.167 (chance 0.168) tol16 0.435 energy 0.166 region in mask 0.173 covered 0.072 | hit changed 27\n"}
+,{"stream_name":"stdout","time":142.322759853,"data":"[   2.4 min] CPAISD_v2 | INT8-static, percentile: hit 0.154 (chance 0.168) tol16 0.435 energy 0.166 region in mask 0.172 covered 0.072 | hit changed 19\n"}
+,{"stream_name":"stdout","time":142.672922064,"data":"[   2.4 min] CPAISD_v2 | INT8-static, entropy: hit 0.171 (chance 0.168) tol16 0.438 energy 0.164 region in mask 0.167 covered 0.069 | hit changed 24\n"}
+,{"stream_name":"stdout","time":143.033482413,"data":"[   2.4 min] CPAISD_v2 | INT8-static, first layers in FP32: hit 0.110 (chance 0.168) tol16 0.391 energy 0.146 region in mask 0.127 covered 0.056 | hit changed 16\n"}
+,{"stream_name":"stdout","time":143.347337609,"data":"[   2.4 min] CPAISD_v2 | M1: lowest 10% in FP32: hit 0.161 (chance 0.168) tol16 0.438 energy 0.165 region in mask 0.171 covered 0.072 | hit changed 25\n"}
+,{"stream_name":"stdout","time":143.645910175,"data":"[   2.4 min] CPAISD_v2 | M2: lowest 25% in FP32: hit 0.164 (chance 0.168) tol16 0.428 energy 0.167 region in mask 0.173 covered 0.071 | hit changed 22\n"}
+,{"stream_name":"stdout","time":143.934128781,"data":"[   2.4 min] CPAISD_v2 | M3: M1 and strided convolutions: hit 0.114 (chance 0.168) tol16 0.388 energy 0.145 region in mask 0.128 covered 0.055 | hit changed 17\n"}
+,{"stream_name":"stdout","time":144.088203136,"data":"[   2.4 min] ISLES2022_dwi_adc | FP32: hit 0.069 (chance 0.043) tol16 0.523 energy 0.063 region in mask 0.074 covered 0.508\n"}
+,{"stream_name":"stdout","time":144.390855896,"data":"[   2.4 min] ISLES2022_dwi_adc | INT8-dynamic: hit 0.063 (chance 0.043) tol16 0.539 energy 0.063 region in mask 0.072 covered 0.513 | hit changed 6\n"}
+,{"stream_name":"stdout","time":144.678597723,"data":"[   2.4 min] ISLES2022_dwi_adc | INT8-static (min-max): hit 0.072 (chance 0.043) tol16 0.539 energy 0.066 region in mask 0.078 covered 0.528 | hit changed 12\n"}
+,{"stream_name":"stdout","time":144.961154189,"data":"[   2.4 min] ISLES2022_dwi_adc | INT8-static, percentile: hit 0.082 (chance 0.043) tol16 0.553 energy 0.065 region in mask 0.077 covered 0.514 | hit changed 14\n"}
+,{"stream_name":"stdout","time":145.250503901,"data":"[   2.4 min] ISLES2022_dwi_adc | INT8-static, entropy: hit 0.076 (chance 0.043) tol16 0.546 energy 0.064 region in mask 0.076 covered 0.511 | hit changed 12\n"}
+,{"stream_name":"stdout","time":145.536119337,"data":"[   2.4 min] ISLES2022_dwi_adc | INT8-static, first layers in FP32: hit 0.071 (chance 0.043) tol16 0.553 energy 0.065 region in mask 0.076 covered 0.527 | hit changed 7\n"}
+,{"stream_name":"stdout","time":145.821865473,"data":"[   2.4 min] ISLES2022_dwi_adc | M1: lowest 10% in FP32: hit 0.069 (chance 0.043) tol16 0.535 energy 0.066 region in mask 0.078 covered 0.529 | hit changed 12\n"}
+,{"stream_name":"stdout","time":146.117419609,"data":"[   2.4 min] ISLES2022_dwi_adc | M2: lowest 25% in FP32: hit 0.074 (chance 0.043) tol16 0.520 energy 0.064 region in mask 0.075 covered 0.516 | hit changed 7\n"}
+,{"stream_name":"stdout","time":146.404353898,"data":"[   2.4 min] ISLES2022_dwi_adc | M3: M1 and strided convolutions: hit 0.076 (chance 0.043) tol16 0.554 energy 0.065 region in mask 0.077 covered 0.523 | hit changed 8\n"}
+,{"stream_name":"stdout","time":146.406280056,"data":"[   2.4 min] check AISD: point_hit 0.1318 vs 0.1318; point_hit_tol16 0.4710 vs 0.4710; point_chance 0.0329 vs 0.0329; energy_in_mask 0.0787 vs 0.0787; region_px 1956.3726 vs 1956.3700; region_in_mask 0.1176 vs 0.1176; mask_covered 0.3168 vs 0.3168\n"}
+,{"stream_name":"stdout","time":146.406329147,"data":"[   2.4 min] check CPAISD_v2: point_hit 0.1037 vs 0.1037; point_hit_tol16 0.3746 vs 0.3746; point_chance 0.1685 vs 0.1685; energy_in_mask 0.1496 vs 0.1496; region_px 1916.8462 vs 1916.8300; region_in_mask 0.1272 vs 0.1272; mask_covered 0.0549 vs 0.0549\n"}
+,{"stream_name":"stdout","time":146.406336166,"data":"[   2.4 min] check ISLES2022_dwi_adc: point_hit 0.0693 vs 0.0693; point_hit_tol16 0.5228 vs 0.5228; point_chance 0.0425 vs 0.0425; energy_in_mask 0.0633 vs 0.0633; region_px 2139.0409 vs 2139.0400; region_in_mask 0.0740 vs 0.0740; mask_covered 0.5076 vs 0.5076\n"}
+,{"stream_name":"stdout","time":146.40811364,"data":"[   2.4 min] Done.\n"}
+,{"stream_name":"stderr","time":149.423673931,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":149.423719277,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":149.797059757,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":149.79710173,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":150.943698157,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":152.220425243,"data":"[NbConvertApp] Writing 387026 bytes to __results__.html\n"}
+]

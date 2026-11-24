@@ -1,0 +1,1187 @@
+{
+  "note": "NeuroScan paper 2 -- K7 external CT (JTCSST second revision, comment 2). CPU only; no training.",
+  "onnxruntime": "1.20.1",
+  "models_sha256_checked": {
+    "FP32": "4937ab381ee3e7c29d5ab18ea761a8c19ddffb6488210fb6030511a8041502eb",
+    "INT8-dynamic": "ad2f6e0ee22b28ec98295b742075a2168e480801073a8df3f1222df37c74d99f",
+    "INT8-static (min-max)": "35d8a4007b813f8fb6eca6c10078823fc5b69a654314c36d76c3412a38b02a46",
+    "INT8-static, percentile": "b47f3fed74b1f0e2e315e37a205741012dbc55ac83bedab147b7b7e7217d5603",
+    "INT8-static, entropy": "3aba6da5fb87aac111123a0a68c2d8d23a345dc0fc8500b7268409316d75bd7a",
+    "INT8-static, first layers in FP32": "6b00850a2eb051793337a444c301ab99fe7f460aebc7ccb52969993bc1562913",
+    "M1: lowest 10% in FP32": "4c76bbaa3ccce42f2965d0ec7415f0f96b0b150a6fe881e4e9ab9bcb08d6b7a5",
+    "M2: lowest 25% in FP32": "11ab9327e4d24f88954520df59471f52b648f7cc8c439cf4fe871823ea5a6b17",
+    "M3: M1 and strided convolutions": "5fbce2e55932275e60ae0c7b8bdbcbbc696bc313ad8b3849996ef79f39fffa56"
+  },
+  "inference_py_sha256": "ad9a4f614121aa32cf2037deb2374d5f5fd408bf321dce59034d21819cbfa526",
+  "rows": {
+    "csv_rows": 2501,
+    "brain_files_missing": 0,
+    "label_type_inconsistent_rows": 0,
+    "slices": 2501,
+    "patients": 82,
+    "hemorrhagic_slices": 318,
+    "patients_with_hemorrhage": 36,
+    "slices_with_mask": 318,
+    "hemorrhagic_slices_without_mask": 0,
+    "edge_slices_self_as_neighbour": 164
+  },
+  "minutes": {
+    "A FP32": 9.4,
+    "A INT8-dynamic": 6.2,
+    "A INT8-static (min-max)": 6.3,
+    "A INT8-static, percentile": 6.3,
+    "A INT8-static, entropy": 6.3,
+    "A INT8-static, first layers in FP32": 6.5,
+    "A M1: lowest 10% in FP32": 6.5,
+    "A M2: lowest 25% in FP32": 6.9,
+    "A M3: M1 and strided convolutions": 6.7,
+    "B FP32": 9.5,
+    "B INT8-dynamic": 6.2
+  },
+  "A_prepared": {
+    "INT8-dynamic": {
+      "slices": 2501,
+      "patients": 82,
+      "agreement": 0.991203518592563,
+      "agreement_ci95": [
+        0.9872305190098654,
+        0.9948228827777754
+      ],
+      "changed_slices": 22,
+      "changed_table_rows_fp32_cols_copy": [
+        [
+          1566,
+          1,
+          1
+        ],
+        [
+          18,
+          869,
+          2
+        ],
+        [
+          0,
+          0,
+          44
+        ]
+      ],
+      "changed_towards_normal": 18,
+      "changed_away_from_normal": 2,
+      "max_abs_prob_diff": 0.09924081343651714,
+      "fp32": {
+        "accuracy": 0.61015593762495,
+        "hemorrhagic_recall": 0.1289308176100629,
+        "normal_recall": 0.6802565277141548,
+        "hemorrhagic_auroc": 0.8309089389997609,
+        "ischemic_predictions": 889
+      },
+      "copy": {
+        "accuracy": 0.6185525789684126,
+        "hemorrhagic_recall": 0.13836477987421383,
+        "normal_recall": 0.6885020613834173,
+        "hemorrhagic_auroc": 0.8338403962004858,
+        "ischemic_predictions": 870
+      },
+      "differences_copy_minus_fp32": {
+        "d_accuracy": {
+          "value": 0.008396641343462616,
+          "ci95": [
+            0.004799808306709265,
+            0.01226763229488899
+          ]
+        },
+        "d_hemorrhagic_recall": {
+          "value": 0.009433962264150943,
+          "ci95": [
+            0.0,
+            0.02540293040293037
+          ]
+        },
+        "d_normal_recall": {
+          "value": 0.008245533669262483,
+          "ci95": [
+            0.004545196866625438,
+            0.0124890153369473
+          ]
+        },
+        "d_patients_detected": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        },
+        "d_nohem_unflagged": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "patient_level": {
+        "patients_with_changed_slice": 18,
+        "share_changed_ci95": [
+          0.13414634146341464,
+          0.3048780487804878
+        ],
+        "call_agreement": 1.0,
+        "call_agreement_ci95": [
+          1.0,
+          1.0
+        ],
+        "hemorrhage_patients": 36,
+        "detected_fp32": 13,
+        "detected_copy": 13,
+        "no_hemorrhage_patients": 46,
+        "unflagged_fp32": 0,
+        "unflagged_copy": 0
+      },
+      "maps_vs_fp32": {
+        "pearson_r": {
+          "median": 0.9989491104781884,
+          "q1": 0.9977879557501015,
+          "q3": 0.9995001069972713
+        },
+        "same_peak_cell": 0.9476209516193522,
+        "display_iou": {
+          "median": 0.9538855678906917,
+          "q1": 0.9085394307046197,
+          "q3": 0.9767264402899657
+        }
+      }
+    },
+    "INT8-static (min-max)": {
+      "slices": 2501,
+      "patients": 82,
+      "agreement": 0.9436225509796081,
+      "agreement_ci95": [
+        0.9332260214626423,
+        0.9529184516022553
+      ],
+      "changed_slices": 141,
+      "changed_table_rows_fp32_cols_copy": [
+        [
+          1525,
+          43,
+          0
+        ],
+        [
+          86,
+          802,
+          1
+        ],
+        [
+          2,
+          9,
+          33
+        ]
+      ],
+      "changed_towards_normal": 88,
+      "changed_away_from_normal": 43,
+      "max_abs_prob_diff": 0.7419078838776194,
+      "fp32": {
+        "accuracy": 0.61015593762495,
+        "hemorrhagic_recall": 0.1289308176100629,
+        "normal_recall": 0.6802565277141548,
+        "hemorrhagic_auroc": 0.8309089389997609,
+        "ischemic_predictions": 889
+      },
+      "copy": {
+        "accuracy": 0.625749700119952,
+        "hemorrhagic_recall": 0.10062893081761007,
+        "normal_recall": 0.7022446174988548,
+        "hemorrhagic_auroc": 0.8017773129701495,
+        "ischemic_predictions": 854
+      },
+      "differences_copy_minus_fp32": {
+        "d_accuracy": {
+          "value": 0.015593762495002,
+          "ci95": [
+            0.005539874785192726,
+            0.02562151576768718
+          ]
+        },
+        "d_hemorrhagic_recall": {
+          "value": -0.02830188679245283,
+          "ci95": [
+            -0.07142857142857142,
+            0.0030504425955474417
+          ]
+        },
+        "d_normal_recall": {
+          "value": 0.021988089784699953,
+          "ci95": [
+            0.012052034468645422,
+            0.032303074482361416
+          ]
+        },
+        "d_patients_detected": {
+          "value": -0.08333333333333333,
+          "ci95": [
+            -0.1875,
+            0.0
+          ]
+        },
+        "d_nohem_unflagged": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "patient_level": {
+        "patients_with_changed_slice": 69,
+        "share_changed_ci95": [
+          0.7560975609756098,
+          0.9146341463414634
+        ],
+        "call_agreement": 0.9634146341463414,
+        "call_agreement_ci95": [
+          0.9146341463414634,
+          1.0
+        ],
+        "hemorrhage_patients": 36,
+        "detected_fp32": 13,
+        "detected_copy": 10,
+        "no_hemorrhage_patients": 46,
+        "unflagged_fp32": 0,
+        "unflagged_copy": 0
+      },
+      "maps_vs_fp32": {
+        "pearson_r": {
+          "median": 0.9142061853300822,
+          "q1": 0.8390588368778494,
+          "q3": 0.9605165209579098
+        },
+        "same_peak_cell": 0.6053578568572571,
+        "display_iou": {
+          "median": 0.5822174611676486,
+          "q1": 0.3807461692205197,
+          "q3": 0.7733940313606474
+        }
+      }
+    },
+    "INT8-static, percentile": {
+      "slices": 2501,
+      "patients": 82,
+      "agreement": 0.9476209516193522,
+      "agreement_ci95": [
+        0.9371191148421786,
+        0.9572957319738635
+      ],
+      "changed_slices": 131,
+      "changed_table_rows_fp32_cols_copy": [
+        [
+          1533,
+          35,
+          0
+        ],
+        [
+          84,
+          804,
+          1
+        ],
+        [
+          3,
+          8,
+          33
+        ]
+      ],
+      "changed_towards_normal": 87,
+      "changed_away_from_normal": 35,
+      "max_abs_prob_diff": 0.7453192279956102,
+      "fp32": {
+        "accuracy": 0.61015593762495,
+        "hemorrhagic_recall": 0.1289308176100629,
+        "normal_recall": 0.6802565277141548,
+        "hemorrhagic_auroc": 0.8309089389997609,
+        "ischemic_predictions": 889
+      },
+      "copy": {
+        "accuracy": 0.6269492203118753,
+        "hemorrhagic_recall": 0.10062893081761007,
+        "normal_recall": 0.7036188731103985,
+        "hemorrhagic_auroc": 0.8042045883427399,
+        "ischemic_predictions": 847
+      },
+      "differences_copy_minus_fp32": {
+        "d_accuracy": {
+          "value": 0.01679328268692523,
+          "ci95": [
+            0.006346436468319581,
+            0.02664740271310098
+          ]
+        },
+        "d_hemorrhagic_recall": {
+          "value": -0.02830188679245283,
+          "ci95": [
+            -0.07409387997623292,
+            0.003105590062111801
+          ]
+        },
+        "d_normal_recall": {
+          "value": 0.0233623453962437,
+          "ci95": [
+            0.013463324048282266,
+            0.03320068870627547
+          ]
+        },
+        "d_patients_detected": {
+          "value": -0.08333333333333333,
+          "ci95": [
+            -0.18181818181818182,
+            0.0
+          ]
+        },
+        "d_nohem_unflagged": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "patient_level": {
+        "patients_with_changed_slice": 67,
+        "share_changed_ci95": [
+          0.7317073170731707,
+          0.9024390243902439
+        ],
+        "call_agreement": 0.9634146341463414,
+        "call_agreement_ci95": [
+          0.9146341463414634,
+          1.0
+        ],
+        "hemorrhage_patients": 36,
+        "detected_fp32": 13,
+        "detected_copy": 10,
+        "no_hemorrhage_patients": 46,
+        "unflagged_fp32": 0,
+        "unflagged_copy": 0
+      },
+      "maps_vs_fp32": {
+        "pearson_r": {
+          "median": 0.9286154434667871,
+          "q1": 0.8655160771248886,
+          "q3": 0.9657079150646208
+        },
+        "same_peak_cell": 0.6337465013994402,
+        "display_iou": {
+          "median": 0.6140613313388182,
+          "q1": 0.42122325480873135,
+          "q3": 0.7855402112103981
+        }
+      }
+    },
+    "INT8-static, entropy": {
+      "slices": 2501,
+      "patients": 82,
+      "agreement": 0.9460215913634547,
+      "agreement_ci95": [
+        0.9350441733477852,
+        0.9556095721517688
+      ],
+      "changed_slices": 135,
+      "changed_table_rows_fp32_cols_copy": [
+        [
+          1529,
+          39,
+          0
+        ],
+        [
+          83,
+          805,
+          1
+        ],
+        [
+          2,
+          10,
+          32
+        ]
+      ],
+      "changed_towards_normal": 85,
+      "changed_away_from_normal": 39,
+      "max_abs_prob_diff": 0.7463321116745937,
+      "fp32": {
+        "accuracy": 0.61015593762495,
+        "hemorrhagic_recall": 0.1289308176100629,
+        "normal_recall": 0.6802565277141548,
+        "hemorrhagic_auroc": 0.8309089389997609,
+        "ischemic_predictions": 889
+      },
+      "copy": {
+        "accuracy": 0.6253498600559776,
+        "hemorrhagic_recall": 0.09748427672955975,
+        "normal_recall": 0.7022446174988548,
+        "hemorrhagic_auroc": 0.8074111847696753,
+        "ischemic_predictions": 854
+      },
+      "differences_copy_minus_fp32": {
+        "d_accuracy": {
+          "value": 0.015193922431027589,
+          "ci95": [
+            0.004766276031570347,
+            0.025975195741008386
+          ]
+        },
+        "d_hemorrhagic_recall": {
+          "value": -0.031446540880503145,
+          "ci95": [
+            -0.07474968931819465,
+            0.0
+          ]
+        },
+        "d_normal_recall": {
+          "value": 0.021988089784699953,
+          "ci95": [
+            0.011572332841691249,
+            0.032733425011903995
+          ]
+        },
+        "d_patients_detected": {
+          "value": -0.08333333333333333,
+          "ci95": [
+            -0.17647058823529413,
+            0.0
+          ]
+        },
+        "d_nohem_unflagged": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "patient_level": {
+        "patients_with_changed_slice": 67,
+        "share_changed_ci95": [
+          0.7317073170731707,
+          0.9024390243902439
+        ],
+        "call_agreement": 0.9634146341463414,
+        "call_agreement_ci95": [
+          0.9146341463414634,
+          1.0
+        ],
+        "hemorrhage_patients": 36,
+        "detected_fp32": 13,
+        "detected_copy": 10,
+        "no_hemorrhage_patients": 46,
+        "unflagged_fp32": 0,
+        "unflagged_copy": 0
+      },
+      "maps_vs_fp32": {
+        "pearson_r": {
+          "median": 0.9280485829830734,
+          "q1": 0.86425846932111,
+          "q3": 0.96563354241348
+        },
+        "same_peak_cell": 0.6357457017193123,
+        "display_iou": {
+          "median": 0.6203662349263064,
+          "q1": 0.42185174158975886,
+          "q3": 0.7904929577464789
+        }
+      }
+    },
+    "INT8-static, first layers in FP32": {
+      "slices": 2501,
+      "patients": 82,
+      "agreement": 0.9572171131547381,
+      "agreement_ci95": [
+        0.9489463002245738,
+        0.9649402390438248
+      ],
+      "changed_slices": 107,
+      "changed_table_rows_fp32_cols_copy": [
+        [
+          1553,
+          14,
+          1
+        ],
+        [
+          86,
+          799,
+          4
+        ],
+        [
+          1,
+          1,
+          42
+        ]
+      ],
+      "changed_towards_normal": 87,
+      "changed_away_from_normal": 15,
+      "max_abs_prob_diff": 0.40861548657560304,
+      "fp32": {
+        "accuracy": 0.61015593762495,
+        "hemorrhagic_recall": 0.1289308176100629,
+        "normal_recall": 0.6802565277141548,
+        "hemorrhagic_auroc": 0.8309089389997609,
+        "ischemic_predictions": 889
+      },
+      "copy": {
+        "accuracy": 0.6377449020391843,
+        "hemorrhagic_recall": 0.13836477987421383,
+        "normal_recall": 0.7104901511681173,
+        "hemorrhagic_auroc": 0.8213294842652054,
+        "ischemic_predictions": 814
+      },
+      "differences_copy_minus_fp32": {
+        "d_accuracy": {
+          "value": 0.027588964414234307,
+          "ci95": [
+            0.019477421447616335,
+            0.035801203324770076
+          ]
+        },
+        "d_hemorrhagic_recall": {
+          "value": 0.009433962264150943,
+          "ci95": [
+            -0.006645629395882177,
+            0.026707024865516744
+          ]
+        },
+        "d_normal_recall": {
+          "value": 0.030233623453962438,
+          "ci95": [
+            0.021533965977943097,
+            0.039169661661020046
+          ]
+        },
+        "d_patients_detected": {
+          "value": 0.027777777777777776,
+          "ci95": [
+            0.0,
+            0.09527649769585232
+          ]
+        },
+        "d_nohem_unflagged": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "patient_level": {
+        "patients_with_changed_slice": 62,
+        "share_changed_ci95": [
+          0.6585365853658537,
+          0.8414634146341463
+        ],
+        "call_agreement": 0.9878048780487805,
+        "call_agreement_ci95": [
+          0.9634146341463414,
+          1.0
+        ],
+        "hemorrhage_patients": 36,
+        "detected_fp32": 13,
+        "detected_copy": 14,
+        "no_hemorrhage_patients": 46,
+        "unflagged_fp32": 0,
+        "unflagged_copy": 0
+      },
+      "maps_vs_fp32": {
+        "pearson_r": {
+          "median": 0.9577695947217632,
+          "q1": 0.9138412322353029,
+          "q3": 0.9807272657504706
+        },
+        "same_peak_cell": 0.70171931227509,
+        "display_iou": {
+          "median": 0.7024346257889991,
+          "q1": 0.5233918128654971,
+          "q3": 0.8493975903614458
+        }
+      }
+    },
+    "M1: lowest 10% in FP32": {
+      "slices": 2501,
+      "patients": 82,
+      "agreement": 0.9328268692522991,
+      "agreement_ci95": [
+        0.9210624348713882,
+        0.9436067209844191
+      ],
+      "changed_slices": 168,
+      "changed_table_rows_fp32_cols_copy": [
+        [
+          1536,
+          32,
+          0
+        ],
+        [
+          125,
+          764,
+          0
+        ],
+        [
+          3,
+          8,
+          33
+        ]
+      ],
+      "changed_towards_normal": 128,
+      "changed_away_from_normal": 32,
+      "max_abs_prob_diff": 0.7447302177920329,
+      "fp32": {
+        "accuracy": 0.61015593762495,
+        "hemorrhagic_recall": 0.1289308176100629,
+        "normal_recall": 0.6802565277141548,
+        "hemorrhagic_auroc": 0.8309089389997609,
+        "ischemic_predictions": 889
+      },
+      "copy": {
+        "accuracy": 0.6417433026789284,
+        "hemorrhagic_recall": 0.09748427672955975,
+        "normal_recall": 0.7210261108566194,
+        "hemorrhagic_auroc": 0.8068594657977453,
+        "ischemic_predictions": 804
+      },
+      "differences_copy_minus_fp32": {
+        "d_accuracy": {
+          "value": 0.03158736505397841,
+          "ci95": [
+            0.020440063801071533,
+            0.04268824070859596
+          ]
+        },
+        "d_hemorrhagic_recall": {
+          "value": -0.031446540880503145,
+          "ci95": [
+            -0.0742043813192104,
+            -0.0032892040552200187
+          ]
+        },
+        "d_normal_recall": {
+          "value": 0.0407695831424645,
+          "ci95": [
+            0.030135259025018936,
+            0.05229194368577571
+          ]
+        },
+        "d_patients_detected": {
+          "value": -0.08333333333333333,
+          "ci95": [
+            -0.18181818181818182,
+            0.0
+          ]
+        },
+        "d_nohem_unflagged": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "patient_level": {
+        "patients_with_changed_slice": 70,
+        "share_changed_ci95": [
+          0.7682926829268293,
+          0.926829268292683
+        ],
+        "call_agreement": 0.9634146341463414,
+        "call_agreement_ci95": [
+          0.9146341463414634,
+          1.0
+        ],
+        "hemorrhage_patients": 36,
+        "detected_fp32": 13,
+        "detected_copy": 10,
+        "no_hemorrhage_patients": 46,
+        "unflagged_fp32": 0,
+        "unflagged_copy": 0
+      },
+      "maps_vs_fp32": {
+        "pearson_r": {
+          "median": 0.9200347377685536,
+          "q1": 0.8483170684899447,
+          "q3": 0.9613525036327024
+        },
+        "same_peak_cell": 0.6113554578168733,
+        "display_iou": {
+          "median": 0.598694123556002,
+          "q1": 0.39780521262002744,
+          "q3": 0.7748091603053435
+        }
+      }
+    },
+    "M2: lowest 25% in FP32": {
+      "slices": 2501,
+      "patients": 82,
+      "agreement": 0.9596161535385845,
+      "agreement_ci95": [
+        0.9496220820736069,
+        0.968617002209662
+      ],
+      "changed_slices": 101,
+      "changed_table_rows_fp32_cols_copy": [
+        [
+          1527,
+          41,
+          0
+        ],
+        [
+          48,
+          841,
+          0
+        ],
+        [
+          2,
+          10,
+          32
+        ]
+      ],
+      "changed_towards_normal": 50,
+      "changed_away_from_normal": 41,
+      "max_abs_prob_diff": 0.7442314739104506,
+      "fp32": {
+        "accuracy": 0.61015593762495,
+        "hemorrhagic_recall": 0.1289308176100629,
+        "normal_recall": 0.6802565277141548,
+        "hemorrhagic_auroc": 0.8309089389997609,
+        "ischemic_predictions": 889
+      },
+      "copy": {
+        "accuracy": 0.6113554578168733,
+        "hemorrhagic_recall": 0.09433962264150944,
+        "normal_recall": 0.6866697205680257,
+        "hemorrhagic_auroc": 0.8037580272949637,
+        "ischemic_predictions": 892
+      },
+      "differences_copy_minus_fp32": {
+        "d_accuracy": {
+          "value": 0.0011995201919232307,
+          "ci95": [
+            -0.007974800128406989,
+            0.0099059967408777
+          ]
+        },
+        "d_hemorrhagic_recall": {
+          "value": -0.03459119496855346,
+          "ci95": [
+            -0.07693333333333334,
+            -0.003676133915104505
+          ]
+        },
+        "d_normal_recall": {
+          "value": 0.00641319285387082,
+          "ci95": [
+            -0.001908078398237199,
+            0.015289118077922593
+          ]
+        },
+        "d_patients_detected": {
+          "value": -0.08333333333333333,
+          "ci95": [
+            -0.18754222972972973,
+            0.0
+          ]
+        },
+        "d_nohem_unflagged": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "patient_level": {
+        "patients_with_changed_slice": 55,
+        "share_changed_ci95": [
+          0.573170731707317,
+          0.7682926829268293
+        ],
+        "call_agreement": 0.9634146341463414,
+        "call_agreement_ci95": [
+          0.9146341463414634,
+          1.0
+        ],
+        "hemorrhage_patients": 36,
+        "detected_fp32": 13,
+        "detected_copy": 10,
+        "no_hemorrhage_patients": 46,
+        "unflagged_fp32": 0,
+        "unflagged_copy": 0
+      },
+      "maps_vs_fp32": {
+        "pearson_r": {
+          "median": 0.956740234386335,
+          "q1": 0.9124201191358341,
+          "q3": 0.9793010598323743
+        },
+        "same_peak_cell": 0.712514994002399,
+        "display_iou": {
+          "median": 0.6973404255319149,
+          "q1": 0.5123762376237624,
+          "q3": 0.8409090909090909
+        }
+      }
+    },
+    "M3: M1 and strided convolutions": {
+      "slices": 2501,
+      "patients": 82,
+      "agreement": 0.9488204718112755,
+      "agreement_ci95": [
+        0.9396717903344125,
+        0.9575063788440575
+      ],
+      "changed_slices": 128,
+      "changed_table_rows_fp32_cols_copy": [
+        [
+          1558,
+          9,
+          1
+        ],
+        [
+          112,
+          773,
+          4
+        ],
+        [
+          1,
+          1,
+          42
+        ]
+      ],
+      "changed_towards_normal": 113,
+      "changed_away_from_normal": 10,
+      "max_abs_prob_diff": 0.4061881144224984,
+      "fp32": {
+        "accuracy": 0.61015593762495,
+        "hemorrhagic_recall": 0.1289308176100629,
+        "normal_recall": 0.6802565277141548,
+        "hemorrhagic_auroc": 0.8309089389997609,
+        "ischemic_predictions": 889
+      },
+      "copy": {
+        "accuracy": 0.6485405837664934,
+        "hemorrhagic_recall": 0.13836477987421383,
+        "normal_recall": 0.722858451672011,
+        "hemorrhagic_auroc": 0.8266334770971804,
+        "ischemic_predictions": 783
+      },
+      "differences_copy_minus_fp32": {
+        "d_accuracy": {
+          "value": 0.03838464614154338,
+          "ci95": [
+            0.02937525010721728,
+            0.047524452160220346
+          ]
+        },
+        "d_hemorrhagic_recall": {
+          "value": 0.009433962264150943,
+          "ci95": [
+            -0.006734575484575484,
+            0.02682106707840109
+          ]
+        },
+        "d_normal_recall": {
+          "value": 0.04260192395785616,
+          "ci95": [
+            0.03266713615564217,
+            0.05272856108093717
+          ]
+        },
+        "d_patients_detected": {
+          "value": 0.027777777777777776,
+          "ci95": [
+            0.0,
+            0.09375
+          ]
+        },
+        "d_nohem_unflagged": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "patient_level": {
+        "patients_with_changed_slice": 66,
+        "share_changed_ci95": [
+          0.7195121951219512,
+          0.8902439024390244
+        ],
+        "call_agreement": 0.9878048780487805,
+        "call_agreement_ci95": [
+          0.9634146341463414,
+          1.0
+        ],
+        "hemorrhage_patients": 36,
+        "detected_fp32": 13,
+        "detected_copy": 14,
+        "no_hemorrhage_patients": 46,
+        "unflagged_fp32": 0,
+        "unflagged_copy": 0
+      },
+      "maps_vs_fp32": {
+        "pearson_r": {
+          "median": 0.9675719392336687,
+          "q1": 0.9322684023884367,
+          "q3": 0.9845605854559067
+        },
+        "same_peak_cell": 0.7341063574570172,
+        "display_iou": {
+          "median": 0.7414672420557081,
+          "q1": 0.5726072607260726,
+          "q3": 0.8624183006535948
+        }
+      }
+    }
+  },
+  "B_raw_upload": {
+    "INT8-dynamic": {
+      "slices": 2501,
+      "patients": 82,
+      "agreement": 0.9948020791683326,
+      "agreement_ci95": [
+        0.9918451512854816,
+        0.9975631050640728
+      ],
+      "changed_slices": 13,
+      "changed_table_rows_fp32_cols_copy": [
+        [
+          1480,
+          0,
+          0
+        ],
+        [
+          12,
+          976,
+          1
+        ],
+        [
+          0,
+          0,
+          32
+        ]
+      ],
+      "changed_towards_normal": 12,
+      "changed_away_from_normal": 0,
+      "max_abs_prob_diff": 0.07383383353078532,
+      "fp32": {
+        "accuracy": 0.5773690523790483,
+        "hemorrhagic_recall": 0.09119496855345911,
+        "normal_recall": 0.6481905634448007,
+        "hemorrhagic_auroc": 0.7845847126307631,
+        "ischemic_predictions": 989
+      },
+      "copy": {
+        "accuracy": 0.5821671331467413,
+        "hemorrhagic_recall": 0.09433962264150944,
+        "normal_recall": 0.6532295006871278,
+        "hemorrhagic_auroc": 0.7901796904035472,
+        "ischemic_predictions": 976
+      },
+      "differences_copy_minus_fp32": {
+        "d_accuracy": {
+          "value": 0.004798080767692923,
+          "ci95": [
+            0.002363949989262696,
+            0.007664612958870667
+          ]
+        },
+        "d_hemorrhagic_recall": {
+          "value": 0.0031446540880503146,
+          "ci95": [
+            0.0,
+            0.010473508590811875
+          ]
+        },
+        "d_normal_recall": {
+          "value": 0.005038937242327073,
+          "ci95": [
+            0.0022747177538210562,
+            0.008232379466109323
+          ]
+        },
+        "d_patients_detected": {
+          "value": 0.027777777777777776,
+          "ci95": [
+            0.0,
+            0.09096194503171219
+          ]
+        },
+        "d_nohem_unflagged": {
+          "value": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "patient_level": {
+        "patients_with_changed_slice": 12,
+        "share_changed_ci95": [
+          0.07317073170731707,
+          0.21981707317073004
+        ],
+        "call_agreement": 1.0,
+        "call_agreement_ci95": [
+          1.0,
+          1.0
+        ],
+        "hemorrhage_patients": 36,
+        "detected_fp32": 10,
+        "detected_copy": 11,
+        "no_hemorrhage_patients": 46,
+        "unflagged_fp32": 0,
+        "unflagged_copy": 0
+      },
+      "maps_vs_fp32": {
+        "pearson_r": {
+          "median": 0.9990065956693559,
+          "q1": 0.9978028694517063,
+          "q3": 0.9995362884469454
+        },
+        "same_peak_cell": 0.953218712514994,
+        "display_iou": {
+          "median": 0.9554536521454308,
+          "q1": 0.9145589142504627,
+          "q3": 0.9776951672862454
+        }
+      }
+    }
+  },
+  "FP32_prepared_vs_raw": {
+    "agreement": 0.9588164734106357,
+    "accuracy_prepared": 0.61015593762495,
+    "accuracy_raw": 0.5773690523790483
+  },
+  "maps_vs_expert_masks": {
+    "FP32": {
+      "slices": 318,
+      "patients": 36,
+      "pointing_hit": 0.059748427672955975,
+      "pointing_hit_ci95": [
+        0.019069916365105424,
+        0.10418640670553926
+      ],
+      "chance_hit_mean": 0.018463795563105036,
+      "region_in_mask_median": 0.0306533007817842,
+      "mask_covered_median": 0.13092584184557254,
+      "pointing_hit_on_slices_predicted_hemorrhagic": 0.0975609756097561,
+      "slices_predicted_hemorrhagic": 41
+    },
+    "INT8-dynamic": {
+      "slices": 318,
+      "patients": 36,
+      "pointing_hit": 0.0660377358490566,
+      "pointing_hit_ci95": [
+        0.023737116569803172,
+        0.1141366606222835
+      ],
+      "chance_hit_mean": 0.018463795563105036,
+      "region_in_mask_median": 0.030914349886051656,
+      "mask_covered_median": 0.14448228882833786,
+      "pointing_hit_on_slices_predicted_hemorrhagic": 0.09090909090909091,
+      "slices_predicted_hemorrhagic": 44
+    },
+    "INT8-static (min-max)": {
+      "slices": 318,
+      "patients": 36,
+      "pointing_hit": 0.03773584905660377,
+      "pointing_hit_ci95": [
+        0.012047288252107529,
+        0.06706029529606326
+      ],
+      "chance_hit_mean": 0.018463795563105036,
+      "region_in_mask_median": 0.0,
+      "mask_covered_median": 0.0,
+      "pointing_hit_on_slices_predicted_hemorrhagic": 0.09375,
+      "slices_predicted_hemorrhagic": 32
+    },
+    "INT8-static, percentile": {
+      "slices": 318,
+      "patients": 36,
+      "pointing_hit": 0.04716981132075472,
+      "pointing_hit_ci95": [
+        0.012499026479750779,
+        0.08791428571428571
+      ],
+      "chance_hit_mean": 0.018463795563105036,
+      "region_in_mask_median": 0.0,
+      "mask_covered_median": 0.0,
+      "pointing_hit_on_slices_predicted_hemorrhagic": 0.0625,
+      "slices_predicted_hemorrhagic": 32
+    },
+    "INT8-static, entropy": {
+      "slices": 318,
+      "patients": 36,
+      "pointing_hit": 0.03773584905660377,
+      "pointing_hit_ci95": [
+        0.0060781090735452115,
+        0.07767519583824815
+      ],
+      "chance_hit_mean": 0.018463795563105036,
+      "region_in_mask_median": 0.0,
+      "mask_covered_median": 0.0,
+      "pointing_hit_on_slices_predicted_hemorrhagic": 0.06451612903225806,
+      "slices_predicted_hemorrhagic": 31
+    },
+    "INT8-static, first layers in FP32": {
+      "slices": 318,
+      "patients": 36,
+      "pointing_hit": 0.05345911949685535,
+      "pointing_hit_ci95": [
+        0.01869071697586832,
+        0.09172855242739962
+      ],
+      "chance_hit_mean": 0.018463795563105036,
+      "region_in_mask_median": 0.008007105943152456,
+      "mask_covered_median": 0.021788941971213827,
+      "pointing_hit_on_slices_predicted_hemorrhagic": 0.09090909090909091,
+      "slices_predicted_hemorrhagic": 44
+    },
+    "M1: lowest 10% in FP32": {
+      "slices": 318,
+      "patients": 36,
+      "pointing_hit": 0.031446540880503145,
+      "pointing_hit_ci95": [
+        0.006896551724137931,
+        0.059705961211904524
+      ],
+      "chance_hit_mean": 0.018463795563105036,
+      "region_in_mask_median": 0.0,
+      "mask_covered_median": 0.0,
+      "pointing_hit_on_slices_predicted_hemorrhagic": 0.0967741935483871,
+      "slices_predicted_hemorrhagic": 31
+    },
+    "M2: lowest 25% in FP32": {
+      "slices": 318,
+      "patients": 36,
+      "pointing_hit": 0.040880503144654086,
+      "pointing_hit_ci95": [
+        0.011318634725461097,
+        0.08099898964384944
+      ],
+      "chance_hit_mean": 0.018463795563105036,
+      "region_in_mask_median": 0.0,
+      "mask_covered_median": 0.0,
+      "pointing_hit_on_slices_predicted_hemorrhagic": 0.1,
+      "slices_predicted_hemorrhagic": 30
+    },
+    "M3: M1 and strided convolutions": {
+      "slices": 318,
+      "patients": 36,
+      "pointing_hit": 0.05345911949685535,
+      "pointing_hit_ci95": [
+        0.021493267461009397,
+        0.0911957960940086
+      ],
+      "chance_hit_mean": 0.018463795563105036,
+      "region_in_mask_median": 0.007380536480620585,
+      "mask_covered_median": 0.043524541691306914,
+      "pointing_hit_on_slices_predicted_hemorrhagic": 0.09090909090909091,
+      "slices_predicted_hemorrhagic": 44
+    }
+  },
+  "minutes_total": 79.0
+}

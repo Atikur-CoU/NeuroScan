@@ -1,0 +1,57 @@
+[21:27:03] cap 0.1 cores: busy loop used 0.099 CPU-seconds per second
+[21:27:10] cap 0.25 cores: busy loop used 0.266 CPU-seconds per second
+[21:27:16] cap 0.5 cores: busy loop used 0.51 CPU-seconds per second
+[21:27:22] cap 1.0 cores: busy loop used 0.935 CPU-seconds per second
+[21:27:44] fp32 @ 0.1 cores: ready in 21.8 s; variant/sha ok True
+[21:31:23] fp32 @ 0.1 cores: sequential round 1 done
+[21:35:03] fp32 @ 0.1 cores: sequential round 2 done
+[21:38:25] fp32 @ 0.1 cores: sequential round 3 done
+[21:42:43] fp32 @ 0.1 cores: {"sequential_client_ms": {"median": 7129.1, "p95": 9434.4, "max": 11884.7}, "sequential_server_model_ms_median": 6930.8, "failed_requests": 0, "same_prediction_as_answer_sheet": 112, "concurrent_same_as_sequential": 28}
+[21:42:54] fp32 @ 0.25 cores: ready in 8.6 s; variant/sha ok True
+[21:44:15] fp32 @ 0.25 cores: sequential round 1 done
+[21:45:32] fp32 @ 0.25 cores: sequential round 2 done
+[21:47:04] fp32 @ 0.25 cores: sequential round 3 done
+[21:48:23] fp32 @ 0.25 cores: {"sequential_client_ms": {"median": 2907.4, "p95": 4015.9, "max": 5369.6}, "sequential_server_model_ms_median": 2865.5, "failed_requests": 0, "same_prediction_as_answer_sheet": 112, "concurrent_same_as_sequential": 28}
+[21:48:33] fp32 @ 0.5 cores: ready in 7.8 s; variant/sha ok True
+[21:49:31] fp32 @ 0.5 cores: sequential round 1 done
+[21:50:26] fp32 @ 0.5 cores: sequential round 2 done
+[21:51:23] fp32 @ 0.5 cores: sequential round 3 done
+[21:52:18] fp32 @ 0.5 cores: {"sequential_client_ms": {"median": 1836.1, "p95": 2764.8, "max": 3834.7}, "sequential_server_model_ms_median": 1784.5, "failed_requests": 0, "same_prediction_as_answer_sheet": 112, "concurrent_same_as_sequential": 28}
+[21:52:25] fp32 @ 1.0 cores: ready in 4.1 s; variant/sha ok True
+[21:53:00] fp32 @ 1.0 cores: sequential round 1 done
+[21:53:34] fp32 @ 1.0 cores: sequential round 2 done
+[21:54:15] fp32 @ 1.0 cores: sequential round 3 done
+[21:54:53] fp32 @ 1.0 cores: {"sequential_client_ms": {"median": 1226.1, "p95": 1878.6, "max": 5027.4}, "sequential_server_model_ms_median": 1171.3, "failed_requests": 0, "same_prediction_as_answer_sheet": 112, "concurrent_same_as_sequential": 28}
+[21:54:59] fp32 @ 2.0 cores: ready in 3.1 s; variant/sha ok True
+[21:55:41] fp32 @ 2.0 cores: sequential round 1 done
+[21:56:17] fp32 @ 2.0 cores: sequential round 2 done
+[21:56:57] fp32 @ 2.0 cores: sequential round 3 done
+[21:57:43] fp32 @ 2.0 cores: {"sequential_client_ms": {"median": 1268.2, "p95": 2487.0, "max": 4333.2}, "sequential_server_model_ms_median": 1206.6, "failed_requests": 0, "same_prediction_as_answer_sheet": 112, "concurrent_same_as_sequential": 28}
+[21:58:17] int8_dynamic @ 0.1 cores: ready in 32.0 s; variant/sha ok True
+[22:02:56] int8_dynamic @ 0.1 cores: sequential round 1 done
+[22:05:58] int8_dynamic @ 0.1 cores: sequential round 2 done
+[22:08:46] int8_dynamic @ 0.1 cores: sequential round 3 done
+[22:11:56] int8_dynamic @ 0.1 cores: {"sequential_client_ms": {"median": 5991.7, "p95": 10721.4, "max": 13651.9}, "sequential_server_model_ms_median": 5938.3, "failed_requests": 0, "same_prediction_as_answer_sheet": 112, "concurrent_same_as_sequential": 28}
+[22:12:10] int8_dynamic @ 0.25 cores: ready in 11.6 s; variant/sha ok True
+[22:13:38] int8_dynamic @ 0.25 cores: sequential round 1 done
+[22:14:55] int8_dynamic @ 0.25 cores: sequential round 2 done
+[22:16:09] int8_dynamic @ 0.25 cores: sequential round 3 done
+[22:17:31] int8_dynamic @ 0.25 cores: {"sequential_client_ms": {"median": 2444.8, "p95": 4140.1, "max": 4782.5}, "sequential_server_model_ms_median": 2401.3, "failed_requests": 0, "same_prediction_as_answer_sheet": 112, "concurrent_same_as_sequential": 28}
+[22:17:36] int8_dynamic @ 0.5 cores: ready in 3.1 s; variant/sha ok True
+[22:18:29] int8_dynamic @ 0.5 cores: sequential round 1 done
+[22:19:51] int8_dynamic @ 0.5 cores: sequential round 2 done
+[22:21:01] int8_dynamic @ 0.5 cores: sequential round 3 done
+[22:22:08] int8_dynamic @ 0.5 cores: {"sequential_client_ms": {"median": 2091.1, "p95": 4619.9, "max": 10048.3}, "sequential_server_model_ms_median": 1923.3, "failed_requests": 0, "same_prediction_as_answer_sheet": 112, "concurrent_same_as_sequential": 28}
+[22:22:15] int8_dynamic @ 1.0 cores: ready in 4.6 s; variant/sha ok True
+[22:23:03] int8_dynamic @ 1.0 cores: sequential round 1 done
+[22:23:27] int8_dynamic @ 1.0 cores: sequential round 2 done
+[22:24:00] int8_dynamic @ 1.0 cores: sequential round 3 done
+[22:24:27] int8_dynamic @ 1.0 cores: {"sequential_client_ms": {"median": 989.8, "p95": 2291.8, "max": 8199.4}, "sequential_server_model_ms_median": 856.1, "failed_requests": 0, "same_prediction_as_answer_sheet": 112, "concurrent_same_as_sequential": 28}
+[22:24:32] int8_dynamic @ 2.0 cores: ready in 3.6 s; variant/sha ok True
+[22:25:05] int8_dynamic @ 2.0 cores: sequential round 1 done
+[22:25:39] int8_dynamic @ 2.0 cores: sequential round 2 done
+[22:26:03] int8_dynamic @ 2.0 cores: sequential round 3 done
+[22:26:30] int8_dynamic @ 2.0 cores: {"sequential_client_ms": {"median": 977.8, "p95": 1982.0, "max": 2534.0}, "sequential_server_model_ms_median": 921.4, "failed_requests": 0, "same_prediction_as_answer_sheet": 112, "concurrent_same_as_sequential": 28}
+[22:26:32] done; outputs in C:\Users\atika\AppData\Local\Temp\claude\1bfa828e70fc0452\9fafb4e8-1e64-4e8d-880b-bb46546a50a7\scratchpad\l1\run
+
+[exited with code 0]

@@ -1,0 +1,1168 @@
+{
+  "rule": "patient flagged hemorrhagic if any slice predicted hemorrhagic, else ischemic if any slice ischemic, else normal; truth by the same rule on labels; detection = at least one slice of the true class predicted as that class",
+  "bootstrap": "2,000 paired patient-cluster resamples within dataset, seed 0",
+  "all clusters": {
+    "pooled internal test": {
+      "INT8-dynamic": {
+        "patients": 1787,
+        "with_changed_slice": 25,
+        "call_agreement": 0.996082820369334,
+        "ischemic_patients": 281,
+        "ischemic_detected_fp32": 265,
+        "ischemic_detected_copy": 263,
+        "hemorrhagic_patients": 820,
+        "hemorrhagic_detected_fp32": 780,
+        "hemorrhagic_detected_copy": 780,
+        "normal_patients": 686,
+        "normal_unflagged_fp32": 619,
+        "normal_unflagged_copy": 620,
+        "ci": {
+          "share_changed": [
+            0.008953553441522105,
+            0.019026301063234472
+          ],
+          "call_agreement": [
+            0.9932848349188584,
+            0.9988808058198098
+          ],
+          "d_ischemic_detection": [
+            -0.01811594202898548,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            -0.004573170731707268,
+            0.00771634752991016
+          ]
+        }
+      },
+      "INT8-static (min-max)": {
+        "patients": 1787,
+        "with_changed_slice": 224,
+        "call_agreement": 0.9613878007834359,
+        "ischemic_patients": 281,
+        "ischemic_detected_fp32": 265,
+        "ischemic_detected_copy": 269,
+        "hemorrhagic_patients": 820,
+        "hemorrhagic_detected_fp32": 780,
+        "hemorrhagic_detected_copy": 772,
+        "normal_patients": 686,
+        "normal_unflagged_fp32": 619,
+        "normal_unflagged_copy": 591,
+        "ci": {
+          "share_changed": [
+            0.11080022383883603,
+            0.13933967543368775
+          ],
+          "call_agreement": [
+            0.9524342473419138,
+            0.970341354224958
+          ],
+          "d_ischemic_detection": [
+            -0.003623517786561281,
+            0.0357142857142857
+          ],
+          "d_hemorrhagic_detection": [
+            -0.020581113801452777,
+            0.001218063931552865
+          ],
+          "d_normal_specificity": [
+            -0.0589102176205456,
+            -0.023390107922868403
+          ]
+        }
+      },
+      "INT8-static, percentile": {
+        "patients": 1787,
+        "with_changed_slice": 209,
+        "call_agreement": 0.965864577504197,
+        "ischemic_patients": 281,
+        "ischemic_detected_fp32": 265,
+        "ischemic_detected_copy": 266,
+        "hemorrhagic_patients": 820,
+        "hemorrhagic_detected_fp32": 780,
+        "hemorrhagic_detected_copy": 778,
+        "normal_patients": 686,
+        "normal_unflagged_fp32": 619,
+        "normal_unflagged_copy": 594,
+        "ci": {
+          "share_changed": [
+            0.10240626748740907,
+            0.1298265249020705
+          ],
+          "call_agreement": [
+            0.95747062115277,
+            0.974258533855624
+          ],
+          "d_ischemic_detection": [
+            -0.01091008626410082,
+            0.01930688994642489
+          ],
+          "d_hemorrhagic_detection": [
+            -0.012122318071223149,
+            0.007203968543939254
+          ],
+          "d_normal_specificity": [
+            -0.053624416605256645,
+            -0.019284989014644184
+          ]
+        }
+      },
+      "INT8-static, entropy": {
+        "patients": 1787,
+        "with_changed_slice": 221,
+        "call_agreement": 0.9608282036933408,
+        "ischemic_patients": 281,
+        "ischemic_detected_fp32": 265,
+        "ischemic_detected_copy": 268,
+        "hemorrhagic_patients": 820,
+        "hemorrhagic_detected_fp32": 780,
+        "hemorrhagic_detected_copy": 773,
+        "normal_patients": 686,
+        "normal_unflagged_fp32": 619,
+        "normal_unflagged_copy": 586,
+        "ci": {
+          "share_changed": [
+            0.10912143256855064,
+            0.13766088416340236
+          ],
+          "call_agreement": [
+            0.9524342473419138,
+            0.9697817571348629
+          ],
+          "d_ischemic_detection": [
+            -0.0069456585081584836,
+            0.030308166409861382
+          ],
+          "d_hemorrhagic_detection": [
+            -0.018803258145363436,
+            0.00121212121212122
+          ],
+          "d_normal_specificity": [
+            -0.06804733727810652,
+            -0.029894250719496706
+          ]
+        }
+      },
+      "INT8-static, first layers in FP32": {
+        "patients": 1787,
+        "with_changed_slice": 96,
+        "call_agreement": 0.9876888640179071,
+        "ischemic_patients": 281,
+        "ischemic_detected_fp32": 265,
+        "ischemic_detected_copy": 265,
+        "hemorrhagic_patients": 820,
+        "hemorrhagic_detected_fp32": 780,
+        "hemorrhagic_detected_copy": 779,
+        "normal_patients": 686,
+        "normal_unflagged_fp32": 619,
+        "normal_unflagged_copy": 623,
+        "ci": {
+          "share_changed": [
+            0.04476776720761052,
+            0.06267487409065473
+          ],
+          "call_agreement": [
+            0.9826524902070509,
+            0.9927252378287633
+          ],
+          "d_ischemic_detection": [
+            -0.010564313442492503,
+            0.010565253221456372
+          ],
+          "d_hemorrhagic_detection": [
+            -0.006211180124223614,
+            0.00375011733416774
+          ],
+          "d_normal_specificity": [
+            -0.004524886877828038,
+            0.017193832326688856
+          ]
+        }
+      },
+      "M1: lowest 10% in FP32": {
+        "patients": 1787,
+        "with_changed_slice": 211,
+        "call_agreement": 0.9653049804141018,
+        "ischemic_patients": 281,
+        "ischemic_detected_fp32": 265,
+        "ischemic_detected_copy": 267,
+        "hemorrhagic_patients": 820,
+        "hemorrhagic_detected_fp32": 780,
+        "hemorrhagic_detected_copy": 770,
+        "normal_patients": 686,
+        "normal_unflagged_fp32": 619,
+        "normal_unflagged_copy": 601,
+        "ci": {
+          "share_changed": [
+            0.10408505875769446,
+            0.1315053161723559
+          ],
+          "call_agreement": [
+            0.95747062115277,
+            0.9736989367655288
+          ],
+          "d_ischemic_detection": [
+            -0.007464089327797125,
+            0.025091861994275547
+          ],
+          "d_hemorrhagic_detection": [
+            -0.02305895286012569,
+            -0.00122241934522038
+          ],
+          "d_normal_specificity": [
+            -0.04249101450825468,
+            -0.010324483775811296
+          ]
+        }
+      },
+      "M2: lowest 25% in FP32": {
+        "patients": 1787,
+        "with_changed_slice": 199,
+        "call_agreement": 0.965864577504197,
+        "ischemic_patients": 281,
+        "ischemic_detected_fp32": 265,
+        "ischemic_detected_copy": 267,
+        "hemorrhagic_patients": 820,
+        "hemorrhagic_detected_fp32": 780,
+        "hemorrhagic_detected_copy": 780,
+        "normal_patients": 686,
+        "normal_unflagged_fp32": 619,
+        "normal_unflagged_copy": 596,
+        "ci": {
+          "share_changed": [
+            0.09736989367655288,
+            0.1242305540011192
+          ],
+          "call_agreement": [
+            0.95747062115277,
+            0.974258533855624
+          ],
+          "d_ischemic_detection": [
+            -0.007464089327797125,
+            0.025091861994275547
+          ],
+          "d_hemorrhagic_detection": [
+            -0.008610616932309887,
+            0.00859977303704245
+          ],
+          "d_normal_specificity": [
+            -0.05072707480340548,
+            -0.016152124484865728
+          ]
+        }
+      },
+      "M3: M1 and strided convolutions": {
+        "patients": 1787,
+        "with_changed_slice": 103,
+        "call_agreement": 0.9848908785674314,
+        "ischemic_patients": 281,
+        "ischemic_detected_fp32": 265,
+        "ischemic_detected_copy": 265,
+        "hemorrhagic_patients": 820,
+        "hemorrhagic_detected_fp32": 780,
+        "hemorrhagic_detected_copy": 773,
+        "normal_patients": 686,
+        "normal_unflagged_fp32": 619,
+        "normal_unflagged_copy": 628,
+        "ci": {
+          "share_changed": [
+            0.04868494683827644,
+            0.06659205372132065
+          ],
+          "call_agreement": [
+            0.9792949076664801,
+            0.9899272523782876
+          ],
+          "d_ischemic_detection": [
+            -0.010564313442492503,
+            0.010565253221456372
+          ],
+          "d_hemorrhagic_detection": [
+            -0.015385985748218473,
+            -0.0024630541871921707
+          ],
+          "d_normal_specificity": [
+            0.002869337685455006,
+            0.024285714285714355
+          ]
+        }
+      }
+    },
+    "SOOP hold-out": {
+      "INT8-dynamic": {
+        "patients": 66,
+        "with_changed_slice": 6,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.030303030303030304,
+            0.16666666666666666
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "INT8-static (min-max)": {
+        "patients": 66,
+        "with_changed_slice": 22,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.22727272727272727,
+            0.45454545454545453
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "INT8-static, percentile": {
+        "patients": 66,
+        "with_changed_slice": 25,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.25757575757575757,
+            0.5
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "INT8-static, entropy": {
+        "patients": 66,
+        "with_changed_slice": 21,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.21212121212121213,
+            0.4393939393939394
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "INT8-static, first layers in FP32": {
+        "patients": 66,
+        "with_changed_slice": 14,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.12121212121212122,
+            0.30340909090908885
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "M1: lowest 10% in FP32": {
+        "patients": 66,
+        "with_changed_slice": 18,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.16666666666666666,
+            0.3787878787878788
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "M2: lowest 25% in FP32": {
+        "patients": 66,
+        "with_changed_slice": 15,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.13636363636363635,
+            0.3333333333333333
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "M3: M1 and strided convolutions": {
+        "patients": 66,
+        "with_changed_slice": 14,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.12121212121212122,
+            0.3181818181818182
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  },
+  "patients with identifiers": {
+    "pooled internal test": {
+      "INT8-dynamic": {
+        "patients": 771,
+        "with_changed_slice": 18,
+        "call_agreement": 1.0,
+        "ischemic_patients": 111,
+        "ischemic_detected_fp32": 110,
+        "ischemic_detected_copy": 110,
+        "hemorrhagic_patients": 659,
+        "hemorrhagic_detected_fp32": 625,
+        "hemorrhagic_detected_copy": 625,
+        "normal_patients": 1,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.014267185473411154,
+            0.03372243839169909
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "INT8-static (min-max)": {
+        "patients": 771,
+        "with_changed_slice": 171,
+        "call_agreement": 0.9792477302204928,
+        "ischemic_patients": 111,
+        "ischemic_detected_fp32": 110,
+        "ischemic_detected_copy": 111,
+        "hemorrhagic_patients": 659,
+        "hemorrhagic_detected_fp32": 625,
+        "hemorrhagic_detected_copy": 622,
+        "normal_patients": 1,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.1958171206225681,
+            0.2490272373540856
+          ],
+          "call_agreement": [
+            0.9688715953307393,
+            0.9883268482490273
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.027272727272727226
+          ],
+          "d_hemorrhagic_detection": [
+            -0.01669195751138086,
+            0.006069802731411222
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "INT8-static, percentile": {
+        "patients": 771,
+        "with_changed_slice": 163,
+        "call_agreement": 0.980544747081712,
+        "ischemic_patients": 111,
+        "ischemic_detected_fp32": 110,
+        "ischemic_detected_copy": 111,
+        "hemorrhagic_patients": 659,
+        "hemorrhagic_detected_fp32": 625,
+        "hemorrhagic_detected_copy": 627,
+        "normal_patients": 1,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.18544098573281453,
+            0.23865110246433205
+          ],
+          "call_agreement": [
+            0.9701686121919585,
+            0.9896238651102465
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.027272727272727226
+          ],
+          "d_hemorrhagic_detection": [
+            -0.007587253414264028,
+            0.013657056145675254
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "INT8-static, entropy": {
+        "patients": 771,
+        "with_changed_slice": 166,
+        "call_agreement": 0.980544747081712,
+        "ischemic_patients": 111,
+        "ischemic_detected_fp32": 110,
+        "ischemic_detected_copy": 111,
+        "hemorrhagic_patients": 659,
+        "hemorrhagic_detected_fp32": 625,
+        "hemorrhagic_detected_copy": 621,
+        "normal_patients": 1,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.1880674448767834,
+            0.24124513618677043
+          ],
+          "call_agreement": [
+            0.9701686121919585,
+            0.9896238651102465
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.027272727272727226
+          ],
+          "d_hemorrhagic_detection": [
+            -0.018209408194233778,
+            0.004552352048558417
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "INT8-static, first layers in FP32": {
+        "patients": 771,
+        "with_changed_slice": 79,
+        "call_agreement": 0.993514915693904,
+        "ischemic_patients": 111,
+        "ischemic_detected_fp32": 110,
+        "ischemic_detected_copy": 110,
+        "hemorrhagic_patients": 659,
+        "hemorrhagic_detected_fp32": 625,
+        "hemorrhagic_detected_copy": 624,
+        "normal_patients": 1,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.08430609597924774,
+            0.1219195849546044
+          ],
+          "call_agreement": [
+            0.9870298313878081,
+            0.9987029831387808
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            -0.009104704097116834,
+            0.004552352048558419
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "M1: lowest 10% in FP32": {
+        "patients": 771,
+        "with_changed_slice": 167,
+        "call_agreement": 0.9766536964980544,
+        "ischemic_patients": 111,
+        "ischemic_detected_fp32": 110,
+        "ischemic_detected_copy": 110,
+        "hemorrhagic_patients": 659,
+        "hemorrhagic_detected_fp32": 625,
+        "hemorrhagic_detected_copy": 620,
+        "normal_patients": 1,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.19066147859922178,
+            0.2438391699092088
+          ],
+          "call_agreement": [
+            0.9662775616083009,
+            0.9870298313878081
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            -0.02124430955993928,
+            0.004552352048558417
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "M2: lowest 25% in FP32": {
+        "patients": 771,
+        "with_changed_slice": 152,
+        "call_agreement": 0.9818417639429312,
+        "ischemic_patients": 111,
+        "ischemic_detected_fp32": 110,
+        "ischemic_detected_copy": 110,
+        "hemorrhagic_patients": 659,
+        "hemorrhagic_detected_fp32": 625,
+        "hemorrhagic_detected_copy": 627,
+        "normal_patients": 1,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.17120622568093385,
+            0.223119325551232
+          ],
+          "call_agreement": [
+            0.9727302204928664,
+            0.9909208819714657
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            -0.007587253414264028,
+            0.01365705614567525
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "M3: M1 and strided convolutions": {
+        "patients": 771,
+        "with_changed_slice": 84,
+        "call_agreement": 0.9896238651102465,
+        "ischemic_patients": 111,
+        "ischemic_detected_fp32": 110,
+        "ischemic_detected_copy": 110,
+        "hemorrhagic_patients": 659,
+        "hemorrhagic_detected_fp32": 625,
+        "hemorrhagic_detected_copy": 618,
+        "normal_patients": 1,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.09208819714656291,
+            0.1271400778210115
+          ],
+          "call_agreement": [
+            0.9818417639429312,
+            0.9961089494163424
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            -0.018209408194233778,
+            -0.0030349013657057196
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "SOOP hold-out": {
+      "INT8-dynamic": {
+        "patients": 66,
+        "with_changed_slice": 6,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.030303030303030304,
+            0.16666666666666666
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "INT8-static (min-max)": {
+        "patients": 66,
+        "with_changed_slice": 22,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.22727272727272727,
+            0.45454545454545453
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "INT8-static, percentile": {
+        "patients": 66,
+        "with_changed_slice": 25,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.25757575757575757,
+            0.5
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "INT8-static, entropy": {
+        "patients": 66,
+        "with_changed_slice": 21,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.21212121212121213,
+            0.4393939393939394
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "INT8-static, first layers in FP32": {
+        "patients": 66,
+        "with_changed_slice": 14,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.12121212121212122,
+            0.30340909090908885
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "M1: lowest 10% in FP32": {
+        "patients": 66,
+        "with_changed_slice": 18,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.16666666666666666,
+            0.3787878787878788
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "M2: lowest 25% in FP32": {
+        "patients": 66,
+        "with_changed_slice": 15,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.13636363636363635,
+            0.3333333333333333
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "M3: M1 and strided convolutions": {
+        "patients": 66,
+        "with_changed_slice": 14,
+        "call_agreement": 1.0,
+        "ischemic_patients": 66,
+        "ischemic_detected_fp32": 63,
+        "ischemic_detected_copy": 63,
+        "hemorrhagic_patients": 0,
+        "hemorrhagic_detected_fp32": 0,
+        "hemorrhagic_detected_copy": 0,
+        "normal_patients": 0,
+        "normal_unflagged_fp32": 0,
+        "normal_unflagged_copy": 0,
+        "ci": {
+          "share_changed": [
+            0.12121212121212122,
+            0.3181818181818182
+          ],
+          "call_agreement": [
+            1.0,
+            1.0
+          ],
+          "d_ischemic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_hemorrhagic_detection": [
+            0.0,
+            0.0
+          ],
+          "d_normal_specificity": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  }
+}
