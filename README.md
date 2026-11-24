@@ -1,5 +1,31 @@
 # NeuroScan inference server (Render)
 
+## Citation
+
+If you use this code or model, please cite:
+
+> Rahman, M.A.; Rantu, M.A.H.; Mim, A.; Rahman, M.Z.; Babar, J.I.; Al Zubaer, A.; Al-Jamil, M.N.; Hasan, M.
+> NeuroScan: A Leakage-Audited Unified Model for Stroke Slice Classification on Multi-Source CT and
+> Diffusion MRI with a Web–Android Prototype. *BioMedInformatics* **2026**, *6*, 117.
+> https://doi.org/10.3390/biomedinformatics6060117
+
+```bibtex
+@article{rahman2026neuroscan,
+  author  = {Rahman, Md. Atikur and Rantu, Md. Anwar Hossain and Mim, Afsana and Rahman, Md. Zahidur and
+             Babar, Jahirul Islam and Al Zubaer, Abdullah and Al-Jamil, Md. Nashid and Hasan, Mahmudul},
+  title   = {NeuroScan: A Leakage-Audited Unified Model for Stroke Slice Classification on Multi-Source {CT}
+             and Diffusion {MRI} with a Web--Android Prototype},
+  journal = {BioMedInformatics},
+  year    = {2026},
+  volume  = {6},
+  number  = {6},
+  pages   = {117},
+  doi     = {10.3390/biomedinformatics6060117}
+}
+```
+
+The model is a research prototype, not a medical device; it has not been externally validated.
+
 Always-on replacement for the Kaggle/Colab + ngrok notebook setup
 (`kaggle_kernels/phase_o_inference_server/`).
 
